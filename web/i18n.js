@@ -61,7 +61,21 @@ window.I18N = {
     loading: "جارٍ التحميل…", load_error: "تعذّر تحميل البيانات",
     login_title: "دخول المشغّل", login_sub: "اعتماد الإنذارات يتطلب حسابًا بصلاحية مشغّل أو مسؤول.", username: "اسم المستخدم", password: "كلمة المرور",
     login_btn: "دخول", cancel: "إلغاء", login_failed: "اسم المستخدم أو كلمة المرور غير صحيحة", logout: "خروج", forbidden: "صلاحيتك لا تسمح بهذا الإجراء",
-    offline_mode: "وضع العرض: بدون خادم، القرارات تُحفظ في هذا المتصفح فقط"
+    offline_mode: "وضع العرض: بدون خادم، القرارات تُحفظ في هذا المتصفح فقط",
+    sp_ui: "تهيئة الواجهة…", sp_api: "الاتصال بالخادم…", sp_data: "تحميل القطاعات ودرجات الخطر…", sp_map: "رسم الخريطة…", sp_ready: "جاهز",
+    guide: "الدليل التفاعلي", tour_invite_t: "أول مرة هنا؟", tour_invite_d: "جولة سريعة من 9 خطوات تعرّفك على الخريطة والإنذارات والشفافية.",
+    tour_start: "ابدأ الجولة", tour_later: "لاحقًا", tour_next: "التالي", tour_prev: "السابق", tour_skip: "إنهاء", tour_done: "تم",
+    tour: [
+      ["الخريطة", "كل مربع على الخريطة قطاع مساحته نحو 11 كم، ولونه حسب مستوى خطره. اسحب للتحريك، واستخدم + و− للتكبير."],
+      ["مستويات الخطر", "أربعة مستويات حسب وثيقة المتطلبات. كل مستوى له لون ورمز ونطاق درجة، فلا يعتمد المعنى على اللون وحده."],
+      ["الطبقات", "شغّل خلايا 1 كم لرؤية التفاصيل، أو أطفئ القطاعات. الدائرة المعبّأة انهيار مسجّل بموقع دقيق، والمفرّغة موقع تقريبي."],
+      ["الأعلى خطرًا", "أعلى 15 قطاعًا مرتبة بالدرجة. اضغط أي قطاع لفتح تفاصيله والانتقال إليه على الخريطة."],
+      ["تفاصيل القطاع", "الدرجة والمستوى، توزيع خلاياه، الارتفاع والانحدار والغطاء، والعوامل المؤثرة في النموذج. ومنها تقترح إنذارًا."],
+      ["الإنذارات", "كل قطاع «مرتفع» فأعلى له إنذار مقترح. الاعتماد يحتاج دخول مشغّل، ويُسجّل باسمه ووقته، والإرسال محاكى."],
+      ["الشفافية", "مقاييس النموذج ومصادر البيانات وحدوده. اقرأها قبل الاعتماد على الخريطة: النموذج مدرّب على 12 نقطة انهيار فقط."],
+      ["اللغة والمظهر", "بدّل بين العربية والإنجليزية، وبين الوضع الليلي والنهاري. يحفظ المتصفح اختيارك."],
+      ["الدليل متاح دائمًا", "تقدر تعيد هذه الجولة أي وقت من زر ؟ في الأعلى."]
+    ],
   },
   en: {
     brand: "Mirsad", tagline: "Landslide Risk Prediction System", prototype: "Prototype",
@@ -122,6 +136,20 @@ window.I18N = {
     loading: "Loading…", load_error: "Could not load data",
     login_title: "Operator sign-in", login_sub: "Approving alerts requires an operator or admin account.", username: "Username", password: "Password",
     login_btn: "Sign in", cancel: "Cancel", login_failed: "Wrong username or password", logout: "Sign out", forbidden: "Your role does not allow this action",
-    offline_mode: "Demo mode: no server, decisions are saved in this browser only"
+    offline_mode: "Demo mode: no server, decisions are saved in this browser only",
+    sp_ui: "Preparing interface…", sp_api: "Connecting to server…", sp_data: "Loading sectors and risk scores…", sp_map: "Drawing the map…", sp_ready: "Ready",
+    guide: "Interactive guide", tour_invite_t: "First time here?", tour_invite_d: "A quick 9-step tour of the map, alerts and transparency.",
+    tour_start: "Start tour", tour_later: "Later", tour_next: "Next", tour_prev: "Back", tour_skip: "End", tour_done: "Done",
+    tour: [
+      ["The map", "Each square is a sector of about 11 km, colored by its risk level. Drag to pan; use + and − to zoom."],
+      ["Risk levels", "Four levels from the requirements document. Each has a color, a symbol and a score range, so meaning never relies on color alone."],
+      ["Layers", "Turn on 1 km cells for detail, or hide sectors. A filled circle is a precisely located landslide; a hollow one is approximate."],
+      ["Highest risk", "The top 15 sectors by score. Tap one to open its details and fly to it on the map."],
+      ["Sector details", "Score and level, cell distribution, elevation, slope and land cover, and the model's contributing factors. You can propose an alert from here."],
+      ["Alerts", "Every sector at High or above gets a proposed alert. Approving needs an operator sign-in and is logged with name and time; sending is simulated."],
+      ["Transparency", "Model metrics, data sources and limitations. Read this before relying on the map: the model is trained on only 12 landslide points."],
+      ["Language & theme", "Switch between Arabic and English, and between dark and light. Your browser remembers the choice."],
+      ["Always available", "Replay this tour anytime from the ? button at the top."]
+    ],
   }
 };

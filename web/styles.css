@@ -162,3 +162,39 @@ button,select,input{font:inherit;color:inherit}
 .login .err{color:var(--lv-critical-fg);min-height:1.2em;margin:0;font-size:13px}
 .icon-btn.wide{width:auto;padding:0 12px;font-size:13px}
 .mode{font-size:12px;color:var(--muted)}
+
+/* ---------- splash ---------- */
+.splash{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;background:radial-gradient(700px 420px at 50% 40%,color-mix(in srgb,var(--accent) 14%,transparent),transparent 70%),var(--bg);transition:opacity .5s,visibility .5s}
+.splash.done{opacity:0;visibility:hidden}
+.splash-in{text-align:center;display:grid;justify-items:center;gap:10px}
+.radar{position:relative;width:180px;height:180px;margin-bottom:8px}
+.radar img{position:absolute;inset:22px;width:136px;height:136px;filter:drop-shadow(0 0 18px color-mix(in srgb,var(--accent) 45%,transparent))}
+.radar .ring{position:absolute;border-radius:50%;border:1.5px solid color-mix(in srgb,var(--accent) 45%,transparent)}
+.radar .r1{inset:0}.radar .r2{inset:-18px;border-style:dashed;opacity:.5}
+.radar .sweep{position:absolute;inset:-18px;border-radius:50%;background:conic-gradient(from 0deg,color-mix(in srgb,var(--accent) 38%,transparent),transparent 26%);animation:spin 2.2s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.splash-name{font-size:40px;font-weight:700;color:var(--accent);line-height:1.1}
+.splash-tag{font-size:16px;color:var(--muted)}
+.splash-bar{width:240px;height:6px;border-radius:3px;background:var(--surface2);overflow:hidden;border:1px solid var(--line);margin-top:10px}
+.splash-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--frame2));transition:width .35s}
+.splash-step{font-size:13px;color:var(--muted);min-height:1.4em}
+.splash .sc{position:absolute;width:70px;height:70px;border-style:solid;border-width:0}
+.splash .tl{top:28px;left:28px;border-top-width:4px;border-left-width:4px;border-color:var(--frame)}
+.splash .tr{top:28px;right:28px;border-top-width:4px;border-right-width:4px;border-color:var(--frame)}
+.splash .bl{bottom:28px;left:28px;border-bottom-width:4px;border-left-width:4px;border-color:var(--frame2)}
+.splash .br{bottom:28px;right:28px;border-bottom-width:4px;border-right-width:4px;border-color:var(--frame2)}
+@media (prefers-reduced-motion:reduce){.radar .sweep{animation:none}}
+
+/* ---------- interactive tour ---------- */
+.tour-spot{position:fixed;z-index:90;border-radius:12px;box-shadow:0 0 0 4px var(--accent),0 0 0 9999px rgba(5,12,15,.62);pointer-events:none;transition:all .3s}
+.tour-card{position:fixed;z-index:91;width:min(360px,calc(100vw - 24px));background:var(--surface);color:var(--text);border:1px solid var(--accent);border-radius:16px;box-shadow:var(--shadow);padding:16px 18px;transition:top .3s,left .3s}
+.tour-card h3{margin:0 0 6px;font-size:17px;color:var(--accent)}
+.tour-card p{margin:0;font-size:14px;line-height:1.7}
+.tour-card .tour-foot{display:flex;align-items:center;gap:8px;margin-top:14px}
+.tour-card .tour-n{margin-inline-end:auto;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tour-card .btn{padding:7px 14px}
+.tour-dots{display:flex;gap:4px;margin-top:10px}
+.tour-dots i{width:18px;height:4px;border-radius:2px;background:var(--line)}
+.tour-dots i.on{background:var(--accent)}
+.tour-invite{position:fixed;z-index:60;bottom:20px;inset-inline-end:20px;background:var(--surface);border:1px solid var(--accent);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;width:min(320px,calc(100vw - 40px));display:grid;gap:10px}
+.tour-invite .row{display:flex;gap:8px}

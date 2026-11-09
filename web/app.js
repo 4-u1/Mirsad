@@ -2,12 +2,12 @@
 (function () {
   "use strict";
   const LEVELS = ["low", "medium", "high", "critical"];
-  const SYMBOL = { low: "○", medium: "◆", high: "▲", critical: "⬣" };
+  const SYMBOL = { low: "○", medium: "◆", high: "▲", critical: "■" };
   const S = { lang: "ar", data: {}, map: null, selected: null, alerts: {} };
 
   // ---------- storage (آمن عند تعطّل التخزين) ----------
   const store = {
-    get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+    get(k, d) { try { const v = localStorage.getItem(k); if (v == null) return d; try { return JSON.parse(v); } catch (e) { return v; } } catch (e) { return d; } },
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* تجاهل */ } }
   };
 
@@ -343,6 +343,19 @@
   let toastTimer;
   function toast(msg) { const n = document.getElementById("toast"); n.textContent = msg; n.classList.add("show"); clearTimeout(toastTimer); toastTimer = setTimeout(() => n.classList.remove("show"), 2600); }
 
+  // ---------- splash ----------
+  const splashT0 = Date.now();
+  function splash(pct, key) {
+    const b = document.getElementById("splashBar"), st = document.getElementById("splashStep");
+    if (b) b.style.width = pct + "%"; if (st && key) st.textContent = t(key);
+  }
+  function splashDone() {
+    splash(100, "sp_ready");
+    const wait = Math.max(0, 1100 - (Date.now() - splashT0));
+    setTimeout(() => { const n = document.getElementById("splash"); if (n) n.classList.add("done");
+      window.dispatchEvent(new CustomEvent("mirsad:ready")); }, wait);
+  }
+
   // ---------- boot ----------
   async function boot() {
     S.lang = store.get("mirsad.lang", "ar") === "en" ? "en" : "ar";
@@ -355,9 +368,9 @@
     document.getElementById("lyCells").onchange = (e) => toggleCells(e.target.checked).catch(() => toast(t("load_error")));
     document.getElementById("fLevel").onchange = renderAlerts; document.getElementById("fStatus").onchange = renderAlerts;
     addEventListener("hashchange", route); addEventListener("keydown", (e) => e.key === "Escape" && closeDrawer());
-    applyLang(); route();
+    applyLang(); route(); splash(15, "sp_ui");
     try {
-      await api.detect();
+      splash(30, "sp_api"); await api.detect(); splash(55, "sp_data");
       const [sectors, events, model] = await Promise.all([
         loadJSON(api.on ? "/api/v1/risk" : "data/sectors.geojson"), loadJSON("data/landslides.json"),
         loadJSON(api.on ? "/api/v1/model/runs/latest" : "data/model.json")]);
@@ -365,8 +378,12 @@
       S.data = { sectors, events, model };
       if (api.on) await loadAlertsApi();
       renderUser();
-      applyLang(); initMap();
-    } catch (e) { console.error(e); toast(t("load_error")); }
+      applyLang(); splash(85, "sp_map"); initMap();
+      let done = false; const fin = () => { if (!done) { done = true; splashDone(); } };
+      S.map.once("load", fin); setTimeout(fin, 6000); // لا تعلق الشاشة إن تأخرت بلاطات الخريطة
+    } catch (e) { console.error(e); toast(t("load_error")); splashDone(); }
   }
+  window.MirsadApp = { t, openDrawer: (id) => openDrawer(id, true), closeDrawer, topSector: () =>
+    S.data.sectors && S.data.sectors.features.map((x) => x.properties).sort((a, b) => b.score - a.score)[0].id };
   boot();
 })();

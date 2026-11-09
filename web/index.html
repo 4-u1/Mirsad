@@ -13,11 +13,21 @@
 <link href="styles.css" rel="stylesheet">
 <script>
   // تطبيق الثيم واللغة قبل الرسم لتفادي وميض الألوان
-  (function(){try{var t=localStorage.getItem('mirsad.theme');if(!t)t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';
-  document.documentElement.dataset.theme=t;var l=localStorage.getItem('mirsad.lang')||'ar';document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';}catch(e){}})();
+  (function(){try{var g=function(k){var v=localStorage.getItem(k);try{return JSON.parse(v)}catch(e){return v}};var t=g('mirsad.theme');if(t!=='light'&&t!=='dark')t=null;if(!t)t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';
+  document.documentElement.dataset.theme=t;var l=g('mirsad.lang')==='en'?'en':'ar';document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';}catch(e){}})();
 </script>
 </head>
 <body>
+<div class="splash" id="splash" role="status" aria-live="polite">
+  <div class="splash-in">
+    <div class="radar" aria-hidden="true"><span class="sweep"></span><span class="ring r1"></span><span class="ring r2"></span><img src="emblem.png" alt=""></div>
+    <div class="splash-name" data-i18n="brand">مِرصاد</div>
+    <div class="splash-tag" data-i18n="tagline">نظام التنبؤ بمخاطر الانهيارات الأرضية</div>
+    <div class="splash-bar"><i id="splashBar"></i></div>
+    <div class="splash-step" id="splashStep" data-i18n="loading">جارٍ التحميل…</div>
+  </div>
+  <span class="sc tl"></span><span class="sc tr"></span><span class="sc bl"></span><span class="sc br"></span>
+</div>
 <header class="topbar">
   <a class="brand" href="#map" aria-label="Mirsad">
     <img src="emblem.png" alt="" class="brand-emblem">
@@ -31,6 +41,7 @@
   </nav>
   <div class="tools">
     <span class="proto" data-i18n="prototype">نموذج أولي</span>
+    <button class="icon-btn" id="tourBtn" aria-label="Guide" title="Guide"><span aria-hidden="true">?</span></button>
     <button class="icon-btn wide" id="userBtn" hidden></button>
     <button class="icon-btn" id="langBtn" aria-label="Language"><span id="langLabel">EN</span></button>
     <button class="icon-btn" id="themeBtn" aria-label="Theme">
@@ -136,5 +147,6 @@
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <script src="i18n.js"></script>
 <script src="app.js"></script>
+<script src="tour.js"></script>
 </body>
 </html>
