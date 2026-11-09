@@ -18,6 +18,7 @@ from db import connect, hash_pw, audit, now, ROOT  # noqa: E402
 from load_db import level_of, propose_alerts  # noqa: E402
 
 COOLDOWN_HOURS = 24
+STALE_DAYS = int(__import__("os").environ.get("MIRSAD_STALE_DAYS", "30"))  # AC-4: عمر البيانات قبل وسمها «متقادمة»
 SESSION_HOURS = 12
 ROLE_RANK = {"viewer": 0, "operator": 1, "admin": 2}
 LEVELS = ["low", "medium", "high", "critical"]
@@ -47,6 +48,18 @@ def require(request, role):
 
 def latest_run():
     return db().execute("SELECT * FROM model_runs ORDER BY id DESC LIMIT 1").fetchone()
+
+def freshness():
+    """AC-4: يحسب عمر البيانات من تاريخ آخر تحديث لكل مصدر مستخدم في النموذج."""
+    today = datetime.datetime.now(datetime.timezone.utc).date()
+    out = []
+    for r in db().execute("SELECT id, name, last_updated, used_in_model FROM data_sources"):
+        try: age = (today - datetime.date.fromisoformat(r["last_updated"][:10])).days
+        except Exception: age = None
+        out.append({"id": r["id"], "last_updated": r["last_updated"], "age_days": age,
+                    "stale": bool(r["used_in_model"]) and age is not None and age > STALE_DAYS})
+    return {"stale_after_days": STALE_DAYS, "stale": any(x["stale"] for x in out),
+            "data_as_of": min((x["last_updated"] for x in out if x["last_updated"]), default=None), "sources": out}
 
 def thresholds():
     return json.loads(db().execute("SELECT value FROM settings WHERE key='thresholds'").fetchone()["value"])
@@ -93,8 +106,10 @@ async def risk(request):
     for r in db().execute(q, args):
         p = json.loads(r["details"]); p.update({"score": r["score"], "level": r["level"], "max": r["max_score"], "mean": r["mean_score"]})
         feats.append({"type": "Feature", "geometry": json.loads(r["geometry"]), "properties": p})
+    fr = freshness()
     return JSONResponse({"type": "FeatureCollection", "model_version": run["version"], "generated_at": now(),
-                         "thresholds": thresholds(), "features": feats})
+                         "thresholds": thresholds(), "stale": fr["stale"], "data_as_of": fr["data_as_of"],
+                         "stale_after_days": fr["stale_after_days"], "features": feats})
 
 async def sector(request):
     sid = request.path_params["id"]; run = latest_run()
@@ -153,7 +168,10 @@ async def model_latest(request):
     return JSONResponse({"id": r["id"], "version": r["version"], "trained_at": r["trained_at"], **json.loads(r["card"])})
 
 async def sources(request):
-    return JSONResponse({"items": [dict(r) for r in db().execute("SELECT * FROM data_sources ORDER BY used_in_model DESC, id")]})
+    fr = {x["id"]: x for x in freshness()["sources"]}
+    return JSONResponse({"items": [dict(r) | {"age_days": fr[r["id"]]["age_days"], "stale": fr[r["id"]]["stale"]}
+                                   for r in db().execute("SELECT * FROM data_sources ORDER BY used_in_model DESC, id")],
+                         "stale_after_days": STALE_DAYS})
 
 async def get_thresholds(request):
     return JSONResponse(thresholds())

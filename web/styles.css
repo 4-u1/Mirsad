@@ -200,3 +200,27 @@ button,select,input{font:inherit;color:inherit}
 .tour-invite{position:fixed;z-index:60;bottom:20px;inset-inline-end:20px;background:var(--surface);border:1px solid var(--accent);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;width:min(320px,calc(100vw - 40px));display:grid;gap:10px}
 .tour-invite .row{display:flex;gap:8px}
 .login label[hidden]{display:none}
+
+/* controls added for U-FR7 / Google Earth */
+.ctl{display:grid;gap:6px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-size:14px}
+.ctl .select{min-width:0;width:100%}
+.ctl-l{font-weight:600}
+.seg{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg label{flex:1;position:relative;cursor:pointer}
+.seg input{position:absolute;opacity:0}
+.seg span{display:block;text-align:center;padding:7px 8px;font-weight:600;color:var(--muted)}
+.seg input:checked+span{background:var(--accent);color:var(--on-accent)}
+.seg input:focus-visible+span{outline:3px solid var(--accent);outline-offset:-3px}
+.ramp{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.ramp i{height:10px;border-radius:5px;background:linear-gradient(90deg,#3C5662,#D59A4D,#AC573A)}
+[dir="rtl"] .ramp i{background:linear-gradient(270deg,#3C5662,#D59A4D,#AC573A)}
+.ge{margin-top:12px;width:100%;text-decoration:none}
+.stale{font-size:12px;font-weight:700;color:var(--lv-critical-fg);background:var(--lv-critical-bg);border:1px solid var(--lv-critical);border-radius:999px;padding:3px 10px;white-space:nowrap}
+.shap-row{display:grid;grid-template-columns:110px 1fr 56px;align-items:center;gap:8px;font-size:13px}
+.shap-bar{position:relative;height:12px;background:var(--surface2);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.shap-bar i{position:absolute;top:0;bottom:0}
+.shap-bar .mid{position:absolute;top:-2px;bottom:-2px;left:50%;width:1px;background:var(--muted)}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.actions .btn{text-decoration:none;font-size:14px}
+.prob{font-size:12px;color:var(--muted)}
+.ramp[hidden]{display:none}

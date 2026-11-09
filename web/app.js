@@ -82,8 +82,11 @@
       container: "map", center: [42.35, 18.35], zoom: 6.2, minZoom: 4, maxZoom: 13, attributionControl: false,
       style: { version: 8, sources: {
           dark: { type: "raster", tiles: carto("dark_all"), tileSize: 256, attribution: "© OpenStreetMap contributors © CARTO" },
-          light: { type: "raster", tiles: carto("light_all"), tileSize: 256, attribution: "© OpenStreetMap contributors © CARTO" } },
-        layers: [{ id: "bm-dark", type: "raster", source: "dark" }, { id: "bm-light", type: "raster", source: "light" }] }
+          light: { type: "raster", tiles: carto("light_all"), tileSize: 256, attribution: "© OpenStreetMap contributors © CARTO" },
+          sat: { type: "raster", tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"], tileSize: 256, maxzoom: 18,
+            attribution: "Imagery © Esri, Maxar, Earthstar Geographics" } },
+        layers: [{ id: "bm-dark", type: "raster", source: "dark" }, { id: "bm-light", type: "raster", source: "light" },
+          { id: "bm-sat", type: "raster", source: "sat", layout: { visibility: "none" } }] }
     });
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
     map.addControl(new maplibregl.AttributionControl({ compact: true }));
@@ -112,11 +115,25 @@
   }
   function restyleMap() {
     const m = S.map, c = levelColors(), dark = document.documentElement.dataset.theme === "dark";
-    m.setLayoutProperty("bm-dark", "visibility", dark ? "visible" : "none");
-    m.setLayoutProperty("bm-light", "visibility", dark ? "none" : "visible");
-    const match = ["match", ["get", "level"], "critical", c.critical, "high", c.high, "medium", c.medium, c.low];
-    m.setPaintProperty("sec-fill", "fill-color", match);
-    m.setPaintProperty("sec-fill", "fill-opacity", ["match", ["get", "level"], "low", dark ? 0.22 : 0.18, "medium", 0.5, 0.72]);
+    const sat = S.basemap === "sat";
+    m.setLayoutProperty("bm-dark", "visibility", !sat && dark ? "visible" : "none");
+    m.setLayoutProperty("bm-light", "visibility", !sat && !dark ? "visible" : "none");
+    if (m.getLayer("bm-sat")) m.setLayoutProperty("bm-sat", "visibility", sat ? "visible" : "none");
+    const ramp = document.getElementById("ramp");
+    if (S.colorBy && S.colorBy !== "level") {  // U-FR7: تلوين حسب عامل
+      const vals = S.data.sectors.features.map((f) => f.properties[S.colorBy]), lo = Math.min(...vals), hi = Math.max(...vals);
+      m.setPaintProperty("sec-fill", "fill-color", ["interpolate", ["linear"], ["get", S.colorBy], lo, "#3C5662", (lo + hi) / 2, "#D59A4D", hi, "#AC573A"]);
+      m.setPaintProperty("sec-fill", "fill-opacity", sat ? 0.6 : 0.55);
+      ramp.hidden = false;
+      const u = S.colorBy === "elev" ? " " + t("m") : "°";
+      document.getElementById("rampMin").textContent = fmt(lo, S.colorBy === "elev" ? 0 : 1) + u;
+      document.getElementById("rampMax").textContent = fmt(hi, S.colorBy === "elev" ? 0 : 1) + u;
+    } else {
+      ramp.hidden = true;
+      const match = ["match", ["get", "level"], "critical", c.critical, "high", c.high, "medium", c.medium, c.low];
+      m.setPaintProperty("sec-fill", "fill-color", match);
+      m.setPaintProperty("sec-fill", "fill-opacity", ["match", ["get", "level"], "low", sat ? 0.12 : dark ? 0.22 : 0.18, "medium", sat ? 0.45 : 0.5, sat ? 0.65 : 0.72]);
+    }
     m.setPaintProperty("sec-line", "line-color", dark ? "rgba(230,238,236,0.10)" : "rgba(19,36,42,0.12)");
     m.setPaintProperty("sec-sel", "line-color", cssVar("--accent"));
     m.setPaintProperty("ev", "circle-color", ["case", ["get", "exact"], cssVar("--text"), "rgba(0,0,0,0)"]);
@@ -170,7 +187,8 @@
     if (S.map && S.map.getLayer("sec-sel")) S.map.setFilter("sec-sel", ["==", ["get", "id"], id]);
     if (fly && S.map) S.map.flyTo({ center: [P.peak[1], P.peak[0]], zoom: Math.max(S.map.getZoom(), 9) });
     const total = P.counts.reduce((a, b) => a + b, 0) || 1;
-    const imp = S.data.model.feature_importance, maxImp = Math.max(...Object.values(imp));
+    const shap = P.shap || {}, maxShap = Math.max(1e-6, ...Object.values(shap).map(Math.abs));
+    const geUrl = `https://earth.google.com/web/@${P.peak[0]},${P.peak[1]},${P.peak_vals.elevation}a,9000d,35y,0h,60t,0r`;
     const st = S.alerts[id];
     const canPropose = P.level === "high" || P.level === "critical";
     const body = el("div", {},
@@ -195,10 +213,20 @@
         el("dt", {}, t("slope")), el("dd", {}, `${fmt(P.peak_vals.slope, 1)}°`),
         el("dt", {}, t("aspect")), el("dd", {}, P.peak_vals.aspect < 0 ? "—" : `${fmt(P.peak_vals.aspect, 0)}°`),
         el("dt", {}, t("lc")), el("dd", {}, lcName(P.peak_vals.landcover))),
-      el("div", { class: "h-sec" }, t("factors")),
-      el("div", { class: "bars" }, ...Object.entries(imp).map(([k, v]) => el("div", { class: "bar-row" },
-        el("span", {}, t("feat")[k]), el("span", { class: "bar" }, el("i", { style: `width:${(v / maxImp) * 100}%` })), el("span", { class: "v" }, fmt(v, 2))))),
-      el("p", { class: "note" }, t("factors_note")),
+      el("div", { class: "h-sec" }, t("shap_title")),
+      el("div", { class: "bars" }, ...Object.entries(shap).map(([k, v]) => {
+        const w = (Math.abs(v) / maxShap) * 50, pos = v >= 0, rtl = document.documentElement.dir === "rtl", grow = pos !== rtl;
+        return el("div", { class: "shap-row" }, el("span", {}, t("feat")[k]),
+          el("span", { class: "shap-bar", role: "img", "aria-label": `${t("feat")[k]} ${v >= 0 ? "+" : ""}${v.toFixed(3)}` },
+            el("span", { class: "mid" }),
+            el("i", { style: `${grow ? "left" : "right"}:50%;width:${w}%;background:${pos ? "var(--lv-high)" : "var(--accent)"}` })),
+          el("span", { class: "v" }, (v >= 0 ? "+" : "") + v.toFixed(3)));
+      })),
+      el("p", { class: "note" }, t("shap_note")),
+      P.calibrated != null ? el("p", { class: "prob" }, `${t("prob_cal")}: ${(P.calibrated * 100).toFixed(1)}%`) : "",
+      el("div", { class: "actions" },
+        el("a", { class: "btn ghost", href: geUrl, target: "_blank", rel: "noopener" }, t("ge_open")),
+        el("a", { class: "btn ghost", href: `report.html#${P.id}`, target: "_blank", rel: "noopener" }, t("report_open"))),
       canPropose
         ? (() => { const b = el("button", { class: "btn", style: "width:100%;margin-top:8px", onclick: () => { propose(id); openDrawer(id); } },
             st ? t("proposed") : t("propose")); b.disabled = !!st; return b; })()
@@ -318,6 +346,20 @@
   // ---------- transparency ----------
   function renderTransparency() {
     const m = S.data.model, c = m.cleaning;
+    if (m.comparisons) {
+      const cm = m.comparisons, rows = [["m_rf", cm.random_forest_baseline], ["m_rf_seis", cm.random_forest_plus_seismic], ["m_mlp", cm.neural_network_mlp]];
+      document.getElementById("trCompare").replaceChildren(
+        el("div", { class: "metric-grid" }, el("span", { class: "h" }, t("metric")), el("span", { class: "h" }, "ROC-AUC"), el("span", { class: "h" }, "PR-AUC"),
+          ...rows.flatMap(([k, r]) => [el("span", {}, t(k)), el("b", {}, fmt(r.roc_auc, 3)), el("span", { class: "muted" }, fmt(r.pr_auc, 3))])),
+        el("p", { class: "note" }, t("cmp_note")));
+    }
+    if (m.calibration) document.getElementById("trQuality").replaceChildren(
+      el("dt", {}, t("q_status")), el("dd", {}, m.quality === "pass" ? "✓" : t("q_pass")),
+      el("dt", {}, t("q_crs")), el("dd", { class: "mono" }, "EPSG:4326"),
+      el("dt", {}, t("q_brier_raw")), el("dd", {}, fmt(m.calibration.brier_raw, 4)),
+      el("dt", {}, t("q_brier_cal")), el("dd", {}, fmt(m.calibration.brier_calibrated, 4)),
+      el("dt", {}, t("q_shap")), el("dd", {}, fmt(m.explanations.additivity_max_error, 6)),
+      el("dt", {}, t("data_as_of")), el("dd", {}, m.trained_at));
     document.getElementById("trWarn").textContent = t("tr_warn", { auc: m.spatial_cv.roc_auc, pos: m.training.positives });
     const dl = document.getElementById("trModel");
     dl.replaceChildren(
@@ -382,6 +424,10 @@
     document.getElementById("langBtn").onclick = () => { S.lang = S.lang === "ar" ? "en" : "ar"; applyLang(); };
     document.getElementById("themeBtn").onclick = () => applyTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
     document.getElementById("drawerClose").onclick = closeDrawer;
+    document.getElementById("colorBy").onchange = (e) => { S.colorBy = e.target.value; if (S.map && S.map.getLayer("sec-fill")) restyleMap(); };
+    document.querySelectorAll("input[name=bm]").forEach((r) => (r.onchange = () => { S.basemap = r.value; store.set("mirsad.basemap", r.value); if (S.map && S.map.getLayer("sec-fill")) restyleMap(); }));
+    S.basemap = store.get("mirsad.basemap", "map") === "sat" ? "sat" : "map";
+    document.querySelectorAll("input[name=bm]").forEach((r) => (r.checked = r.value === S.basemap));
     document.getElementById("lySectors").onchange = (e) => ["sec-fill", "sec-line"].forEach((l) => S.map.setLayoutProperty(l, "visibility", e.target.checked ? "visible" : "none"));
     document.getElementById("lyEvents").onchange = (e) => S.map.setLayoutProperty("ev", "visibility", e.target.checked ? "visible" : "none");
     document.getElementById("lyCells").onchange = (e) => toggleCells(e.target.checked).catch(() => toast(t("load_error")));
@@ -397,6 +443,11 @@
       S.data = { sectors, events, model };
       if (api.on) await loadAlertsApi();
       renderUser();
+      // AC-4: وسم البيانات المتقادمة
+      const ageDays = (Date.now() - new Date(model.trained_at + "T00:00:00Z").getTime()) / 864e5;
+      S.stale = api.on ? !!sectors.stale : ageDays > 30;
+      const sc = document.getElementById("staleChip"); sc.hidden = !S.stale; sc.title = t("stale_note", { d: 30 });
+      document.getElementById("verChip").textContent = model.version;
       applyLang(); splash(85, "sp_map"); initMap();
       let done = false; const fin = () => { if (!done) { done = true; splashDone(); } };
       S.map.once("load", fin); setTimeout(fin, 6000); // لا تعلق الشاشة إن تأخرت بلاطات الخريطة

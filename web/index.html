@@ -40,7 +40,8 @@
     <a href="#about" class="tab" data-page="about" data-i18n="nav_about">عن المشروع</a>
   </nav>
   <div class="tools">
-    <span class="proto" data-i18n="prototype">نموذج أولي</span>
+    <span class="proto" id="verChip">v1</span>
+    <span class="stale" id="staleChip" hidden data-i18n="stale">بيانات متقادمة</span>
     <button class="icon-btn" id="tourBtn" aria-label="Guide" title="Guide"><span aria-hidden="true">?</span></button>
     <button class="icon-btn wide" id="userBtn" hidden></button>
     <button class="icon-btn" id="langBtn" aria-label="Language"><span id="langLabel">EN</span></button>
@@ -71,6 +72,19 @@
             <label><input type="checkbox" id="lyCells"><span data-i18n="layer_cells">خلايا 1 كم</span></label>
             <label><input type="checkbox" id="lyEvents" checked><span data-i18n="layer_events">الانهيارات التاريخية</span></label>
           </div>
+          <div class="ctl">
+            <label for="colorBy" data-i18n="color_by">تلوين القطاعات حسب</label>
+            <select id="colorBy" class="select"><option value="level" data-i18n="cb_level">مستوى الخطر</option><option value="slope_mean" data-i18n="cb_slope">متوسط الانحدار</option><option value="elev" data-i18n="cb_elev">متوسط الارتفاع</option></select>
+            <div class="ramp" id="ramp" hidden><span id="rampMin"></span><i></i><span id="rampMax"></span></div>
+          </div>
+          <div class="ctl">
+            <span class="ctl-l" data-i18n="basemap">الخريطة الأساسية</span>
+            <div class="seg" role="radiogroup">
+              <label><input type="radio" name="bm" value="map" checked><span data-i18n="bm_map">خريطة</span></label>
+              <label><input type="radio" name="bm" value="sat"><span data-i18n="bm_sat">قمر صناعي</span></label>
+            </div>
+          </div>
+          <a class="btn ghost ge" id="kmzBtn" href="data/mirsad_google_earth.kmz" download="mirsad_google_earth.kmz"><span data-i18n="kmz">تنزيل الخريطة لـ Google Earth</span></a>
         </div>
         <div class="card grow">
           <div class="card-h"><h2 data-i18n="top_sectors">الأعلى خطرًا</h2><small class="muted" data-i18n="top_hint">اضغط للتفاصيل</small></div>
@@ -113,6 +127,10 @@
         <div class="card"><h2 data-i18n="tr_metrics">مقاييس التقييم</h2><div id="trMetrics"></div></div>
         <div class="card"><h2 data-i18n="tr_importance">أهمية المميزات</h2><div id="trImp"></div></div>
         <div class="card"><h2 data-i18n="tr_dist">توزيع خلايا 1 كم على المستويات</h2><div id="trDist"></div></div>
+      </div>
+      <div class="grid2">
+        <div class="card"><h2 data-i18n="tr_compare">مقارنة النماذج (تحقق مكاني)</h2><div id="trCompare"></div></div>
+        <div class="card"><h2 data-i18n="tr_quality">جودة البيانات والمعايرة</h2><dl class="dl" id="trQuality"></dl></div>
       </div>
       <div class="card"><h2 data-i18n="tr_sources">مصادر البيانات</h2><div class="table-wrap"><table class="table" id="trSources"></table></div></div>
       <div class="card"><h2 data-i18n="tr_limits">الحدود المعروفة</h2><ul class="bullets" id="trLimits"></ul></div>

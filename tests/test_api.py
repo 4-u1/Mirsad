@@ -102,3 +102,13 @@ def test_bad_inputs(server):
     assert call(server, "/api/v1/risk?level=nope")[0] == 400
     assert call(server, "/api/v1/risk?bbox=1,2")[0] == 400
     assert call(server, "/api/v1/sectors/NOPE")[0] == 404
+
+def test_ac4_stale_data_flag(server):
+    import sqlite3
+    assert call(server, "/api/v1/risk")[1]["stale"] is False
+    con = sqlite3.connect(os.environ["MIRSAD_DB"])
+    con.execute("UPDATE data_sources SET last_updated='2020-01-01' WHERE id='terrain'"); con.commit()
+    fc = call(server, "/api/v1/risk")[1]
+    src = {s["id"]: s for s in call(server, "/api/v1/sources")[1]["items"]}
+    con.execute("UPDATE data_sources SET last_updated=date('now') WHERE id='terrain'"); con.commit(); con.close()
+    assert fc["stale"] is True and src["terrain"]["stale"] is True

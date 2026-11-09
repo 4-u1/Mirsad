@@ -4,8 +4,8 @@
 
 **Landslide risk prediction system** — an academic project (Group 3) estimating landslide susceptibility in southwest Saudi Arabia, with a bilingual dashboard and human-approved alerts.
 
-> ⚠️ **نموذج أولي.** أداء النموذج في التحقق المكاني قريب من العشوائي (ROC-AUC ≈ 0.55) لأن سجل التدريب فيه 12 نقطة انهيار فقط. الخريطة للعرض والتجربة، وليست أساسًا لقرار ميداني.
-> **Prototype.** Spatial-CV ROC-AUC ≈ 0.55 with only 12 landslide points in training. Not for field decisions.
+> ⚠️ **حدود الدقة.** أداء النموذج في التحقق المكاني قريب من العشوائي (ROC-AUC ≈ 0.55) لأن سجل التدريب فيه 12 نقطة انهيار فقط. الخريطة للعرض والتجربة، وليست أساسًا لقرار ميداني.
+> **Accuracy limits.** Spatial-CV ROC-AUC ≈ 0.55 with only 12 landslide points in training. Not for field decisions.
 
 📄 **[تقرير المشروع التفصيلي (PDF)](docs/Mirsad_Project_Report.pdf)** · [التقرير الفني](docs/technical_report.md) · [دليل المستخدم](docs/user_guide.md)
 
@@ -16,7 +16,7 @@
 ```
 data/raw/          ملفات الفريق كما أُرسلت (بعد حذف النسخ المكررة)
 data/processed/    البيانات بعد التنظيف + درجات الخطر v1
-pipeline/          01 استخراج التضاريس (Colab) · 02 التنظيف · 03 التدريب
+pipeline/          01 التضاريس (Colab) · 02 التنظيف · 03 التدريب · 04 الجودة · 05 المقارنات والتفسير · 06 Google Earth · run_all
 model/             النموذج المدرّب وبطاقة النموذج (المقاييس والإعدادات)
 backend/           خادم API (Starlette) · SQLite · مخطط PostGIS · تحميل البيانات
 tests/             اختبارات القبول والصلاحيات
@@ -28,9 +28,7 @@ docs/              PRD، التقرير الفني، دليل المستخدم،
 
 ```bash
 pip install -r requirements.txt
-python pipeline/02_clean_data.py     # data/raw → data/processed
-python pipeline/03_train_model.py    # model/ + web/data/
-python backend/load_db.py            # SQLite + حسابات (كلمات المرور من MIRSAD_*_PASSWORD أو تُولّد)
+python pipeline/run_all.py           # تنظيف ← جودة ← تدريب ← مقارنات وتفسير ← Google Earth ← قاعدة البيانات
 uvicorn backend.app:app --port 8000  # API + الواجهة على http://localhost:8000
 pytest -q                            # اختبارات القبول AC-1..AC-5 والصلاحيات
 ```
@@ -99,3 +97,7 @@ pytest -q                            # اختبارات القبول AC-1..AC-5 
 مبني على Starlette (الإطار الذي بُني عليه FastAPI) لأنه ما كان متاحًا في بيئة البناء تثبيت FastAPI؛ المسارات والعقد مطابقة للـPRD. التخزين SQLite للتشغيل المحلي، ومخطط PostGIS المكافئ في `backend/schema_postgis.sql` (غير مختبر على خادم PostGIS).
 
 التفاصيل: [التقرير الفني](docs/technical_report.md) · [دليل المستخدم](docs/user_guide.md)
+
+## Google Earth
+
+`web/data/mirsad_google_earth.kmz`: القطاعات ملوّنة بالمستوى، الانهيارات التاريخية، وحدود منطقة الدراسة. افتحه في Google Earth Pro أو Google Earth Web (Projects ← Import KML). ومن تفاصيل أي قطاع في الموقع زر «عرض في Google Earth».

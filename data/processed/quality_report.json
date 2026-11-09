@@ -1,0 +1,145 @@
+{
+  "training_table": {
+    "rows": 1689,
+    "missing": {
+      "elevation": 0,
+      "slope": 0,
+      "aspect": 0,
+      "landcover": 0,
+      "landslide": 0
+    },
+    "duplicates_latlon": 0,
+    "ranges": {
+      "lat": {
+        "min": 16.30663,
+        "max": 20.421155,
+        "allowed": [
+          16.2,
+          20.5
+        ],
+        "out_of_range": 0
+      },
+      "lon": {
+        "min": 40.656895,
+        "max": 44.024491,
+        "allowed": [
+          40.6,
+          44.1
+        ],
+        "out_of_range": 0
+      },
+      "elevation": {
+        "min": 0.0,
+        "max": 2709.0,
+        "allowed": [
+          -100,
+          4000
+        ],
+        "out_of_range": 0
+      },
+      "slope": {
+        "min": 0.0,
+        "max": 52.23,
+        "allowed": [
+          0,
+          90
+        ],
+        "out_of_range": 0
+      },
+      "aspect": {
+        "min": -1.0,
+        "max": 360.0,
+        "allowed": [
+          -1,
+          360
+        ],
+        "out_of_range": 0
+      }
+    },
+    "landcover_invalid_codes": 0,
+    "outliers_iqr": {
+      "elevation": 0,
+      "slope": 0
+    }
+  },
+  "grid_features": {
+    "rows": 126467,
+    "missing": {
+      "elevation": 0,
+      "slope": 0,
+      "aspect": 0,
+      "landcover": 0
+    },
+    "duplicates_latlon": 0,
+    "ranges": {
+      "lat": {
+        "min": 16.20001,
+        "max": 20.5,
+        "allowed": [
+          16.2,
+          20.5
+        ],
+        "out_of_range": 0
+      },
+      "lon": {
+        "min": 40.60013,
+        "max": 44.1,
+        "allowed": [
+          40.6,
+          44.1
+        ],
+        "out_of_range": 0
+      },
+      "elevation": {
+        "min": -2.0,
+        "max": 2977.0,
+        "allowed": [
+          -100,
+          4000
+        ],
+        "out_of_range": 0
+      },
+      "slope": {
+        "min": 0.0,
+        "max": 66.88,
+        "allowed": [
+          0,
+          90
+        ],
+        "out_of_range": 0
+      },
+      "aspect": {
+        "min": -1.0,
+        "max": 360.0,
+        "allowed": [
+          -1,
+          360
+        ],
+        "out_of_range": 0
+      }
+    },
+    "landcover_invalid_codes": 0,
+    "outliers_iqr": {
+      "elevation": 0,
+      "slope": 3
+    }
+  },
+  "crs": {
+    "grid_points.qmd": "EPSG:4326",
+    "expected": "EPSG:4326",
+    "match": true
+  },
+  "extent_match": {
+    "training_inside_grid_bbox": 1689,
+    "training_rows": 1689
+  },
+  "class_balance": {
+    "positives": 12,
+    "negatives": 1677,
+    "positive_rate": 0.0071
+  },
+  "issues": [
+    "only 12 positive labels (severe imbalance)"
+  ],
+  "status": "pass_with_warnings"
+}

@@ -1,0 +1,26 @@
+name: Scheduled pipeline run
+on:
+  schedule:
+    - cron: "0 3 * * 0"   # كل أحد 06:00 بتوقيت الرياض
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python pipeline/run_all.py
+      - run: pytest -q
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mirsad-run-${{ github.run_id }}
+          path: |
+            model/model_card.json
+            model/last_run.json
+            data/processed/quality_report.json
+            data/processed/risk_scores_v1.csv

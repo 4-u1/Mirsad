@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مِرصاد · تقرير القطاع</title>
+<link rel="icon" href="emblem.png">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="styles.css" rel="stylesheet">
+<style>
+  /* تقرير قابل للطباعة (PRD · U-FR9): يُطبع أو يُحفظ PDF من المتصفح */
+  body{background:var(--bg)}
+  .sheet{max-width:820px;margin:24px auto;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:32px 36px;display:grid;gap:18px}
+  .r-head{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:2px solid var(--frame2);padding-bottom:14px}
+  .r-head img{height:64px}
+  .r-meta{text-align:end;font-size:13px;color:var(--muted)}
+  .r-title{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .r-title h1{margin:0;font-size:30px}
+  .r-score{font-size:46px;font-weight:700;font-variant-numeric:tabular-nums}
+  .r-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .r-box{border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .r-box h2{font-size:15px;margin:0 0 8px;color:var(--accent)}
+  .r-table{width:100%;border-collapse:collapse;font-size:14px}
+  .r-table td{padding:6px 4px;border-bottom:1px solid var(--line)}
+  .r-table td:last-child{text-align:end;font-weight:600;font-variant-numeric:tabular-nums}
+  .r-note{font-size:12.5px;color:var(--muted);line-height:1.7}
+  .r-bar{display:flex;gap:10px;justify-content:flex-end}
+  @media (max-width:640px){.r-grid{grid-template-columns:1fr}.sheet{padding:20px}}
+  @media print{.r-bar{display:none}.sheet{border:0;margin:0;max-width:none}body{background:#fff}}
+</style>
+</head>
+<body>
+<main class="sheet" id="sheet"><p class="muted">…</p></main>
+<script src="i18n.js"></script>
+<script>
+(function(){
+  "use strict";
+  let lang = "ar"; try { const v = localStorage.getItem("mirsad.lang"); lang = (v && v.replace(/"/g, "")) === "en" ? "en" : "ar"; } catch (e) {}
+  document.documentElement.lang = lang; document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+  const T = I18N[lang], t = (k) => T[k] ?? I18N.ar[k] ?? k, lc = (n) => (lang === "ar" && I18N.ar.lc_names[n]) || n;
+  const L = { ar: { title: "تقرير القطاع", gen: "أُنشئ", loc: "الموقع (أعلى خلية خطرًا)", print: "طباعة / حفظ PDF", back: "العودة للخريطة",
+                    disclaimer: "أداة دعم قرار. لا تغني عن الدراسة الميدانية ولا عن قرار الجهات الرسمية. أداء النموذج في التحقق المكاني: ROC-AUC = ", model: "النموذج", missing: "قطاع غير موجود" },
+              en: { title: "Sector report", gen: "Generated", loc: "Location (highest-risk cell)", print: "Print / save PDF", back: "Back to map",
+                    disclaimer: "Decision support only. It does not replace field study or official decisions. Model spatial-CV ROC-AUC = ", model: "Model", missing: "Unknown sector" } }[lang];
+  const SYM = { low: "○", medium: "◆", high: "▲", critical: "■" };
+  const el = (tag, a = {}, ...k) => { const e = document.createElement(tag); for (const [x, v] of Object.entries(a)) x === "class" ? e.className = v : e.setAttribute(x, v); k.flat().forEach((c) => c != null && e.append(c.nodeType ? c : document.createTextNode(c))); return e; };
+  const row = (a, b) => el("tr", {}, el("td", {}, a), el("td", {}, b));
+  const f2 = (n) => (Math.floor(n * 100) / 100).toFixed(2);
+  Promise.all([fetch("data/sectors.geojson").then((r) => r.json()), fetch("data/model.json").then((r) => r.json())]).then(([sec, m]) => {
+    const id = decodeURIComponent(location.hash.slice(1)), f = sec.features.find((x) => x.properties.id === id), S = document.getElementById("sheet");
+    if (!f) { S.replaceChildren(el("p", {}, L.missing)); return; }
+    const p = f.properties; document.title = `${t("brand")} · ${L.title} ${p.id}`;
+    const ge = `https://earth.google.com/web/@${p.peak[0]},${p.peak[1]},${p.peak_vals.elevation}a,9000d,35y,0h,60t,0r`;
+    S.replaceChildren(
+      el("div", { class: "r-head" }, el("img", { src: "logo.png", alt: "Mirsad" }),
+        el("div", { class: "r-meta" }, L.title, el("br"), `${L.gen}: ${new Date().toISOString().slice(0, 10)}`, el("br"), `${L.model}: ${m.version} · ${m.trained_at}`)),
+      el("div", { class: "r-title" }, el("h1", {}, p.id), el("span", { class: "r-score" }, f2(p.score)), el("span", { class: "chip " + p.level }, `${SYM[p.level]} ${t("lv_" + p.level)}`),
+        el("span", { class: "muted" }, t("mean_" + p.level))),
+      el("div", { class: "r-grid" },
+        el("div", { class: "r-box" }, el("h2", {}, t("sector")), el("table", { class: "r-table" },
+          row(t("max_in_sector"), f2(p.score)), row(t("top_cell"), f2(p.max)), row(t("mean_score"), f2(p.mean)),
+          row(t("prob_cal"), p.calibrated != null ? (p.calibrated * 100).toFixed(1) + "%" : "—"), row(t("cells"), p.cells),
+          row(t("events_here"), p.events))),
+        el("div", { class: "r-box" }, el("h2", {}, t("peak_cell")), el("table", { class: "r-table" },
+          row(t("elevation"), `${p.peak_vals.elevation} ${t("m")}`), row(t("slope"), `${p.peak_vals.slope}°`),
+          row(t("aspect"), p.peak_vals.aspect < 0 ? "—" : `${p.peak_vals.aspect}°`), row(t("lc"), lc(p.peak_vals.landcover)),
+          row(L.loc, `${p.peak[0]}, ${p.peak[1]}`))),
+        el("div", { class: "r-box" }, el("h2", {}, t("shap_title")), el("table", { class: "r-table" },
+          ...Object.entries(p.shap || {}).map(([k, v]) => row(t("feat")[k], (v >= 0 ? "+" : "") + v.toFixed(3)))),
+          el("p", { class: "r-note" }, t("shap_note"))),
+        el("div", { class: "r-box" }, el("h2", {}, t("cell_dist")), el("table", { class: "r-table" },
+          ...["low", "medium", "high", "critical"].map((l, i) => row(`${SYM[l]} ${t("lv_" + l)}`, p.counts[i]))),
+          el("table", { class: "r-table" }, row(t("elev_mean"), `${p.elev} ${t("m")}`), row(t("slope_mean"), `${p.slope_mean}°`), row(t("landcover"), lc(p.landcover))))),
+      el("p", { class: "r-note" }, L.disclaimer + m.spatial_cv.roc_auc + "."),
+      el("div", { class: "r-bar" }, el("a", { class: "btn ghost", href: ge, target: "_blank", rel: "noopener" }, t("ge_open")),
+        el("a", { class: "btn ghost", href: "index.html" }, L.back), (() => { const b = el("button", { class: "btn" }, L.print); b.onclick = () => window.print(); return b; })()));
+  }).catch(() => { document.getElementById("sheet").textContent = t("load_error"); });
+})();
+</script>
+</body>
+</html>

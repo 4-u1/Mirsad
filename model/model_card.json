@@ -112,5 +112,47 @@
       "lon_min": 40.6,
       "lon_max": 44.1
     }
-  }
+  },
+  "comparisons": {
+    "method": "GroupKFold(5) on 0.5° blocks, same folds for all",
+    "random_forest_baseline": {
+      "roc_auc": 0.545,
+      "pr_auc": 0.011
+    },
+    "random_forest_plus_seismic": {
+      "roc_auc": 0.601,
+      "pr_auc": 0.01
+    },
+    "neural_network_mlp": {
+      "roc_auc": 0.594,
+      "pr_auc": 0.01,
+      "architecture": "MLP(16, 8), alpha=0.01, positives oversampled in training folds",
+      "note": "PRD names TensorFlow; it was unavailable in the build environment, so scikit-learn MLPClassifier was used."
+    },
+    "decision": "Baseline Random Forest kept (PRD 12.3: adopt the simpler model when performance is not clearly better)."
+  },
+  "seismic_features": {
+    "features": [
+      "eq_dist_km",
+      "eq_count_200km",
+      "eq_maxmag_200km"
+    ],
+    "training_eq_dist_km_min": 176.1,
+    "training_points_with_quake_within_200km": 1,
+    "adopted": false,
+    "reason": "No earthquake inside the study area; distances mostly encode latitude, not seismic hazard."
+  },
+  "calibration": {
+    "method": "Isotonic regression fitted on spatial-CV out-of-fold scores",
+    "brier_raw": 0.0728,
+    "brier_calibrated": 0.007,
+    "base_rate": 0.0071,
+    "note": "With 12 positives the calibrated probability is near the base rate everywhere; levels keep using the relative score (PRD 13.1 thresholds)."
+  },
+  "explanations": {
+    "method": "Exact interventional Shapley values (4 features, 16 coalitions) at each sector's highest-risk cell, 100-row background",
+    "base_value": 0.1317,
+    "additivity_max_error": 0.0
+  },
+  "quality": "pass_with_warnings"
 }

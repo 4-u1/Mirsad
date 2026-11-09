@@ -58,7 +58,8 @@ def main(db_path=None, fresh=True):
         area = (max(lats) - min(lats)) * 110.574 * (max(lons) - min(lons)) * 111.320 * math.cos(math.radians(sum(lats) / len(lats)))
         con.execute("INSERT INTO sectors VALUES (?,?,?,?,?,?,?,?)", (p["id"], p["id"], json.dumps(f["geometry"]),
                     min(lats), min(lons), max(lats), max(lons), round(area, 2)))
-        top = [{"feature": k, "importance": v, "value": p["peak_vals"][k]} for k, v in list(imp.items())[:3]]
+        shap = p.get("shap") or {k: v for k, v in imp.items()}
+        top = [{"feature": k, "contribution": v, "value": p["peak_vals"][k]} for k, v in list(shap.items())[:3]]
         con.execute("INSERT INTO risk_scores VALUES (?,?,?,?,?,?,?,?,?)",
                     (p["id"], ts, p["score"], p["max"], p["mean"], level_of(p["score"], th), run_id,
                      json.dumps(top, ensure_ascii=False), json.dumps(p, ensure_ascii=False)))

@@ -1,7 +1,7 @@
 // مِرصاد · نصوص الواجهة بالعربية والإنجليزية
 window.I18N = {
   ar: {
-    brand: "مِرصاد", tagline: "نظام التنبؤ بمخاطر الانهيارات الأرضية", prototype: "نموذج أولي",
+    brand: "مِرصاد", tagline: "نظام التنبؤ بمخاطر الانهيارات الأرضية",
     nav_map: "الخريطة", nav_alerts: "الإنذارات", nav_transparency: "الشفافية", nav_about: "عن المشروع",
     kpi_sectors: "القطاعات", kpi_critical: "حرجة", kpi_high: "مرتفعة", kpi_events: "انهيارات مسجّلة",
     legend: "مستويات الخطر", layer_sectors: "القطاعات (≈11 كم)", layer_cells: "خلايا 1 كم", layer_events: "الانهيارات التاريخية",
@@ -47,8 +47,8 @@ window.I18N = {
     lim2: "الهدف تقدير قابلية مكانية ثابتة، وليس تنبؤًا زمنيًا: لا توجد أمطار أو زلازل مربوطة مكانيًا بالخلايا.",
     lim3: "الشبكة بتباعد ≈1 كم، وتغطي الدرجات {cells} خلية من {grid} في ملف الشبكة.",
     lim4: "النقطة NEWS_5 موجودة في جدول التدريب وغير موجودة في سجل الانهيارات النظيف.",
-    lim5: "أهمية المميزات من Random Forest عامة، وليست تفسيرًا لكل قطاع (SHAP غير مطبّق بعد).",
-    lim6: "الدرجة احتمال من نموذج بأوزان فئات متوازنة، فهي خطر نسبي وليست احتمال حدوث فعلي.",
+    lim5: "تفسير كل قطاع بقيم Shapley عند خليته الأعلى خطرًا، وليس لكل خلية فيه.",
+    lim6: "المستويات مبنية على الدرجة النسبية؛ الاحتمال المعاير قريب من معدل الأساس في كل مكان لقلة نقاط الانهيار.",
     about_lead: "منصة ذكاء اصطناعي تدمج البيانات الجيولوجية والطبوغرافية لإنتاج خريطة قابلية للانهيارات الأرضية في جنوب غرب المملكة، مع إنذار يمر بموافقة بشرية.",
     ab1_t: "أداة دعم قرار", ab1_d: "لا تستبدل الخبير ولا الجهات الرسمية. كل إنذار يظهر بأسبابه ويعتمده شخص مخوّل.",
     ab2_t: "شفافية كاملة", ab2_d: "مصادر البيانات، إصدار النموذج، مقاييسه، وحدوده معروضة في صفحة الشفافية.",
@@ -62,6 +62,16 @@ window.I18N = {
     login_title: "دخول المشغّل", login_sub: "اعتماد الإنذارات يتطلب حسابًا بصلاحية مشغّل أو مسؤول.", username: "اسم المستخدم", password: "كلمة المرور",
     login_btn: "دخول", cancel: "إلغاء", login_failed: "اسم المستخدم أو كلمة المرور غير صحيحة", logout: "خروج", forbidden: "صلاحيتك لا تسمح بهذا الإجراء",
     offline_mode: "وضع العرض: بدون خادم، القرارات تُحفظ في هذا المتصفح فقط",
+
+    stale: "بيانات متقادمة", color_by: "تلوين القطاعات حسب", cb_level: "مستوى الخطر", cb_slope: "متوسط الانحدار", cb_elev: "متوسط الارتفاع",
+    basemap: "الخريطة الأساسية", bm_map: "خريطة", bm_sat: "قمر صناعي", kmz: "تنزيل الخريطة لـ Google Earth",
+    tr_compare: "مقارنة النماذج (تحقق مكاني)", tr_quality: "جودة البيانات والمعايرة",
+    shap_title: "لماذا هذه الدرجة؟ (قيم Shapley)", shap_note: "الموجب يرفع الخطر والسالب يخفضه، محسوبة عند الخلية الأعلى خطرًا في القطاع.",
+    ge_open: "عرض في Google Earth", report_open: "تقرير القطاع", prob_cal: "الاحتمال المعاير",
+    m_rf: "غابة عشوائية (المعتمد)", m_rf_seis: "غابة عشوائية + مميزات زلزالية", m_mlp: "شبكة عصبية MLP",
+    cmp_note: "اعتُمد النموذج الأبسط لأن الفروق صغيرة وغير موثوقة مع 12 نقطة انهيار (PRD 12.3).",
+    q_status: "فحص الجودة الآلي", q_pass: "ناجح مع تحذيرات", q_crs: "نظام الإحداثيات", q_brier_raw: "Brier قبل المعايرة", q_brier_cal: "Brier بعد المعايرة", q_shap: "دقة جمع Shapley",
+    data_as_of: "تاريخ البيانات", stale_note: "مضى على البيانات أكثر من {d} يومًا. أعد تشغيل خط المعالجة ببيانات محدثة.",
     sp_ui: "تهيئة الواجهة…", sp_api: "الاتصال بالخادم…", sp_data: "تحميل القطاعات ودرجات الخطر…", sp_map: "رسم الخريطة…", sp_ready: "جاهز",
     guide: "الدليل التفاعلي", tour_invite_t: "أول مرة هنا؟", tour_invite_d: "جولة سريعة من 9 خطوات تعرّفك على الخريطة والإنذارات والشفافية.",
     tour_start: "ابدأ الجولة", tour_later: "لاحقًا", tour_next: "التالي", tour_prev: "السابق", tour_skip: "إنهاء", tour_done: "تم",
@@ -74,11 +84,11 @@ window.I18N = {
       ["الإنذارات", "كل قطاع «مرتفع» فأعلى له إنذار مقترح. الاعتماد يحتاج دخول مشغّل، ويُسجّل باسمه ووقته، والإرسال محاكى."],
       ["الشفافية", "مقاييس النموذج ومصادر البيانات وحدوده. اقرأها قبل الاعتماد على الخريطة: النموذج مدرّب على 12 نقطة انهيار فقط."],
       ["اللغة والمظهر", "بدّل بين العربية والإنجليزية، وبين الوضع الليلي والنهاري. يحفظ المتصفح اختيارك."],
-      ["الدليل متاح دائمًا", "تقدر تعيد هذه الجولة أي وقت من زر ؟ في الأعلى."]
+      ["الدليل متاح دائمًا", "تقدر تعيد هذه الجولة أي وقت من زر ؟ في الأعلى. ومن تفاصيل أي قطاع تفتحه في Google Earth أو تطبع تقريره."]
     ],
   },
   en: {
-    brand: "Mirsad", tagline: "Landslide Risk Prediction System", prototype: "Prototype",
+    brand: "Mirsad", tagline: "Landslide Risk Prediction System",
     nav_map: "Map", nav_alerts: "Alerts", nav_transparency: "Transparency", nav_about: "About",
     kpi_sectors: "Sectors", kpi_critical: "Critical", kpi_high: "High", kpi_events: "Recorded landslides",
     legend: "Risk levels", layer_sectors: "Sectors (≈11 km)", layer_cells: "1 km cells", layer_events: "Historical landslides",
@@ -124,8 +134,8 @@ window.I18N = {
     lim2: "The target is static spatial susceptibility, not temporal forecasting: no rainfall or seismic data is spatially joined to the cells.",
     lim3: "Grid spacing is ≈1 km; scores cover {cells} of the {grid} cells in the grid file.",
     lim4: "Point NEWS_5 is in the training table but not in the cleaned landslide inventory.",
-    lim5: "Random Forest feature importance is global, not a per-sector explanation (SHAP not yet applied).",
-    lim6: "Scores come from a class-balanced model, so they express relative risk, not real occurrence probability.",
+    lim5: "Each sector is explained with Shapley values at its highest-risk cell, not for every cell in it.",
+    lim6: "Levels use the relative score; the calibrated probability stays near the base rate everywhere because of the few landslide points.",
     about_lead: "An AI platform that combines geological and topographic data into a landslide susceptibility map of southwest Saudi Arabia, with alerts that require human approval.",
     ab1_t: "Decision support", ab1_d: "It does not replace experts or authorities. Every alert shows its reasons and is approved by an authorized person.",
     ab2_t: "Full transparency", ab2_d: "Data sources, model version, metrics and limitations are shown on the Transparency page.",
@@ -137,6 +147,16 @@ window.I18N = {
     login_title: "Operator sign-in", login_sub: "Approving alerts requires an operator or admin account.", username: "Username", password: "Password",
     login_btn: "Sign in", cancel: "Cancel", login_failed: "Wrong username or password", logout: "Sign out", forbidden: "Your role does not allow this action",
     offline_mode: "Demo mode: no server, decisions are saved in this browser only",
+
+    stale: "Stale data", color_by: "Color sectors by", cb_level: "Risk level", cb_slope: "Mean slope", cb_elev: "Mean elevation",
+    basemap: "Base map", bm_map: "Map", bm_sat: "Satellite", kmz: "Download map for Google Earth",
+    tr_compare: "Model comparison (spatial CV)", tr_quality: "Data quality & calibration",
+    shap_title: "Why this score? (Shapley values)", shap_note: "Positive raises risk, negative lowers it, computed at the sector's highest-risk cell.",
+    ge_open: "View in Google Earth", report_open: "Sector report", prob_cal: "Calibrated probability",
+    m_rf: "Random forest (adopted)", m_rf_seis: "Random forest + seismic features", m_mlp: "Neural network (MLP)",
+    cmp_note: "The simpler model was kept: the differences are small and unreliable with 12 landslide points (PRD 12.3).",
+    q_status: "Automated quality check", q_pass: "Passed with warnings", q_crs: "Coordinate system", q_brier_raw: "Brier before calibration", q_brier_cal: "Brier after calibration", q_shap: "Shapley additivity error",
+    data_as_of: "Data as of", stale_note: "Data is older than {d} days. Re-run the pipeline with updated data.",
     sp_ui: "Preparing interface…", sp_api: "Connecting to server…", sp_data: "Loading sectors and risk scores…", sp_map: "Drawing the map…", sp_ready: "Ready",
     guide: "Interactive guide", tour_invite_t: "First time here?", tour_invite_d: "A quick 9-step tour of the map, alerts and transparency.",
     tour_start: "Start tour", tour_later: "Later", tour_next: "Next", tour_prev: "Back", tour_skip: "End", tour_done: "Done",
@@ -149,7 +169,7 @@ window.I18N = {
       ["Alerts", "Every sector at High or above gets a proposed alert. Approving needs an operator sign-in and is logged with name and time; sending is simulated."],
       ["Transparency", "Model metrics, data sources and limitations. Read this before relying on the map: the model is trained on only 12 landslide points."],
       ["Language & theme", "Switch between Arabic and English, and between dark and light. Your browser remembers the choice."],
-      ["Always available", "Replay this tour anytime from the ? button at the top."]
+      ["Always available", "Replay this tour anytime from the ? button at the top. From any sector's details you can open it in Google Earth or print its report."]
     ],
   }
 };
