@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مِرصاد · نظام التنبؤ بمخاطر الانهيارات الأرضية</title>
+<meta name="description" content="Mirsad — AI landslide risk prediction for southwest Saudi Arabia">
+<link rel="icon" href="emblem.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+<link href="styles.css" rel="stylesheet">
+<script>
+  // تطبيق الثيم واللغة قبل الرسم لتفادي وميض الألوان
+  (function(){try{var t=localStorage.getItem('mirsad.theme');if(!t)t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';
+  document.documentElement.dataset.theme=t;var l=localStorage.getItem('mirsad.lang')||'ar';document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';}catch(e){}})();
+</script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#map" aria-label="Mirsad">
+    <img src="emblem.png" alt="" class="brand-emblem">
+    <span class="brand-text"><b data-i18n="brand">مِرصاد</b><small data-i18n="tagline">نظام التنبؤ بمخاطر الانهيارات الأرضية</small></span>
+  </a>
+  <nav class="tabs" role="tablist">
+    <a href="#map" class="tab" data-page="map" data-i18n="nav_map">الخريطة</a>
+    <a href="#alerts" class="tab" data-page="alerts"><span data-i18n="nav_alerts">الإنذارات</span><span class="count" id="alertCount">0</span></a>
+    <a href="#transparency" class="tab" data-page="transparency" data-i18n="nav_transparency">الشفافية</a>
+    <a href="#about" class="tab" data-page="about" data-i18n="nav_about">عن المشروع</a>
+  </nav>
+  <div class="tools">
+    <span class="proto" data-i18n="prototype">نموذج أولي</span>
+    <button class="icon-btn" id="langBtn" aria-label="Language"><span id="langLabel">EN</span></button>
+    <button class="icon-btn" id="themeBtn" aria-label="Theme">
+      <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+      <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+  <!-- MAP -->
+  <section class="page" id="page-map">
+    <div class="map-wrap">
+      <div id="map" role="region" aria-label="Risk map"></div>
+      <aside class="side">
+        <div class="kpis">
+          <div class="kpi"><span data-i18n="kpi_sectors">القطاعات</span><b id="kSectors">—</b></div>
+          <div class="kpi lv-critical"><span data-i18n="kpi_critical">حرجة</span><b id="kCritical">—</b></div>
+          <div class="kpi lv-high"><span data-i18n="kpi_high">مرتفعة</span><b id="kHigh">—</b></div>
+          <div class="kpi"><span data-i18n="kpi_events">انهيارات مسجّلة</span><b id="kEvents">—</b></div>
+        </div>
+        <div class="card">
+          <div class="card-h"><h2 data-i18n="legend">مستويات الخطر</h2></div>
+          <ul class="legend" id="legend"></ul>
+          <div class="layers">
+            <label><input type="checkbox" id="lySectors" checked><span data-i18n="layer_sectors">القطاعات (≈11 كم)</span></label>
+            <label><input type="checkbox" id="lyCells"><span data-i18n="layer_cells">خلايا 1 كم</span></label>
+            <label><input type="checkbox" id="lyEvents" checked><span data-i18n="layer_events">الانهيارات التاريخية</span></label>
+          </div>
+        </div>
+        <div class="card grow">
+          <div class="card-h"><h2 data-i18n="top_sectors">الأعلى خطرًا</h2><small class="muted" data-i18n="top_hint">اضغط للتفاصيل</small></div>
+          <ol class="rank" id="rank"></ol>
+        </div>
+      </aside>
+      <div class="drawer" id="drawer" aria-hidden="true">
+        <button class="close" id="drawerClose" aria-label="Close">×</button>
+        <div id="drawerBody"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALERTS -->
+  <section class="page" id="page-alerts" hidden>
+    <div class="container">
+      <div class="page-h">
+        <h1 data-i18n="alerts_title">الإنذارات</h1>
+        <p class="muted" data-i18n="alerts_sub">يُقترح إنذار لكل قطاع بلغ مستوى «مرتفع» أو أعلى. لا يُرسل أي إنذار دون موافقة بشرية، والإرسال محاكى في هذه المرحلة.</p>
+      </div>
+      <div class="filters">
+        <select id="fLevel" class="select"></select>
+        <select id="fStatus" class="select"></select>
+      </div>
+      <div class="table-wrap"><table class="table">
+        <thead><tr><th data-i18n="th_sector">القطاع</th><th data-i18n="th_level">المستوى</th><th data-i18n="th_score">الدرجة</th><th data-i18n="th_reasons">الأسباب</th><th data-i18n="th_status">الحالة</th><th data-i18n="th_by">اعتمده</th><th></th></tr></thead>
+        <tbody id="alertRows"></tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <!-- TRANSPARENCY -->
+  <section class="page" id="page-transparency" hidden>
+    <div class="container">
+      <div class="page-h"><h1 data-i18n="tr_title">شفافية النموذج والبيانات</h1>
+        <p class="muted" data-i18n="tr_sub">كل رقم هنا محسوب من ملفات الفريق المرسلة، ويُعاد توليده بتشغيل خط المعالجة.</p></div>
+      <div class="warn" id="trWarn"></div>
+      <div class="grid2">
+        <div class="card"><h2 data-i18n="tr_model">النموذج</h2><dl class="dl" id="trModel"></dl></div>
+        <div class="card"><h2 data-i18n="tr_metrics">مقاييس التقييم</h2><div id="trMetrics"></div></div>
+        <div class="card"><h2 data-i18n="tr_importance">أهمية المميزات</h2><div id="trImp"></div></div>
+        <div class="card"><h2 data-i18n="tr_dist">توزيع خلايا 1 كم على المستويات</h2><div id="trDist"></div></div>
+      </div>
+      <div class="card"><h2 data-i18n="tr_sources">مصادر البيانات</h2><div class="table-wrap"><table class="table" id="trSources"></table></div></div>
+      <div class="card"><h2 data-i18n="tr_limits">الحدود المعروفة</h2><ul class="bullets" id="trLimits"></ul></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="page" id="page-about" hidden>
+    <div class="container about">
+      <img src="logo.png" alt="Mirsad" class="about-logo">
+      <p class="lead" data-i18n="about_lead">منصة ذكاء اصطناعي تدمج البيانات الجيولوجية والطبوغرافية لإنتاج خريطة قابلية للانهيارات الأرضية في جنوب غرب المملكة، مع إنذار يمر بموافقة بشرية.</p>
+      <div class="grid3">
+        <div class="card"><h3 data-i18n="ab1_t">أداة دعم قرار</h3><p class="muted" data-i18n="ab1_d">لا تستبدل الخبير ولا الجهات الرسمية. كل إنذار يظهر بأسبابه ويعتمده شخص مخوّل.</p></div>
+        <div class="card"><h3 data-i18n="ab2_t">شفافية كاملة</h3><p class="muted" data-i18n="ab2_d">مصادر البيانات، إصدار النموذج، مقاييسه، وحدوده معروضة في صفحة الشفافية.</p></div>
+        <div class="card"><h3 data-i18n="ab3_t">مشروع أكاديمي</h3><p class="muted" data-i18n="ab3_d">القروب الثالث · 13 عضوًا · 4 مسارات: البيانات، الخرائط، الذكاء الاصطناعي، الواجهة والتوثيق.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="i18n.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,307 @@
+// مِرصاد · منطق الواجهة
+(function () {
+  "use strict";
+  const LEVELS = ["low", "medium", "high", "critical"];
+  const SYMBOL = { low: "○", medium: "◆", high: "▲", critical: "⬣" };
+  const S = { lang: "ar", data: {}, map: null, selected: null, alerts: {} };
+
+  // ---------- storage (آمن عند تعطّل التخزين) ----------
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* تجاهل */ } }
+  };
+
+  // ---------- i18n ----------
+  const t = (k, vars) => {
+    let s = (I18N[S.lang] && I18N[S.lang][k]) ?? I18N.ar[k] ?? k;
+    if (vars) for (const [a, b] of Object.entries(vars)) s = s.replaceAll("{" + a + "}", b);
+    return s;
+  };
+  const lcName = (n) => (S.lang === "ar" && I18N.ar.lc_names[n]) || n;
+  const fmt = (n, d = 0) => Number(n).toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
+  const el = (tag, attrs = {}, ...kids) => {
+    const e = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs)) {
+      if (k === "class") e.className = v; else if (k === "text") e.textContent = v;
+      else if (k.startsWith("on")) e.addEventListener(k.slice(2), v); else e.setAttribute(k, v);
+    }
+    kids.flat().forEach((c) => c != null && e.append(c.nodeType ? c : document.createTextNode(c)));
+    return e;
+  };
+  const chip = (lv) => el("span", { class: "chip " + lv }, SYMBOL[lv] + " " + t("lv_" + lv));
+  const cssVar = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+  function applyLang() {
+    const html = document.documentElement;
+    html.lang = S.lang; html.dir = S.lang === "ar" ? "rtl" : "ltr";
+    document.querySelectorAll("[data-i18n]").forEach((n) => { n.textContent = t(n.dataset.i18n); });
+    document.getElementById("langLabel").textContent = S.lang === "ar" ? "EN" : "ع";
+    document.title = t("brand") + " · " + t("tagline");
+    store.set("mirsad.lang", S.lang);
+    if (S.data.sectors) { renderLegend(); renderRank(); renderKpis(); renderAlerts(); renderTransparency(); if (S.selected) openDrawer(S.selected); }
+  }
+
+  // ---------- theme ----------
+  function applyTheme(theme) {
+    document.documentElement.dataset.theme = theme;
+    store.set("mirsad.theme", theme);
+    if (S.map && S.map.isStyleLoaded()) restyleMap();
+  }
+  function levelColors() { return Object.fromEntries(LEVELS.map((l) => [l, cssVar("--lv-" + l)])); }
+
+  // ---------- data ----------
+  async function loadJSON(p) { const r = await fetch(p); if (!r.ok) throw new Error(p + " " + r.status); return r.json(); }
+  function levelOf(score) {
+    const th = S.data.model.thresholds;
+    return score >= th.critical ? "critical" : score >= th.high ? "high" : score >= th.medium ? "medium" : "low";
+  }
+
+  // ---------- map ----------
+  function initMap() {
+    const carto = (v) => ["a", "b", "c"].map((s) => `https://${s}.basemaps.cartocdn.com/${v}/{z}/{x}/{y}@2x.png`);
+    const map = new maplibregl.Map({
+      container: "map", center: [42.35, 18.35], zoom: 6.2, minZoom: 4, maxZoom: 13, attributionControl: false,
+      style: { version: 8, sources: {
+          dark: { type: "raster", tiles: carto("dark_all"), tileSize: 256, attribution: "© OpenStreetMap contributors © CARTO" },
+          light: { type: "raster", tiles: carto("light_all"), tileSize: 256, attribution: "© OpenStreetMap contributors © CARTO" } },
+        layers: [{ id: "bm-dark", type: "raster", source: "dark" }, { id: "bm-light", type: "raster", source: "light" }] }
+    });
+    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
+    map.addControl(new maplibregl.AttributionControl({ compact: true }));
+    S.map = map;
+    map.on("load", () => {
+      map.addSource("sectors", { type: "geojson", data: S.data.sectors, promoteId: "id" });
+      map.addLayer({ id: "sec-fill", type: "fill", source: "sectors", paint: {} });
+      map.addLayer({ id: "sec-line", type: "line", source: "sectors", paint: { "line-width": 0.4 } });
+      map.addLayer({ id: "sec-sel", type: "line", source: "sectors", filter: ["==", ["get", "id"], ""], paint: { "line-width": 3 } });
+      const ev = { type: "FeatureCollection", features: S.data.events.map((e) => ({ type: "Feature",
+        geometry: { type: "Point", coordinates: [e.lon, e.lat] }, properties: { ...e, exact: e.usable_for_terrain === true } })) };
+      map.addSource("events", { type: "geojson", data: ev });
+      map.addLayer({ id: "ev", type: "circle", source: "events", paint: { "circle-radius": 6, "circle-stroke-width": 2 } });
+      restyleMap();
+      map.on("click", "sec-fill", (e) => openDrawer(e.features[0].properties.id));
+      map.on("mouseenter", "sec-fill", () => (map.getCanvas().style.cursor = "pointer"));
+      map.on("mouseleave", "sec-fill", () => (map.getCanvas().style.cursor = ""));
+      map.on("click", "ev", (e) => {
+        const p = e.features[0].properties;
+        new maplibregl.Popup({ closeButton: false }).setLngLat(e.lngLat).setDOMContent(el("div", {},
+          el("b", {}, t("popup_event") + " · " + p.point_id), el("br"), p.place, el("br"),
+          `${t("date")}: ${p.event_date || t("unknown")}`, el("br"), `${t("precision")}: ${p.location_precision}`)).addTo(map);
+        e.originalEvent.stopPropagation();
+      });
+    });
+  }
+  function restyleMap() {
+    const m = S.map, c = levelColors(), dark = document.documentElement.dataset.theme === "dark";
+    m.setLayoutProperty("bm-dark", "visibility", dark ? "visible" : "none");
+    m.setLayoutProperty("bm-light", "visibility", dark ? "none" : "visible");
+    const match = ["match", ["get", "level"], "critical", c.critical, "high", c.high, "medium", c.medium, c.low];
+    m.setPaintProperty("sec-fill", "fill-color", match);
+    m.setPaintProperty("sec-fill", "fill-opacity", ["match", ["get", "level"], "low", dark ? 0.22 : 0.18, "medium", 0.5, 0.72]);
+    m.setPaintProperty("sec-line", "line-color", dark ? "rgba(230,238,236,0.10)" : "rgba(19,36,42,0.12)");
+    m.setPaintProperty("sec-sel", "line-color", cssVar("--accent"));
+    m.setPaintProperty("ev", "circle-color", ["case", ["get", "exact"], cssVar("--text"), "rgba(0,0,0,0)"]);
+    m.setPaintProperty("ev", "circle-stroke-color", cssVar("--text"));
+    if (m.getLayer("cells")) m.setPaintProperty("cells", "circle-color",
+      ["step", ["get", "s"], c.low, S.data.model.thresholds.medium, c.medium, S.data.model.thresholds.high, c.high, S.data.model.thresholds.critical, c.critical]);
+  }
+  async function toggleCells(on) {
+    const m = S.map;
+    if (on && !m.getSource("cells")) {
+      toast(t("loading"));
+      const rows = await loadJSON("data/cells.json");
+      m.addSource("cells", { type: "geojson", data: { type: "FeatureCollection",
+        features: rows.map(([la, lo, s]) => ({ type: "Feature", geometry: { type: "Point", coordinates: [lo, la] }, properties: { s } })) } });
+      m.addLayer({ id: "cells", type: "circle", source: "cells", paint: {
+        "circle-radius": ["interpolate", ["linear"], ["zoom"], 5, 0.6, 8, 2, 11, 6], "circle-opacity": 0.85 } }, "sec-sel");
+      restyleMap();
+    }
+    if (m.getLayer("cells")) m.setLayoutProperty("cells", "visibility", on ? "visible" : "none");
+  }
+
+  // ---------- side panel ----------
+  function renderLegend() {
+    const th = S.data.model.thresholds, ul = document.getElementById("legend"), rng = {
+      low: `< ${th.medium.toFixed(2)}`, medium: `${th.medium.toFixed(2)}–${th.high.toFixed(2)}`,
+      high: `${th.high.toFixed(2)}–${th.critical.toFixed(2)}`, critical: `≥ ${th.critical.toFixed(2)}` };
+    ul.replaceChildren(...LEVELS.map((l) => el("li", {},
+      el("span", { class: "sw", style: `background:var(--lv-${l})` }, SYMBOL[l]),
+      el("span", {}, el("b", {}, t("lv_" + l)), " · ", el("span", { class: "muted" }, t("mean_" + l))),
+      el("span", { class: "rng" }, rng[l]))));
+  }
+  function renderKpis() {
+    const f = S.data.sectors.features.map((x) => x.properties);
+    document.getElementById("kSectors").textContent = fmt(f.length);
+    document.getElementById("kCritical").textContent = fmt(f.filter((p) => p.level === "critical").length);
+    document.getElementById("kHigh").textContent = fmt(f.filter((p) => p.level === "high").length);
+    document.getElementById("kEvents").textContent = fmt(S.data.events.length);
+  }
+  function renderRank() {
+    const top = S.data.sectors.features.map((x) => x.properties).sort((a, b) => b.score - a.score).slice(0, 15);
+    document.getElementById("rank").replaceChildren(...top.map((p) => el("li", {}, el("button", { onclick: () => openDrawer(p.id, true) },
+      el("span", {}, el("span", { class: "sid" }, p.id), el("br"),
+        el("span", { class: "meta" }, `${t("slope_max")} ${fmt(p.slope_max, 1)}° · ${fmt(p.elev)} ${t("m")}`)),
+      el("span", {}, chip(p.level), " ", el("b", {}, fmt(p.score, 2)))))));
+  }
+
+  // ---------- drawer ----------
+  function openDrawer(id, fly) {
+    const f = S.data.sectors.features.find((x) => x.properties.id === id); if (!f) return;
+    const P = f.properties; S.selected = id;
+    if (S.map && S.map.getLayer("sec-sel")) S.map.setFilter("sec-sel", ["==", ["get", "id"], id]);
+    if (fly && S.map) S.map.flyTo({ center: [P.peak[1], P.peak[0]], zoom: Math.max(S.map.getZoom(), 9) });
+    const total = P.counts.reduce((a, b) => a + b, 0) || 1;
+    const imp = S.data.model.feature_importance, maxImp = Math.max(...Object.values(imp));
+    const st = S.alerts[id];
+    const canPropose = P.level === "high" || P.level === "critical";
+    const body = el("div", {},
+      el("p", { class: "muted", style: "margin:0" }, t("sector")),
+      el("h2", { class: "d-title" }, P.id),
+      el("div", { class: "score" }, el("b", {}, fmt(P.score, 2)), chip(P.level)),
+      el("div", { class: "muted", style: "font-size:13px" }, `${t("max_in_sector")} · ${t("top_cell")}: ${fmt(P.max, 2)} · ${t("mean_score")}: ${fmt(P.mean, 2)}`),
+      el("div", { class: "h-sec" }, t("cell_dist")),
+      el("div", { class: "stack", role: "img", "aria-label": LEVELS.map((l, i) => `${t("lv_" + l)} ${P.counts[i]}`).join(", ") },
+        ...LEVELS.map((l, i) => el("span", { style: `width:${(P.counts[i] / total) * 100}%;background:var(--lv-${l})`, title: `${t("lv_" + l)}: ${P.counts[i]}` }))),
+      el("div", { class: "muted", style: "font-size:12px;margin-top:4px" }, LEVELS.map((l, i) => `${SYMBOL[l]} ${t("lv_" + l)} ${P.counts[i]}`).join(" · ")),
+      el("dl", { class: "dl" },
+        el("dt", {}, t("cells")), el("dd", {}, fmt(P.cells)),
+        el("dt", {}, t("elev_mean")), el("dd", {}, `${fmt(P.elev)} ${t("m")}`),
+        el("dt", {}, t("slope_mean")), el("dd", {}, `${fmt(P.slope_mean, 1)}°`),
+        el("dt", {}, t("slope_max")), el("dd", {}, `${fmt(P.slope_max, 1)}°`),
+        el("dt", {}, t("landcover")), el("dd", {}, lcName(P.landcover)),
+        el("dt", {}, t("events_here")), el("dd", {}, fmt(P.events))),
+      el("div", { class: "h-sec" }, t("peak_cell")),
+      el("dl", { class: "dl" },
+        el("dt", {}, t("elevation")), el("dd", {}, `${fmt(P.peak_vals.elevation)} ${t("m")}`),
+        el("dt", {}, t("slope")), el("dd", {}, `${fmt(P.peak_vals.slope, 1)}°`),
+        el("dt", {}, t("aspect")), el("dd", {}, P.peak_vals.aspect < 0 ? "—" : `${fmt(P.peak_vals.aspect, 0)}°`),
+        el("dt", {}, t("lc")), el("dd", {}, lcName(P.peak_vals.landcover))),
+      el("div", { class: "h-sec" }, t("factors")),
+      el("div", { class: "bars" }, ...Object.entries(imp).map(([k, v]) => el("div", { class: "bar-row" },
+        el("span", {}, t("feat")[k]), el("span", { class: "bar" }, el("i", { style: `width:${(v / maxImp) * 100}%` })), el("span", { class: "v" }, fmt(v, 2))))),
+      el("p", { class: "note" }, t("factors_note")),
+      canPropose
+        ? (() => { const b = el("button", { class: "btn", style: "width:100%;margin-top:8px", onclick: () => { propose(id); openDrawer(id); } },
+            st ? t("proposed") : t("propose")); b.disabled = !!st; return b; })()
+        : el("p", { class: "note" }, t("not_needed")));
+    document.getElementById("drawerBody").replaceChildren(body);
+    const d = document.getElementById("drawer"); d.classList.add("open"); d.setAttribute("aria-hidden", "false");
+  }
+  function closeDrawer() {
+    S.selected = null; const d = document.getElementById("drawer"); d.classList.remove("open"); d.setAttribute("aria-hidden", "true");
+    if (S.map && S.map.getLayer("sec-sel")) S.map.setFilter("sec-sel", ["==", ["get", "id"], ""]);
+  }
+
+  // ---------- alerts (PRD 13.2) ----------
+  function sectorsAtRisk() {
+    return S.data.sectors.features.map((x) => x.properties).filter((p) => p.level === "high" || p.level === "critical")
+      .sort((a, b) => b.score - a.score);
+  }
+  function propose(id) { if (!S.alerts[id]) { S.alerts[id] = { status: "pending", created_at: new Date().toISOString() }; saveAlerts(); } }
+  function saveAlerts() { store.set("mirsad.alerts", S.alerts); renderAlerts(); }
+  function decide(id, status) {
+    const prev = S.alerts[id];
+    if (status === "approved" && prev && prev.status === "approved" && Date.now() - new Date(prev.at).getTime() < 864e5) { toast(t("cooldown")); return; }
+    let by = "";
+    if (status === "approved") { by = (prompt(t("approver_prompt")) || "").trim(); if (!by) return; }
+    S.alerts[id] = { ...(prev || {}), status, by, at: new Date().toISOString() };
+    saveAlerts(); toast(t(status === "approved" ? "approved_toast" : "dismissed_toast"));
+  }
+  function reasons(p) {
+    const r = [t("reason_slope", { v: fmt(p.slope_max, 1) }), t("reason_elev", { v: fmt(p.peak_vals.elevation) }), t("reason_lc", { v: lcName(p.peak_vals.landcover) })];
+    if (p.events) r.unshift(t("reason_events", { v: p.events }));
+    return r.join(" · ");
+  }
+  function renderAlerts() {
+    let added = false;
+    sectorsAtRisk().forEach((p) => { if (!S.alerts[p.id]) { S.alerts[p.id] = { status: "pending", created_at: new Date().toISOString() }; added = true; } });
+    if (added) store.set("mirsad.alerts", S.alerts);
+    const fl = document.getElementById("fLevel"), fs = document.getElementById("fStatus");
+    const lv0 = fl.value, st0 = fs.value;
+    fl.replaceChildren(el("option", { value: "" }, t("all_levels")), ...["critical", "high"].map((l) => el("option", { value: l }, t("lv_" + l))));
+    fs.replaceChildren(el("option", { value: "" }, t("all_status")), ...["pending", "approved", "dismissed"].map((s) => el("option", { value: s }, t("st_" + s))));
+    fl.value = lv0; fs.value = st0;
+    const rows = sectorsAtRisk().filter((p) => (!fl.value || p.level === fl.value) && (!fs.value || (S.alerts[p.id] || {}).status === fs.value));
+    const tb = document.getElementById("alertRows");
+    tb.replaceChildren(...(rows.length ? rows.map((p) => {
+      const a = S.alerts[p.id] || { status: "pending" };
+      return el("tr", {},
+        el("td", { class: "mono" }, p.id), el("td", {}, chip(p.level)), el("td", { class: "mono" }, fmt(p.score, 2)),
+        el("td", {}, reasons(p)), el("td", {}, t("st_" + a.status)),
+        el("td", {}, a.by ? `${a.by} · ${new Date(a.at).toLocaleString(S.lang === "ar" ? "ar-SA-u-nu-latn" : "en-GB")}` : "—"),
+        el("td", { style: "white-space:nowrap" },
+          el("button", { class: "btn ghost", onclick: () => { location.hash = "#map"; setTimeout(() => openDrawer(p.id, true), 60); } }, t("view")), " ",
+          a.status === "pending" ? el("button", { class: "btn", onclick: () => decide(p.id, "approved") }, t("approve")) : "", " ",
+          a.status === "pending" ? el("button", { class: "btn ghost", onclick: () => decide(p.id, "dismissed") }, t("dismiss")) : ""));
+    }) : [el("tr", {}, el("td", { colspan: "7", class: "muted" }, t("no_alerts")))]));
+    document.getElementById("alertCount").textContent = fmt(Object.values(S.alerts).filter((a) => a.status === "pending").length);
+  }
+
+  // ---------- transparency ----------
+  function renderTransparency() {
+    const m = S.data.model, c = m.cleaning;
+    document.getElementById("trWarn").textContent = t("tr_warn", { auc: m.spatial_cv.roc_auc, pos: m.training.positives });
+    const dl = document.getElementById("trModel");
+    dl.replaceChildren(
+      el("dt", {}, t("version")), el("dd", {}, m.version), el("dt", {}, t("trained")), el("dd", {}, m.trained_at),
+      el("dt", {}, t("algorithm")), el("dd", { style: "font-weight:500" }, m.algorithm),
+      el("dt", {}, t("features")), el("dd", {}, m.features.map((f) => t("feat")[f]).join("، ")),
+      el("dt", {}, t("training")), el("dd", {}, t("pos_neg", { p: m.training.positives, n: fmt(m.training.negatives) })),
+      el("dt", {}, t("thresholds")), el("dd", { class: "mono" }, `${m.thresholds.medium} / ${m.thresholds.high} / ${m.thresholds.critical}`));
+    const rows = [["roc_auc", "roc_auc"], ["pr_auc", "pr_auc"], ["recall_high", "recall_at_high"], ["precision_high", "precision_at_high"]];
+    document.getElementById("trMetrics").replaceChildren(
+      el("div", { class: "metric-grid" }, el("span", { class: "h" }, t("metric")), el("span", { class: "h" }, t("spatial")), el("span", { class: "h" }, t("random")),
+        ...rows.flatMap(([k, f]) => [el("span", {}, t(k)), el("b", {}, fmt(m.spatial_cv[f], 3)), el("span", { class: "muted" }, fmt(m.random_cv[f], 3))])),
+      el("p", { class: "note" }, t("metrics_note")));
+    const imp = m.feature_importance, mx = Math.max(...Object.values(imp));
+    document.getElementById("trImp").replaceChildren(el("div", { class: "bars" }, ...Object.entries(imp).map(([k, v]) => el("div", { class: "bar-row" },
+      el("span", {}, t("feat")[k]), el("span", { class: "bar" }, el("i", { style: `width:${(v / mx) * 100}%` })), el("span", { class: "v" }, fmt(v, 2))))));
+    const dist = m.level_distribution, tot = Object.values(dist).reduce((a, b) => a + b, 0);
+    document.getElementById("trDist").replaceChildren(el("div", { class: "bars" }, ...LEVELS.map((l) => el("div", { class: "bar-row" },
+      el("span", {}, `${SYMBOL[l]} ${t("lv_" + l)}`), el("span", { class: "bar" }, el("i", { style: `width:${(dist[l] / tot) * 100}%;background:var(--lv-${l})` })),
+      el("span", { class: "v" }, fmt(dist[l]))))));
+    const src = [
+      ["s_inventory", "s_inventory_u", c.landslide_events, "used"], ["s_terrain", "s_terrain_u", c.training_rows, "used"],
+      ["s_grid", "s_grid_u", c.grid_points_with_features, "used"],
+      ["s_rain", "s_rain_u", c.rainfall_rows, "not_used", { n: c.rainfall_regions_placeholder_coords.length }],
+      ["s_eq", "s_eq_u", c.earthquakes, "not_used", { n: c.earthquakes }], ["s_factors", "s_factors_u", c.conditioning_factor_rows, "not_used"]];
+    document.getElementById("trSources").replaceChildren(
+      el("thead", {}, el("tr", {}, el("th", {}, t("src_name")), el("th", {}, t("src_use")), el("th", {}, t("src_rows")), el("th", {}, t("src_status")))),
+      el("tbody", {}, ...src.map(([n, u, rows, s, v]) => el("tr", {}, el("td", {}, t(n)), el("td", {}, t(u, v)), el("td", { class: "mono" }, fmt(rows)),
+        el("td", {}, el("span", { class: "chip " + (s === "used" ? "low" : "medium") }, t(s)))))));
+    document.getElementById("trLimits").replaceChildren(...["lim1", "lim2", "lim3", "lim4", "lim5", "lim6"].map((k) => el("li", {},
+      t(k, { pos: m.training.positives, neg: fmt(m.training.negatives), cells: fmt(c.grid_points_with_features), grid: fmt(c.grid_points_total) }))));
+  }
+
+  // ---------- routing ----------
+  function route() {
+    const page = (location.hash || "#map").slice(1);
+    const known = ["map", "alerts", "transparency", "about"].includes(page) ? page : "map";
+    document.querySelectorAll(".page").forEach((p) => (p.hidden = p.id !== "page-" + known));
+    document.querySelectorAll(".tab").forEach((a) => a.classList.toggle("on", a.dataset.page === known));
+    if (known === "map" && S.map) setTimeout(() => S.map.resize(), 30);
+  }
+  let toastTimer;
+  function toast(msg) { const n = document.getElementById("toast"); n.textContent = msg; n.classList.add("show"); clearTimeout(toastTimer); toastTimer = setTimeout(() => n.classList.remove("show"), 2600); }
+
+  // ---------- boot ----------
+  async function boot() {
+    S.lang = store.get("mirsad.lang", "ar") === "en" ? "en" : "ar";
+    S.alerts = store.get("mirsad.alerts", {});
+    document.getElementById("langBtn").onclick = () => { S.lang = S.lang === "ar" ? "en" : "ar"; applyLang(); };
+    document.getElementById("themeBtn").onclick = () => applyTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+    document.getElementById("drawerClose").onclick = closeDrawer;
+    document.getElementById("lySectors").onchange = (e) => ["sec-fill", "sec-line"].forEach((l) => S.map.setLayoutProperty(l, "visibility", e.target.checked ? "visible" : "none"));
+    document.getElementById("lyEvents").onchange = (e) => S.map.setLayoutProperty("ev", "visibility", e.target.checked ? "visible" : "none");
+    document.getElementById("lyCells").onchange = (e) => toggleCells(e.target.checked).catch(() => toast(t("load_error")));
+    document.getElementById("fLevel").onchange = renderAlerts; document.getElementById("fStatus").onchange = renderAlerts;
+    addEventListener("hashchange", route); addEventListener("keydown", (e) => e.key === "Escape" && closeDrawer());
+    applyLang(); route();
+    try {
+      const [sectors, events, model] = await Promise.all([loadJSON("data/sectors.geojson"), loadJSON("data/landslides.json"), loadJSON("data/model.json")]);
+      S.data = { sectors, events, model };
+      applyLang(); initMap();
+    } catch (e) { console.error(e); toast(t("load_error")); }
+  }
+  boot();
+})();

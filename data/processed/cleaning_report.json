@@ -1,0 +1,54 @@
+{
+  "landslide_events": 27,
+  "landslide_unique_locations_usable": 13,
+  "training_rows": 1689,
+  "training_rows_removed": 0,
+  "training_positives": 12,
+  "training_negatives": 1677,
+  "positives_not_in_inventory": [
+    "NEWS_5"
+  ],
+  "grid_points_total": 176266,
+  "grid_points_with_features": 126467,
+  "rainfall_rows": 3476,
+  "rainfall_years": [
+    2009,
+    2019
+  ],
+  "rainfall_regions": 30,
+  "rainfall_regions_placeholder_coords": [
+    "Al-Baha",
+    "Al-Jouf",
+    "Arar",
+    "Bisha",
+    "Dhahran",
+    "Dmmam",
+    "Hafr Elbatten",
+    "Hail",
+    "Jeddah KAIA",
+    "Jizan",
+    "Khamis Mushait",
+    "Madinah",
+    "Makkah",
+    "Najran",
+    "Qaisumah",
+    "Qassim",
+    "Rafha",
+    "Riyadh New",
+    "Riyadh Old",
+    "Sharorah",
+    "Sulayel",
+    "Taif",
+    "Wadi Aldawasir",
+    "Wejh"
+  ],
+  "conditioning_factor_rows": 282,
+  "earthquakes": 140,
+  "earthquakes_in_study_area": 0,
+  "study_area": {
+    "lat_min": 16.2,
+    "lat_max": 20.5,
+    "lon_min": 40.6,
+    "lon_max": 44.1
+  }
+}

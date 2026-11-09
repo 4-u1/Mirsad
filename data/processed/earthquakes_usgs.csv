@@ -1,0 +1,141 @@
+﻿time,latitude,longitude,depth,mag,magType,nst,gap,dmin,rms,net,id,updated,place,type,horizontalError,depthError,magError,magNst,status,locationSource,magSource
+2026-08-01T01:24:09.770Z,18.951,39.2824,10.0,4.8,mww,65.0,76.0,6.554,1.01,us,us6000thdb,2026-10-17T22:26:29.040Z,"173 km ENE of Tokār, Sudan",earthquake,4.25,1.907,0.089,12.0,reviewed,us,us
+2026-05-05T10:27:04.617Z,28.8697,47.7122,10.0,4.2,mb,27.0,107.0,5.682,0.74,us,us6000sxhi,2026-07-15T15:25:54.040Z,"33 km NW of Al Wafrah, Kuwait",earthquake,8.54,1.94,0.158,11.0,reviewed,us,us
+2025-12-24T03:00:19.410Z,19.3828,39.3851,10.0,4.3,mb,39.0,135.0,6.773,1.19,us,us7000rkk1,2026-04-01T22:48:02.040Z,"204 km ENE of Tokār, Sudan",earthquake,10.93,1.956,0.089,36.0,reviewed,us,us
+2025-12-24T01:55:53.268Z,19.2908,39.2095,10.0,4.5,mb,32.0,74.0,6.831,0.91,us,us7000rki8,2026-04-01T22:47:58.040Z,"183 km ENE of Tokār, Sudan",earthquake,11.04,1.916,0.082,43.0,reviewed,us,us
+2025-12-16T22:11:23.651Z,23.9928,49.1093,10.0,4.0,mb,17.0,243.0,6.533,0.57,us,us7000rnpf,2026-03-10T22:18:49.040Z,"159 km SSW of Al Hufūf, Saudi Arabia",earthquake,7.11,2.02,0.172,9.0,reviewed,us,us
+2025-11-18T15:46:34.669Z,28.1665,50.0367,10.0,4.4,mb,73.0,93.0,6.386,0.54,us,us6000rnxv,2026-02-10T15:55:13.040Z,"118 km SW of Bushehr, Iran",earthquake,10.5,1.903,0.07,60.0,reviewed,us,us
+2025-11-10T12:22:09.429Z,28.8809,49.8132,10.0,4.1,mb,24.0,212.0,6.921,0.75,us,us7000ref6,2026-01-29T22:05:36.040Z,"65 km SW of Khārk, Iran",earthquake,12.33,2.003,0.157,11.0,reviewed,us,us
+2025-10-20T22:13:33.892Z,19.4279,38.9931,10.0,4.1,mb,29.0,138.0,8.685,0.82,us,us6000rmmi,2026-01-09T15:38:46.040Z,"173 km NE of Tokār, Sudan",earthquake,12.0,1.956,0.111,22.0,reviewed,us,us
+2025-10-18T21:27:09.143Z,29.1041,49.7402,10.0,4.1,mb,27.0,176.0,6.896,0.89,us,us6000rm4k,2026-01-09T15:38:46.040Z,"60 km WSW of Khārk, Iran",earthquake,12.67,1.962,0.135,16.0,reviewed,us,us
+2025-09-09T23:47:38.290Z,18.8953,39.0729,10.0,4.4,mb,76.0,80.0,6.669,0.88,us,us7000qv5j,2025-11-30T23:41:14.040Z,"151 km ENE of Tokār, Sudan",earthquake,9.72,1.921,0.069,60.0,reviewed,us,us
+2025-09-09T20:36:57.656Z,19.0029,39.1078,10.0,4.5,mb,61.0,85.0,6.713,0.92,us,us7000qv4q,2025-11-30T23:41:12.040Z,"158 km ENE of Tokār, Sudan",earthquake,10.05,1.913,0.074,53.0,reviewed,us,us
+2025-09-09T17:23:11.523Z,18.8324,39.0784,10.0,4.1,mb,26.0,202.0,6.626,0.86,us,us6000rebf,2025-11-30T23:41:09.040Z,"149 km ENE of Tokār, Sudan",earthquake,15.95,2.004,0.12,19.0,reviewed,us,us
+2025-06-13T18:50:14.017Z,27.9898,50.4539,10.0,4.1,mb,13.0,195.0,5.979,1.1,us,us7000q945,2025-08-22T20:26:04.040Z,"114 km SSW of Bushehr, Iran",earthquake,9.75,2.004,0.262,4.0,reviewed,us,us
+2025-04-22T16:50:04.198Z,27.3246,49.9894,10.0,4.3,mb,60.0,91.0,5.548,0.63,us,us7000pua1,2025-06-27T00:34:51.040Z,"49 km NE of Al Jubayl, Saudi Arabia",earthquake,7.58,1.905,0.075,55.0,reviewed,us,us
+2025-04-04T04:26:32.391Z,27.273,49.9351,10.0,4.1,mb,21.0,117.0,5.477,0.45,us,us6000q3vj,2025-06-09T13:38:40.040Z,"41 km NE of Al Jubayl, Saudi Arabia",earthquake,10.48,1.988,0.185,8.0,reviewed,us,us
+2025-04-03T23:39:36.399Z,27.3434,49.9494,10.0,4.4,mb,47.0,72.0,5.534,0.68,us,us6000q3ua,2025-06-09T13:38:39.040Z,"48 km NE of Al Jubayl, Saudi Arabia",earthquake,9.23,1.918,0.086,39.0,reviewed,us,us
+2025-03-31T20:42:24.502Z,24.4093,50.3095,9.864,4.1,mb,34.0,118.0,4.484,0.45,us,us7000pp4t,2025-06-06T21:12:29.040Z,"102 km SSW of Umm Bāb, Qatar",earthquake,11.45,5.337,0.092,32.0,reviewed,us,us
+2025-03-19T22:42:28.984Z,24.4418,50.2974,10.0,4.0,mb,32.0,124.0,4.479,0.6,us,us6000pzuw,2025-05-29T17:36:24.040Z,"99 km SSW of Umm Bāb, Qatar",earthquake,8.68,1.903,0.119,19.0,reviewed,us,us
+2025-03-17T19:31:38.231Z,24.4455,50.3869,10.0,4.1,mb,50.0,87.0,4.56,0.52,us,us6000pzeb,2025-05-17T19:20:00.040Z,"95 km SSW of Umm Bāb, Qatar",earthquake,5.78,1.752,0.083,40.0,reviewed,us,us
+2025-03-15T07:21:50.441Z,28.9517,47.4227,10.0,4.3,mb,38.0,142.0,5.675,0.42,us,us6000pz09,2025-05-17T19:19:58.040Z,"48 km SSW of Al Jahrā’, Kuwait",earthquake,12.44,1.938,0.102,27.0,reviewed,us,us
+2025-03-11T21:09:55.075Z,27.2463,49.9939,10.14,4.0,mb,41.0,117.0,5.499,0.88,us,us7000pld7,2025-05-16T17:30:08.040Z,"44 km NE of Al Jubayl, Saudi Arabia",earthquake,8.55,5.611,0.116,20.0,reviewed,us,us
+2025-03-09T23:27:52.226Z,24.6002,50.3266,10.0,4.1,mb,47.0,172.0,4.537,0.7,us,us6000pxv7,2025-05-16T17:30:04.040Z,"83 km SW of Umm Bāb, Qatar",earthquake,10.33,1.966,0.086,37.0,reviewed,us,us
+2025-02-23T21:16:22.629Z,24.4018,36.7522,9.896,4.1,mb,27.0,84.0,5.487,0.7,us,us6000pwtu,2025-05-06T21:39:15.040Z,"86 km SW of Umluj, Saudi Arabia",earthquake,10.52,5.802,0.127,17.0,reviewed,us,us
+2025-02-21T04:28:00.382Z,28.2568,50.0135,10.0,4.0,mb,18.0,98.0,6.222,0.92,us,us6000pw3e,2025-05-06T21:39:14.040Z,"112 km SW of Bushehr, Iran",earthquake,10.3,1.95,0.173,9.0,reviewed,us,us
+2024-11-19T22:23:22.722Z,20.7567,38.1466,10.0,4.0,mb,24.0,251.0,9.333,0.98,us,us7000nvy5,2025-01-30T17:00:35.040Z,"135 km SW of Jeddah, Saudi Arabia",earthquake,11.12,2.013,0.119,19.0,reviewed,us,us
+2024-11-11T19:21:51.530Z,28.1223,50.0137,10.0,4.4,mb,61.0,87.0,6.383,0.45,us,us7000nr8x,2025-01-26T16:29:16.040Z,"123 km SW of Bushehr, Iran",earthquake,9.9,1.896,0.078,47.0,reviewed,us,us
+2024-08-17T21:13:13.783Z,28.1209,49.923,10.0,4.1,mb,37.0,175.0,6.453,0.68,us,us7000ncuw,2024-10-26T15:49:43.040Z,"118 km E of As Saffānīyah, Saudi Arabia",earthquake,5.98,1.962,0.131,16.0,reviewed,us,us
+2024-07-27T00:47:27.973Z,19.0291,39.2486,10.0,4.3,mb,54.0,153.0,8.223,0.48,us,us6000ng9y,2024-10-08T21:49:13.005Z,"173 km ENE of Tokār, Sudan",earthquake,11.57,1.926,0.084,41.0,reviewed,us,us
+2024-07-27T00:29:29.579Z,19.1285,39.1639,10.0,4.3,mb,64.0,122.0,13.148,0.52,us,us6000njmc,2024-10-08T21:49:15.005Z,"170 km ENE of Tokār, Sudan",earthquake,6.36,1.965,0.076,49.0,reviewed,us,us
+2024-07-26T21:09:57.878Z,19.222,39.3552,10.0,4.7,mb,128.0,78.0,8.354,0.72,us,us6000ng91,2024-10-08T21:49:12.005Z,"192 km ENE of Tokār, Sudan",earthquake,7.74,1.785,0.054,102.0,reviewed,us,us
+2024-06-07T09:11:26.040Z,20.0936,38.4458,10.0,4.3,mb,68.0,114.0,9.507,0.66,us,us7000msch,2024-08-16T21:59:23.040Z,"139 km ENE of Port Sudan, Sudan",earthquake,10.77,1.931,0.07,57.0,reviewed,us,us
+2023-03-29T22:55:55.861Z,25.3304,36.0793,9.106,4.5,mb,45.0,151.0,5.968,0.63,us,us6000k1rt,2023-06-03T22:06:18.040Z,"108 km SSW of Al Wajh, Saudi Arabia",earthquake,7.63,4.28,0.1,29.0,reviewed,us,us
+2022-06-04T01:28:03.518Z,28.9103,47.972,10.0,4.4,mb,58.0,64.0,6.476,0.64,us,us7000hets,2022-08-13T21:52:04.040Z,"21 km SSW of Al A?mad?, Kuwait",earthquake,4.8,1.8,0.081,46.0,reviewed,us,us
+2022-03-18T17:37:49.875Z,20.777,38.2049,10.0,4.3,mb,,101.0,7.295,0.28,us,us7000gwp0,2022-05-27T14:55:46.040Z,"128 km SW of Jeddah, Saudi Arabia",earthquake,11.6,2.0,0.16,11.0,reviewed,us,us
+2022-01-16T04:25:31.904Z,29.1548,50.2316,10.0,4.6,mb,,53.0,6.776,0.92,us,us7000gcd5,2022-04-01T17:40:12.040Z,"15 km SW of Kh?rk, Iran",earthquake,7.7,1.8,0.063,79.0,reviewed,us,us
+2022-01-16T02:49:21.573Z,29.194,50.3094,10.0,4.8,mb,,52.0,6.746,0.89,us,us7000gccw,2022-08-06T13:49:03.264Z,"7 km SSW of Kh?rk, Iran",earthquake,7.3,1.0,0.051,123.0,reviewed,us,us
+2022-01-15T12:25:22.247Z,29.1072,50.3238,10.0,4.4,mb,,78.0,6.683,0.42,us,us7000gc8a,2022-04-01T17:40:10.040Z,"17 km S of Kh?rk, Iran",earthquake,6.7,1.6,0.076,49.0,reviewed,us,us
+2021-09-14T04:48:02.257Z,28.9103,49.6258,10.0,4.0,mb,,94.0,6.518,0.42,us,us7000fcwm,2021-11-23T15:11:46.040Z,"78 km WSW of Kh?rk, Iran",earthquake,9.0,1.9,0.212,6.0,reviewed,us,us
+2021-08-02T08:31:37.448Z,29.0413,47.5342,10.0,4.3,mb,,86.0,2.953,0.64,us,us6000f1m7,2022-06-04T01:45:19.505Z,"34 km SSW of Al Jahr?’, Kuwait",earthquake,5.3,1.9,0.094,32.0,reviewed,us,us
+2021-04-18T07:03:07.425Z,29.5324,50.3724,10.0,4.2,mb,,108.0,6.914,0.4,us,us6000e3z5,2021-07-03T16:49:27.040Z,southern Iran,earthquake,7.6,1.9,0.167,10.0,reviewed,us,us
+2020-12-21T03:04:48.206Z,28.9624,47.5725,10.0,4.3,mb,,84.0,3.035,0.78,us,us7000cstn,2021-04-18T06:53:24.993Z,"42 km SSW of Al Jahr?’, Kuwait",earthquake,3.3,1.9,0.08,45.0,reviewed,us,us
+2020-11-11T14:56:23.554Z,28.92,47.6967,10.0,4.7,mb,,83.0,3.09,0.47,us,us7000cdef,2022-03-10T05:47:17.389Z,"38 km NW of Al Wafrah, Kuwait",earthquake,7.4,1.9,0.078,49.0,reviewed,us,us
+2020-04-21T07:59:19.555Z,19.5101,39.001,10.0,4.1,mb,,229.0,7.25,0.78,us,us60009dbx,2020-07-09T14:31:39.040Z,"179 km NE of Tok?r, Sudan",earthquake,15.0,2.0,0.145,16.0,reviewed,us,us
+2020-01-20T02:50:42.881Z,29.0686,49.6725,10.0,4.2,mb,,81.0,6.67,0.92,us,us60007ld3,2020-04-08T19:40:06.040Z,"67 km WSW of Kh?rk, Iran",earthquake,9.0,1.9,0.11,23.0,reviewed,us,us
+2019-12-27T19:23:12.726Z,20.7597,38.1672,10.0,4.0,mb,,161.0,7.334,1.4,us,us70006xnf,2020-03-14T22:24:08.040Z,"133 km SW of Jeddah, Saudi Arabia",earthquake,6.3,1.9,0.195,8.0,reviewed,us,us
+2019-08-16T20:18:30.431Z,27.8226,50.877,10.0,4.1,mb,,108.0,5.57,0.71,us,us700058el,2019-11-02T15:26:22.040Z,"127 km S of Bushehr, Iran",earthquake,8.8,1.9,0.165,11.0,reviewed,us,us
+2019-03-10T18:21:57.446Z,19.1752,39.3576,10.0,4.3,mb,,140.0,18.417,1.38,us,us1000jimw,2019-05-24T21:21:42.040Z,"190 km ENE of Tok?r, Sudan",earthquake,11.7,2.0,0.188,8.0,reviewed,us,us
+2019-03-10T12:32:12.911Z,18.9513,39.3622,10.0,4.6,mb,,75.0,7.313,0.88,us,us1000jd7a,2019-05-24T21:21:26.040Z,"181 km ENE of Tok?r, Sudan",earthquake,8.6,1.9,0.074,54.0,reviewed,us,us
+2018-11-19T01:10:25.910Z,19.6249,38.8314,10.0,4.5,mb,,63.0,7.319,0.74,us,us1000hts6,2019-02-02T20:02:26.040Z,"167 km ENE of Saw?kin, Sudan",earthquake,4.5,1.9,0.072,56.0,reviewed,us,us
+2018-07-02T00:52:06.980Z,19.3223,39.2838,10.0,4.0,mb,,137.0,16.447,0.6,us,us2000fyc8,2018-09-27T14:03:42.040Z,"191 km ENE of Tok?r, Sudan",earthquake,13.0,2.0,0.149,12.0,reviewed,us,us
+2018-05-04T10:22:11.170Z,28.5979,50.3416,10.0,4.2,mb,,98.0,6.378,0.72,us,us1000e20e,2018-07-27T20:20:31.040Z,"63 km SW of Bushehr, Iran",earthquake,5.2,1.8,0.088,36.0,reviewed,us,us
+2017-06-19T13:42:59.050Z,22.1304,37.8707,10.0,4.4,mb,,212.0,7.175,1.09,us,us20009nky,2017-08-23T16:35:45.040Z,"140 km WSW of R?bigh, Saudi Arabia",earthquake,11.5,2.0,0.108,25.0,reviewed,us,us
+2017-01-24T22:42:43.970Z,18.925,39.2728,10.0,4.3,mb,,128.0,15.876,0.47,us,us20008iha,2017-04-19T18:30:59.040Z,"171 km ENE of Tok?r, Sudan",earthquake,15.4,2.0,0.142,14.0,reviewed,us,us
+2017-01-02T00:42:06.260Z,29.3758,50.8166,10.0,4.4,mb,,127.0,6.518,0.97,us,us10007p5h,2017-03-27T23:53:17.040Z,"36 km SE of Bandar-e Gen?veh, Iran",earthquake,8.4,1.9,0.079,47.0,reviewed,us,us
+2017-01-02T00:38:11.440Z,29.451,50.8187,10.0,4.1,mb,,143.0,6.567,0.89,us,us10007p5g,2017-03-27T23:53:17.040Z,"32 km ESE of Bandar-e Gen?veh, Iran",earthquake,9.0,2.0,0.097,29.0,reviewed,us,us
+2017-01-02T00:32:35.380Z,29.2487,50.82,10.0,4.0,mb,,133.0,10.577,0.73,us,us10007ua8,2017-03-27T23:53:17.040Z,"31 km N of Bushehr, Iran",earthquake,7.8,2.0,0.122,18.0,reviewed,us,us
+2017-01-02T00:29:39.360Z,29.4667,50.8205,10.0,4.2,mb,,129.0,6.576,0.76,us,us10007p5e,2017-03-27T23:53:17.040Z,"31 km ESE of Bandar-e Gen?veh, Iran",earthquake,7.6,1.9,0.084,40.0,reviewed,us,us
+2016-12-18T17:40:54.000Z,29.51,50.89,17.0,4.1,mb,,,,1.88,us,us10007pvn,2017-03-16T02:31:28.040Z,"36 km ESE of Bandar-e Gen?veh, Iran",earthquake,6.5,5.9,0.114,21.0,reviewed,teh,us
+2016-12-18T16:43:45.160Z,29.4327,50.8218,10.0,4.4,mb,,88.0,6.552,0.49,us,us200082d4,2017-03-16T02:31:28.040Z,"33 km ESE of Bandar-e Gen?veh, Iran",earthquake,8.8,1.9,0.103,27.0,reviewed,us,us
+2016-12-18T14:43:33.510Z,29.4638,50.7926,10.0,4.6,mb,,105.0,6.592,0.8,us,us10007pw3,2017-03-16T02:31:28.040Z,"29 km ESE of Bandar-e Gen?veh, Iran",earthquake,9.5,1.8,0.207,8.0,reviewed,us,us
+2016-07-19T17:05:28.950Z,24.2297,36.6083,14.99,4.1,mb,,209.0,5.616,0.71,us,us20006gst,2016-09-17T01:27:51.040Z,"110 km SW of Umluj, Saudi Arabia",earthquake,13.2,7.5,0.127,17.0,reviewed,us,us
+2015-08-24T21:23:46.150Z,19.0831,39.0594,10.0,4.4,mb,,113.0,8.349,1.05,us,us20003hb2,2015-11-24T02:09:33.040Z,"158 km ENE of Tok?r, Sudan",earthquake,11.9,1.9,0.12,20.0,reviewed,us,us
+2015-03-21T11:23:35.710Z,28.9932,47.475,14.95,4.3,mb,,96.0,5.728,0.58,us,us10001pn3,2022-07-28T03:37:45.521Z,"42 km SSW of Al Jahr?’, Kuwait",earthquake,7.7,5.5,0.116,21.0,reviewed,us,us
+2015-01-29T19:12:25.540Z,23.6431,49.1942,14.17,4.2,mb,,188.0,3.388,0.62,us,usc000tk5g,2015-05-02T14:05:39.040Z,"194 km SSW of Al Huf?f, Saudi Arabia",earthquake,10.0,6.7,0.113,24.0,reviewed,us,us
+2015-01-12T21:39:16.720Z,25.0545,36.3086,10.0,4.2,mb,,164.0,4.753,1.07,us,usc000tile,2015-04-10T18:56:37.040Z,"96 km W of Umluj, Saudi Arabia",earthquake,8.4,2.0,0.167,13.0,reviewed,us,us
+2014-12-29T13:00:09.000Z,28.77,50.75,5.0,4.3,mb,,,,0.99,us,usc000tf8t,2015-03-17T02:37:55.040Z,"23 km SSW of Bushehr, Iran",earthquake,15.2,6.1,0.308,4.0,reviewed,teh,us
+2014-11-28T01:31:41.530Z,19.3767,38.8076,10.0,4.1,mb,,204.0,7.476,0.4,us,usc000t5zv,2015-02-24T00:35:08.040Z,"154 km NE of Tok?r, Sudan",earthquake,11.4,2.0,0.175,12.0,reviewed,us,us
+2014-10-26T16:22:51.330Z,19.896,38.523,10.0,4.2,mb,,184.0,10.256,0.59,us,usc000svdx,2015-01-17T01:25:40.040Z,"140 km ENE of Port Sudan, Sudan",earthquake,10.6,1.8,0.199,11.0,reviewed,us,us
+2014-07-15T11:33:03.000Z,23.8371,36.3299,10.0,4.2,mb,,166.0,5.938,1.3,us,usb000rx40,2014-10-10T08:02:19.000Z,"162 km SW of Umluj, Saudi Arabia",earthquake,,2.0,0.187,9.0,reviewed,us,us
+2014-01-16T13:02:36.530Z,23.6427,36.4081,10.0,4.2,mb,,237.0,8.344,1.33,us,usc000meil,2014-03-22T00:05:17.000Z,"175 km WSW of Yanbu, Saudi Arabia",earthquake,,2.0,0.198,7.0,reviewed,us,us
+2013-12-23T23:54:02.020Z,18.9052,39.19,10.0,4.5,mb,,216.0,7.468,1.17,us,usc000lxp7,2014-02-27T21:37:29.000Z,"163 km ENE of Tok?r, Sudan",earthquake,,2.0,0.128,,reviewed,us,us
+2013-12-23T19:01:53.850Z,19.0344,39.2276,10.0,4.3,mb,,117.0,11.281,0.72,us,usc000lqhk,2014-02-27T21:37:28.000Z,Red Sea,earthquake,,1.9,0.137,,reviewed,us,us
+2013-12-23T18:44:21.980Z,19.1788,39.2366,10.0,5.3,mb,,55.0,6.732,0.97,us,usc000lqgp,2025-12-22T17:18:08.210Z,"179 km ENE of Tok?r, Sudan",earthquake,,1.8,0.048,,reviewed,us,us
+2013-12-23T18:41:36.830Z,19.0947,39.2431,10.0,4.5,mb,,79.0,11.23,0.68,us,usc000lqhs,2014-02-27T21:37:28.000Z,"176 km ENE of Tok?r, Sudan",earthquake,,1.9,0.089,,reviewed,us,us
+2013-12-20T16:28:47.940Z,18.9876,39.3901,10.0,4.4,mb,,80.0,6.497,1.09,us,usc000lvqy,2014-02-27T21:37:24.000Z,"185 km ENE of Tok?r, Sudan",earthquake,,1.9,0.162,,reviewed,us,us
+2013-10-22T11:09:42.400Z,28.4692,50.7528,19.88,4.1,mb,,93.0,1.615,1.22,us,usb000kx6n,2014-01-03T00:32:50.000Z,"55 km S of Bushehr, Iran",earthquake,,4.1,0.117,,reviewed,us,us
+2013-05-16T20:21:30.270Z,18.881,39.294,10.0,4.4,mb,39.0,193.6,,1.04,us,usp000k0r7,2014-11-07T01:50:49.093Z,"172 km ENE of Tok?r, Sudan",earthquake,,,,15.0,reviewed,us,us
+2012-11-12T03:46:03.240Z,28.988,47.555,17.6,4.2,mb,48.0,81.8,,0.83,us,usp000jve4,2014-11-07T01:49:21.069Z,"40 km SSW of Al Jahr?’, Kuwait",earthquake,,14.4,,5.0,reviewed,us,us
+2012-09-09T10:02:08.300Z,23.421,36.342,10.0,4.3,mb,32.0,122.4,,1.08,us,usp000js1k,2014-11-07T01:48:49.710Z,"190 km WSW of Yanbu, Saudi Arabia",earthquake,,,,11.0,reviewed,us,us
+2012-06-03T14:10:34.970Z,18.894,39.324,10.0,4.5,mb,28.0,92.3,,1.05,us,usp000jm9e,2014-11-07T01:48:00.008Z,"176 km ENE of Tok?r, Sudan",earthquake,,,,2.0,reviewed,us,us
+2012-05-24T23:05:04.260Z,19.081,39.168,10.0,4.4,mb,24.0,186.2,,0.94,us,usp000jkw9,2014-11-07T01:47:52.637Z,"168 km ENE of Tok?r, Sudan",earthquake,,,,1.0,reviewed,us,us
+2012-05-24T08:27:46.490Z,19.133,39.121,10.0,4.3,mb,45.0,112.2,,1.28,us,usp000jkv9,2014-11-07T01:47:51.955Z,"166 km ENE of Tok?r, Sudan",earthquake,,,,7.0,reviewed,us,us
+2012-05-23T16:08:33.090Z,19.164,39.242,10.0,4.5,mb,30.0,111.4,,0.85,us,usp000jku2,2014-11-07T01:47:51.732Z,"179 km ENE of Tok?r, Sudan",earthquake,,,,4.0,reviewed,us,us
+2010-11-05T01:12:58.350Z,20.148,38.481,10.0,4.4,mb,27.0,82.1,,1.04,us,usp000hp34,2014-11-07T01:42:52.231Z,"144 km ENE of Port Sudan, Sudan",earthquake,,,,12.0,reviewed,us,us
+2010-08-22T15:48:27.970Z,23.706,49.156,10.0,4.0,mb,26.0,91.5,,1.15,us,usp000hjmc,2014-11-07T01:42:17.222Z,"188 km SSW of Al Huf?f, Saudi Arabia",earthquake,,,,5.0,reviewed,us,us
+2010-08-09T09:11:06.970Z,18.944,39.262,10.0,5.0,mwc,28.0,76.2,,0.98,us,usp000hhta,2025-12-22T15:49:15.349Z,"171 km ENE of Tok?r, Sudan",earthquake,,,,,reviewed,us,gcmt
+2009-08-27T20:22:29.220Z,24.173,38.778,10.0,4.7,mb,44.0,77.6,,1.16,us,usp000h0y3,2014-11-07T01:39:34.101Z,"43 km N of Badr ?unayn, Saudi Arabia",earthquake,,,,12.0,reviewed,us,us
+2009-05-19T20:35:40.090Z,25.233,37.702,10.0,4.6,mb,57.0,59.0,,1.14,us,usp000gxat,2014-11-07T01:38:59.269Z,"49 km ENE of Umluj, Saudi Arabia",earthquake,,,,16.0,reviewed,us,us
+2009-05-19T19:57:18.350Z,25.243,37.745,10.0,4.8,mwc,123.0,58.4,,0.87,us,usp000gxar,2016-11-10T02:12:08.515Z,"53 km ENE of Umluj, Saudi Arabia",earthquake,,,,,reviewed,us,gcmt
+2009-05-19T17:35:01.070Z,25.291,37.74,5.0,5.7,mwb,254.0,30.2,,0.92,us,usp000gxam,2022-05-02T21:52:53.851Z,"56 km ENE of Umluj, Saudi Arabia",earthquake,,,,,reviewed,us,us
+2009-05-19T17:13:28.860Z,25.203,37.774,10.0,4.2,mb,47.0,59.0,,0.94,us,usp000gxak,2014-11-07T01:38:59.189Z,"54 km ENE of Umluj, Saudi Arabia",earthquake,,,,14.0,reviewed,us,us
+2009-05-19T16:54:31.080Z,25.248,37.703,10.0,5.0,mwc,139.0,59.5,,0.88,us,usp000gxaj,2025-12-22T15:27:02.838Z,"50 km ENE of Umluj, Saudi Arabia",earthquake,,,,,reviewed,us,gcmt
+2009-05-19T06:38:32.550Z,25.207,37.768,10.0,4.9,mwc,79.0,58.5,,1.0,us,usp000gxa6,2016-11-10T02:12:05.974Z,"54 km ENE of Umluj, Saudi Arabia",earthquake,,,,,reviewed,us,gcmt
+2009-05-19T01:51:33.010Z,25.305,37.726,10.0,4.3,mb,49.0,110.2,,0.95,us,usp000gx9x,2014-11-07T01:38:59.093Z,"55 km NE of Umluj, Saudi Arabia",earthquake,,,,9.0,reviewed,us,us
+2009-05-18T07:47:55.530Z,25.394,37.593,10.0,4.4,mb,29.0,205.6,,1.13,us,usp000gx8z,2014-11-07T01:38:58.351Z,"52 km NE of Umluj, Saudi Arabia",earthquake,,,,5.0,reviewed,us,us
+2009-05-18T07:41:06.390Z,25.451,37.799,10.0,4.1,mb,27.0,146.0,,0.87,us,usp000gx8x,2014-11-07T01:38:58.276Z,"71 km NE of Umluj, Saudi Arabia",earthquake,,,,7.0,reviewed,us,us
+2009-05-17T20:21:07.710Z,25.338,37.724,10.0,4.0,mb,33.0,150.2,,1.03,us,usp000gx8g,2014-11-07T01:38:58.212Z,"57 km NE of Umluj, Saudi Arabia",earthquake,,,,8.0,reviewed,us,us
+2009-05-17T19:50:06.240Z,25.212,37.597,10.0,4.6,mb,70.0,55.7,,1.16,us,usp000gx8f,2021-10-20T18:14:35.771Z,"39 km ENE of Umluj, Saudi Arabia",earthquake,,,,17.0,reviewed,us,us
+2009-05-17T19:20:08.860Z,25.378,37.745,10.0,4.0,mb,30.0,149.8,,1.06,us,usp000gx8d,2014-11-07T01:38:58.168Z,"62 km NE of Umluj, Saudi Arabia",earthquake,,,,5.0,reviewed,us,us
+2009-02-11T03:56:26.900Z,18.948,39.225,10.0,4.2,mb,18.0,221.3,,0.96,us,usp000gtmq,2014-11-07T01:38:21.591Z,"168 km ENE of Tok?r, Sudan",earthquake,,,,5.0,reviewed,us,us
+2009-02-06T03:27:56.120Z,19.044,39.156,10.0,4.5,mb,44.0,73.9,,0.91,us,usp000gtge,2014-11-07T01:38:20.621Z,"165 km ENE of Tok?r, Sudan",earthquake,,,,24.0,reviewed,us,us
+2009-02-05T21:36:13.810Z,19.165,39.153,10.0,4.9,mwc,58.0,74.1,,1.03,us,usp000gtg3,2016-11-10T02:07:28.703Z,"170 km ENE of Tok?r, Sudan",earthquake,,,,,reviewed,us,gcmt
+2009-02-05T17:33:58.220Z,19.063,39.178,10.0,4.6,mb,37.0,74.0,,1.2,us,usp000gtfy,2014-11-07T01:38:20.452Z,"168 km ENE of Tok?r, Sudan",earthquake,,,,10.0,reviewed,us,us
+2008-08-02T20:45:17.020Z,29.43,49.151,24.5,3.9,mblg,28.0,223.1,,1.03,us,usp000gdpq,2014-11-07T01:36:49.069Z,"85 km E of Az Zawr, Kuwait",earthquake,,22.1,,,reviewed,us,teh
+2008-05-31T14:47:59.120Z,29.301,50.172,10.0,3.3,mblg,17.0,161.9,,0.87,us,usp000g87d,2014-11-07T01:36:08.569Z,"16 km WNW of Kh?rk, Iran",earthquake,,,,,reviewed,us,teh
+2008-04-06T16:21:38.000Z,29.44,50.68,14.6,3.4,ml,13.0,142.0,,,us,usp000g37r,2014-11-07T01:35:32.440Z,"22 km SE of Bandar-e Gen?veh, Iran",earthquake,,,,,reviewed,thr,thr
+2008-03-28T21:44:40.000Z,19.085,39.038,10.0,4.2,mb,11.0,221.0,,0.93,us,usp000g2k8,2014-11-07T01:35:20.323Z,"156 km ENE of Tok?r, Sudan",earthquake,,,,2.0,reviewed,us,us
+2008-02-20T16:31:20.850Z,19.881,38.463,10.0,4.2,mb,8.0,219.3,,1.29,us,usp000fzc8,2014-11-07T01:34:59.479Z,"133 km ENE of Port Sudan, Sudan",earthquake,,,,1.0,reviewed,us,us
+2008-02-19T10:28:57.680Z,28.968,47.624,10.0,4.3,mb,16.0,208.5,,0.53,us,usp000fz7y,2014-11-07T01:34:58.811Z,"41 km S of Al Jahr?’, Kuwait",earthquake,,,,3.0,reviewed,us,us
+2007-12-15T04:59:37.050Z,19.164,39.199,10.0,4.5,mb,15.0,179.6,,0.45,us,usp000fug5,2014-11-07T01:34:25.578Z,"175 km ENE of Tok?r, Sudan",earthquake,,,,2.0,reviewed,us,us
+2007-10-31T09:44:26.260Z,23.08,37.114,10.0,4.3,mb,13.0,184.6,,0.86,us,usp000frpc,2014-11-07T01:34:01.650Z,"147 km SW of Yanbu, Saudi Arabia",earthquake,,,,1.0,reviewed,us,us
+2007-08-17T22:46:15.560Z,28.745,47.569,10.0,4.0,mb,44.0,180.7,,0.9,us,usp000fk2c,2022-07-14T04:15:05.834Z,"37 km WNW of Al Wafrah, Kuwait",earthquake,,,,13.0,reviewed,us,us
+2007-07-24T18:17:04.220Z,19.212,38.945,10.0,4.3,mb,12.0,185.9,,0.96,us,usp000fh0m,2014-11-07T01:33:03.047Z,"154 km NE of Tok?r, Sudan",earthquake,,,,2.0,reviewed,us,us
+2007-05-31T13:10:48.730Z,24.339,36.39,10.0,4.3,mb,14.0,145.3,,1.26,us,usp000fd3k,2014-11-07T01:32:34.030Z,"116 km SW of Umluj, Saudi Arabia",earthquake,,,,3.0,reviewed,us,us
+2007-04-17T08:50:14.200Z,19.04,39.09,10.0,4.1,mb,9.0,224.5,,1.2,us,usp000f9xf,2014-11-07T01:32:13.024Z,"158 km ENE of Tok?r, Sudan",earthquake,,,,1.0,reviewed,us,us
+2007-01-04T09:13:30.890Z,19.117,38.794,10.0,3.8,mb,8.0,153.7,,1.33,us,usp000f1pj,2014-11-07T01:31:18.311Z,"135 km NE of Tok?r, Sudan",earthquake,,,,1.0,reviewed,us,us
+2006-12-29T10:22:31.380Z,28.937,47.496,10.0,4.6,mb,15.0,212.5,,0.7,us,usp000f18p,2014-11-07T01:31:12.970Z,"47 km SSW of Al Jahr?’, Kuwait",earthquake,,,,1.0,reviewed,us,us
+2006-10-18T01:09:16.980Z,19.086,39.137,10.0,3.8,mb,24.0,111.7,,1.1,us,usp000evea,2014-11-07T01:30:35.277Z,"165 km ENE of Tok?r, Sudan",earthquake,,,,4.0,reviewed,us,us
+2006-07-02T23:45:05.330Z,19.328,38.952,10.0,4.7,mwc,15.0,79.0,,0.77,us,usp000emtd,2016-11-10T01:24:59.924Z,"163 km NE of Tok?r, Sudan",earthquake,,,,,reviewed,us,hrv
+2006-06-02T20:33:14.080Z,24.208,49.032,10.0,4.2,mblg,20.0,208.1,,0.77,us,usp000ejjv,2014-11-07T01:29:18.427Z,"139 km SSW of Al Huf?f, Saudi Arabia",earthquake,,0.0,,,reviewed,us,teh
+2006-03-26T22:13:08.410Z,23.377,36.803,10.0,4.1,mb,9.0,207.1,,0.72,us,usp000ed12,2014-11-07T01:28:35.955Z,"150 km WSW of Yanbu, Saudi Arabia",earthquake,,,,2.0,reviewed,us,us
+2005-05-05T14:52:06.700Z,29.04,50.094,10.0,3.8,mb,25.0,98.9,,,us,usp000dpzc,2014-11-07T01:25:49.407Z,"33 km SW of Kh?rk, Iran",earthquake,,,,1.0,reviewed,teh,us
+2005-02-17T00:49:43.450Z,19.033,39.126,10.0,4.6,mb,38.0,105.3,,0.96,us,usp000dgaz,2014-11-07T01:25:00.523Z,"161 km ENE of Tok?r, Sudan",earthquake,,,,17.0,reviewed,us,us
+2004-12-18T10:49:38.580Z,23.996,36.51,17.0,4.8,mb,60.0,95.7,,0.9,us,usp000daym,2014-11-07T01:24:18.930Z,"137 km SW of Umluj, Saudi Arabia",earthquake,,24.1,,23.0,reviewed,us,us
+2004-08-30T17:23:22.040Z,24.685,36.391,10.0,4.3,mb,21.0,95.1,,1.28,us,usp000d37q,2014-11-07T01:23:17.938Z,"96 km WSW of Umluj, Saudi Arabia",earthquake,,,,5.0,reviewed,us,us
+2004-06-23T03:04:44.900Z,27.864,36.91,10.0,3.9,mb,35.0,200.4,,0.72,us,usp000cyjd,2014-11-07T01:22:40.670Z,"68 km SSE of Tabuk, Saudi Arabia",earthquake,,,,2.0,reviewed,us,us
+2004-06-22T14:38:58.650Z,27.835,36.966,10.0,4.7,mb,190.0,60.2,,1.05,us,usp000cyhb,2014-11-07T01:22:40.531Z,"73 km SSE of Tabuk, Saudi Arabia",earthquake,,,,37.0,reviewed,us,us
+2004-06-13T08:26:29.580Z,29.508,50.806,40.0,4.4,mb,24.0,212.0,,0.97,us,usp000cxue,2014-11-07T01:22:37.442Z,"29 km ESE of Bandar-e Gen?veh, Iran",earthquake,,,,6.0,reviewed,us,us
+2004-06-09T11:41:16.550Z,27.836,36.905,10.0,4.6,ml,18.0,264.5,,0.69,us,usp000cxgv,2021-10-20T18:07:56.929Z,"70 km SSE of Tabuk, Saudi Arabia",earthquake,,,,,reviewed,us,gii
+2004-04-20T17:52:34.800Z,23.328,37.034,10.0,4.3,mb,17.0,133.8,,1.07,us,usp000ct01,2014-11-07T01:22:03.638Z,"134 km SW of Yanbu, Saudi Arabia",earthquake,,,,1.0,reviewed,us,us
+2003-12-18T15:19:55.720Z,29.204,50.515,33.0,4.3,mb,17.0,144.3,,0.98,us,usp000cfgk,2014-11-07T01:20:46.672Z,"19 km ESE of Kh?rk, Iran",earthquake,,,,8.0,reviewed,us,us
+2003-12-18T15:17:45.140Z,29.487,50.742,33.0,4.3,mb,18.0,129.7,,1.13,us,usp000cfgj,2014-11-07T01:20:46.670Z,"24 km ESE of Bandar-e Gen?veh, Iran",earthquake,,,,6.0,reviewed,us,us
+2003-12-18T10:07:17.510Z,29.495,50.744,33.0,4.4,mb,33.0,207.1,,0.78,us,usp000cfg6,2014-11-07T01:20:46.649Z,"23 km ESE of Bandar-e Gen?veh, Iran",earthquake,,,,18.0,reviewed,us,us
+2003-12-18T07:34:58.170Z,29.476,50.748,33.0,4.6,mb,31.0,178.6,,1.11,us,usp000cffz,2014-11-07T01:20:46.635Z,"25 km ESE of Bandar-e Gen?veh, Iran",earthquake,,,,12.0,reviewed,us,us
+2003-04-08T16:10:05.080Z,18.981,39.237,10.0,4.6,mb,43.0,105.7,,1.03,us,usp000buqm,2014-11-07T01:18:18.795Z,"170 km ENE of Tok?r, Sudan",earthquake,,,,21.0,reviewed,us,us
+2002-08-20T21:18:40.900Z,23.268,37.273,10.0,4.3,mb,10.0,,,0.87,us,usp000baa7,2014-11-07T01:16:18.124Z,"121 km SW of Yanbu, Saudi Arabia",earthquake,,,,2.0,reviewed,us,us
+2002-01-06T20:15:44.570Z,23.386,37.075,10.0,4.1,mb,11.0,,,1.08,us,usp000avyp,2014-11-07T01:14:39.168Z,"127 km SW of Yanbu, Saudi Arabia",earthquake,,,,3.0,reviewed,us,us
+2001-06-23T16:29:55.720Z,18.988,39.226,10.0,4.5,mb,25.0,,,1.0,us,usp000ah4b,2014-11-07T01:13:06.708Z,Red Sea,earthquake,,,,9.0,reviewed,us,us
+2001-06-23T16:07:45.570Z,19.017,39.213,10.0,4.9,mb,84.0,,,0.76,us,usp000ah49,2014-11-07T01:13:06.696Z,"169 km ENE of Tok?r, Sudan",earthquake,,,,29.0,reviewed,us,us
+2000-05-03T10:26:58.650Z,29.505,50.784,33.0,4.4,mb,,,,0.94,us,usp0009s9s,2014-11-07T01:10:02.613Z,"27 km ESE of Bandar-e Gen?veh, Iran",earthquake,,,,4.0,reviewed,us,us

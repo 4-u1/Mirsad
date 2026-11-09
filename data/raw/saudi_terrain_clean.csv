@@ -1,0 +1,1679 @@
+﻿lat,lon,elevation,slope,aspect,landcover,landcover_name
+18.69464,42.90537,1803,1.37,279.8,60,Bare / sparse vegetation
+17.96534,41.70992,19,2.02,105.0,20,Shrubland
+18.50942,42.24905,1624,17.1,0.8,30,Grassland
+16.62679,42.82846,25,0.19,252.3,60,Bare / sparse vegetation
+18.97169,42.99823,1586,0.74,94.5,60,Bare / sparse vegetation
+18.67062,42.80058,1825,0.47,51.7,60,Bare / sparse vegetation
+18.84942,43.64877,1400,0.64,35.2,60,Bare / sparse vegetation
+18.73271,42.91498,1792,0.87,66.4,60,Bare / sparse vegetation
+18.6342,42.53021,1968,1.06,112.5,60,Bare / sparse vegetation
+18.53571,43.07286,1920,0.45,24.3,60,Bare / sparse vegetation
+17.98061,41.97146,114,0.38,232.7,60,Bare / sparse vegetation
+16.62239,43.42321,1404,18.43,260.2,20,Shrubland
+17.82968,41.94223,30,0.31,79.2,60,Bare / sparse vegetation
+18.57699,42.38529,2373,1.17,84.3,60,Bare / sparse vegetation
+17.35914,43.67674,2028,0.64,34.9,60,Bare / sparse vegetation
+19.14618,42.14877,2349,2.07,139.2,30,Grassland
+19.1692,43.68175,1289,0.33,249.3,60,Bare / sparse vegetation
+17.27312,42.47929,34,0.25,103.4,60,Bare / sparse vegetation
+16.83913,43.09032,197,0.68,99.9,20,Shrubland
+19.60312,43.56497,1080,0.71,25.8,60,Bare / sparse vegetation
+16.36134,43.42248,927,8.15,27.2,30,Grassland
+19.11731,43.76256,1399,3.67,219.4,60,Bare / sparse vegetation
+20.04247,41.77467,1651,0.86,232.5,60,Bare / sparse vegetation
+18.34196,43.60406,1844,4.17,17.0,60,Bare / sparse vegetation
+18.20022,43.22236,2520,10.7,116.4,60,Bare / sparse vegetation
+18.47272,41.62547,242,0.9,195.7,60,Bare / sparse vegetation
+18.78187,43.68733,1448,3.19,266.9,60,Bare / sparse vegetation
+19.2045,43.75642,1457,0.87,20.7,60,Bare / sparse vegetation
+17.43999,42.63853,124,0.29,218.2,60,Bare / sparse vegetation
+18.18741,43.3082,2162,3.85,111.1,60,Bare / sparse vegetation
+19.04762,43.50456,1344,0.38,319.8,60,Bare / sparse vegetation
+18.4545,43.52814,1950,8.55,209.8,60,Bare / sparse vegetation
+19.11154,41.886,382,0.74,265.5,60,Bare / sparse vegetation
+18.95959,41.84634,324,0.79,207.9,60,Bare / sparse vegetation
+17.24013,43.62381,1834,4.79,260.3,60,Bare / sparse vegetation
+19.80772,43.30358,1127,1.05,176.6,60,Bare / sparse vegetation
+19.76729,43.18329,1187,0.72,14.9,60,Bare / sparse vegetation
+19.11411,43.45407,1297,2.31,326.0,60,Bare / sparse vegetation
+16.32179,43.06241,96,0.56,239.0,60,Bare / sparse vegetation
+18.22054,42.4765,2384,7.75,83.6,50,Built-up
+17.72611,42.06379,19,0.21,215.0,40,Cropland
+17.92064,43.39693,2278,1.79,327.1,60,Bare / sparse vegetation
+18.55647,42.74849,1880,1.0,209.4,60,Bare / sparse vegetation
+17.35456,42.57962,72,0.08,226.3,20,Shrubland
+19.4224,42.31212,1656,6.99,76.2,60,Bare / sparse vegetation
+17.92931,42.05837,106,0.47,231.6,60,Bare / sparse vegetation
+18.0982,43.58295,2029,0.54,244.6,60,Bare / sparse vegetation
+19.03293,43.35228,1416,0.94,308.2,60,Bare / sparse vegetation
+19.83948,43.69828,1001,0.41,8.6,60,Bare / sparse vegetation
+19.28562,42.43061,1721,4.98,117.7,60,Bare / sparse vegetation
+18.17165,43.53345,1948,1.43,39.7,60,Bare / sparse vegetation
+19.99785,43.1203,1185,0.39,28.0,60,Bare / sparse vegetation
+17.91235,41.89429,93,1.42,80.6,60,Bare / sparse vegetation
+19.16369,43.2108,1409,0.82,211.7,60,Bare / sparse vegetation
+19.3407,42.47459,1598,6.76,125.5,60,Bare / sparse vegetation
+18.75457,43.06713,1743,2.74,45.7,60,Bare / sparse vegetation
+19.25491,43.34186,1376,5.3,247.6,60,Bare / sparse vegetation
+18.72833,43.18814,1682,0.49,61.6,60,Bare / sparse vegetation
+17.2214,42.61495,42,0.25,226.3,60,Bare / sparse vegetation
+17.74108,42.4671,178,6.31,267.9,60,Bare / sparse vegetation
+17.05023,43.78356,1839,0.67,64.5,60,Bare / sparse vegetation
+18.29157,42.70061,2020,0.5,338.4,60,Bare / sparse vegetation
+17.37283,43.27486,1662,8.28,9.2,20,Shrubland
+19.77278,43.41803,1078,1.14,319.6,60,Bare / sparse vegetation
+16.8425,43.21251,607,7.18,272.3,20,Shrubland
+17.7862,43.61047,2063,0.84,133.6,60,Bare / sparse vegetation
+19.38065,43.17325,1253,1.47,24.7,60,Bare / sparse vegetation
+19.95125,41.56647,2056,4.06,165.9,60,Bare / sparse vegetation
+17.20497,43.65453,1919,3.27,334.7,60,Bare / sparse vegetation
+18.48281,42.31854,1252,16.77,253.6,60,Bare / sparse vegetation
+16.62376,43.76163,1928,1.05,247.3,60,Bare / sparse vegetation
+19.76157,43.01019,1304,0.31,79.3,60,Bare / sparse vegetation
+16.70797,43.19524,247,2.73,200.8,20,Shrubland
+17.91,42.77755,1045,9.1,102.8,60,Bare / sparse vegetation
+19.58214,42.15786,1792,2.97,343.1,60,Bare / sparse vegetation
+16.99466,43.07769,221,0.57,287.7,20,Shrubland
+19.5432,41.92957,2095,2.74,99.7,20,Shrubland
+19.65132,41.82592,878,20.37,283.6,60,Bare / sparse vegetation
+20.10021,43.57339,941,0.37,98.9,60,Bare / sparse vegetation
+18.67041,42.16428,1470,22.33,98.9,30,Grassland
+17.34386,43.21502,1313,17.93,87.7,20,Shrubland
+16.52536,42.95581,62,0.31,280.9,40,Cropland
+17.62009,43.70758,1979,4.35,158.7,60,Bare / sparse vegetation
+19.62752,41.58003,904,9.94,2.8,60,Bare / sparse vegetation
+16.98318,42.92073,109,1.21,162.6,20,Shrubland
+20.00758,41.92959,1512,0.76,313.2,60,Bare / sparse vegetation
+18.24101,43.67539,2101,1.0,293.9,60,Bare / sparse vegetation
+17.2951,42.52625,48,0.22,237.5,40,Cropland
+17.9649,42.24416,245,0.61,197.5,20,Shrubland
+18.45061,43.30911,1943,0.92,112.1,60,Bare / sparse vegetation
+18.21999,43.16474,2240,1.03,116.9,60,Bare / sparse vegetation
+19.76829,42.53652,1303,4.74,80.2,60,Bare / sparse vegetation
+17.92426,43.65802,2258,2.54,155.9,60,Bare / sparse vegetation
+18.78417,42.36865,1984,2.78,23.4,60,Bare / sparse vegetation
+18.99256,41.93178,447,3.39,276.9,20,Shrubland
+19.68651,42.45915,1429,2.54,191.2,60,Bare / sparse vegetation
+18.38136,41.91886,497,10.37,264.9,40,Cropland
+19.4694,43.49059,1127,0.76,103.3,60,Bare / sparse vegetation
+20.14013,41.68335,1620,2.58,68.9,60,Bare / sparse vegetation
+17.09014,42.75779,71,0.19,252.3,40,Cropland
+19.98104,42.40912,1220,0.87,-0.0,60,Bare / sparse vegetation
+18.94306,43.23283,1513,5.12,166.2,60,Bare / sparse vegetation
+17.17315,43.23482,1496,25.82,1.6,20,Shrubland
+18.05836,41.62951,7,0.41,188.5,60,Bare / sparse vegetation
+16.41712,43.33527,390,0.22,57.4,20,Shrubland
+19.69622,42.58741,1293,0.95,168.7,60,Bare / sparse vegetation
+19.72108,42.06189,1868,1.92,28.8,60,Bare / sparse vegetation
+18.23652,43.78017,2094,2.96,55.4,60,Bare / sparse vegetation
+19.85963,43.26575,1147,0.58,186.1,60,Bare / sparse vegetation
+18.60802,43.16176,1813,0.72,43.2,60,Bare / sparse vegetation
+18.74795,41.91841,327,1.86,261.0,60,Bare / sparse vegetation
+18.55853,41.65969,330,3.42,100.7,60,Bare / sparse vegetation
+18.5197,42.69666,1909,0.62,79.3,60,Bare / sparse vegetation
+19.86629,41.71084,1943,3.32,294.7,60,Bare / sparse vegetation
+17.13366,43.69971,2003,10.54,239.3,60,Bare / sparse vegetation
+19.92375,43.42968,1223,5.99,337.7,60,Bare / sparse vegetation
+18.71341,41.66291,292,3.25,218.4,60,Bare / sparse vegetation
+18.29503,43.63055,1908,1.78,231.9,60,Bare / sparse vegetation
+17.56741,42.50715,126,0.92,207.7,60,Bare / sparse vegetation
+17.98278,43.1262,2419,0.34,32.2,60,Bare / sparse vegetation
+18.0142,43.12738,2387,0.35,180.0,60,Bare / sparse vegetation
+17.49241,42.82007,498,4.06,245.6,20,Shrubland
+16.77173,42.99145,90,0.22,237.4,40,Cropland
+19.18411,42.7243,1628,1.11,96.0,60,Bare / sparse vegetation
+18.94607,43.45515,1721,9.97,273.3,60,Bare / sparse vegetation
+19.53178,41.84556,1295,24.8,285.9,30,Grassland
+17.8202,41.84908,25,1.75,163.8,60,Bare / sparse vegetation
+16.95106,42.79912,54,0.08,226.3,40,Cropland
+17.95931,42.21451,493,14.6,79.7,60,Bare / sparse vegetation
+19.8718,43.03457,1246,0.31,90.0,60,Bare / sparse vegetation
+17.42801,42.51827,85,0.37,199.3,40,Cropland
+19.53886,41.84094,1051,18.75,279.4,30,Grassland
+18.83435,42.13427,1073,13.81,90.5,30,Grassland
+16.88576,43.16701,397,11.3,287.7,20,Shrubland
+20.12328,43.25021,1109,0.35,60.6,60,Bare / sparse vegetation
+16.8314,42.94469,93,0.86,209.4,60,Bare / sparse vegetation
+18.9871,42.6141,1716,1.1,267.0,60,Bare / sparse vegetation
+17.50838,43.41551,2206,2.21,97.5,60,Bare / sparse vegetation
+19.06288,42.15233,2427,0.98,290.7,40,Cropland
+17.27699,43.42973,2390,3.24,262.8,20,Shrubland
+19.4479,42.32727,1598,4.49,126.3,60,Bare / sparse vegetation
+19.26161,42.9748,1540,1.9,284.1,60,Bare / sparse vegetation
+17.23199,42.92873,210,0.97,270.0,40,Cropland
+18.05872,42.44762,1368,16.79,217.1,30,Grassland
+18.80762,41.88593,320,3.91,209.0,60,Bare / sparse vegetation
+18.33212,43.45283,1974,1.11,6.3,60,Bare / sparse vegetation
+17.49866,43.79037,1999,1.66,146.8,60,Bare / sparse vegetation
+18.4688,43.53861,1793,5.69,37.6,60,Bare / sparse vegetation
+18.89553,41.71653,606,7.19,5.8,60,Bare / sparse vegetation
+19.60526,41.87758,2159,11.05,262.0,20,Shrubland
+18.08853,42.38844,1149,11.67,322.5,20,Shrubland
+18.09167,43.42165,2143,1.43,223.1,60,Bare / sparse vegetation
+18.74063,43.70522,1440,0.21,35.1,60,Bare / sparse vegetation
+20.1025,42.46698,1177,0.06,270.0,60,Bare / sparse vegetation
+19.71638,43.52604,1032,0.18,90.0,60,Bare / sparse vegetation
+17.90671,43.72229,2143,0.79,94.2,60,Bare / sparse vegetation
+18.2439,43.18584,2210,2.86,135.2,60,Bare / sparse vegetation
+18.67248,42.47907,1947,0.74,19.4,60,Bare / sparse vegetation
+19.67802,43.56168,1054,0.55,270.0,60,Bare / sparse vegetation
+18.864,43.37617,1549,1.82,322.7,60,Bare / sparse vegetation
+17.27057,42.87967,157,0.64,185.4,60,Bare / sparse vegetation
+20.02858,42.29606,1256,0.34,147.4,60,Bare / sparse vegetation
+17.70089,42.75982,780,12.81,147.2,60,Bare / sparse vegetation
+19.15995,43.02688,1589,3.03,135.0,60,Bare / sparse vegetation
+19.62458,41.92181,2075,8.54,308.8,20,Shrubland
+18.14048,42.93953,2210,1.13,44.3,40,Cropland
+19.07232,41.90651,458,2.78,41.4,60,Bare / sparse vegetation
+17.95845,43.10878,2410,2.6,200.6,60,Bare / sparse vegetation
+17.49909,43.5777,2153,2.83,16.2,60,Bare / sparse vegetation
+16.71056,42.15569,16,0.59,46.2,60,Bare / sparse vegetation
+16.66199,43.6895,1893,16.89,300.0,60,Bare / sparse vegetation
+17.06538,42.4713,3,0.08,133.7,60,Bare / sparse vegetation
+19.28511,41.61389,371,0.13,332.1,60,Bare / sparse vegetation
+19.90046,42.34103,1334,3.63,221.4,60,Bare / sparse vegetation
+18.01206,42.61722,910,6.43,127.6,60,Bare / sparse vegetation
+18.91481,41.59228,215,0.37,160.6,60,Bare / sparse vegetation
+18.49217,42.72822,1916,2.39,256.0,60,Bare / sparse vegetation
+19.42266,43.46393,1151,0.26,207.9,60,Bare / sparse vegetation
+18.03945,42.26383,395,1.74,182.0,60,Bare / sparse vegetation
+18.41705,42.30283,1708,24.46,253.1,20,Shrubland
+19.81055,42.93809,1315,0.51,256.8,60,Bare / sparse vegetation
+18.13372,42.39768,1328,19.02,199.1,20,Shrubland
+17.53639,43.16757,1769,14.95,35.5,30,Grassland
+16.89099,42.70897,28,0.13,244.4,60,Bare / sparse vegetation
+19.44188,42.80104,1446,1.76,22.6,60,Bare / sparse vegetation
+18.78904,43.60191,1618,5.74,184.3,60,Bare / sparse vegetation
+19.86,41.89776,1686,0.51,103.2,60,Bare / sparse vegetation
+19.4422,42.92546,1472,0.9,305.3,60,Bare / sparse vegetation
+19.26587,42.37594,1950,1.26,283.3,60,Bare / sparse vegetation
+19.03493,43.32251,1397,0.26,332.1,60,Bare / sparse vegetation
+17.39267,42.65659,120,0.52,250.3,60,Bare / sparse vegetation
+18.96176,43.28497,1469,1.62,79.7,60,Bare / sparse vegetation
+20.04387,42.57533,1160,0.24,345.1,60,Bare / sparse vegetation
+16.36425,43.65325,1312,0.08,133.8,60,Bare / sparse vegetation
+19.24268,41.66347,471,4.5,64.1,60,Bare / sparse vegetation
+19.74663,41.67661,1222,22.54,270.8,30,Grassland
+18.1255,41.96725,502,15.91,265.9,60,Bare / sparse vegetation
+19.19219,43.7271,1318,2.1,332.1,60,Bare / sparse vegetation
+19.53271,43.07678,1495,1.34,204.5,60,Bare / sparse vegetation
+16.55646,43.09315,116,0.32,249.0,40,Cropland
+19.95465,41.88987,1580,2.87,80.7,60,Bare / sparse vegetation
+18.61521,42.5651,1959,2.03,85.1,60,Bare / sparse vegetation
+18.4851,41.813,479,4.91,96.1,60,Bare / sparse vegetation
+18.69407,43.42165,1827,1.92,252.5,60,Bare / sparse vegetation
+18.46991,42.07048,516,3.17,206.3,60,Bare / sparse vegetation
+19.32211,41.81395,468,0.59,133.3,60,Bare / sparse vegetation
+16.77815,43.07472,190,1.91,246.8,20,Shrubland
+20.17562,42.94631,1130,0.35,349.9,60,Bare / sparse vegetation
+18.16322,43.32579,2118,1.68,258.1,60,Bare / sparse vegetation
+18.73083,43.27806,1671,0.66,27.8,60,Bare / sparse vegetation
+18.76636,41.659,483,7.88,348.4,60,Bare / sparse vegetation
+19.1018,43.513,1302,0.52,-0.0,60,Bare / sparse vegetation
+18.67897,42.55191,1930,5.47,83.3,60,Bare / sparse vegetation
+19.56452,43.49496,1092,1.35,87.5,60,Bare / sparse vegetation
+19.60042,42.5552,1425,1.66,112.5,60,Bare / sparse vegetation
+18.45761,42.71482,1956,2.3,241.4,60,Bare / sparse vegetation
+19.39354,41.84159,578,5.54,187.6,20,Shrubland
+19.82553,41.54306,1550,21.0,223.6,20,Shrubland
+16.61028,43.33028,739,10.7,147.2,20,Shrubland
+19.90879,43.74808,974,0.27,295.2,60,Bare / sparse vegetation
+18.69236,43.41048,1746,1.07,306.7,60,Bare / sparse vegetation
+18.17321,41.60872,91,1.04,270.0,60,Bare / sparse vegetation
+16.65739,43.79445,1815,2.4,229.2,60,Bare / sparse vegetation
+17.94267,43.31615,2495,7.98,138.7,60,Bare / sparse vegetation
+18.86067,42.07579,499,1.51,180.0,60,Bare / sparse vegetation
+19.68875,43.01079,1334,0.18,90.0,60,Bare / sparse vegetation
+19.55867,42.7246,1379,1.2,241.0,60,Bare / sparse vegetation
+20.08814,41.62503,1835,1.15,25.3,60,Bare / sparse vegetation
+18.42746,42.75772,1952,1.15,72.5,60,Bare / sparse vegetation
+17.33008,43.35076,1984,9.27,356.3,20,Shrubland
+16.86393,43.14547,238,0.75,180.0,20,Shrubland
+18.10492,41.65483,120,3.02,242.6,60,Bare / sparse vegetation
+18.1673,42.3157,1319,10.91,81.5,20,Shrubland
+18.30765,41.72407,244,1.93,316.0,60,Bare / sparse vegetation
+19.49161,43.06822,1347,2.58,9.6,60,Bare / sparse vegetation
+18.83167,43.76528,1463,0.76,297.3,60,Bare / sparse vegetation
+19.80066,43.03243,1274,0.5,21.7,60,Bare / sparse vegetation
+18.16136,42.04759,422,7.55,254.5,20,Shrubland
+20.18472,42.12211,1374,1.19,98.4,60,Bare / sparse vegetation
+18.5441,43.52685,1858,0.83,106.3,60,Bare / sparse vegetation
+19.93623,42.21464,1383,2.45,135.2,60,Bare / sparse vegetation
+18.16072,43.50088,1983,1.84,328.1,60,Bare / sparse vegetation
+19.74202,41.82248,947,2.33,217.4,60,Bare / sparse vegetation
+19.41895,43.60682,1167,1.22,58.6,60,Bare / sparse vegetation
+16.90037,42.98219,119,1.51,285.6,20,Shrubland
+19.65769,42.721,1311,0.5,276.7,60,Bare / sparse vegetation
+18.80582,43.29405,1590,1.02,37.0,60,Bare / sparse vegetation
+19.84735,42.21213,1410,1.86,82.9,60,Bare / sparse vegetation
+18.6291,43.02648,1854,0.3,321.6,60,Bare / sparse vegetation
+17.61128,43.69392,2082,6.69,104.5,60,Bare / sparse vegetation
+18.68723,42.23988,2682,7.73,114.2,20,Shrubland
+17.5634,43.1683,1633,11.24,23.6,30,Grassland
+18.6179,42.86034,1864,1.62,52.5,60,Bare / sparse vegetation
+17.48617,42.42292,59,0.36,270.0,60,Bare / sparse vegetation
+17.0431,42.57031,12,0.13,244.5,60,Bare / sparse vegetation
+17.60249,43.35093,1599,8.49,218.8,20,Shrubland
+16.9079,43.51898,2466,4.61,275.0,60,Bare / sparse vegetation
+18.38565,41.68802,331,0.35,119.7,60,Bare / sparse vegetation
+16.97245,43.16705,839,20.92,272.4,20,Shrubland
+19.96812,42.29095,1333,11.29,33.8,60,Bare / sparse vegetation
+19.5623,42.53601,1425,1.79,273.7,60,Bare / sparse vegetation
+17.17852,42.93887,207,0.43,277.8,60,Bare / sparse vegetation
+16.99689,43.16386,934,22.37,251.1,20,Shrubland
+18.29247,41.72955,287,1.68,329.5,60,Bare / sparse vegetation
+19.35482,41.78406,817,12.93,70.7,60,Bare / sparse vegetation
+18.10772,42.80858,2227,0.34,313.5,50,Built-up
+18.32633,41.65662,277,0.25,76.6,60,Bare / sparse vegetation
+17.08929,42.93408,215,1.13,294.2,40,Cropland
+19.54617,42.35764,1582,12.58,45.0,60,Bare / sparse vegetation
+18.20815,43.37288,2023,1.14,324.1,60,Bare / sparse vegetation
+19.61406,42.01392,1995,5.93,67.1,60,Bare / sparse vegetation
+18.41143,43.16453,2013,1.82,37.2,60,Bare / sparse vegetation
+16.47837,43.3188,374,4.23,235.9,60,Bare / sparse vegetation
+18.2586,43.63479,1972,4.42,14.4,60,Bare / sparse vegetation
+20.11066,42.61581,1139,0.55,128.8,60,Bare / sparse vegetation
+17.82811,42.52012,636,13.94,199.0,20,Shrubland
+18.16757,41.64569,89,0.92,207.8,60,Bare / sparse vegetation
+19.12028,42.46933,1731,1.85,73.7,60,Bare / sparse vegetation
+18.5358,43.7613,1618,2.9,206.2,60,Bare / sparse vegetation
+19.95752,43.43206,1181,9.71,302.6,60,Bare / sparse vegetation
+18.53267,42.86164,1917,1.1,273.0,60,Bare / sparse vegetation
+16.54303,42.88149,42,0.65,302.6,60,Bare / sparse vegetation
+17.08387,43.55168,2207,9.22,346.4,60,Bare / sparse vegetation
+18.89451,42.85255,1721,0.62,79.3,60,Bare / sparse vegetation
+18.76812,41.60571,141,1.42,328.9,60,Bare / sparse vegetation
+19.18268,43.35375,1293,0.22,122.2,60,Bare / sparse vegetation
+17.36444,42.95263,491,8.6,246.7,20,Shrubland
+18.58767,43.47298,1890,2.81,188.7,60,Bare / sparse vegetation
+20.06723,43.0212,1186,0.47,68.1,60,Bare / sparse vegetation
+18.35629,42.32446,2603,1.47,199.4,30,Grassland
+18.28562,43.24351,2132,0.85,52.2,60,Bare / sparse vegetation
+18.42971,42.13121,627,1.29,277.7,60,Bare / sparse vegetation
+19.48173,43.11293,1299,0.56,146.5,60,Bare / sparse vegetation
+19.91822,42.74636,1240,0.39,28.0,60,Bare / sparse vegetation
+19.03678,41.63863,294,13.9,60.4,60,Bare / sparse vegetation
+19.57965,41.85191,1173,16.82,240.5,30,Grassland
+17.74446,43.24729,1932,18.48,264.1,20,Shrubland
+19.22966,43.594,1226,0.18,270.0,60,Bare / sparse vegetation
+17.98648,43.62405,2208,1.59,11.0,60,Bare / sparse vegetation
+18.09985,42.6543,2218,15.37,194.6,30,Grassland
+16.73917,42.81044,33,0.08,313.8,40,Cropland
+18.1348,42.51445,1557,10.54,66.3,30,Grassland
+19.14123,42.69084,1673,2.53,301.8,60,Bare / sparse vegetation
+19.21548,42.9694,1650,2.8,152.7,60,Bare / sparse vegetation
+18.56104,41.9227,433,3.35,350.5,60,Bare / sparse vegetation
+19.14046,42.25206,2060,2.56,259.6,60,Bare / sparse vegetation
+20.0651,42.26189,1298,1.06,83.7,60,Bare / sparse vegetation
+19.61805,41.62144,543,8.28,50.8,60,Bare / sparse vegetation
+17.23328,42.47775,26,0.21,214.9,60,Bare / sparse vegetation
+19.74505,43.016,1290,0.72,36.6,60,Bare / sparse vegetation
+16.51713,43.37255,737,6.59,357.4,20,Shrubland
+19.9885,42.17343,1347,1.6,90.0,60,Bare / sparse vegetation
+17.3917,43.23336,1437,4.58,355.4,30,Grassland
+16.66674,42.81873,28,0.17,226.2,60,Bare / sparse vegetation
+18.90005,42.20569,2275,4.34,1.6,30,Grassland
+19.58565,43.67989,1114,1.12,350.5,60,Bare / sparse vegetation
+18.48564,43.71043,1758,2.0,293.9,60,Bare / sparse vegetation
+18.25024,43.76683,2088,0.6,30.3,60,Bare / sparse vegetation
+18.84177,41.501,107,0.62,242.3,60,Bare / sparse vegetation
+18.10928,43.19512,2393,3.31,83.0,60,Bare / sparse vegetation
+16.58061,42.80562,18,0.18,270.0,40,Cropland
+17.81286,43.41927,2532,2.68,266.3,60,Bare / sparse vegetation
+17.76756,43.58181,2183,5.4,197.7,60,Bare / sparse vegetation
+16.95373,42.85114,61,0.18,270.0,20,Shrubland
+19.661,42.06836,1920,8.2,127.1,60,Bare / sparse vegetation
+18.44242,41.52218,121,2.74,312.6,60,Bare / sparse vegetation
+17.17063,42.67578,56,0.18,270.0,40,Cropland
+18.78822,42.57927,1801,0.86,86.1,60,Bare / sparse vegetation
+19.57961,43.43484,1140,0.92,59.9,60,Bare / sparse vegetation
+18.89048,43.00364,1622,0.6,67.2,60,Bare / sparse vegetation
+18.48701,41.71914,443,5.13,283.0,20,Shrubland
+20.17304,41.72335,1557,0.3,54.9,60,Bare / sparse vegetation
+16.7095,43.54829,1857,10.12,244.1,60,Bare / sparse vegetation
+17.61848,43.29873,1575,17.18,36.7,20,Shrubland
+19.40745,43.23302,1210,0.18,19.5,60,Bare / sparse vegetation
+19.95895,43.51136,997,1.92,35.3,60,Bare / sparse vegetation
+17.15991,43.32424,1576,7.66,89.6,60,Bare / sparse vegetation
+19.90146,41.89757,1843,4.89,45.8,60,Bare / sparse vegetation
+19.7682,42.54591,1297,1.64,17.5,60,Bare / sparse vegetation
+18.03489,42.44627,995,10.81,302.7,20,Shrubland
+19.45983,43.00545,1461,2.73,292.5,60,Bare / sparse vegetation
+19.38494,42.46059,1666,1.98,116.0,60,Bare / sparse vegetation
+18.28061,41.57363,122,1.46,270.0,60,Bare / sparse vegetation
+17.36607,43.05357,816,13.41,186.6,20,Shrubland
+18.84155,41.77716,321,2.58,71.7,60,Bare / sparse vegetation
+18.84111,42.96806,1706,0.98,266.6,60,Bare / sparse vegetation
+19.55984,43.42191,1126,1.66,272.0,60,Bare / sparse vegetation
+20.16148,42.9219,1135,0.3,305.1,60,Bare / sparse vegetation
+18.13106,42.65451,2200,1.4,308.4,20,Shrubland
+19.82209,42.32323,1364,5.91,348.0,60,Bare / sparse vegetation
+17.1144,43.75726,1879,4.56,281.0,60,Bare / sparse vegetation
+18.70889,41.81622,427,3.64,282.9,60,Bare / sparse vegetation
+19.80174,43.04514,1268,0.68,90.0,60,Bare / sparse vegetation
+16.91229,41.67536,13,0.51,216.7,60,Bare / sparse vegetation
+19.57226,42.32999,1499,4.03,216.5,60,Bare / sparse vegetation
+19.14444,42.41451,1934,4.46,137.7,60,Bare / sparse vegetation
+19.1394,41.65274,500,6.67,286.1,20,Shrubland
+20.07577,41.61873,2015,4.45,100.5,60,Bare / sparse vegetation
+16.3421,43.71987,1395,7.06,202.5,60,Bare / sparse vegetation
+19.73669,42.56836,1266,0.19,252.6,60,Bare / sparse vegetation
+17.69562,42.42115,119,1.1,93.0,60,Bare / sparse vegetation
+17.46615,42.53906,126,0.3,270.0,20,Shrubland
+17.56316,43.07438,1421,19.87,31.7,30,Grassland
+17.60146,43.37821,1774,8.57,48.3,20,Shrubland
+19.93042,42.00152,1752,2.71,19.9,60,Bare / sparse vegetation
+18.14933,43.43657,1991,1.62,344.7,60,Bare / sparse vegetation
+16.39296,43.6114,1428,4.74,126.7,60,Bare / sparse vegetation
+18.97552,42.80011,1733,1.55,149.1,60,Bare / sparse vegetation
+19.12109,43.12405,1431,0.26,27.9,60,Bare / sparse vegetation
+16.60121,42.98235,63,0.12,270.0,40,Cropland
+17.61877,42.80402,788,2.97,281.2,30,Grassland
+18.23651,42.81082,2046,0.71,223.1,60,Bare / sparse vegetation
+16.56632,43.08595,107,0.3,305.7,40,Cropland
+18.84875,43.57592,1615,3.52,290.2,60,Bare / sparse vegetation
+18.02185,42.30641,1037,6.35,83.7,20,Shrubland
+19.32729,43.77187,1336,4.21,135.6,60,Bare / sparse vegetation
+17.74956,42.50985,257,1.81,164.4,60,Bare / sparse vegetation
+18.78197,43.10754,1701,0.87,4.0,60,Bare / sparse vegetation
+16.88848,41.57354,11,0.62,298.0,60,Bare / sparse vegetation
+19.18043,42.0825,2320,26.82,191.4,20,Shrubland
+16.62375,42.86441,38,0.22,302.6,40,Cropland
+18.33733,43.16082,2159,3.32,42.9,60,Bare / sparse vegetation
+20.15222,41.70045,1606,1.56,114.2,60,Bare / sparse vegetation
+18.02395,41.68332,11,0.24,194.7,60,Bare / sparse vegetation
+19.11356,43.49428,1290,0.41,-0.0,60,Bare / sparse vegetation
+19.69564,42.13381,1823,3.15,118.5,60,Bare / sparse vegetation
+18.28548,42.94294,2101,2.07,250.4,60,Bare / sparse vegetation
+18.93821,42.08666,899,17.44,193.4,20,Shrubland
+16.88987,43.06338,305,1.49,305.7,20,Shrubland
+19.83542,42.91436,1290,0.49,298.3,60,Bare / sparse vegetation
+19.50194,42.17973,1648,14.08,334.1,60,Bare / sparse vegetation
+16.49226,43.24369,338,8.36,257.7,20,Shrubland
+18.89676,42.23958,2398,6.5,314.5,30,Grassland
+18.36963,43.74062,1990,5.1,23.2,60,Bare / sparse vegetation
+17.90069,42.79765,917,7.11,288.9,60,Bare / sparse vegetation
+17.10055,43.11828,385,0.97,241.4,20,Shrubland
+19.0181,42.83055,1723,1.41,87.6,60,Bare / sparse vegetation
+18.5568,42.95349,1885,0.61,17.6,60,Bare / sparse vegetation
+19.51996,42.48294,1510,8.98,111.4,60,Bare / sparse vegetation
+19.35947,41.78219,743,16.53,40.8,60,Bare / sparse vegetation
+17.00291,43.72024,1890,0.48,90.0,40,Cropland
+18.4828,42.84475,1978,0.74,279.0,60,Bare / sparse vegetation
+16.56959,43.02747,88,0.18,199.2,40,Cropland
+18.46321,43.35416,1909,2.14,13.2,60,Bare / sparse vegetation
+17.83253,43.3612,2108,6.62,238.4,60,Bare / sparse vegetation
+18.7873,43.04229,1744,1.07,53.4,60,Bare / sparse vegetation
+17.29087,43.41384,2330,5.88,273.4,60,Bare / sparse vegetation
+17.3962,42.40178,34,0.3,270.0,60,Bare / sparse vegetation
+19.19605,43.7235,1310,0.71,251.0,60,Bare / sparse vegetation
+17.40741,42.37297,24,0.22,237.5,60,Bare / sparse vegetation
+17.88615,42.48142,591,12.85,323.4,20,Shrubland
+18.96306,41.77818,456,7.25,317.7,60,Bare / sparse vegetation
+19.27383,43.29442,1442,3.44,186.1,60,Bare / sparse vegetation
+19.69109,43.12104,1277,0.89,49.4,60,Bare / sparse vegetation
+20.08577,43.26462,1104,0.41,64.8,60,Bare / sparse vegetation
+17.5763,43.46269,2452,2.19,168.8,60,Bare / sparse vegetation
+18.45789,43.26645,1934,1.12,78.1,60,Bare / sparse vegetation
+16.74421,43.30592,507,13.75,300.3,20,Shrubland
+19.18655,43.57737,1222,0.58,25.2,60,Bare / sparse vegetation
+17.13348,43.30025,1385,21.66,271.6,20,Shrubland
+17.38396,43.44204,2188,1.14,144.2,30,Grassland
+17.9815,43.60275,2163,2.01,305.2,60,Bare / sparse vegetation
+17.17972,42.65684,50,0.26,207.6,40,Cropland
+17.94623,42.84086,1345,17.77,37.9,30,Grassland
+18.69408,43.63829,1468,0.47,51.7,60,Bare / sparse vegetation
+18.77152,42.27444,2486,0.66,207.8,60,Bare / sparse vegetation
+18.98847,42.64178,1719,0.89,254.9,60,Bare / sparse vegetation
+19.89696,43.42603,1014,0.39,107.4,60,Bare / sparse vegetation
+18.21247,43.58605,2078,3.02,294.9,60,Bare / sparse vegetation
+17.12615,42.65179,41,0.13,244.5,60,Bare / sparse vegetation
+18.07927,43.7723,2131,1.54,205.7,60,Bare / sparse vegetation
+17.9833,42.27297,371,0.21,215.0,60,Bare / sparse vegetation
+18.02953,42.79,2480,8.29,0.8,30,Grassland
+19.28267,43.63885,1223,0.33,249.3,60,Bare / sparse vegetation
+19.22695,41.60186,252,0.74,236.5,60,Bare / sparse vegetation
+16.41683,43.49643,835,9.09,56.2,30,Grassland
+19.9573,42.73556,1232,0.62,95.4,60,Bare / sparse vegetation
+16.33515,43.05303,92,0.08,313.8,60,Bare / sparse vegetation
+17.31746,42.73258,105,0.42,196.7,40,Cropland
+19.92929,41.72176,1871,3.57,255.0,60,Bare / sparse vegetation
+19.71916,43.03832,1431,1.78,226.7,60,Bare / sparse vegetation
+17.83877,43.43314,2425,4.0,141.4,60,Bare / sparse vegetation
+18.36749,42.18907,1256,16.97,354.2,30,Grassland
+17.88997,42.53427,586,4.9,216.6,60,Bare / sparse vegetation
+18.31643,42.71347,1985,0.47,211.0,60,Bare / sparse vegetation
+20.016,43.55926,961,0.37,98.9,60,Bare / sparse vegetation
+19.75114,42.94204,1340,0.49,90.0,60,Bare / sparse vegetation
+17.77754,43.65309,1890,5.56,83.4,60,Bare / sparse vegetation
+18.09073,42.17684,518,4.15,94.0,20,Shrubland
+17.77558,43.56497,2179,3.34,259.0,60,Bare / sparse vegetation
+19.10979,42.93111,1662,1.43,226.6,60,Bare / sparse vegetation
+17.96574,43.3527,2300,2.51,83.4,60,Bare / sparse vegetation
+17.53242,42.91001,1574,23.05,217.7,20,Shrubland
+18.32228,41.62286,299,1.22,180.0,60,Bare / sparse vegetation
+19.52552,42.52803,1471,9.47,210.6,60,Bare / sparse vegetation
+18.0966,42.74646,2210,1.52,270.0,60,Bare / sparse vegetation
+18.79759,43.74689,1464,1.41,350.0,60,Bare / sparse vegetation
+18.54619,43.10768,1924,0.35,299.6,60,Bare / sparse vegetation
+19.98311,42.86376,1273,5.92,105.3,60,Bare / sparse vegetation
+17.82404,42.46766,495,9.33,11.6,20,Shrubland
+17.54805,43.75657,2106,0.54,346.9,60,Bare / sparse vegetation
+17.49437,42.50447,120,1.06,233.2,60,Bare / sparse vegetation
+20.01798,43.53467,968,0.25,133.2,60,Bare / sparse vegetation
+19.70193,42.69066,1323,4.29,309.3,60,Bare / sparse vegetation
+19.92138,43.29062,1110,0.66,332.0,60,Bare / sparse vegetation
+19.81142,42.89457,1306,0.63,23.0,60,Bare / sparse vegetation
+19.40048,42.5318,1502,6.03,327.4,60,Bare / sparse vegetation
+18.39852,42.11401,636,1.43,316.9,60,Bare / sparse vegetation
+17.83052,41.86973,58,1.65,208.6,60,Bare / sparse vegetation
+20.17721,43.62061,913,0.14,115.1,60,Bare / sparse vegetation
+17.59921,43.34374,1603,10.4,39.5,30,Grassland
+18.58782,42.63826,1899,3.51,13.1,60,Bare / sparse vegetation
+17.06848,43.65602,1959,1.61,239.8,60,Bare / sparse vegetation
+19.22659,43.00297,1571,1.18,27.9,60,Bare / sparse vegetation
+16.72862,42.01045,10,0.13,115.6,60,Bare / sparse vegetation
+19.47143,43.00208,1437,1.48,225.0,60,Bare / sparse vegetation
+20.08301,43.32619,1060,0.96,345.1,60,Bare / sparse vegetation
+17.48273,43.38968,2313,25.39,65.2,20,Shrubland
+18.0333,42.00358,157,0.7,175.0,60,Bare / sparse vegetation
+16.89226,42.63323,10,0.19,252.3,60,Bare / sparse vegetation
+17.34407,43.3443,1942,15.75,212.5,20,Shrubland
+17.61212,43.51398,2311,4.16,123.8,60,Bare / sparse vegetation
+17.50659,42.8723,657,2.6,159.5,20,Shrubland
+19.22072,43.68951,1278,0.26,152.1,60,Bare / sparse vegetation
+18.74298,43.19115,1666,0.13,27.8,60,Bare / sparse vegetation
+18.23286,43.01868,2193,0.97,224.0,60,Bare / sparse vegetation
+18.788,43.01786,1716,0.47,7.5,60,Bare / sparse vegetation
+19.53611,41.55392,1184,8.87,176.8,30,Grassland
+17.98926,43.15137,2423,1.05,224.1,60,Bare / sparse vegetation
+19.61902,42.87966,1450,0.46,318.5,60,Bare / sparse vegetation
+19.95662,43.44272,1167,1.69,46.8,60,Bare / sparse vegetation
+17.82859,43.29748,1784,11.18,241.9,60,Bare / sparse vegetation
+19.25523,43.13505,1335,1.44,281.6,60,Bare / sparse vegetation
+19.67938,42.61865,1298,1.77,18.2,60,Bare / sparse vegetation
+18.77478,42.35898,2094,16.49,115.1,60,Bare / sparse vegetation
+19.17398,42.80719,1663,1.35,267.5,60,Bare / sparse vegetation
+16.78681,43.18312,227,0.67,265.0,20,Shrubland
+17.66142,42.44218,112,0.69,284.6,60,Bare / sparse vegetation
+19.47242,43.68632,1179,0.51,283.3,60,Bare / sparse vegetation
+19.27284,43.22729,1366,2.0,330.5,60,Bare / sparse vegetation
+19.67878,41.53841,435,1.21,30.5,20,Shrubland
+17.59535,42.22174,19,0.21,215.0,60,Bare / sparse vegetation
+17.25996,42.6627,70,0.38,287.7,60,Bare / sparse vegetation
+17.91188,42.21152,181,0.68,279.8,60,Bare / sparse vegetation
+20.02037,43.43062,1040,1.14,59.6,60,Bare / sparse vegetation
+18.13205,41.62919,34,3.4,154.5,20,Shrubland
+17.46163,43.5428,2177,5.84,130.8,60,Bare / sparse vegetation
+17.25343,43.72147,1919,7.72,338.9,60,Bare / sparse vegetation
+17.60796,42.44911,107,0.53,353.4,60,Bare / sparse vegetation
+17.12109,43.10432,343,9.48,275.6,20,Shrubland
+19.61486,42.59688,1397,4.9,232.1,60,Bare / sparse vegetation
+20.14272,41.93987,1414,1.0,349.4,60,Bare / sparse vegetation
+19.84599,42.25361,1396,3.95,10.8,60,Bare / sparse vegetation
+17.55688,43.40739,1960,3.82,52.7,30,Grassland
+18.47155,42.27938,1562,16.96,70.8,30,Grassland
+19.7542,42.01089,1823,1.44,337.4,60,Bare / sparse vegetation
+17.55106,43.10318,1062,12.91,279.7,30,Grassland
+19.69284,43.76591,1082,0.81,322.3,60,Bare / sparse vegetation
+19.5391,43.33563,1141,0.47,328.8,60,Bare / sparse vegetation
+17.85541,42.44636,383,2.98,162.2,20,Shrubland
+18.00277,43.77414,2081,1.81,61.2,60,Bare / sparse vegetation
+19.42611,43.10608,1314,13.82,121.8,60,Bare / sparse vegetation
+17.35226,42.52032,60,0.21,214.9,40,Cropland
+18.53392,43.08001,1922,0.55,276.0,60,Bare / sparse vegetation
+16.43121,43.26113,270,3.76,263.8,60,Bare / sparse vegetation
+17.56029,43.01117,948,0.8,43.3,60,Bare / sparse vegetation
+18.22878,42.71134,2047,2.45,194.4,60,Bare / sparse vegetation
+18.2161,41.74385,230,1.28,177.3,60,Bare / sparse vegetation
+18.60137,43.58498,1556,5.44,192.3,60,Bare / sparse vegetation
+19.16696,43.36339,1412,4.79,206.6,60,Bare / sparse vegetation
+18.4151,43.65712,1692,1.2,256.0,60,Bare / sparse vegetation
+20.15146,41.59619,1675,1.93,63.3,60,Bare / sparse vegetation
+17.80077,43.17626,1279,8.12,181.3,60,Bare / sparse vegetation
+19.64733,42.18533,1583,3.61,348.2,60,Bare / sparse vegetation
+19.92641,41.96373,1690,6.02,136.8,60,Bare / sparse vegetation
+18.95411,42.29937,2250,5.08,56.1,60,Bare / sparse vegetation
+19.11348,42.34293,2114,2.31,58.2,60,Bare / sparse vegetation
+17.68649,42.81737,919,14.23,147.3,30,Grassland
+18.14861,41.94103,265,1.77,218.3,60,Bare / sparse vegetation
+18.48797,42.41596,1955,15.64,203.4,60,Bare / sparse vegetation
+20.09971,42.93646,1171,0.48,345.1,60,Bare / sparse vegetation
+19.73343,42.72607,1337,2.09,52.5,60,Bare / sparse vegetation
+17.90015,42.01033,70,0.22,237.6,60,Bare / sparse vegetation
+16.94823,43.03809,234,3.24,252.3,20,Shrubland
+19.35674,41.74646,545,5.6,95.3,60,Bare / sparse vegetation
+19.82073,43.56762,1000,0.7,255.6,60,Bare / sparse vegetation
+18.64523,41.78433,435,13.76,291.1,20,Shrubland
+16.84173,43.09841,202,0.54,221.8,20,Shrubland
+18.49556,41.78673,548,0.73,90.0,20,Shrubland
+16.99785,43.74538,1880,0.55,326.8,60,Bare / sparse vegetation
+16.61566,43.60215,1588,2.68,166.9,60,Bare / sparse vegetation
+18.39235,42.24566,1077,3.09,6.8,20,Shrubland
+16.71099,43.54824,1852,2.16,6.4,60,Bare / sparse vegetation
+17.85783,41.82451,58,2.3,238.0,60,Bare / sparse vegetation
+19.88468,41.75929,1718,5.31,275.0,30,Grassland
+18.29252,42.30733,1505,5.83,180.6,20,Shrubland
+19.88261,43.72423,987,0.45,24.5,60,Bare / sparse vegetation
+17.78694,42.17591,70,0.21,215.0,60,Bare / sparse vegetation
+17.78154,43.24745,1807,21.18,333.3,60,Bare / sparse vegetation
+19.15083,43.47903,1334,2.52,76.7,60,Bare / sparse vegetation
+20.0562,41.99362,1596,3.36,262.1,60,Bare / sparse vegetation
+19.42808,41.71741,817,14.97,99.1,60,Bare / sparse vegetation
+18.85294,43.37798,1573,2.93,66.7,60,Bare / sparse vegetation
+16.67917,42.72908,2,0.3,234.3,60,Bare / sparse vegetation
+19.40521,41.58275,445,1.29,251.7,60,Bare / sparse vegetation
+17.7339,43.43045,2531,10.14,225.9,60,Bare / sparse vegetation
+19.29285,42.51601,1703,0.97,26.3,60,Bare / sparse vegetation
+18.1525,42.82449,2110,1.31,27.8,60,Bare / sparse vegetation
+18.50787,42.63587,1989,1.48,131.8,60,Bare / sparse vegetation
+16.86446,43.10239,222,0.65,169.2,40,Cropland
+19.70156,41.8687,1370,11.01,224.6,60,Bare / sparse vegetation
+18.58793,42.85718,1904,2.47,75.0,60,Bare / sparse vegetation
+18.9848,43.04778,1548,0.46,41.4,60,Bare / sparse vegetation
+18.18672,41.75205,333,5.15,129.8,60,Bare / sparse vegetation
+18.56961,43.04382,1899,0.3,38.4,60,Bare / sparse vegetation
+17.10005,43.08945,271,0.3,191.8,40,Cropland
+19.94467,41.98117,1779,3.19,245.3,60,Bare / sparse vegetation
+16.94007,42.93107,91,0.34,226.3,40,Cropland
+20.14915,42.74525,1123,0.41,-0.0,60,Bare / sparse vegetation
+17.00751,42.55546,4,0.06,180.0,60,Bare / sparse vegetation
+18.88296,42.16595,2311,5.97,320.7,20,Shrubland
+19.21318,43.03577,1461,2.64,307.9,60,Bare / sparse vegetation
+20.17311,42.55041,1189,1.46,76.2,60,Bare / sparse vegetation
+18.25222,42.21222,1699,16.32,183.3,20,Shrubland
+18.09415,42.87983,2156,2.33,336.9,60,Bare / sparse vegetation
+19.4907,42.97284,1463,1.13,78.2,60,Bare / sparse vegetation
+19.21237,42.91316,1579,0.18,199.4,60,Bare / sparse vegetation
+17.4,43.57951,2005,1.55,109.7,60,Bare / sparse vegetation
+16.7084,42.06753,6,0.18,19.2,60,Bare / sparse vegetation
+19.90519,42.09468,1488,4.19,270.8,60,Bare / sparse vegetation
+19.34959,41.97771,855,3.74,271.8,20,Shrubland
+18.06915,43.73889,2146,3.01,25.2,60,Bare / sparse vegetation
+17.66776,43.06449,1634,22.56,103.8,30,Grassland
+16.87374,42.72736,27,0.13,244.4,40,Cropland
+19.0835,42.40919,1935,1.49,115.3,60,Bare / sparse vegetation
+18.45565,42.60415,2018,1.3,63.5,60,Bare / sparse vegetation
+18.31684,42.87638,2057,0.85,232.2,60,Bare / sparse vegetation
+19.70382,41.62463,956,10.24,268.4,30,Grassland
+18.95745,42.25,2154,10.1,313.9,60,Bare / sparse vegetation
+17.84038,43.56701,2208,6.69,224.3,60,Bare / sparse vegetation
+19.50817,42.86059,1438,0.54,244.8,60,Bare / sparse vegetation
+17.98239,42.29443,340,11.69,256.4,20,Shrubland
+20.11518,41.76525,1619,0.8,85.9,60,Bare / sparse vegetation
+18.95219,41.8266,323,0.88,101.5,60,Bare / sparse vegetation
+17.34013,43.58914,1889,0.36,90.0,60,Bare / sparse vegetation
+16.93727,42.78206,48,0.13,207.6,20,Shrubland
+19.02239,43.13857,1510,0.55,129.0,60,Bare / sparse vegetation
+18.59018,42.13574,775,3.32,224.4,20,Shrubland
+16.61492,43.1301,148,0.82,253.6,20,Shrubland
+20.19986,42.68202,1113,0.25,76.8,60,Bare / sparse vegetation
+16.71403,42.72733,8,0.18,270.0,20,Shrubland
+18.58413,42.38974,2319,3.8,78.6,60,Bare / sparse vegetation
+19.63896,42.16178,1660,3.72,348.6,60,Bare / sparse vegetation
+17.27775,43.48384,2058,1.74,250.5,60,Bare / sparse vegetation
+17.73579,42.37931,154,0.5,201.5,60,Bare / sparse vegetation
+19.89906,42.94999,1264,0.29,-0.0,60,Bare / sparse vegetation
+18.52659,41.53152,148,1.29,251.6,60,Bare / sparse vegetation
+18.36032,43.34307,2036,2.67,162.7,60,Bare / sparse vegetation
+19.38803,41.9669,1146,15.68,171.0,30,Grassland
+18.56178,43.48768,1799,2.8,346.1,60,Bare / sparse vegetation
+17.70355,43.48043,2334,4.58,55.3,60,Bare / sparse vegetation
+18.38343,42.59032,2045,4.1,63.2,60,Bare / sparse vegetation
+17.56634,43.47907,2365,1.86,358.1,60,Bare / sparse vegetation
+19.15426,41.67328,1194,18.04,270.9,30,Grassland
+18.17085,42.50179,1598,11.47,65.2,60,Bare / sparse vegetation
+17.46322,43.618,2082,4.13,107.1,60,Bare / sparse vegetation
+19.11398,41.8708,386,2.05,151.4,60,Bare / sparse vegetation
+18.62704,42.50964,2006,4.74,1.5,60,Bare / sparse vegetation
+19.47912,42.34531,1574,3.19,4.4,60,Bare / sparse vegetation
+19.5514,42.03677,2090,2.97,50.0,60,Bare / sparse vegetation
+19.92805,41.6389,1931,2.93,31.7,60,Bare / sparse vegetation
+17.8049,42.23759,104,0.66,196.0,60,Bare / sparse vegetation
+18.14269,41.66778,66,1.49,101.2,60,Bare / sparse vegetation
+20.05746,43.21765,1154,0.51,46.8,60,Bare / sparse vegetation
+18.42277,41.77692,448,1.81,338.2,60,Bare / sparse vegetation
+17.65363,43.497,2269,3.67,21.4,60,Bare / sparse vegetation
+19.25053,42.56087,1576,3.16,261.6,60,Bare / sparse vegetation
+17.00444,43.3721,1653,21.44,32.6,30,Grassland
+19.75835,43.21887,1203,0.68,226.7,60,Bare / sparse vegetation
+18.55435,42.19396,1073,18.99,267.0,30,Grassland
+17.70575,43.39194,2101,16.94,146.8,30,Grassland
+18.01886,43.45666,2118,0.69,104.5,60,Bare / sparse vegetation
+19.17606,42.93023,1649,1.94,39.2,60,Bare / sparse vegetation
+16.34717,43.10286,107,0.24,270.0,40,Cropland
+18.77631,42.16388,939,9.06,45.2,20,Shrubland
+16.45247,43.21198,218,0.79,342.2,60,Bare / sparse vegetation
+19.72675,41.75106,1082,24.36,115.3,30,Grassland
+18.93344,41.79755,364,7.84,352.9,60,Bare / sparse vegetation
+18.32808,42.29863,1721,18.6,209.0,20,Shrubland
+18.89731,43.14309,1638,2.64,77.3,60,Bare / sparse vegetation
+18.13411,43.28335,2158,0.86,86.1,60,Bare / sparse vegetation
+18.04604,42.56424,1281,6.75,190.4,30,Grassland
+18.03797,43.47993,2102,1.22,139.5,60,Bare / sparse vegetation
+19.13238,42.35994,1961,3.19,335.0,60,Bare / sparse vegetation
+19.47004,42.83848,1409,0.27,295.2,60,Bare / sparse vegetation
+17.23851,43.3853,2490,9.64,97.5,30,Grassland
+17.10345,42.71279,63,0.19,252.3,40,Cropland
+17.64323,42.35852,76,0.5,226.4,60,Bare / sparse vegetation
+18.55358,41.71298,453,11.67,274.2,60,Bare / sparse vegetation
+18.38071,43.66351,1716,1.24,259.3,60,Bare / sparse vegetation
+18.51198,42.98138,1929,1.26,42.7,60,Bare / sparse vegetation
+18.21741,42.58663,2186,1.65,331.3,60,Bare / sparse vegetation
+17.16,43.45675,2392,11.07,101.6,30,Grassland
+17.2149,42.87004,146,0.6,329.8,60,Bare / sparse vegetation
+18.31977,42.24662,1141,13.1,224.1,20,Shrubland
+17.63827,43.48929,2373,5.2,67.1,60,Bare / sparse vegetation
+17.74063,42.96445,863,5.24,248.0,60,Bare / sparse vegetation
+18.41535,42.10515,736,11.9,72.1,60,Bare / sparse vegetation
+19.89125,41.88076,1922,4.42,185.6,60,Bare / sparse vegetation
+18.4563,42.22268,1256,23.38,256.5,30,Grassland
+19.05795,41.7879,286,1.91,285.8,60,Bare / sparse vegetation
+17.37789,43.79534,2148,5.53,227.2,60,Bare / sparse vegetation
+19.88858,42.12824,1510,6.2,122.7,60,Bare / sparse vegetation
+18.28493,42.58864,2096,0.34,32.3,60,Bare / sparse vegetation
+18.44799,43.70671,1710,3.51,62.5,60,Bare / sparse vegetation
+18.56014,42.82646,1923,1.75,6.0,60,Bare / sparse vegetation
+17.36966,42.52198,68,0.26,207.6,50,Built-up
+19.72383,43.57949,1029,0.18,19.5,60,Bare / sparse vegetation
+19.28745,43.70627,1269,0.54,295.3,60,Bare / sparse vegetation
+16.57739,43.41669,1189,4.92,240.4,30,Grassland
+19.48105,42.51162,1488,4.47,349.7,60,Bare / sparse vegetation
+17.39767,43.69647,1986,0.98,83.2,60,Bare / sparse vegetation
+19.92752,42.2105,1414,5.27,320.1,60,Bare / sparse vegetation
+19.08721,42.31158,2012,2.75,218.7,60,Bare / sparse vegetation
+18.76236,43.2734,1642,0.72,43.2,60,Bare / sparse vegetation
+16.96194,43.49993,2621,7.81,95.5,30,Grassland
+19.90004,42.52574,1237,1.28,174.5,60,Bare / sparse vegetation
+17.05758,42.69026,46,0.22,237.5,60,Bare / sparse vegetation
+18.57914,42.38303,2363,3.17,79.5,60,Bare / sparse vegetation
+17.73319,43.67124,2043,14.72,320.0,60,Bare / sparse vegetation
+18.80777,41.64817,270,1.41,274.7,60,Bare / sparse vegetation
+17.21848,42.57945,35,0.06,180.0,20,Shrubland
+18.6135,41.84351,329,3.45,316.3,60,Bare / sparse vegetation
+16.3829,42.98654,71,0.22,237.4,30,Grassland
+18.91262,42.26808,2416,3.99,324.3,30,Grassland
+18.73695,42.39025,2152,7.46,112.7,60,Bare / sparse vegetation
+19.97317,42.42814,1219,0.81,337.7,60,Bare / sparse vegetation
+19.0723,42.62486,1691,1.25,259.3,60,Bare / sparse vegetation
+19.25284,43.07851,1347,2.4,7.4,60,Bare / sparse vegetation
+17.60477,42.68461,504,10.42,240.0,20,Shrubland
+19.02708,42.85293,1697,0.54,166.8,60,Bare / sparse vegetation
+16.88395,43.78055,1929,1.57,144.5,60,Bare / sparse vegetation
+17.54474,43.1887,1612,23.95,228.8,20,Shrubland
+19.72103,42.99878,1318,0.95,31.3,60,Bare / sparse vegetation
+18.22301,42.87965,2096,0.76,184.6,60,Bare / sparse vegetation
+18.32016,41.86343,700,4.5,209.1,20,Shrubland
+18.21398,41.77931,409,16.98,242.8,60,Bare / sparse vegetation
+18.9055,42.72885,1806,0.92,160.6,60,Bare / sparse vegetation
+16.65114,42.11928,9,0.55,309.4,60,Bare / sparse vegetation
+19.89041,42.33897,1310,2.39,258.8,60,Bare / sparse vegetation
+17.13143,42.50409,12,0.12,180.0,40,Cropland
+17.39295,43.29939,1649,8.87,11.8,20,Shrubland
+16.51042,43.71747,1385,5.73,272.3,60,Bare / sparse vegetation
+17.28955,43.47374,2061,1.18,201.1,60,Bare / sparse vegetation
+18.54643,43.30437,1834,1.02,323.0,60,Bare / sparse vegetation
+19.51853,43.64659,1135,0.47,328.8,60,Bare / sparse vegetation
+19.7336,41.52211,465,3.32,258.9,60,Bare / sparse vegetation
+19.43541,42.20481,1977,3.38,112.1,60,Bare / sparse vegetation
+18.04317,42.33143,967,9.44,176.3,30,Grassland
+17.29543,43.79912,1719,7.17,284.4,60,Bare / sparse vegetation
+17.46066,43.21434,1668,20.95,7.8,30,Grassland
+18.44563,42.5767,2030,0.7,175.0,60,Bare / sparse vegetation
+18.97008,42.75738,1763,1.6,302.8,60,Bare / sparse vegetation
+18.27525,43.748,2031,0.47,352.5,60,Bare / sparse vegetation
+20.18741,42.60033,1125,0.13,28.0,60,Bare / sparse vegetation
+19.35877,43.00841,1351,1.97,95.1,60,Bare / sparse vegetation
+19.42427,42.3182,1618,6.8,98.3,60,Bare / sparse vegetation
+18.67975,43.72361,1462,0.18,340.6,60,Bare / sparse vegetation
+18.06284,41.92216,158,1.7,300.7,60,Bare / sparse vegetation
+17.9669,43.09331,2200,25.13,316.1,60,Bare / sparse vegetation
+16.8304,43.15577,238,0.88,187.9,20,Shrubland
+19.18393,43.69702,1290,0.46,-0.0,60,Bare / sparse vegetation
+19.78464,43.03079,1275,0.76,189.3,60,Bare / sparse vegetation
+16.57628,42.7619,9,0.19,252.3,60,Bare / sparse vegetation
+17.48845,43.72733,1965,0.5,46.4,60,Bare / sparse vegetation
+18.84708,41.8832,269,0.53,186.7,60,Bare / sparse vegetation
+18.2687,42.50926,2273,2.9,105.0,30,Grassland
+19.8165,43.70373,1011,0.25,283.2,60,Bare / sparse vegetation
+16.70504,42.01609,10,0.21,214.8,60,Bare / sparse vegetation
+16.54336,43.55117,1468,3.12,170.0,60,Bare / sparse vegetation
+18.51836,41.92367,425,7.55,312.2,50,Built-up
+18.68729,41.89885,249,0.49,241.6,60,Bare / sparse vegetation
+16.44441,43.00041,86,0.19,252.3,20,Shrubland
+17.14169,42.83823,107,0.35,299.8,60,Bare / sparse vegetation
+20.00822,42.08016,1592,1.07,102.5,60,Bare / sparse vegetation
+17.95381,42.43874,959,9.17,314.6,20,Shrubland
+19.09197,43.49548,1306,0.41,351.4,60,Bare / sparse vegetation
+19.09358,41.63079,258,4.0,204.4,60,Bare / sparse vegetation
+18.60403,43.47315,1914,3.01,129.5,60,Bare / sparse vegetation
+17.42961,43.58037,2118,0.31,202.7,60,Bare / sparse vegetation
+16.78084,43.63391,1790,8.56,174.4,60,Bare / sparse vegetation
+19.97123,43.00148,1294,2.46,67.9,60,Bare / sparse vegetation
+19.95351,41.95956,1648,2.88,79.6,60,Bare / sparse vegetation
+19.36538,41.61928,374,2.47,296.5,60,Bare / sparse vegetation
+18.72965,42.12413,1472,12.53,248.1,20,Shrubland
+17.86565,43.35889,2376,5.97,85.0,60,Bare / sparse vegetation
+20.15777,41.75545,1553,3.22,351.2,60,Bare / sparse vegetation
+18.82445,41.83438,300,5.98,214.8,60,Bare / sparse vegetation
+19.8612,43.70241,1006,0.45,75.0,60,Bare / sparse vegetation
+18.6848,43.6619,1471,0.35,299.6,60,Bare / sparse vegetation
+17.92932,42.78689,1342,10.78,100.7,30,Grassland
+18.87046,43.57548,1432,0.44,74.9,60,Bare / sparse vegetation
+20.05889,42.54761,1161,0.19,90.0,60,Bare / sparse vegetation
+17.89518,43.06849,1448,13.84,231.4,60,Bare / sparse vegetation
+19.03084,43.56554,1301,0.31,90.0,60,Bare / sparse vegetation
+19.02423,42.68448,1707,0.68,21.0,60,Bare / sparse vegetation
+19.83443,42.42281,1235,0.82,351.4,10,Tree cover
+19.63484,42.84529,1417,0.39,28.0,60,Bare / sparse vegetation
+17.25683,42.4731,32,0.22,122.5,60,Bare / sparse vegetation
+18.01241,43.72853,2241,1.47,155.4,60,Bare / sparse vegetation
+19.95269,42.50973,1230,2.21,183.2,60,Bare / sparse vegetation
+18.67487,42.62745,1834,0.64,50.3,60,Bare / sparse vegetation
+16.82772,42.67897,12,0.25,256.5,60,Bare / sparse vegetation
+17.58976,43.11807,1203,15.44,192.0,30,Grassland
+19.97221,41.67451,1946,2.64,73.4,60,Bare / sparse vegetation
+19.54081,43.0802,1483,2.27,4.7,60,Bare / sparse vegetation
+16.40824,43.75242,1492,9.53,63.9,60,Bare / sparse vegetation
+18.47825,41.8355,584,2.61,79.8,60,Bare / sparse vegetation
+19.90845,42.05681,1542,4.97,17.3,60,Bare / sparse vegetation
+19.78957,43.45976,1119,1.81,158.0,60,Bare / sparse vegetation
+16.50718,43.4671,1033,11.81,304.1,60,Bare / sparse vegetation
+18.35053,42.82399,2011,0.82,31.6,50,Built-up
+19.69517,42.76248,1385,8.02,147.2,60,Bare / sparse vegetation
+17.24084,43.49968,1996,0.46,41.1,60,Bare / sparse vegetation
+17.4063,43.74883,1929,0.87,20.5,60,Bare / sparse vegetation
+19.64522,43.26068,1164,0.47,148.8,60,Bare / sparse vegetation
+19.04112,41.7249,422,17.78,249.1,60,Bare / sparse vegetation
+16.83974,43.34292,904,16.88,238.2,20,Shrubland
+18.15329,42.9875,2176,1.13,12.5,40,Cropland
+20.19028,42.49984,1192,1.04,63.4,60,Bare / sparse vegetation
+17.4431,43.38595,2382,2.18,116.9,60,Bare / sparse vegetation
+17.009,43.25556,1505,5.93,279.0,60,Bare / sparse vegetation
+20.01556,43.138,1172,0.39,107.4,60,Bare / sparse vegetation
+18.99373,43.1521,1488,0.94,352.5,60,Bare / sparse vegetation
+17.74975,43.78059,1632,7.78,146.0,60,Bare / sparse vegetation
+19.98841,42.30808,1257,0.41,8.6,60,Bare / sparse vegetation
+19.6739,42.91816,1398,1.09,57.9,60,Bare / sparse vegetation
+17.45021,43.08783,1272,14.17,210.5,30,Grassland
+20.19906,43.73678,892,0.18,19.6,60,Bare / sparse vegetation
+19.11294,43.26043,1387,1.06,144.8,60,Bare / sparse vegetation
+18.38512,43.07848,2050,0.58,6.0,60,Bare / sparse vegetation
+19.36444,42.25438,1793,10.11,97.2,60,Bare / sparse vegetation
+18.83077,41.87456,271,1.62,108.8,60,Bare / sparse vegetation
+18.19953,42.26381,1009,14.2,110.8,20,Shrubland
+17.91615,42.01321,82,0.37,160.7,60,Bare / sparse vegetation
+16.80367,42.71099,11,0.26,207.6,60,Bare / sparse vegetation
+19.60245,42.34884,1455,2.2,288.4,60,Bare / sparse vegetation
+19.4625,43.19399,1239,0.31,280.7,60,Bare / sparse vegetation
+19.13156,43.5461,1267,0.53,6.7,60,Bare / sparse vegetation
+20.08409,42.81329,1269,10.24,104.9,60,Bare / sparse vegetation
+17.9574,43.11265,2413,1.02,204.7,60,Bare / sparse vegetation
+17.75971,42.32023,160,0.6,210.3,60,Bare / sparse vegetation
+17.56478,42.85895,1004,12.75,213.3,20,Shrubland
+20.06495,41.94424,1478,0.79,300.9,60,Bare / sparse vegetation
+19.1064,42.2494,2089,1.1,317.8,60,Bare / sparse vegetation
+17.78948,42.08667,41,0.17,180.0,60,Bare / sparse vegetation
+18.56052,42.04436,461,1.04,273.2,50,Built-up
+19.01651,41.80592,461,5.28,85.0,60,Bare / sparse vegetation
+19.61181,42.66836,1395,0.91,108.6,60,Bare / sparse vegetation
+17.86501,43.55818,2295,1.77,133.6,60,Bare / sparse vegetation
+17.59057,42.26037,26,0.3,234.4,60,Bare / sparse vegetation
+17.50555,42.92368,1029,16.58,214.0,20,Shrubland
+17.13544,42.84522,107,0.39,207.6,20,Shrubland
+16.56825,43.13333,162,3.96,345.0,20,Shrubland
+18.12961,42.97781,2251,1.78,242.9,60,Bare / sparse vegetation
+19.40233,41.50325,491,6.35,241.2,60,Bare / sparse vegetation
+16.79645,43.37293,1742,17.58,283.9,10,Tree cover
+17.67818,42.5721,328,3.22,236.1,60,Bare / sparse vegetation
+17.84875,41.87522,94,1.89,140.0,60,Bare / sparse vegetation
+18.34827,42.4031,2641,2.2,192.8,60,Bare / sparse vegetation
+19.9221,41.72349,1916,2.49,255.1,60,Bare / sparse vegetation
+17.67569,42.88902,1819,8.1,171.0,30,Grassland
+18.48208,42.49325,2221,2.56,43.7,60,Bare / sparse vegetation
+19.45698,43.48662,1132,0.64,74.2,60,Bare / sparse vegetation
+18.3127,42.75969,2019,0.54,13.2,50,Built-up
+19.8643,42.46762,1243,3.65,178.1,60,Bare / sparse vegetation
+19.52012,43.34893,1171,2.23,332.1,60,Bare / sparse vegetation
+18.21112,42.92762,2184,1.54,191.4,60,Bare / sparse vegetation
+19.09889,43.08755,1472,1.47,30.0,60,Bare / sparse vegetation
+18.97932,42.80692,1722,1.41,106.7,60,Bare / sparse vegetation
+18.58583,43.38371,1825,1.63,257.7,60,Bare / sparse vegetation
+19.75906,43.05645,1274,0.38,40.4,60,Bare / sparse vegetation
+18.94483,42.11334,1202,12.25,221.0,60,Bare / sparse vegetation
+17.83499,42.67587,819,9.57,70.0,20,Shrubland
+19.46958,43.2968,1176,0.26,27.9,60,Bare / sparse vegetation
+16.4235,42.85004,22,0.13,244.4,40,Cropland
+19.3432,42.50736,1619,1.81,7.8,60,Bare / sparse vegetation
+19.36088,42.53263,1600,2.28,265.6,60,Bare / sparse vegetation
+17.6966,43.77101,1920,12.51,279.7,60,Bare / sparse vegetation
+18.54159,41.5236,141,1.26,209.0,60,Bare / sparse vegetation
+18.77662,42.51398,1878,0.37,90.0,60,Bare / sparse vegetation
+16.47389,43.35309,619,10.64,5.2,20,Shrubland
+19.75786,42.03069,1765,1.72,212.5,60,Bare / sparse vegetation
+17.4093,43.75831,1936,1.93,313.7,60,Bare / sparse vegetation
+18.12842,43.51512,1989,0.79,90.0,60,Bare / sparse vegetation
+17.2988,42.67545,65,0.25,283.4,60,Bare / sparse vegetation
+17.42521,43.48778,2176,7.87,239.2,60,Bare / sparse vegetation
+17.97287,43.70073,2210,1.73,80.4,60,Bare / sparse vegetation
+16.76468,43.27868,392,2.66,272.5,20,Shrubland
+19.19357,41.59284,263,6.29,78.9,60,Bare / sparse vegetation
+17.09905,43.22988,954,7.56,247.6,20,Shrubland
+19.84816,41.92074,1737,2.78,26.3,60,Bare / sparse vegetation
+17.4421,43.70687,1948,1.48,239.4,60,Bare / sparse vegetation
+18.21493,41.72511,217,1.35,265.1,60,Bare / sparse vegetation
+18.9226,42.42361,1832,2.09,114.6,60,Bare / sparse vegetation
+18.92068,42.66509,1775,0.81,244.7,60,Bare / sparse vegetation
+18.82435,43.07276,1710,1.33,343.9,60,Bare / sparse vegetation
+17.90426,43.57052,2263,0.99,79.9,60,Bare / sparse vegetation
+17.25559,43.00812,324,1.63,175.7,40,Cropland
+17.55505,42.48607,112,0.72,36.3,60,Bare / sparse vegetation
+17.75793,42.39636,169,0.47,149.0,20,Shrubland
+17.51231,42.27577,10,0.08,226.4,40,Cropland
+18.97688,41.81864,337,0.85,127.7,60,Bare / sparse vegetation
+18.81237,42.43384,1846,2.05,151.4,60,Bare / sparse vegetation
+18.64962,43.75005,1486,0.3,11.9,60,Bare / sparse vegetation
+19.00111,42.90004,1661,1.79,82.6,60,Bare / sparse vegetation
+20.19986,42.07708,1428,1.98,271.7,60,Bare / sparse vegetation
+17.32511,42.4514,39,0.22,237.5,60,Bare / sparse vegetation
+19.91437,42.27956,1380,2.27,101.8,60,Bare / sparse vegetation
+17.90051,43.68836,2152,1.9,105.9,60,Bare / sparse vegetation
+19.60719,42.51586,1504,2.5,167.2,60,Bare / sparse vegetation
+18.64976,43.53952,1567,6.35,141.4,60,Bare / sparse vegetation
+17.70211,42.4691,149,3.27,251.4,60,Bare / sparse vegetation
+19.60677,42.88751,1466,0.3,321.5,60,Bare / sparse vegetation
+16.44925,43.11732,146,0.43,277.8,40,Cropland
+19.83886,41.99655,1865,3.78,120.4,60,Bare / sparse vegetation
+19.36524,42.56535,1655,0.51,226.7,60,Bare / sparse vegetation
+16.71401,43.70916,1954,12.43,220.3,60,Bare / sparse vegetation
+18.78651,43.22777,1625,0.52,-0.0,60,Bare / sparse vegetation
+18.91513,41.83968,325,3.76,358.1,60,Bare / sparse vegetation
+18.17506,41.64717,119,4.46,132.5,60,Bare / sparse vegetation
+19.80188,42.77589,1338,1.43,71.1,60,Bare / sparse vegetation
+17.68366,42.8969,1784,1.88,289.9,30,Grassland
+19.97053,42.34387,1263,0.87,20.8,60,Bare / sparse vegetation
+18.38722,42.83164,2025,1.92,72.4,60,Bare / sparse vegetation
+19.15152,42.69325,1637,1.47,9.6,60,Bare / sparse vegetation
+19.60144,42.80648,1397,0.79,291.4,60,Bare / sparse vegetation
+19.09568,43.25172,1440,0.87,66.4,60,Bare / sparse vegetation
+18.52596,42.58823,2023,2.69,287.5,60,Bare / sparse vegetation
+20.03088,41.68472,1813,1.07,77.5,60,Bare / sparse vegetation
+17.04528,43.24295,1126,10.3,264.6,20,Shrubland
+17.82084,43.01853,1121,15.93,346.2,60,Bare / sparse vegetation
+19.72465,43.73318,1049,0.37,19.5,60,Bare / sparse vegetation
+17.8692,43.38633,2355,0.74,279.0,60,Bare / sparse vegetation
+18.64244,43.71632,1488,0.41,8.6,60,Bare / sparse vegetation
+20.09544,42.10977,1428,1.0,330.4,60,Bare / sparse vegetation
+19.59142,43.07671,1377,0.6,292.7,60,Bare / sparse vegetation
+20.1888,42.95975,1133,0.35,240.6,60,Bare / sparse vegetation
+19.95757,43.21746,1122,0.54,13.3,60,Bare / sparse vegetation
+18.99804,43.38555,1425,0.88,101.5,60,Bare / sparse vegetation
+20.115,43.34497,1054,1.49,251.9,60,Bare / sparse vegetation
+18.37964,43.53353,1864,1.9,227.8,60,Bare / sparse vegetation
+19.68311,42.94999,1377,0.61,342.3,60,Bare / sparse vegetation
+20.02207,42.0241,1735,2.27,19.0,60,Bare / sparse vegetation
+18.79712,43.19395,1634,0.68,39.4,60,Bare / sparse vegetation
+19.22429,43.03095,1474,3.95,185.3,60,Bare / sparse vegetation
+16.76792,42.91754,65,0.12,270.0,40,Cropland
+16.40356,42.93189,54,0.19,252.3,60,Bare / sparse vegetation
+18.20277,43.42414,1967,1.64,162.7,60,Bare / sparse vegetation
+17.98755,43.11954,2408,1.55,339.3,60,Bare / sparse vegetation
+17.40985,42.72269,161,0.94,255.7,60,Bare / sparse vegetation
+18.44665,43.58954,1658,1.19,119.2,60,Bare / sparse vegetation
+18.72469,43.41848,1832,0.93,41.3,60,Bare / sparse vegetation
+18.86188,42.83878,1753,1.1,46.6,60,Bare / sparse vegetation
+17.59661,43.16768,1343,7.59,105.4,20,Shrubland
+19.12732,42.24306,2095,2.14,71.0,60,Bare / sparse vegetation
+18.1573,43.57974,2084,1.55,124.2,60,Bare / sparse vegetation
+17.68184,42.38086,108,0.41,171.5,60,Bare / sparse vegetation
+19.42237,42.92064,1470,0.49,241.7,60,Bare / sparse vegetation
+18.98569,43.08407,1569,1.81,314.7,60,Bare / sparse vegetation
+19.19813,42.50315,1716,1.83,102.8,60,Bare / sparse vegetation
+20.0527,41.55099,2036,7.55,173.0,60,Bare / sparse vegetation
+19.65408,43.55146,1060,0.26,28.0,60,Bare / sparse vegetation
+18.65666,41.91492,283,0.3,305.4,60,Bare / sparse vegetation
+16.93907,43.25172,1377,11.43,271.7,20,Shrubland
+18.46364,42.98274,1992,0.86,82.3,60,Bare / sparse vegetation
+17.56153,43.76818,2058,3.18,82.7,60,Bare / sparse vegetation
+18.65636,43.69702,1474,0.21,35.1,60,Bare / sparse vegetation
+18.81461,42.88439,1738,0.47,51.7,60,Bare / sparse vegetation
+18.73351,42.29578,2486,3.09,336.7,30,Grassland
+18.42917,42.97801,2008,2.39,274.2,60,Bare / sparse vegetation
+19.95493,41.7621,1726,1.8,52.2,60,Bare / sparse vegetation
+16.39176,43.06098,101,0.29,218.0,20,Shrubland
+18.02584,42.80395,2543,5.97,118.9,20,Shrubland
+18.26422,43.21248,2148,1.46,118.5,60,Bare / sparse vegetation
+18.23746,43.3085,2176,0.97,61.5,60,Bare / sparse vegetation
+19.79115,41.86845,1805,7.4,145.7,20,Shrubland
+18.56701,41.85545,389,9.46,62.9,60,Bare / sparse vegetation
+18.51593,43.38176,1836,0.59,38.3,60,Bare / sparse vegetation
+18.37385,42.86344,2049,2.44,44.5,60,Bare / sparse vegetation
+17.8917,42.44581,455,3.94,328.4,60,Bare / sparse vegetation
+17.70186,42.52568,219,3.83,213.7,60,Bare / sparse vegetation
+17.27834,42.77132,108,0.31,202.7,40,Cropland
+17.12969,43.40065,1892,15.21,191.9,60,Bare / sparse vegetation
+17.74942,43.54238,2215,2.26,-0.0,60,Bare / sparse vegetation
+17.16924,42.97427,217,0.93,259.2,20,Shrubland
+16.40359,43.63757,1425,1.42,121.9,60,Bare / sparse vegetation
+16.99514,43.7271,1885,0.37,80.9,60,Bare / sparse vegetation
+18.91038,42.51012,1725,1.69,250.0,60,Bare / sparse vegetation
+19.17922,41.76074,355,0.79,198.0,60,Bare / sparse vegetation
+18.02209,42.63782,963,5.89,288.3,20,Shrubland
+20.07161,43.02331,1185,0.55,42.4,60,Bare / sparse vegetation
+19.32799,41.96137,825,10.53,231.7,30,Grassland
+17.14913,43.23771,1270,23.97,233.4,20,Shrubland
+19.75161,43.7934,1061,0.74,303.4,60,Bare / sparse vegetation
+18.70198,42.46956,1939,0.5,283.3,60,Bare / sparse vegetation
+19.23518,42.547,1551,4.35,270.8,60,Bare / sparse vegetation
+20.03906,43.59057,943,0.52,109.4,60,Bare / sparse vegetation
+17.90194,41.8269,168,2.44,270.0,60,Bare / sparse vegetation
+19.56645,42.9039,1496,0.68,39.5,60,Bare / sparse vegetation
+18.52279,42.82726,1941,1.05,200.4,60,Bare / sparse vegetation
+18.95579,43.28755,1466,0.81,-0.0,60,Bare / sparse vegetation
+19.46317,41.65714,407,0.82,282.3,60,Bare / sparse vegetation
+18.10068,43.57918,2047,0.58,334.9,60,Bare / sparse vegetation
+16.77932,43.4344,2208,11.12,261.4,60,Bare / sparse vegetation
+19.93048,42.9937,1287,0.62,84.6,60,Bare / sparse vegetation
+18.7546,42.80871,1806,0.34,133.4,60,Bare / sparse vegetation
+18.9406,42.08972,899,17.44,193.4,20,Shrubland
+18.37758,42.33028,2602,4.63,67.2,30,Grassland
+17.89571,43.4563,2333,2.38,108.5,60,Bare / sparse vegetation
+17.64492,42.49635,141,0.65,332.3,60,Bare / sparse vegetation
+19.57888,41.62072,491,2.16,173.5,60,Bare / sparse vegetation
+18.32182,42.7958,2047,0.41,244.6,60,Bare / sparse vegetation
+19.12417,41.68897,1249,23.6,210.5,20,Shrubland
+20.1982,42.33441,1257,0.68,140.4,60,Bare / sparse vegetation
+19.54755,43.22309,1218,0.55,90.0,60,Bare / sparse vegetation
+16.80442,43.44499,2439,10.82,249.2,40,Cropland
+17.13055,42.50521,12,0.12,180.0,40,Cropland
+18.39653,42.1942,1118,23.52,65.7,30,Grassland
+17.48554,42.67337,171,0.47,231.5,20,Shrubland
+17.5797,43.7545,1856,5.29,6.6,60,Bare / sparse vegetation
+16.93084,43.70138,1914,0.61,90.0,40,Cropland
+17.6221,43.79463,1765,4.93,213.6,60,Bare / sparse vegetation
+19.53378,41.74597,585,7.66,286.6,60,Bare / sparse vegetation
+18.51876,42.16072,719,2.75,268.8,60,Bare / sparse vegetation
+19.01584,43.35891,1475,2.15,316.8,60,Bare / sparse vegetation
+19.40356,42.67472,1589,0.83,73.8,60,Bare / sparse vegetation
+17.27369,42.74458,95,0.25,226.3,40,Cropland
+20.14208,42.06665,1503,2.09,354.9,60,Bare / sparse vegetation
+19.04813,42.30567,2060,3.04,14.0,60,Bare / sparse vegetation
+19.75203,41.74659,1684,25.17,151.7,30,Grassland
+19.27799,42.61068,1613,0.72,316.7,60,Bare / sparse vegetation
+18.18782,42.64648,2120,1.64,351.4,60,Bare / sparse vegetation
+18.89241,43.08624,1603,1.44,337.5,60,Bare / sparse vegetation
+18.64378,42.37563,2290,11.93,109.9,30,Grassland
+17.46116,43.09781,1625,15.55,42.4,30,Grassland
+18.58181,42.66999,1875,0.7,5.0,60,Bare / sparse vegetation
+17.10117,43.1015,290,2.1,211.3,20,Shrubland
+17.77444,43.6576,1903,4.79,115.8,60,Bare / sparse vegetation
+18.36317,42.40411,2475,7.52,61.6,30,Grassland
+19.50217,43.63429,1128,0.41,295.2,60,Bare / sparse vegetation
+20.16852,43.35443,1047,2.27,237.5,60,Bare / sparse vegetation
+19.38734,42.2493,1943,3.98,130.9,60,Bare / sparse vegetation
+18.90774,42.9821,1632,0.79,332.1,60,Bare / sparse vegetation
+19.60487,43.31971,1136,0.69,32.5,60,Bare / sparse vegetation
+17.18343,43.57466,1904,0.34,46.3,30,Grassland
+18.35102,43.46114,1984,2.06,227.7,60,Bare / sparse vegetation
+18.24656,42.61517,2093,2.46,96.8,60,Bare / sparse vegetation
+18.52343,41.99499,431,1.88,9.4,20,Shrubland
+19.13026,42.36197,1985,4.3,313.4,60,Bare / sparse vegetation
+16.68298,43.12557,154,0.62,298.0,20,Shrubland
+18.48419,43.25129,1917,2.6,16.4,60,Bare / sparse vegetation
+17.73438,42.11594,32,0.21,215.0,60,Bare / sparse vegetation
+19.30343,42.05941,2411,23.21,269.5,20,Shrubland
+17.97202,42.46791,687,15.02,116.9,60,Bare / sparse vegetation
+18.88375,41.85543,296,1.82,37.3,60,Bare / sparse vegetation
+20.09932,43.55831,946,0.72,309.9,60,Bare / sparse vegetation
+19.82397,42.55641,1225,4.28,77.5,60,Bare / sparse vegetation
+18.81285,42.44759,1798,3.11,285.1,60,Bare / sparse vegetation
+19.52545,42.68769,1463,1.94,133.3,60,Bare / sparse vegetation
+19.61181,42.19787,1512,3.0,227.5,60,Bare / sparse vegetation
+16.30663,43.24818,309,0.83,60.8,60,Bare / sparse vegetation
+19.48367,42.25856,1732,3.54,336.5,60,Bare / sparse vegetation
+20.04826,43.7467,921,0.19,90.0,60,Bare / sparse vegetation
+17.42932,43.44377,2153,0.43,122.5,60,Bare / sparse vegetation
+19.16125,41.66608,955,13.88,357.3,20,Shrubland
+18.50569,42.9629,1954,1.66,199.4,60,Bare / sparse vegetation
+17.75608,43.53197,2152,3.26,215.3,60,Bare / sparse vegetation
+19.1379,42.93994,1656,1.53,49.8,60,Bare / sparse vegetation
+19.79972,42.72169,1314,0.8,316.3,60,Bare / sparse vegetation
+17.70381,42.85751,1384,24.25,50.9,30,Grassland
+19.69698,42.85355,1401,0.3,321.5,60,Bare / sparse vegetation
+19.43599,43.24004,1204,0.51,103.3,60,Bare / sparse vegetation
+18.78194,43.73145,1437,0.8,265.8,60,Bare / sparse vegetation
+18.01785,42.45755,1367,12.41,59.9,30,Grassland
+19.33113,42.54775,1640,2.41,207.3,60,Bare / sparse vegetation
+16.78991,43.5601,2055,7.8,349.3,60,Bare / sparse vegetation
+19.72692,41.741,1278,16.92,268.5,30,Grassland
+17.97165,43.48504,2213,1.64,351.5,60,Bare / sparse vegetation
+18.22906,43.23481,2251,2.19,11.3,60,Bare / sparse vegetation
+19.71184,41.9211,1957,6.52,10.8,50,Built-up
+19.7405,43.29312,1174,1.83,145.2,60,Bare / sparse vegetation
+17.37125,43.28192,1950,7.09,261.1,30,Grassland
+18.13924,43.74678,2114,3.54,183.9,60,Bare / sparse vegetation
+17.61852,43.67191,2104,3.29,93.0,60,Bare / sparse vegetation
+19.94652,42.01774,1702,1.0,349.4,60,Bare / sparse vegetation
+17.4492,43.68288,1959,1.38,44.6,60,Bare / sparse vegetation
+19.24524,42.89464,1600,2.01,213.3,60,Bare / sparse vegetation
+19.52139,42.02875,2141,7.8,98.9,60,Bare / sparse vegetation
+19.45293,42.81497,1439,0.44,237.8,60,Bare / sparse vegetation
+19.9988,43.28761,1088,0.3,141.4,60,Bare / sparse vegetation
+17.66487,42.4636,127,0.54,244.5,60,Bare / sparse vegetation
+17.69738,42.39992,124,0.48,165.3,60,Bare / sparse vegetation
+16.53848,43.65703,1425,4.54,95.1,60,Bare / sparse vegetation
+19.11214,43.12883,1435,0.39,332.1,60,Bare / sparse vegetation
+19.0695,43.62144,1285,1.01,313.4,60,Bare / sparse vegetation
+18.12167,42.99588,2285,2.5,30.8,60,Bare / sparse vegetation
+17.09696,43.30843,1306,10.18,94.8,20,Shrubland
+16.9801,43.23291,1776,9.89,19.9,20,Shrubland
+19.45043,42.55028,1472,5.52,292.8,60,Bare / sparse vegetation
+19.30352,43.19429,1323,5.97,112.8,60,Bare / sparse vegetation
+16.6366,42.99839,78,0.25,226.2,40,Cropland
+17.61352,42.68528,589,5.72,229.7,20,Shrubland
+17.80002,43.163,1193,7.58,218.5,60,Bare / sparse vegetation
+18.73125,42.339,2255,8.29,100.8,60,Bare / sparse vegetation
+16.3521,43.73387,1619,4.15,218.7,60,Bare / sparse vegetation
+17.96441,42.03641,127,0.66,196.0,60,Bare / sparse vegetation
+16.98785,42.85597,70,0.24,165.4,40,Cropland
+19.85715,43.41514,1032,0.39,53.0,60,Bare / sparse vegetation
+19.78681,43.3166,1110,0.89,49.5,60,Bare / sparse vegetation
+17.9763,43.66731,2243,1.64,104.4,60,Bare / sparse vegetation
+19.249,41.64831,357,3.85,164.3,60,Bare / sparse vegetation
+18.47231,43.53623,1857,8.76,72.8,60,Bare / sparse vegetation
+16.5752,43.77838,1647,4.22,179.2,60,Bare / sparse vegetation
+19.96163,42.73801,1239,1.36,230.3,60,Bare / sparse vegetation
+17.28095,42.4592,35,0.18,340.8,60,Bare / sparse vegetation
+18.71048,42.73028,1833,0.79,152.2,60,Bare / sparse vegetation
+20.03305,42.39495,1213,0.26,28.0,60,Bare / sparse vegetation
+18.31872,43.1356,2134,1.77,291.1,60,Bare / sparse vegetation
+17.81171,42.58039,952,14.5,136.0,30,Grassland
+18.99662,43.57185,1450,3.3,130.5,60,Bare / sparse vegetation
+20.02416,43.64809,947,0.21,35.4,60,Bare / sparse vegetation
+18.83925,42.65295,1741,1.6,241.9,60,Bare / sparse vegetation
+17.56588,42.29404,27,0.08,226.4,60,Bare / sparse vegetation
+17.68786,43.47169,2320,4.24,39.0,60,Bare / sparse vegetation
+18.80284,42.29409,2397,12.38,164.5,30,Grassland
+18.5469,42.04397,484,1.3,280.2,60,Bare / sparse vegetation
+17.30703,43.04113,572,5.35,138.2,20,Shrubland
+18.57462,43.65938,1524,0.26,27.8,60,Bare / sparse vegetation
+19.51608,42.69218,1456,1.08,329.2,60,Bare / sparse vegetation
+18.04378,43.57052,2076,1.36,206.6,60,Bare / sparse vegetation
+18.0094,42.82627,2414,11.5,162.7,30,Grassland
+16.43842,43.73168,1414,4.22,80.5,60,Bare / sparse vegetation
+17.21776,42.35935,3,0.21,214.9,60,Bare / sparse vegetation
+16.45484,43.02306,96,0.19,252.3,20,Shrubland
+19.45779,42.34535,1571,6.65,3.2,60,Bare / sparse vegetation
+17.52778,43.77066,2065,2.17,196.2,60,Bare / sparse vegetation
+16.62161,43.78064,1794,3.93,93.4,60,Bare / sparse vegetation
+18.377,43.3521,2044,1.23,52.4,60,Bare / sparse vegetation
+18.94062,43.74294,1478,5.09,264.8,60,Bare / sparse vegetation
+18.00105,41.67738,12,0.86,266.1,50,Built-up
+19.68004,42.94409,1384,3.87,91.7,60,Bare / sparse vegetation
+18.55602,41.73421,451,1.8,1.9,60,Bare / sparse vegetation
+17.46125,42.67348,162,0.63,254.0,60,Bare / sparse vegetation
+16.45566,43.55672,1296,1.84,139.0,60,Bare / sparse vegetation
+18.012,43.67119,2168,0.6,247.1,60,Bare / sparse vegetation
+18.93149,43.38457,1480,1.22,301.5,60,Bare / sparse vegetation
+17.57699,42.62321,218,1.23,278.1,20,Shrubland
+17.9954,43.29213,2546,5.16,201.4,60,Bare / sparse vegetation
+18.09394,42.37994,875,2.84,196.2,20,Shrubland
+18.36124,42.28548,1763,23.85,209.3,30,Grassland
+18.54139,42.6365,1969,1.83,88.2,60,Bare / sparse vegetation
+18.70281,42.99808,1814,0.37,270.0,60,Bare / sparse vegetation
+20.0978,42.04675,1560,2.53,76.8,60,Bare / sparse vegetation
+17.85651,43.10696,1404,20.2,203.7,20,Shrubland
+19.11588,42.66623,1672,0.89,168.0,60,Bare / sparse vegetation
+18.91176,43.01064,1623,2.99,150.6,60,Bare / sparse vegetation
+18.95759,43.35454,1485,0.99,96.7,60,Bare / sparse vegetation
+18.56101,42.12245,880,14.89,134.7,20,Shrubland
+19.59336,42.07642,1759,1.26,337.0,60,Bare / sparse vegetation
+16.99738,42.79809,62,0.19,252.3,50,Built-up
+18.98063,42.37191,2185,4.12,101.3,60,Bare / sparse vegetation
+18.74677,43.27389,1653,0.84,40.8,60,Bare / sparse vegetation
+19.41775,42.9516,1453,0.74,85.5,60,Bare / sparse vegetation
+20.19044,43.57288,930,0.35,60.6,60,Bare / sparse vegetation
+18.7507,42.7817,1845,0.74,19.4,60,Bare / sparse vegetation
+19.86972,43.28592,1112,0.76,103.2,60,Bare / sparse vegetation
+17.96008,41.93404,97,0.39,152.3,60,Bare / sparse vegetation
+17.73202,43.38637,2354,8.75,310.6,30,Grassland
+19.64388,43.37252,1120,0.89,192.0,60,Bare / sparse vegetation
+17.39188,42.42891,44,0.36,270.0,60,Bare / sparse vegetation
+18.60654,42.0693,599,6.62,83.5,60,Bare / sparse vegetation
+19.84995,43.40151,1040,0.3,321.4,60,Bare / sparse vegetation
+19.86194,43.37853,1079,1.34,255.0,60,Bare / sparse vegetation
+19.19378,42.45202,1738,1.29,92.6,60,Bare / sparse vegetation
+19.09981,43.41327,1491,11.17,94.1,60,Bare / sparse vegetation
+19.10523,43.26605,1387,1.45,2.4,60,Bare / sparse vegetation
+17.8216,42.6133,854,8.54,97.7,30,Grassland
+17.33329,42.65733,79,0.29,141.8,60,Bare / sparse vegetation
+16.69167,43.76772,1908,4.74,164.5,60,Bare / sparse vegetation
+18.51107,42.0018,434,0.66,16.0,60,Bare / sparse vegetation
+19.87044,43.07557,1224,0.39,72.6,60,Bare / sparse vegetation
+17.02612,43.43788,2443,23.59,239.4,30,Grassland
+19.67606,42.86324,1413,1.01,313.3,60,Bare / sparse vegetation
+18.2917,42.55576,2120,0.77,146.2,60,Bare / sparse vegetation
+17.14502,43.44914,2611,16.82,82.3,30,Grassland
+17.84059,42.35711,315,11.56,218.2,60,Bare / sparse vegetation
+19.10497,43.06448,1497,3.9,323.3,60,Bare / sparse vegetation
+17.13857,43.61456,1979,1.34,185.2,60,Bare / sparse vegetation
+17.40548,43.08457,1290,2.03,302.9,30,Grassland
+17.47697,42.55504,137,0.55,138.1,40,Cropland
+16.90732,43.15061,402,14.39,239.9,20,Shrubland
+17.92602,41.92832,84,0.34,32.2,60,Bare / sparse vegetation
+18.31341,43.70313,2030,3.74,225.8,60,Bare / sparse vegetation
+19.76403,41.50218,453,1.31,208.0,60,Bare / sparse vegetation
+17.52549,42.32662,24,0.31,259.2,60,Bare / sparse vegetation
+17.11816,42.87526,109,0.58,180.0,60,Bare / sparse vegetation
+17.95019,43.62509,2263,1.53,307.3,60,Bare / sparse vegetation
+17.28169,43.68389,1780,0.72,194.7,60,Bare / sparse vegetation
+18.36595,43.12579,2067,0.47,308.3,60,Bare / sparse vegetation
+19.59657,41.87865,2160,1.97,93.4,50,Built-up
+19.93426,41.70783,1864,4.79,149.1,60,Bare / sparse vegetation
+19.71298,42.09493,1924,3.24,99.3,60,Bare / sparse vegetation
+18.85783,42.37582,2229,0.68,21.0,60,Bare / sparse vegetation
+17.10616,42.991,204,1.14,215.7,20,Shrubland
+18.36215,42.74751,2001,0.73,270.0,60,Bare / sparse vegetation
+17.85821,43.10001,1443,16.93,156.5,20,Shrubland
+19.75545,43.25548,1148,4.0,88.3,60,Bare / sparse vegetation
+16.57978,42.94571,53,0.51,304.4,40,Cropland
+19.67717,43.43052,1205,9.01,142.9,60,Bare / sparse vegetation
+16.87876,43.56719,2375,8.24,247.0,60,Bare / sparse vegetation
+18.68044,43.3726,1764,2.97,304.5,60,Bare / sparse vegetation
+19.94625,43.08773,1201,0.33,110.6,60,Bare / sparse vegetation
+18.47087,43.13193,1977,0.43,97.7,60,Bare / sparse vegetation
+17.56415,42.97232,1110,5.35,53.6,60,Bare / sparse vegetation
+16.36503,43.405,1113,6.2,351.1,60,Bare / sparse vegetation
+18.91441,43.32736,1501,0.47,328.9,60,Bare / sparse vegetation
+18.10971,41.88546,162,1.55,250.4,60,Bare / sparse vegetation
+18.82104,43.74231,1439,0.7,284.5,60,Bare / sparse vegetation
+16.77183,43.62531,1879,2.99,71.9,60,Bare / sparse vegetation
+17.39481,42.56208,84,0.29,218.2,60,Bare / sparse vegetation
+16.40875,43.6271,1497,3.99,154.0,60,Bare / sparse vegetation
+17.49812,43.00222,2092,12.85,271.0,30,Grassland
+19.0674,41.84366,377,2.53,319.1,60,Bare / sparse vegetation
+17.93575,43.5021,2277,2.82,95.9,60,Bare / sparse vegetation
+19.04191,43.52702,1338,0.63,137.2,60,Bare / sparse vegetation
+17.44875,43.33301,1907,21.33,249.5,30,Grassland
+17.86973,42.02697,67,0.25,226.4,60,Bare / sparse vegetation
+17.24711,43.62344,1843,4.03,311.3,60,Bare / sparse vegetation
+19.43298,43.00755,1443,2.88,218.3,60,Bare / sparse vegetation
+17.16849,42.78783,83,0.9,344.4,60,Bare / sparse vegetation
+19.05206,41.92236,494,5.77,294.3,60,Bare / sparse vegetation
+16.60406,43.00201,76,0.17,180.0,20,Shrubland
+18.98225,43.38847,1433,0.29,-0.0,60,Bare / sparse vegetation
+19.16284,43.15696,1414,1.06,350.0,60,Bare / sparse vegetation
+20.06788,43.70939,924,0.08,46.8,60,Bare / sparse vegetation
+19.32639,42.77193,1498,0.55,90.0,60,Bare / sparse vegetation
+19.97989,43.75957,951,0.29,-0.0,60,Bare / sparse vegetation
+19.14369,43.23047,1422,2.14,297.4,60,Bare / sparse vegetation
+20.11458,43.2851,1084,0.64,35.4,60,Bare / sparse vegetation
+19.13198,41.93707,475,4.4,163.8,60,Bare / sparse vegetation
+19.68518,42.96229,1357,2.21,51.1,60,Bare / sparse vegetation
+18.80043,42.92123,1748,1.83,27.8,60,Bare / sparse vegetation
+19.79088,43.40285,1061,0.35,350.0,60,Bare / sparse vegetation
+18.80177,42.3634,2040,9.97,68.4,60,Bare / sparse vegetation
+18.68614,43.32072,1665,0.6,54.6,60,Bare / sparse vegetation
+17.83222,43.04176,1088,5.7,258.3,60,Bare / sparse vegetation
+17.49695,43.52773,2359,8.54,167.8,60,Bare / sparse vegetation
+17.39134,42.55852,82,0.25,133.7,20,Shrubland
+19.97746,43.2379,1117,3.05,126.1,60,Bare / sparse vegetation
+18.80524,41.5261,99,0.79,207.8,60,Bare / sparse vegetation
+17.70491,43.17674,1282,4.07,267.6,30,Grassland
+17.07471,43.50479,2293,10.21,126.9,20,Shrubland
+18.20568,42.03228,396,9.91,89.7,60,Bare / sparse vegetation
+19.79801,41.91724,1857,2.04,186.9,60,Bare / sparse vegetation
+17.86718,42.80925,797,17.0,252.3,60,Bare / sparse vegetation
+18.25483,41.65012,258,0.74,99.0,60,Bare / sparse vegetation
+20.13649,41.92981,1423,0.94,323.6,60,Bare / sparse vegetation
+18.40375,42.01058,698,5.94,322.8,20,Shrubland
+17.8592,43.5722,2212,4.71,97.0,60,Bare / sparse vegetation
+18.6268,43.38287,1816,3.76,116.5,60,Bare / sparse vegetation
+17.19095,43.05745,303,1.14,228.4,20,Shrubland
+19.82983,43.61241,1031,0.97,224.3,60,Bare / sparse vegetation
+19.03499,42.59696,1675,0.38,307.1,60,Bare / sparse vegetation
+17.11048,42.78664,82,0.19,252.3,40,Cropland
+18.72665,42.34029,2238,10.26,109.3,60,Bare / sparse vegetation
+17.3387,43.74095,2004,2.26,233.8,60,Bare / sparse vegetation
+18.85903,42.91207,1717,0.62,264.6,60,Bare / sparse vegetation
+17.01795,43.478,2524,21.58,236.3,30,Grassland
+20.11149,42.88488,1154,0.88,78.6,60,Bare / sparse vegetation
+19.58597,42.42945,1455,10.96,64.6,60,Bare / sparse vegetation
+18.61093,41.67378,323,6.76,271.5,60,Bare / sparse vegetation
+17.8745,42.18195,115,0.54,193.1,60,Bare / sparse vegetation
+20.1342,42.52717,1169,0.91,54.8,60,Bare / sparse vegetation
+20.19597,42.83083,1101,0.34,327.4,60,Bare / sparse vegetation
+17.66849,42.08772,10,0.19,107.6,60,Bare / sparse vegetation
+16.43906,43.21239,221,0.6,305.7,20,Shrubland
+18.40002,42.35798,2541,7.81,302.1,30,Grassland
+18.61249,41.71867,383,0.08,133.5,60,Bare / sparse vegetation
+17.42116,42.93359,1057,5.85,176.4,20,Shrubland
+19.1432,42.12138,2384,1.11,96.0,50,Built-up
+18.42639,41.7029,385,3.07,319.0,60,Bare / sparse vegetation
+18.29484,41.99758,678,6.66,41.1,20,Shrubland
+19.57305,43.38437,1113,0.35,10.0,60,Bare / sparse vegetation
+19.09877,42.44819,1767,2.89,85.4,60,Bare / sparse vegetation
+16.57624,43.41312,1190,10.48,151.7,20,Shrubland
+19.10205,43.14305,1450,0.73,293.2,60,Bare / sparse vegetation
+16.62855,43.65457,1642,13.03,92.3,60,Bare / sparse vegetation
+17.82129,43.20799,1973,3.19,1.1,30,Grassland
+16.30743,43.38347,808,21.68,276.1,30,Grassland
+19.14435,41.70771,1220,8.12,178.7,20,Shrubland
+20.09237,42.11598,1451,0.81,310.2,60,Bare / sparse vegetation
+17.12957,43.64962,2036,2.86,49.7,60,Bare / sparse vegetation
+18.28376,42.79338,2059,0.7,-0.0,50,Built-up
+19.61833,41.56134,900,3.66,97.3,60,Bare / sparse vegetation
+17.74119,43.61878,2030,3.9,69.1,60,Bare / sparse vegetation
+16.61636,42.94714,66,0.17,313.8,60,Bare / sparse vegetation
+19.63245,43.62917,1077,0.31,337.0,60,Bare / sparse vegetation
+19.91943,42.68226,1247,1.63,288.7,60,Bare / sparse vegetation
+18.50945,43.38976,1846,1.87,308.3,60,Bare / sparse vegetation
+18.13566,43.33209,2089,0.59,168.1,60,Bare / sparse vegetation
+16.67296,42.73285,0,0.13,295.6,60,Bare / sparse vegetation
+19.4532,41.68103,435,0.72,43.3,20,Shrubland
+20.20216,42.27255,1293,0.64,105.7,60,Bare / sparse vegetation
+19.59554,41.69344,490,0.68,140.5,60,Bare / sparse vegetation
+19.44449,41.56714,629,18.41,106.8,60,Bare / sparse vegetation
+19.35639,41.93133,820,8.53,83.4,20,Shrubland
+18.32309,41.69073,318,4.97,281.4,60,Bare / sparse vegetation
+16.88799,41.78009,1,0.44,74.7,60,Bare / sparse vegetation
+17.69975,43.55602,2249,1.06,325.0,60,Bare / sparse vegetation
+19.82958,41.73067,1905,1.1,71.6,60,Bare / sparse vegetation
+17.60378,43.17703,1401,12.67,243.8,20,Shrubland
+16.91051,43.39996,2104,8.9,76.5,60,Bare / sparse vegetation
+18.10274,41.79167,103,0.47,187.5,60,Bare / sparse vegetation
+17.51449,42.55857,151,0.27,295.5,60,Bare / sparse vegetation
+18.9945,42.92606,1654,0.99,306.0,60,Bare / sparse vegetation
+19.83187,41.90051,1690,2.78,330.9,60,Bare / sparse vegetation
+19.65224,42.79471,1371,2.15,271.5,60,Bare / sparse vegetation
+19.92804,43.35281,1064,0.47,328.7,60,Bare / sparse vegetation
+17.67182,42.60173,353,2.45,143.5,60,Bare / sparse vegetation
+17.82357,43.28975,1588,8.25,172.4,60,Bare / sparse vegetation
+17.16379,43.05487,348,1.72,298.1,20,Shrubland
+18.14168,42.72024,2135,1.01,41.7,60,Bare / sparse vegetation
+17.46694,42.51614,107,0.3,270.0,60,Bare / sparse vegetation
+18.89551,42.95185,1692,0.8,310.4,60,Bare / sparse vegetation
+17.30393,42.38075,16,0.19,252.3,60,Bare / sparse vegetation
+18.75983,41.62314,240,1.65,39.2,60,Bare / sparse vegetation
+18.78212,43.22424,1624,0.58,354.0,60,Bare / sparse vegetation
+19.54994,42.00792,2092,5.06,73.4,60,Bare / sparse vegetation
+19.96575,43.06324,1220,0.51,76.8,60,Bare / sparse vegetation
+18.79325,41.78204,333,10.54,76.2,60,Bare / sparse vegetation
+19.0558,43.23474,1498,3.66,164.5,60,Bare / sparse vegetation
+19.05394,42.12391,2512,2.65,136.1,60,Bare / sparse vegetation
+19.28787,43.61107,1205,0.33,290.7,60,Bare / sparse vegetation
+18.79864,43.16201,1651,0.35,119.6,60,Bare / sparse vegetation
+19.50989,42.67372,1470,0.87,66.5,60,Bare / sparse vegetation
+20.09285,42.40437,1211,0.74,66.9,60,Bare / sparse vegetation
+19.96532,43.25527,1099,0.49,61.8,60,Bare / sparse vegetation
+18.66407,41.5347,108,1.24,147.2,60,Bare / sparse vegetation
+16.82029,43.06449,249,9.64,246.1,20,Shrubland
+17.3182,43.47859,2059,4.46,285.1,60,Bare / sparse vegetation
+20.16761,41.61253,1663,4.53,307.8,60,Bare / sparse vegetation
+19.99769,41.52856,2216,4.76,68.6,60,Bare / sparse vegetation
+19.53577,42.83386,1424,0.76,242.8,60,Bare / sparse vegetation
+17.64233,42.39416,72,0.72,165.3,60,Bare / sparse vegetation
+17.48881,42.67275,170,0.79,265.8,50,Built-up
+18.46811,42.9109,1990,1.98,220.4,60,Bare / sparse vegetation
+16.47032,43.44187,647,2.61,178.7,60,Bare / sparse vegetation
+19.5782,43.22352,1203,0.46,41.5,60,Bare / sparse vegetation
+18.34074,42.18195,895,12.33,204.2,20,Shrubland
+16.57205,43.50764,1161,15.83,137.6,60,Bare / sparse vegetation
+17.04104,43.43565,2273,12.69,246.4,60,Bare / sparse vegetation
+19.4658,43.53671,1116,0.5,21.7,60,Bare / sparse vegetation
+19.36714,42.45443,1692,2.82,110.5,60,Bare / sparse vegetation
+19.8462,42.62509,1221,0.41,295.2,60,Bare / sparse vegetation
+17.90633,43.24715,2437,7.71,286.5,60,Bare / sparse vegetation
+18.571,42.90067,1882,0.08,133.5,60,Bare / sparse vegetation
+19.5641,41.61589,499,8.2,58.2,60,Bare / sparse vegetation
+18.7132,43.40493,1768,3.1,288.5,60,Bare / sparse vegetation
+17.9271,42.6021,1084,11.13,238.7,20,Shrubland
+18.7637,42.20134,1462,16.09,240.1,20,Shrubland
+19.24329,42.6086,1602,1.47,267.7,60,Bare / sparse vegetation
+18.71017,42.23703,2761,10.13,267.1,20,Shrubland
+20.05572,43.67911,931,0.17,46.8,60,Bare / sparse vegetation
+18.5036,41.705,445,5.71,212.9,20,Shrubland
+19.51683,43.48325,1109,1.03,286.4,60,Bare / sparse vegetation
+18.47094,42.27565,1834,14.74,73.9,30,Grassland
+20.17535,43.27873,1071,1.34,285.0,60,Bare / sparse vegetation
+19.51154,42.42537,1521,2.61,70.5,60,Bare / sparse vegetation
+16.9598,43.56715,2432,12.48,92.4,60,Bare / sparse vegetation
+16.64477,43.49724,1792,1.05,159.8,60,Bare / sparse vegetation
+19.47459,41.63584,388,0.7,174.9,60,Bare / sparse vegetation
+16.9303,43.15148,333,2.69,251.1,20,Shrubland
+19.19443,43.08155,1425,2.09,1.7,60,Bare / sparse vegetation
+18.1121,42.93978,2292,2.86,60.9,60,Bare / sparse vegetation
+17.91235,42.03502,85,0.3,270.0,60,Bare / sparse vegetation
+18.88803,42.29281,2332,3.85,72.5,60,Bare / sparse vegetation
+19.12871,42.26576,2105,4.2,82.1,60,Bare / sparse vegetation
+17.48158,42.81336,493,2.16,14.7,20,Shrubland
+19.66417,43.1517,1253,1.4,48.4,60,Bare / sparse vegetation
+17.53452,43.58586,2161,0.86,113.8,60,Bare / sparse vegetation
+19.54595,42.4507,1630,7.46,255.2,60,Bare / sparse vegetation
+19.78095,42.02779,1796,0.77,325.9,60,Bare / sparse vegetation
+17.80526,43.48934,2260,3.07,183.4,60,Bare / sparse vegetation
+19.96945,43.16782,1152,0.76,117.1,60,Bare / sparse vegetation
+17.66766,43.11875,1158,12.33,196.7,60,Bare / sparse vegetation
+19.56571,42.74631,1359,0.34,46.7,60,Bare / sparse vegetation
+18.083,42.3773,936,19.9,262.3,30,Grassland
+17.9755,42.71715,1279,11.75,184.1,30,Grassland
+19.6332,43.67114,1086,0.99,273.4,60,Bare / sparse vegetation
+18.78087,43.51319,1651,1.41,114.3,60,Bare / sparse vegetation
+17.26072,43.70063,1764,2.14,333.1,60,Bare / sparse vegetation
+17.5232,43.57943,2119,0.31,280.8,60,Bare / sparse vegetation
+16.98313,42.90257,87,1.17,281.4,60,Bare / sparse vegetation
+18.692,41.75772,231,9.07,60.4,60,Bare / sparse vegetation
+19.43168,43.37464,1419,3.03,287.8,60,Bare / sparse vegetation
+17.16745,42.57556,22,0.06,270.0,40,Cropland
+18.08686,42.29372,1008,5.59,166.2,30,Grassland
+16.33488,43.44045,1577,17.19,353.9,30,Grassland
+19.71243,42.53705,1493,1.17,9.1,60,Bare / sparse vegetation
+19.74981,41.63687,1212,15.7,60.2,30,Grassland
+18.46879,41.7615,505,10.03,222.5,60,Bare / sparse vegetation
+18.73232,43.19989,1678,0.6,329.6,60,Bare / sparse vegetation
+18.05589,41.80159,76,0.35,240.3,60,Bare / sparse vegetation
+18.15733,43.22824,2274,2.48,134.5,60,Bare / sparse vegetation
+18.12773,42.15409,749,13.77,119.7,20,Shrubland
+19.93142,42.2862,1416,1.9,70.4,60,Bare / sparse vegetation
+18.70517,43.57523,1581,4.31,56.6,60,Bare / sparse vegetation
+20.18125,42.09802,1475,3.56,104.1,60,Bare / sparse vegetation
+18.24804,43.05881,2206,0.84,313.5,60,Bare / sparse vegetation
+18.58556,43.70305,1515,0.65,302.3,60,Bare / sparse vegetation
+17.19186,43.12478,553,3.72,11.3,20,Shrubland
+20.05032,42.43995,1190,0.12,-0.0,60,Bare / sparse vegetation
+20.05253,42.9019,1179,0.39,306.9,60,Bare / sparse vegetation
+17.16809,43.16653,824,4.88,322.6,20,Shrubland
+19.47035,43.39574,1209,2.71,164.2,60,Bare / sparse vegetation
+16.52949,42.8936,42,0.12,270.0,60,Bare / sparse vegetation
+19.86199,43.21776,1153,0.37,98.9,60,Bare / sparse vegetation
+16.69727,42.86696,46,0.19,287.7,40,Cropland
+17.34369,42.59489,68,0.37,199.2,50,Built-up
+17.11117,43.17509,821,16.99,359.6,20,Shrubland
+19.03297,42.38489,2017,4.33,68.9,60,Bare / sparse vegetation
+16.37539,43.79744,1334,5.14,94.5,40,Cropland
+19.73242,41.90811,1813,1.48,85.5,40,Cropland
+17.35485,43.76768,1916,1.93,77.8,60,Bare / sparse vegetation
+16.79531,42.76984,21,0.25,283.5,60,Bare / sparse vegetation
+19.37725,43.46491,1194,1.06,320.2,60,Bare / sparse vegetation
+17.24371,43.6827,1953,6.97,54.6,60,Bare / sparse vegetation
+19.92378,43.17644,1173,0.68,85.1,60,Bare / sparse vegetation
+20.09131,41.64002,1804,6.28,281.7,60,Bare / sparse vegetation
+17.45228,43.06061,2077,23.13,103.3,30,Grassland
+18.35492,42.60022,2044,1.45,175.2,60,Bare / sparse vegetation
+18.24988,42.63804,2080,0.73,303.6,40,Cropland
+16.90191,43.31561,1216,14.45,73.8,20,Shrubland
+18.212,43.33029,2150,1.28,180.0,60,Bare / sparse vegetation
+19.25608,43.69301,1280,1.4,322.0,60,Bare / sparse vegetation
+18.12876,43.07705,2306,1.72,42.3,60,Bare / sparse vegetation
+16.72511,43.65898,1674,7.8,219.8,60,Bare / sparse vegetation
+17.86325,43.39529,2365,1.59,265.8,60,Bare / sparse vegetation
+17.50789,43.18728,1804,17.68,191.3,30,Grassland
+18.01287,43.28528,2537,4.92,34.6,60,Bare / sparse vegetation
+16.34477,43.56477,1217,1.56,-0.0,60,Bare / sparse vegetation
+18.78986,43.50264,1623,1.22,115.3,60,Bare / sparse vegetation
+17.0526,43.27335,1156,11.41,135.4,60,Bare / sparse vegetation
+19.22689,42.3401,1972,4.96,129.0,60,Bare / sparse vegetation
+18.27656,43.70103,1972,1.07,53.3,60,Bare / sparse vegetation
+19.90676,42.42952,1306,0.94,259.3,60,Bare / sparse vegetation
+19.18039,41.89481,553,4.28,189.1,60,Bare / sparse vegetation
+19.54511,42.9322,1476,0.65,57.9,60,Bare / sparse vegetation
+17.85594,42.1985,108,0.3,305.5,60,Bare / sparse vegetation
+17.3983,43.32199,2131,11.85,99.7,30,Grassland
+17.11543,42.71313,67,0.38,287.7,40,Cropland
+18.64306,42.08854,554,1.6,313.5,20,Shrubland
+19.67147,43.4175,1292,6.32,258.4,60,Bare / sparse vegetation
+19.48613,43.74699,1293,5.01,250.5,60,Bare / sparse vegetation
+19.96595,42.68059,1199,0.42,313.2,60,Bare / sparse vegetation
+19.21792,41.96503,689,2.22,265.5,20,Shrubland
+16.90147,43.0652,299,3.51,79.5,20,Shrubland
+17.87256,42.33428,193,1.36,260.2,60,Bare / sparse vegetation
+17.38676,43.12162,840,6.2,234.1,20,Shrubland
+20.06771,41.9324,1472,0.6,247.3,60,Bare / sparse vegetation
+20.14262,42.96532,1152,0.47,352.4,60,Bare / sparse vegetation
+18.53331,42.04862,472,0.89,321.7,60,Bare / sparse vegetation
+19.94722,41.92975,1573,3.0,289.2,60,Bare / sparse vegetation
+16.74422,43.42152,2122,8.51,84.6,30,Grassland
+16.80253,41.95743,5,0.17,180.0,60,Bare / sparse vegetation
+17.98562,43.51852,2144,3.91,94.2,60,Bare / sparse vegetation
+19.23709,42.52483,1794,6.71,121.1,60,Bare / sparse vegetation
+19.25007,41.74651,821,22.67,216.7,60,Bare / sparse vegetation
+19.69999,42.67688,1285,0.47,352.4,60,Bare / sparse vegetation
+19.24426,42.7744,1625,1.86,133.4,60,Bare / sparse vegetation
+18.78148,42.41891,1898,6.74,165.3,60,Bare / sparse vegetation
+16.64606,43.18821,247,0.88,7.9,20,Shrubland
+19.77822,43.67013,1020,0.58,353.9,60,Bare / sparse vegetation
+18.78366,42.81651,1791,0.47,51.7,60,Bare / sparse vegetation
+18.53096,43.55119,1622,6.85,102.2,60,Bare / sparse vegetation
+18.768,43.44086,1777,3.3,54.6,60,Bare / sparse vegetation
+18.00574,43.61691,2190,2.55,72.8,60,Bare / sparse vegetation
+18.35245,41.62783,284,0.9,288.7,60,Bare / sparse vegetation
+17.44087,43.21164,2467,8.33,222.9,20,Shrubland
+19.6636,43.08419,1337,0.55,340.5,60,Bare / sparse vegetation
+19.65772,42.23625,1497,2.45,194.5,60,Bare / sparse vegetation
+20.01793,42.1357,1560,4.02,159.4,60,Bare / sparse vegetation
+19.42331,42.4236,1733,2.27,91.5,60,Bare / sparse vegetation
+19.13382,42.44208,1734,2.47,122.6,60,Bare / sparse vegetation
+17.9285,43.04754,1956,22.2,2.2,30,Grassland
+19.37212,42.01111,1591,23.3,207.1,30,Grassland
+18.50382,41.59932,191,1.97,299.9,60,Bare / sparse vegetation
+19.45924,43.61099,1146,0.42,313.3,60,Bare / sparse vegetation
+19.62051,42.9868,1404,0.68,94.9,60,Bare / sparse vegetation
+19.47349,41.69343,681,8.31,271.2,60,Bare / sparse vegetation
+18.86399,43.14509,1658,0.68,85.1,60,Bare / sparse vegetation
+19.91528,41.76386,1685,5.54,116.0,60,Bare / sparse vegetation
+19.05304,42.10329,2366,25.06,321.0,20,Shrubland
+18.32811,43.64691,1973,2.44,271.4,60,Bare / sparse vegetation
+17.11866,42.99438,230,1.1,118.3,20,Shrubland
+16.32348,43.50359,1216,3.51,137.9,20,Shrubland
+18.53578,41.74072,614,13.13,81.3,20,Shrubland
+18.88119,41.66543,637,5.27,299.6,60,Bare / sparse vegetation
+19.04295,43.50475,1349,0.94,352.5,60,Bare / sparse vegetation
+19.73722,41.6439,1063,18.8,111.8,30,Grassland
+17.37611,43.79177,2078,9.44,234.7,60,Bare / sparse vegetation
+17.12492,43.36614,1791,15.62,108.8,20,Shrubland
+19.85737,41.62343,2154,1.36,324.0,30,Grassland
+18.04299,41.83654,86,0.35,240.3,60,Bare / sparse vegetation
+16.94323,42.88662,75,0.25,226.3,40,Cropland
+16.65564,43.49301,1805,10.32,154.9,60,Bare / sparse vegetation
+18.78165,42.60348,1774,0.24,90.0,60,Bare / sparse vegetation
+17.84565,43.49409,2279,1.21,106.7,60,Bare / sparse vegetation
+20.18299,42.34126,1244,0.31,79.4,60,Bare / sparse vegetation
+18.20407,42.45144,2484,5.44,341.1,30,Grassland
+20.07353,42.62928,1147,0.17,46.8,60,Bare / sparse vegetation
+19.60381,41.74829,640,4.84,254.7,60,Bare / sparse vegetation
+19.75056,42.07193,1858,2.63,30.9,60,Bare / sparse vegetation
+17.07037,42.97739,171,0.85,163.4,20,Shrubland
+18.47113,42.16,705,4.97,171.5,60,Bare / sparse vegetation
+18.09031,42.16795,585,11.62,108.7,20,Shrubland
+18.91288,41.82066,345,6.94,25.0,60,Bare / sparse vegetation
+20.05539,41.50998,2151,3.41,106.8,60,Bare / sparse vegetation
+18.3077,42.46645,2344,3.32,72.8,30,Grassland
+19.12804,42.97162,1647,0.65,302.2,60,Bare / sparse vegetation
+16.41056,43.02219,92,0.19,252.3,20,Shrubland
+19.43323,43.55602,1135,0.34,327.5,60,Bare / sparse vegetation
+19.36175,41.91199,812,6.41,252.7,20,Shrubland
+17.76969,43.27762,2002,24.27,49.6,30,Grassland
+17.48119,42.77031,633,7.84,209.0,20,Shrubland
+19.85161,42.93303,1295,0.65,10.9,60,Bare / sparse vegetation
+16.83025,42.78654,20,0.24,194.6,20,Shrubland
+19.68437,41.9518,1937,3.51,142.2,30,Grassland
+17.36182,42.70499,110,0.39,207.6,20,Shrubland
+20.03179,42.03119,1685,0.76,23.9,60,Bare / sparse vegetation
+18.01696,42.55799,1415,18.46,314.4,20,Shrubland
+19.98809,42.57817,1159,0.35,299.4,60,Bare / sparse vegetation
+18.71473,43.09085,1771,0.37,340.6,60,Bare / sparse vegetation
+19.86257,42.98904,1277,0.33,69.4,60,Bare / sparse vegetation
+17.98624,41.73937,28,0.3,141.7,60,Bare / sparse vegetation
+17.45876,43.66548,1983,0.69,104.6,60,Bare / sparse vegetation
+18.97611,43.29153,1461,0.64,324.8,60,Bare / sparse vegetation
+18.75234,43.75599,1469,0.86,262.3,60,Bare / sparse vegetation
+19.0565,42.95951,1649,5.24,34.1,60,Bare / sparse vegetation
+17.80329,43.74326,2087,1.7,59.2,60,Bare / sparse vegetation
+16.56306,42.79313,14,0.12,270.0,40,Cropland
+17.91047,43.30812,2600,3.3,286.3,60,Bare / sparse vegetation
+17.85817,43.20844,1628,16.9,263.5,60,Bare / sparse vegetation
+18.8183,42.09781,1374,18.33,263.7,20,Shrubland
+17.3509,42.41445,35,0.19,252.4,60,Bare / sparse vegetation
+18.35867,41.73504,262,1.26,256.7,40,Cropland
+18.56814,42.97878,1883,0.3,321.6,60,Bare / sparse vegetation
+19.79371,43.4403,1049,0.3,321.4,60,Bare / sparse vegetation
+19.42997,43.25399,1197,0.41,-0.0,60,Bare / sparse vegetation
+19.11178,42.12901,2391,1.33,-0.0,60,Bare / sparse vegetation
+19.16038,42.92451,1662,0.71,334.3,60,Bare / sparse vegetation
+19.03515,41.95589,612,5.37,343.5,60,Bare / sparse vegetation
+17.51404,43.38343,2022,1.9,83.0,60,Bare / sparse vegetation
+17.95611,42.8557,1295,9.68,244.7,20,Shrubland
+18.84688,42.77555,1808,1.12,81.0,60,Bare / sparse vegetation
+19.42934,42.96003,1461,0.79,111.5,60,Bare / sparse vegetation
+16.4154,43.63537,1504,5.54,161.6,60,Bare / sparse vegetation
+19.10014,42.83574,1686,0.49,96.7,60,Bare / sparse vegetation
+18.8606,43.61218,1405,0.68,39.4,60,Bare / sparse vegetation
+17.09923,42.7194,63,0.17,226.3,40,Cropland
+19.48828,41.99099,2181,2.04,85.1,60,Bare / sparse vegetation
+17.01226,42.58474,16,0.19,287.7,60,Bare / sparse vegetation
+18.33784,41.70592,244,1.3,169.2,60,Bare / sparse vegetation
+17.88303,43.27825,2176,4.63,266.4,60,Bare / sparse vegetation
+18.71043,43.63324,1476,1.23,92.7,60,Bare / sparse vegetation
+18.88741,42.42667,1885,4.96,316.3,60,Bare / sparse vegetation
+19.36893,42.61214,1670,4.49,72.8,60,Bare / sparse vegetation
+19.58905,41.58563,733,6.89,222.5,60,Bare / sparse vegetation
+19.30964,42.77138,1501,0.3,54.7,60,Bare / sparse vegetation
+19.53182,43.51282,1085,0.13,332.1,50,Built-up
+19.22319,41.70369,422,6.62,54.3,60,Bare / sparse vegetation
+18.90443,42.43615,1842,1.57,296.3,60,Bare / sparse vegetation
+17.37836,43.07603,924,5.62,301.6,20,Shrubland
+18.73662,43.41594,1786,3.84,6.4,60,Bare / sparse vegetation
+17.25192,43.05844,551,8.33,310.5,20,Shrubland
+17.33106,43.44537,2077,1.64,132.2,60,Bare / sparse vegetation
+18.29735,42.77093,2034,0.76,23.7,60,Bare / sparse vegetation
+19.02538,43.45744,1377,0.95,104.1,60,Bare / sparse vegetation
+18.15383,41.69845,139,0.69,147.7,60,Bare / sparse vegetation
+16.91892,42.82799,51,0.27,244.4,40,Cropland
+18.63947,43.16566,1780,0.55,50.9,60,Bare / sparse vegetation
+16.84829,43.53659,2209,3.58,68.2,60,Bare / sparse vegetation
+18.25106,43.72685,2060,0.41,351.4,60,Bare / sparse vegetation
+18.03647,41.93459,139,0.5,158.5,60,Bare / sparse vegetation
+17.93999,43.28753,2566,6.97,97.1,60,Bare / sparse vegetation
+16.61797,43.18922,210,2.15,122.6,20,Shrubland
+16.34401,43.44996,1218,16.51,326.0,30,Grassland
+16.60783,42.87223,41,0.31,280.8,40,Cropland
+16.97174,42.96601,130,0.8,217.2,60,Bare / sparse vegetation
+19.03757,43.72849,1374,1.5,32.0,60,Bare / sparse vegetation
+17.60572,43.65307,2126,2.85,203.9,60,Bare / sparse vegetation
+17.7458,43.3155,1944,21.89,250.7,20,Shrubland
+18.57646,42.13222,818,11.73,62.7,20,Shrubland
+18.4974,43.08999,1955,0.78,13.7,60,Bare / sparse vegetation
+17.46883,43.59616,2180,2.52,220.6,60,Bare / sparse vegetation
+16.94163,42.85175,61,0.18,270.0,40,Cropland
+18.37527,42.20871,1315,14.31,220.4,30,Grassland
+19.21541,43.68098,1271,0.64,324.8,60,Bare / sparse vegetation
+16.72358,42.93101,70,0.19,252.3,40,Cropland
+19.61206,42.17133,1542,3.21,159.8,60,Bare / sparse vegetation
+16.63022,43.21296,237,0.56,300.9,20,Shrubland
+17.32878,43.32008,1981,22.99,261.6,30,Grassland
+19.11517,42.91731,1697,1.59,54.2,60,Bare / sparse vegetation
+19.35706,43.53896,1149,0.38,319.7,60,Bare / sparse vegetation
+20.0979,42.66629,1133,0.22,58.0,60,Bare / sparse vegetation
+19.98318,43.01013,1235,0.47,68.1,60,Bare / sparse vegetation
+17.20066,42.98325,242,0.84,220.6,20,Shrubland
+17.71322,42.6923,453,1.52,285.5,60,Bare / sparse vegetation
+19.86358,42.66547,1252,0.56,264.0,60,Bare / sparse vegetation
+17.75764,42.43928,199,4.29,97.7,60,Bare / sparse vegetation
+19.11829,43.08251,1438,1.17,63.4,60,Bare / sparse vegetation
+17.71728,43.60465,2073,1.89,90.0,60,Bare / sparse vegetation
+19.78188,43.68886,1017,0.35,-0.0,60,Bare / sparse vegetation
+18.5167,43.5214,1929,3.1,13.7,60,Bare / sparse vegetation
+19.74814,43.22367,1202,1.64,249.4,60,Bare / sparse vegetation
+17.29575,42.47755,39,0.17,226.3,60,Bare / sparse vegetation
+20.14569,43.55796,939,0.33,69.4,60,Bare / sparse vegetation
+19.27261,41.89851,848,19.14,252.0,20,Shrubland
+19.9626,43.39107,1042,0.82,351.4,60,Bare / sparse vegetation
+18.43801,43.18103,1985,2.78,70.6,60,Bare / sparse vegetation
+19.82421,41.99475,1828,4.38,86.2,60,Bare / sparse vegetation
+20.05165,41.68273,1740,5.18,329.3,60,Bare / sparse vegetation
+16.43002,43.28882,403,1.27,92.6,20,Shrubland
+19.14508,41.61231,222,11.77,79.1,60,Bare / sparse vegetation
+19.35825,42.13588,2263,5.13,45.7,60,Bare / sparse vegetation
+20.17465,41.58335,1788,9.11,229.5,60,Bare / sparse vegetation
+18.04069,42.98343,2339,1.26,42.6,60,Bare / sparse vegetation
+19.12472,41.83607,452,8.66,206.3,60,Bare / sparse vegetation
+19.40162,42.85,1468,1.91,91.7,60,Bare / sparse vegetation
+18.87992,43.30529,1524,0.62,62.3,60,Bare / sparse vegetation
+19.08207,42.75871,1650,0.39,152.1,60,Bare / sparse vegetation
+17.64494,42.92751,1491,5.8,163.0,30,Grassland
+17.102,43.6173,1971,1.27,343.4,60,Bare / sparse vegetation
+19.47742,42.33399,1513,9.31,285.8,60,Bare / sparse vegetation
+17.04678,42.56035,10,0.25,226.3,60,Bare / sparse vegetation
+19.63502,42.60263,1432,2.56,354.5,60,Bare / sparse vegetation
+19.41369,42.15588,2008,9.09,267.1,60,Bare / sparse vegetation
+18.66369,43.05841,1831,1.87,66.3,60,Bare / sparse vegetation
+18.36454,42.1117,664,1.17,6.0,60,Bare / sparse vegetation
+18.92201,41.7364,299,5.6,58.3,60,Bare / sparse vegetation
+18.25509,42.31032,1629,24.96,346.4,20,Shrubland
+16.74621,43.11465,153,0.65,249.0,20,Shrubland
+20.02825,42.69509,1189,0.78,287.4,60,Bare / sparse vegetation
+19.71601,43.15847,1257,0.81,184.3,60,Bare / sparse vegetation
+17.47633,43.79106,1957,3.83,122.9,60,Bare / sparse vegetation
+16.91449,41.90929,4,0.22,122.5,60,Bare / sparse vegetation
+18.12036,42.92377,2279,2.43,213.5,60,Bare / sparse vegetation
+19.74447,42.9766,1314,0.3,12.0,60,Bare / sparse vegetation
+18.80684,42.37549,2065,8.52,229.1,60,Bare / sparse vegetation
+16.51871,43.73131,1387,1.81,50.2,60,Bare / sparse vegetation
+16.31146,43.61968,1255,1.22,250.5,60,Bare / sparse vegetation
+19.87792,42.06579,1629,2.86,75.9,60,Bare / sparse vegetation
+18.78183,41.93185,375,4.09,48.3,60,Bare / sparse vegetation
+17.67592,42.92879,997,18.78,0.2,20,Shrubland
+17.74621,42.88328,1191,17.62,278.1,30,Grassland
+18.97558,42.4824,1687,2.32,140.7,60,Bare / sparse vegetation
+19.00367,42.58275,1673,0.94,7.5,60,Bare / sparse vegetation
+16.82586,41.84654,15,0.59,38.1,60,Bare / sparse vegetation
+17.75232,42.07451,26,0.22,302.4,60,Bare / sparse vegetation
+18.15907,43.0661,2296,1.84,59.7,60,Bare / sparse vegetation
+17.90958,43.32174,2473,9.96,61.4,60,Bare / sparse vegetation
+16.62638,42.82782,25,0.19,252.3,60,Bare / sparse vegetation
+19.89329,43.03773,1252,0.52,56.1,60,Bare / sparse vegetation
+17.41129,43.03923,1360,14.03,245.9,20,Shrubland
+17.0949,43.59445,2014,1.45,355.2,60,Bare / sparse vegetation
+18.34136,42.28782,1761,17.89,166.3,20,Shrubland
+20.07789,42.70599,1148,0.43,270.0,60,Bare / sparse vegetation
+17.36011,42.65248,92,0.52,180.0,60,Bare / sparse vegetation
+18.02658,41.75782,48,0.25,226.4,60,Bare / sparse vegetation
+19.83909,43.41997,1038,0.24,14.9,60,Bare / sparse vegetation
+17.57552,42.31755,27,0.25,283.4,60,Bare / sparse vegetation
+18.64931,43.15662,1785,3.99,95.8,60,Bare / sparse vegetation
+18.93958,42.13179,1713,21.67,272.8,20,Shrubland
+17.27949,42.64229,53,0.21,325.1,60,Bare / sparse vegetation
+18.97695,41.52326,164,0.58,-0.0,60,Bare / sparse vegetation
+19.56453,41.80183,631,0.92,266.4,20,Shrubland
+18.71826,41.576,156,1.06,299.6,60,Bare / sparse vegetation
+18.89597,43.55616,1440,6.22,323.9,60,Bare / sparse vegetation
+17.40928,43.66182,1972,4.83,207.7,60,Bare / sparse vegetation
+18.89948,42.23903,2367,4.54,231.4,30,Grassland
+16.73375,42.99883,94,0.24,270.0,60,Bare / sparse vegetation
+19.72979,43.17894,1232,3.52,84.3,60,Bare / sparse vegetation
+17.66485,42.46808,131,0.3,234.4,60,Bare / sparse vegetation
+18.32111,42.41127,2516,4.06,70.9,30,Grassland
+20.10216,43.06668,1151,0.21,324.6,60,Bare / sparse vegetation
+19.92362,42.29604,1378,1.72,63.9,60,Bare / sparse vegetation
+19.45919,42.07908,1971,4.97,69.6,60,Bare / sparse vegetation
+19.77524,43.62864,1012,0.25,46.7,60,Bare / sparse vegetation
+19.52907,41.89252,2199,9.19,239.6,20,Shrubland
+20.12741,41.71538,1562,1.2,292.7,60,Bare / sparse vegetation
+17.71905,42.9403,760,7.69,97.7,20,Shrubland
+18.79724,41.82961,281,3.92,145.8,60,Bare / sparse vegetation
+18.58029,43.19519,1819,0.74,85.5,60,Bare / sparse vegetation
+18.63197,41.59035,139,0.68,265.1,60,Bare / sparse vegetation
+18.48943,43.33771,1894,1.39,48.2,60,Bare / sparse vegetation
+19.12896,42.37687,2047,0.93,-0.0,60,Bare / sparse vegetation
+17.70193,42.18199,40,0.27,244.5,40,Cropland
+18.39856,42.29958,1640,11.34,194.5,30,Grassland
+17.13974,42.80129,89,0.17,226.3,60,Bare / sparse vegetation
+18.21938,43.27035,2256,2.61,39.1,60,Bare / sparse vegetation
+19.49058,43.56461,1119,0.5,276.7,60,Bare / sparse vegetation
+18.65056,42.34186,2578,5.1,311.1,30,Grassland
+16.9506,43.21825,1582,3.87,114.8,30,Grassland
+18.73785,43.03306,1777,0.87,57.7,60,Bare / sparse vegetation
+18.12828,43.54618,1989,0.64,354.5,60,Bare / sparse vegetation
+18.66435,43.34401,1754,5.49,309.9,60,Bare / sparse vegetation
+19.55338,41.60327,801,6.58,149.2,60,Bare / sparse vegetation

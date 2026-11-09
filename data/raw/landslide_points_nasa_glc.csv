@@ -1,0 +1,5 @@
+﻿point_id,landslide,event_id,event_date,event_title,location_description,location_accuracy,landslide_category,landslide_trigger,landslide_size,fatality_count,admin_division_name,lat,lon,source,accuracy_km,precise_location
+GLC_1,1,9481,2016-08-11,Mount Habs,Mount Habs,50km,unknown,downpour,medium,0.0,Jizan,17.4012,43.1666,NASA Global Landslide Catalog,50.0,False
+GLC_2,1,9482,2016-08-11,"King Abdullah, Al-Faghou, and Bardan roads, in Faifa","King Abdullah, Al-Faghou, and Bardan roads, in Faifa",25km,unknown,downpour,medium,0.0,Jizan,17.2635,43.1066,NASA Global Landslide Catalog,25.0,False
+GLC_3,1,9410,2016-04-13,"Aldair Bani Malik governorate in Jizan region, Saudi Arabia","Aldair Bani Malik governorate in Jizan region, Saudi Arabia",25km,debris_flow,downpour,large,1.0,Jizan,16.9045,42.5584,NASA Global Landslide Catalog,25.0,False
+GLC_4,1,9483,2016-08-11,"Mount Said, Jazan","Mount Said, Jazan",unknown,unknown,downpour,medium,0.0,Jizan,17.1908,42.7416,NASA Global Landslide Catalog,,False

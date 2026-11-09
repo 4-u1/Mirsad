@@ -1,0 +1,28 @@
+﻿point_id,landslide,event_date,region,place,lat,lon,location_precision,landslide_trigger,landslide_size,fatality_count,source,usable_for_terrain
+GLC_1,1,2016-08-11,Jizan,Mount Habs,17.4012,43.1666,approximate (25-50 km),downpour,medium,0.0,NASA Global Landslide Catalog,False
+GLC_2,1,2016-08-11,Jizan,"King Abdullah, Al-Faghou, and Bardan roads, in Faifa",17.2635,43.1066,approximate (25-50 km),downpour,medium,0.0,NASA Global Landslide Catalog,False
+GLC_3,1,2016-04-13,Jizan,"Aldair Bani Malik governorate in Jizan region, Saudi Arabia",16.9045,42.5584,approximate (25-50 km),downpour,large,1.0,NASA Global Landslide Catalog,False
+GLC_4,1,2016-08-11,Jizan,"Mount Said, Jazan",17.1908,42.7416,approximate (25-50 km),downpour,medium,0.0,NASA Global Landslide Catalog,False
+NEWS_1,1,2017-02-14,Al-Baha,عقبة حزنة,19.823603,41.535638,exact,,,,News reports,True
+NEWS_2,1,2017-02-16,Al-Baha,عقبة الملك فهد (عقبة الباحة),19.994966,41.457188,approximate,,,,News reports,True
+NEWS_3,1,2017-02-21,Al-Baha,عقبة حزنة,19.823603,41.535638,exact,,,,News reports,True
+NEWS_4,1,2019-11-23,Al-Baha,عقبة الباحة، النفق 16,19.994966,41.457188,approximate,,,,News reports,True
+NEWS_6,1,2019-12-19,Jizan,طريق ثمانية، فيفاء,17.246544,43.107105,approximate,,,,News reports,True
+NEWS_7,1,2021-08-01,Jizan,طريق الحزام، فيفاء,17.246544,43.107105,approximate,,,,News reports,True
+NEWS_8,1,2021-08-01,Jizan,الطريق 12 والطريق 8، فيفاء,17.246544,43.107105,approximate,,,,News reports,True
+NEWS_9,1,2021-08-01,Jizan,ذراع البرك / جبل خاشر,17.3142465,43.1740802,exact,,,,News reports,True
+NEWS_10,1,2021-08-01,Jizan,عقبة جبل حراز,17.3125389,43.163812,exact,,,,News reports,True
+NEWS_11,1,2021-08-07,Jizan,قرب منزل مواطن، فيفاء,17.246544,43.107105,approximate,,,,News reports,True
+NEWS_12,1,2022-08-13,Jizan,فيفاء، موقع غير محدد,17.246544,43.107105,approximate,,,,News reports,True
+NEWS_13,1,2022-08-15,Jizan,فيفاء (بلدية فيفاء تعالج الانهيارات),17.246544,43.107105,approximate,,,,News reports,True
+NEWS_14,1,2022-08-18,Jizan,الشخوص، جبال فيفاء,17.246544,43.107105,approximate,,,,News reports,True
+NEWS_15,1,2024-08-27,Jizan,فيفاء، جبال وطرق غير محددة,17.246544,43.107105,approximate,,,,News reports,True
+NEWS_16,1,2025-08-31,Jizan,جبل المعدي، طريق المعدي القديم,17.454319,42.992903,approximate,,,,News reports,True
+NEWS_17,1,2018-12-02,Asir,عقبة ضلع,18.062696,42.493754,exact,,,,News reports,True
+NEWS_18,1,2020-11-29,Asir,طريق عجبة - البشائر,19.6973771,41.9214832,approximate,,,,News reports,True
+NEWS_19,1,2023-03-12,Asir,عقبة ضلع,18.062696,42.493754,exact,,,,News reports,True
+NEWS_20,1,,Asir,عقبة شعار,18.421964,42.453543,exact,,,,News reports,True
+NEWS_21,1,,Asir,عقبة الصماء,18.296518,42.335118,exact,,,,News reports,True
+NEWS_22,1,2023-02-01,Makkah,عقبة البوا، مركز حقال,20.421155,40.656895,exact,,,,News reports,True
+NEWS_23,1,2019-05-25,Najran,طريق عقبة النقعاء,17.669496,43.957265,exact,,,,News reports,True
+NEWS_25,1,2019-05-25,Najran,طريق حبونا,17.853143,44.037967,approximate,,,,News reports,True
