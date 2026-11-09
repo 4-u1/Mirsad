@@ -11,6 +11,23 @@
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* تجاهل */ } }
   };
 
+  // ---------- API (عند تشغيل الخادم) مع وضع عرض بدون خادم ----------
+  const api = {
+    on: false,
+    token() { try { return sessionStorage.getItem("mirsad.token"); } catch (e) { return null; } },
+    user() { try { return JSON.parse(sessionStorage.getItem("mirsad.user") || "null"); } catch (e) { return null; } },
+    save(t, u) { try { if (t) { sessionStorage.setItem("mirsad.token", t); sessionStorage.setItem("mirsad.user", JSON.stringify(u)); } else { sessionStorage.clear(); } } catch (e) {} },
+    async req(path, opts = {}) {
+      const h = { "Content-Type": "application/json" }; const tk = api.token(); if (tk) h.Authorization = "Bearer " + tk;
+      const r = await fetch("/api/v1" + path, { ...opts, headers: h });
+      const body = await r.json().catch(() => null);
+      if (!r.ok) { const e = new Error((body && body.message) || r.status); e.status = r.status; e.code = body && body.error; throw e; }
+      return body;
+    },
+    async detect() { try { const c = new AbortController(); setTimeout(() => c.abort(), 1500);
+      const r = await fetch("/api/v1/health", { signal: c.signal }); api.on = r.ok && (await r.json()).status === "ok"; } catch (e) { api.on = false; } }
+  };
+
   // ---------- i18n ----------
   const t = (k, vars) => {
     let s = (I18N[S.lang] && I18N[S.lang][k]) ?? I18N.ar[k] ?? k;
@@ -18,6 +35,7 @@
     return s;
   };
   const lcName = (n) => (S.lang === "ar" && I18N.ar.lc_names[n]) || n;
+  const sfmt = (n) => (Math.floor(Number(n) * 100) / 100).toFixed(2); // الدرجة تُقرّب للأسفل كي لا تظهر 0.80 لقطاع «مرتفع»
   const fmt = (n, d = 0) => Number(n).toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
   const el = (tag, attrs = {}, ...kids) => {
     const e = document.createElement(tag);
@@ -38,6 +56,7 @@
     document.getElementById("langLabel").textContent = S.lang === "ar" ? "EN" : "ع";
     document.title = t("brand") + " · " + t("tagline");
     store.set("mirsad.lang", S.lang);
+    renderUser();
     if (S.data.sectors) { renderLegend(); renderRank(); renderKpis(); renderAlerts(); renderTransparency(); if (S.selected) openDrawer(S.selected); }
   }
 
@@ -141,7 +160,7 @@
     document.getElementById("rank").replaceChildren(...top.map((p) => el("li", {}, el("button", { onclick: () => openDrawer(p.id, true) },
       el("span", {}, el("span", { class: "sid" }, p.id), el("br"),
         el("span", { class: "meta" }, `${t("slope_max")} ${fmt(p.slope_max, 1)}° · ${fmt(p.elev)} ${t("m")}`)),
-      el("span", {}, chip(p.level), " ", el("b", {}, fmt(p.score, 2)))))));
+      el("span", {}, chip(p.level), " ", el("b", {}, sfmt(p.score)))))));
   }
 
   // ---------- drawer ----------
@@ -157,8 +176,8 @@
     const body = el("div", {},
       el("p", { class: "muted", style: "margin:0" }, t("sector")),
       el("h2", { class: "d-title" }, P.id),
-      el("div", { class: "score" }, el("b", {}, fmt(P.score, 2)), chip(P.level)),
-      el("div", { class: "muted", style: "font-size:13px" }, `${t("max_in_sector")} · ${t("top_cell")}: ${fmt(P.max, 2)} · ${t("mean_score")}: ${fmt(P.mean, 2)}`),
+      el("div", { class: "score" }, el("b", {}, sfmt(P.score)), chip(P.level)),
+      el("div", { class: "muted", style: "font-size:13px" }, `${t("max_in_sector")} · ${t("top_cell")}: ${sfmt(P.max)} · ${t("mean_score")}: ${sfmt(P.mean)}`),
       el("div", { class: "h-sec" }, t("cell_dist")),
       el("div", { class: "stack", role: "img", "aria-label": LEVELS.map((l, i) => `${t("lv_" + l)} ${P.counts[i]}`).join(", ") },
         ...LEVELS.map((l, i) => el("span", { style: `width:${(P.counts[i] / total) * 100}%;background:var(--lv-${l})`, title: `${t("lv_" + l)}: ${P.counts[i]}` }))),
@@ -197,9 +216,47 @@
     return S.data.sectors.features.map((x) => x.properties).filter((p) => p.level === "high" || p.level === "critical")
       .sort((a, b) => b.score - a.score);
   }
-  function propose(id) { if (!S.alerts[id]) { S.alerts[id] = { status: "pending", created_at: new Date().toISOString() }; saveAlerts(); } }
+  function propose(id) { if (api.on) return; if (!S.alerts[id]) { S.alerts[id] = { status: "pending", created_at: new Date().toISOString() }; saveAlerts(); } }
   function saveAlerts() { store.set("mirsad.alerts", S.alerts); renderAlerts(); }
+  async function decideApi(id, status) {
+    if (!api.token()) { const ok = await login(); if (!ok) return; }
+    try {
+      await api.req("/alerts", { method: "POST", body: JSON.stringify({ sector_id: id, action: status === "approved" ? "approve" : "dismiss" }) });
+      toast(t(status === "approved" ? "approved_toast" : "dismissed_toast"));
+    } catch (e) {
+      if (e.status === 401) { api.save(null); renderUser(); return decideApi(id, status); }
+      toast(e.code === "cooldown" ? t("cooldown") : e.status === 403 ? t("forbidden") : e.message);
+    }
+    await loadAlertsApi(); renderAlerts();
+  }
+  async function loadAlertsApi() {
+    const r = await api.req("/alerts");
+    S.alerts = {};
+    r.items.forEach((a) => { const cur = S.alerts[a.sector_id]; if (!cur || a.status === "pending" || a.id > cur.id)
+      S.alerts[a.sector_id] = { id: a.id, status: a.status, by: a.approved_by, at: a.decided_at }; });
+  }
+  function login() {
+    return new Promise((resolve) => {
+      const d = document.getElementById("loginDlg"), f = document.getElementById("loginForm"), er = document.getElementById("loginErr");
+      er.textContent = ""; f.reset();
+      f.onsubmit = async (ev) => {
+        if (ev.submitter && ev.submitter.value === "cancel") { d.close(); resolve(false); return; }
+        ev.preventDefault();
+        try { const r = await api.req("/auth/login", { method: "POST", body: JSON.stringify({ username: f.username.value, password: f.password.value }) });
+          api.save(r.token, { username: r.username, role: r.role }); renderUser(); d.close(); resolve(true);
+        } catch (e) { er.textContent = t("login_failed"); }
+      };
+      d.showModal();
+    });
+  }
+  function renderUser() {
+    const b = document.getElementById("userBtn"), u = api.user();
+    b.hidden = !api.on; if (!api.on) return;
+    b.textContent = u ? `${u.username} · ${t("logout")}` : t("login_btn");
+    b.onclick = () => { if (api.user()) { api.save(null); renderUser(); } else login(); };
+  }
   function decide(id, status) {
+    if (api.on) return decideApi(id, status);
     const prev = S.alerts[id];
     if (status === "approved" && prev && prev.status === "approved" && Date.now() - new Date(prev.at).getTime() < 864e5) { toast(t("cooldown")); return; }
     let by = "";
@@ -214,7 +271,7 @@
   }
   function renderAlerts() {
     let added = false;
-    sectorsAtRisk().forEach((p) => { if (!S.alerts[p.id]) { S.alerts[p.id] = { status: "pending", created_at: new Date().toISOString() }; added = true; } });
+    if (!api.on) sectorsAtRisk().forEach((p) => { if (!S.alerts[p.id]) { S.alerts[p.id] = { status: "pending", created_at: new Date().toISOString() }; added = true; } });
     if (added) store.set("mirsad.alerts", S.alerts);
     const fl = document.getElementById("fLevel"), fs = document.getElementById("fStatus");
     const lv0 = fl.value, st0 = fs.value;
@@ -226,7 +283,7 @@
     tb.replaceChildren(...(rows.length ? rows.map((p) => {
       const a = S.alerts[p.id] || { status: "pending" };
       return el("tr", {},
-        el("td", { class: "mono" }, p.id), el("td", {}, chip(p.level)), el("td", { class: "mono" }, fmt(p.score, 2)),
+        el("td", { class: "mono" }, p.id), el("td", {}, chip(p.level)), el("td", { class: "mono" }, sfmt(p.score)),
         el("td", {}, reasons(p)), el("td", {}, t("st_" + a.status)),
         el("td", {}, a.by ? `${a.by} · ${new Date(a.at).toLocaleString(S.lang === "ar" ? "ar-SA-u-nu-latn" : "en-GB")}` : "—"),
         el("td", { style: "white-space:nowrap" },
@@ -234,6 +291,8 @@
           a.status === "pending" ? el("button", { class: "btn", onclick: () => decide(p.id, "approved") }, t("approve")) : "", " ",
           a.status === "pending" ? el("button", { class: "btn ghost", onclick: () => decide(p.id, "dismissed") }, t("dismiss")) : ""));
     }) : [el("tr", {}, el("td", { colspan: "7", class: "muted" }, t("no_alerts")))]));
+    const sub = document.querySelector("#page-alerts .page-h p");
+    if (sub) sub.textContent = t("alerts_sub") + (api.on ? "" : " · " + t("offline_mode"));
     document.getElementById("alertCount").textContent = fmt(Object.values(S.alerts).filter((a) => a.status === "pending").length);
   }
 
@@ -298,8 +357,14 @@
     addEventListener("hashchange", route); addEventListener("keydown", (e) => e.key === "Escape" && closeDrawer());
     applyLang(); route();
     try {
-      const [sectors, events, model] = await Promise.all([loadJSON("data/sectors.geojson"), loadJSON("data/landslides.json"), loadJSON("data/model.json")]);
+      await api.detect();
+      const [sectors, events, model] = await Promise.all([
+        loadJSON(api.on ? "/api/v1/risk" : "data/sectors.geojson"), loadJSON("data/landslides.json"),
+        loadJSON(api.on ? "/api/v1/model/runs/latest" : "data/model.json")]);
+      if (api.on && sectors.thresholds) model.thresholds = sectors.thresholds;
       S.data = { sectors, events, model };
+      if (api.on) await loadAlertsApi();
+      renderUser();
       applyLang(); initMap();
     } catch (e) { console.error(e); toast(t("load_error")); }
   }

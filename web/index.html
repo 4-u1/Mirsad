@@ -31,6 +31,7 @@
   </nav>
   <div class="tools">
     <span class="proto" data-i18n="prototype">نموذج أولي</span>
+    <button class="icon-btn wide" id="userBtn" hidden></button>
     <button class="icon-btn" id="langBtn" aria-label="Language"><span id="langLabel">EN</span></button>
     <button class="icon-btn" id="themeBtn" aria-label="Theme">
       <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
@@ -121,6 +122,16 @@
   </section>
 </main>
 
+<dialog class="login" id="loginDlg">
+  <form method="dialog" id="loginForm">
+    <h2 data-i18n="login_title">دخول المشغّل</h2>
+    <p class="muted" data-i18n="login_sub">اعتماد الإنذارات يتطلب حسابًا بصلاحية مشغّل أو مسؤول.</p>
+    <label><span data-i18n="username">اسم المستخدم</span><input name="username" autocomplete="username" required></label>
+    <label><span data-i18n="password">كلمة المرور</span><input name="password" type="password" autocomplete="current-password" required></label>
+    <p class="err" id="loginErr"></p>
+    <div class="row"><button class="btn" value="ok" data-i18n="login_btn">دخول</button><button class="btn ghost" value="cancel" formnovalidate data-i18n="cancel">إلغاء</button></div>
+  </form>
+</dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <script src="i18n.js"></script>

@@ -14,18 +14,24 @@ data/raw/          ملفات الفريق كما أُرسلت (بعد حذف ا
 data/processed/    البيانات بعد التنظيف + درجات الخطر v1
 pipeline/          01 استخراج التضاريس (Colab) · 02 التنظيف · 03 التدريب
 model/             النموذج المدرّب وبطاقة النموذج (المقاييس والإعدادات)
+backend/           خادم API (Starlette) · SQLite · مخطط PostGIS · تحميل البيانات
+tests/             اختبارات القبول والصلاحيات
 web/               واجهة الموقع (HTML/CSS/JS ثابتة، عربي/إنجليزي، ليلي/نهاري)
-docs/              وثيقة المتطلبات PRD، الهوية، خرائط QGIS
+docs/              PRD، التقرير الفني، دليل المستخدم، الهوية، خرائط QGIS
 ```
 
 ## التشغيل · Run
 
 ```bash
-pip install pandas openpyxl scikit-learn joblib
+pip install -r requirements.txt
 python pipeline/02_clean_data.py     # data/raw → data/processed
 python pipeline/03_train_model.py    # model/ + web/data/
-cd web && python -m http.server 8000 # http://localhost:8000
+python backend/load_db.py            # SQLite + حسابات (كلمات المرور من MIRSAD_*_PASSWORD أو تُولّد)
+uvicorn backend.app:app --port 8000  # API + الواجهة على http://localhost:8000
+pytest -q                            # اختبارات القبول AC-1..AC-5 والصلاحيات
 ```
+
+بدون خادم، مجلد `web/` يعمل وحده كموقع ثابت (وضع العرض)، وهذا ما ينشره GitHub Pages عبر `.github/workflows/pages.yml`.
 
 `pipeline/01_extract_terrain_real.ipynb` يعمل على Google Colab ويستخرج الارتفاع والانحدار والاتجاه (Copernicus DEM 30m) والغطاء الأرضي (ESA WorldCover 2021).
 
@@ -68,3 +74,21 @@ cd web && python -m http.server 8000 # http://localhost:8000
 خريطة القطاعات وخلايا 1 كم والانهيارات التاريخية، درج تفاصيل لكل قطاع، صفحة إنذارات بموافقة بشرية (الإرسال محاكى، والسجل محفوظ في متصفح المستخدم)، صفحة شفافية بالمقاييس والمصادر والحدود. عربي/إنجليزي ووضع ليلي/نهاري بألوان الهوية، وكل أزواج النص والخلفية بتباين ≥ 4.5:1.
 
 الخريطة الأساسية: © OpenStreetMap contributors © CARTO. البيانات: Copernicus DEM، ESA WorldCover 2021، USGS، NASA Global Landslide Catalog، تقارير إخبارية.
+
+## الخادم · Backend API (PRD 15.2)
+
+| الطريقة | المسار | الصلاحية |
+|---|---|---|
+| GET | `/api/v1/risk?level=&bbox=` | عامة |
+| GET | `/api/v1/sectors/{id}` | عامة |
+| GET | `/api/v1/sectors/{id}/forecast` | عامة — يرجع 501: لا توجد بيانات توقع |
+| GET | `/api/v1/alerts?level=&status=&from=&to=` | عامة |
+| POST | `/api/v1/alerts` `{alert_id|sector_id, action}` | مشغّل |
+| GET | `/api/v1/model/runs/latest` · `/api/v1/sources` | عامة |
+| GET/PUT | `/api/v1/settings/thresholds` | PUT للمسؤول |
+| GET | `/api/v1/audit` | مسؤول |
+| POST | `/api/v1/auth/login` | — |
+
+مبني على Starlette (الإطار الذي بُني عليه FastAPI) لأنه ما كان متاحًا في بيئة البناء تثبيت FastAPI؛ المسارات والعقد مطابقة للـPRD. التخزين SQLite للتشغيل المحلي، ومخطط PostGIS المكافئ في `backend/schema_postgis.sql` (غير مختبر على خادم PostGIS).
+
+التفاصيل: [التقرير الفني](docs/technical_report.md) · [دليل المستخدم](docs/user_guide.md)

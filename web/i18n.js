@@ -58,7 +58,10 @@ window.I18N = {
       "Bare / sparse vegetation":"أرض جرداء / نباتات متناثرة","Snow and ice":"ثلج وجليد","Permanent water bodies":"مسطحات مائية",
       "Herbaceous wetland":"أراضٍ رطبة","Mangroves":"مانغروف","Moss and lichen":"طحالب وأشنات" },
     feat: { elevation:"الارتفاع", slope:"الانحدار", aspect:"اتجاه المنحدر", landcover:"الغطاء الأرضي" },
-    loading: "جارٍ التحميل…", load_error: "تعذّر تحميل البيانات"
+    loading: "جارٍ التحميل…", load_error: "تعذّر تحميل البيانات",
+    login_title: "دخول المشغّل", login_sub: "اعتماد الإنذارات يتطلب حسابًا بصلاحية مشغّل أو مسؤول.", username: "اسم المستخدم", password: "كلمة المرور",
+    login_btn: "دخول", cancel: "إلغاء", login_failed: "اسم المستخدم أو كلمة المرور غير صحيحة", logout: "خروج", forbidden: "صلاحيتك لا تسمح بهذا الإجراء",
+    offline_mode: "وضع العرض: بدون خادم، القرارات تُحفظ في هذا المتصفح فقط"
   },
   en: {
     brand: "Mirsad", tagline: "Landslide Risk Prediction System", prototype: "Prototype",
@@ -116,6 +119,9 @@ window.I18N = {
     popup_event: "Recorded landslide", precision: "Location precision", date: "Date", unknown: "Unknown",
     lc_names: {},
     feat: { elevation:"Elevation", slope:"Slope", aspect:"Aspect", landcover:"Land cover" },
-    loading: "Loading…", load_error: "Could not load data"
+    loading: "Loading…", load_error: "Could not load data",
+    login_title: "Operator sign-in", login_sub: "Approving alerts requires an operator or admin account.", username: "Username", password: "Password",
+    login_btn: "Sign in", cancel: "Cancel", login_failed: "Wrong username or password", logout: "Sign out", forbidden: "Your role does not allow this action",
+    offline_mode: "Demo mode: no server, decisions are saved in this browser only"
   }
 };
