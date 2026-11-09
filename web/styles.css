@@ -4,7 +4,8 @@
   --rust:#AC573A; --drust:#924224; --slate:#3C5662;
   --radius:16px; --font:"IBM Plex Sans Arabic","Segoe UI",Tahoma,system-ui,sans-serif;
 }
-[data-theme="dark"]{
+/* الوضع الليلي هو الافتراضي إن لم يُحدَّد وضع */
+:root,[data-theme="dark"]{
   --bg:#0F1E23; --surface:#16292F; --surface2:#1C333A; --line:#2B4A50; --text:#E6EEEC; --muted:#9FB3B5;
   --accent:#38C7B8; --on-accent:#0F1E23; --frame:#38C7B8; --frame2:#D59A4D; --shadow:0 18px 50px rgba(0,0,0,.45);
   /* سلّم الخطر: لون التعبئة على الخريطة + لون الشارة (خلفية/نص) */
@@ -198,3 +199,4 @@ button,select,input{font:inherit;color:inherit}
 .tour-dots i.on{background:var(--accent)}
 .tour-invite{position:fixed;z-index:60;bottom:20px;inset-inline-end:20px;background:var(--surface);border:1px solid var(--accent);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;width:min(320px,calc(100vw - 40px));display:grid;gap:10px}
 .tour-invite .row{display:flex;gap:8px}
+.login label[hidden]{display:none}

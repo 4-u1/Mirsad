@@ -235,6 +235,23 @@
     r.items.forEach((a) => { const cur = S.alerts[a.sector_id]; if (!cur || a.status === "pending" || a.id > cur.id)
       S.alerts[a.sector_id] = { id: a.id, status: a.status, by: a.approved_by, at: a.decided_at }; });
   }
+  // اسم المعتمِد في وضع العرض (بدون خادم): نافذة داخل الصفحة بدل prompt
+  function askName() {
+    return new Promise((resolve) => {
+      const d = document.getElementById("loginDlg"), f = document.getElementById("loginForm");
+      const pw = f.password, pwl = pw.closest("label"), h = d.querySelector("h2"), sub = d.querySelector("p.muted");
+      f.reset(); pw.required = false; pwl.hidden = true; h.textContent = t("approver_prompt"); sub.textContent = t("offline_mode");
+      document.getElementById("loginErr").textContent = "";
+      const restore = () => { pw.required = true; pwl.hidden = false; h.textContent = t("login_title"); sub.textContent = t("login_sub"); };
+      f.onsubmit = (ev) => {
+        const cancel = ev.submitter && ev.submitter.value === "cancel";
+        ev.preventDefault(); const name = f.username.value.trim();
+        if (!cancel && !name) return;
+        d.close(); restore(); resolve(cancel ? null : name);
+      };
+      d.showModal();
+    });
+  }
   function login() {
     return new Promise((resolve) => {
       const d = document.getElementById("loginDlg"), f = document.getElementById("loginForm"), er = document.getElementById("loginErr");
@@ -259,8 +276,10 @@
     if (api.on) return decideApi(id, status);
     const prev = S.alerts[id];
     if (status === "approved" && prev && prev.status === "approved" && Date.now() - new Date(prev.at).getTime() < 864e5) { toast(t("cooldown")); return; }
-    let by = "";
-    if (status === "approved") { by = (prompt(t("approver_prompt")) || "").trim(); if (!by) return; }
+    if (status === "approved") { askName().then((by) => { if (by) commitLocal(id, prev, status, by); }); return; }
+    commitLocal(id, prev, status, "");
+  }
+  function commitLocal(id, prev, status, by) {
     S.alerts[id] = { ...(prev || {}), status, by, at: new Date().toISOString() };
     saveAlerts(); toast(t(status === "approved" ? "approved_toast" : "dismissed_toast"));
   }
