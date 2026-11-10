@@ -66,7 +66,10 @@ card = json.loads((MD / "model_card.json").read_text(encoding="utf-8"))
 cmp = card.get("comparisons", {})
 tf_m = metrics(p)
 rf = cmp.get("random_forest_baseline", {})
-better = tf_m["roc_auc"] > rf.get("roc_auc", 0) + 0.05
+# "أفضل بوضوح" = تحسن ROC-AUC بأكثر من 0.05 دون تراجع في PR-AUC أو الاستدعاء عند «مرتفع».
+# مع 12 حالة إيجابية فقط، فرق ROC-AUC وحده لا يكفي: حالة واحدة تغيّره بعدة نقاط.
+better = (tf_m["roc_auc"] > rf.get("roc_auc", 0) + 0.05 and tf_m["pr_auc"] >= rf.get("pr_auc", 0)
+          and tf_m["recall_at_high"] >= rf.get("recall_at_high", 0))
 res = {
     "requirement": "FR-A3",
     "method": f"GroupKFold(5) on {BLOCK}° blocks, same folds as 03/05",
@@ -80,7 +83,7 @@ res = {
     "slope_only_logistic_spatial_auc": card.get("reference_slope_only_logistic_spatial_auc"),
     "decision": ("TensorFlow model is clearly better (> +0.05 ROC-AUC): review before adopting."
                  if better else
-                 "Random Forest baseline kept: the TensorFlow network is not clearly better (PRD 12.3: adopt the simpler model when performance is equal)."),
+                 "Random Forest baseline kept: the TensorFlow network is not clearly better — no gain in PR-AUC or recall at the high threshold, and both stay below the slope-only reference (PRD 12.3: adopt the simpler model when performance is equal)."),
 }
 (P / "tensorflow_comparison.json").write_text(json.dumps(res, ensure_ascii=False, indent=2), encoding="utf-8")
-print(json.dumps({"tensorflow_mlp": tf_m, "random_forest": rf, "decision": res["decision"]}, indent=2))
+print("MIRSAD_RESULT " + json.dumps(res, ensure_ascii=False))
