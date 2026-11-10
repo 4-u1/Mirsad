@@ -80,7 +80,12 @@ importance = dict(sorted(zip(FEATURES, map(lambda v: round(float(v), 3), model.f
 g = pd.read_csv(SPEC["grid"], encoding="utf-8-sig")
 g["risk_score"] = model.predict_proba(g[FEATURES].values)[:, 1].round(3)
 g["risk_level"] = level(g["risk_score"].values)
-g[["lat", "lon", "elevation", "slope", "aspect", "landcover", "landcover_name", "risk_score", "risk_level"]].to_csv(
+LAYER_COLS = ["curv_plan", "relief_1km", "soil_clay", "rain_p99_3d_mm", "lith_class"]  # تُخزَّن في PostGIS (FR-G2)
+_gv2 = P / "grid_features_v2.csv.gz"
+if _gv2.exists() and not all(c in g for c in LAYER_COLS):
+    _x = pd.read_csv(_gv2, encoding="utf-8-sig", usecols=LAYER_COLS)
+    if len(_x) == len(g): g = pd.concat([g.drop(columns=[c for c in LAYER_COLS if c in g]), _x], axis=1)
+g[["lat", "lon", "elevation", "slope", "aspect", "landcover", "landcover_name", "risk_score", "risk_level"] + [c for c in LAYER_COLS if c in g]].to_csv(
     P / f"risk_scores_{VERSION}.csv", index=False, encoding="utf-8-sig")
 dist = g["risk_level"].value_counts().reindex(LEVELS, fill_value=0).astype(int).to_dict()
 

@@ -116,8 +116,13 @@ def main(db_path=None, fresh=True, keep_history=True):
         con.executemany(f"INSERT INTO sectors(id, name, geometry, min_lat, min_lon, max_lat, max_lon, area_km2) VALUES (?,?,{con.geom_in},?,?,?,?,?)", sec_rows)
         con.executemany('INSERT INTO risk_scores(sector_id, "timestamp", score, max_score, mean_score, level, model_run_id, top_factors, details) '
                         "VALUES (?,?,?,?,?,?,?,?,?)", risk_rows)
+        for col in ("curv_plan", "relief_1km", "soil_clay", "rain_p99_3d_mm", "lith_class"):
+            if col not in g: g[col] = None
+        num = lambda v: None if v is None or (isinstance(v, float) and math.isnan(v)) else float(v)
+        txt = lambda v: None if v is None or (isinstance(v, float) and math.isnan(v)) else str(v)
         con.copy_features([(float(r.lat), float(r.lon), r.sector_id, float(r.elevation), float(r.slope), float(r.aspect), int(r.landcover),
-                            r.landcover_name, float(r.risk_score), r.risk_level, run_id) for r in g.itertuples()])
+                            r.landcover_name, float(r.risk_score), r.risk_level, run_id,
+                            num(r.curv_plan), num(r.relief_1km), num(r.soil_clay), num(r.rain_p99_3d_mm), txt(r.lith_class)) for r in g.itertuples()])
         srcs = [
             ("inventory", "Landslide inventory (news + NASA Global Landslide Catalog)", "NASA GLC: public; news: cited", c["landslide_events"], 1, "labels"),
             ("terrain", "Copernicus DEM 30 m + ESA WorldCover 2021", "Copernicus DEM licence; CC BY 4.0", c["training_rows"], 1, "elevation, slope, aspect, land cover"),

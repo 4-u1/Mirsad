@@ -40,7 +40,9 @@ CREATE TABLE IF NOT EXISTS features (
   sector_id      text,
   elevation      real, slope real, aspect real,
   landcover      integer, landcover_name text,
-  score          real, level text, model_run_id int
+  score          real, level text, model_run_id int,
+  -- طبقات البيانات العامة (08/09): انحناء المسقط، التضرّس 1 كم، الطين %، عتبة أمطار 3 أيام، نوع الصخور
+  curv_plan      real, relief_1km real, soil_clay real, rain_p99_3d_mm real, lith_class text
 );
 CREATE INDEX IF NOT EXISTS features_gix ON features USING gist (geom);
 CREATE INDEX IF NOT EXISTS features_sector_ix ON features (sector_id);

@@ -24,7 +24,8 @@ CREATE TABLE IF NOT EXISTS risk_scores (
   top_factors TEXT NOT NULL, details TEXT NOT NULL, PRIMARY KEY (sector_id, model_run_id));
 CREATE TABLE IF NOT EXISTS features (
   lat REAL NOT NULL, lon REAL NOT NULL, sector_id TEXT, elevation REAL, slope REAL, aspect REAL,
-  landcover INTEGER, landcover_name TEXT, score REAL, level TEXT, model_run_id INTEGER);
+  landcover INTEGER, landcover_name TEXT, score REAL, level TEXT, model_run_id INTEGER,
+  curv_plan REAL, relief_1km REAL, soil_clay REAL, rain_p99_3d_mm REAL, lith_class TEXT);
 CREATE INDEX IF NOT EXISTS ix_features_sector ON features(sector_id);
 CREATE TABLE IF NOT EXISTS alerts (
   id INTEGER PRIMARY KEY AUTOINCREMENT, sector_id TEXT NOT NULL REFERENCES sectors(id), level TEXT NOT NULL,
@@ -85,7 +86,7 @@ class SQLiteDB:
         return "s.max_lon>=? AND s.min_lon<=? AND s.max_lat>=? AND s.min_lat<=?", lambda a, b, c, d: [a, c, b, d]
 
     def copy_features(self, rows):
-        self.c.executemany("INSERT INTO features VALUES (?,?,?,?,?,?,?,?,?,?,?)", rows)
+        self.c.executemany("INSERT INTO features VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", rows)
 
 
 class PostgresDB:
@@ -143,7 +144,8 @@ class PostgresDB:
         return "s.geometry && ST_MakeEnvelope(?, ?, ?, ?, 4326)", lambda a, b, c, d: [a, b, c, d]
 
     def copy_features(self, rows):
-        cols = "lat, lon, sector_id, elevation, slope, aspect, landcover, landcover_name, score, level, model_run_id"
+        cols = ("lat, lon, sector_id, elevation, slope, aspect, landcover, landcover_name, score, level, model_run_id, "
+                "curv_plan, relief_1km, soil_clay, rain_p99_3d_mm, lith_class")
         with self.conn().cursor() as cur:
             with cur.copy(f"COPY features ({cols}) FROM STDIN") as cp:
                 for r in rows:

@@ -125,7 +125,7 @@ async def sector(request):
 
 FORECAST_STALE_HOURS = 12
 FORECAST_METHOD = ("Expected level = susceptibility level raised one step when forecast rain up to the horizon reaches 0.5x the sector's "
-                   "99th-percentile 3-day rainfall (CHIRPS 1991-2024), two steps at 1.0x; never lowered. A transparent rule, not a model "
+                   "99th-percentile 3-day rainfall (CHIRPS 2016-2025), two steps at 1.0x; never lowered. A transparent rule, not a model "
                    "calibrated on landslide events.")
 
 def _forecast_rows(where="", args=()):
