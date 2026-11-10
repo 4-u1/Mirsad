@@ -16,7 +16,9 @@
   <b><a href="docs/Mirsad_Introduction.pdf">📗 الدليل التعريفي</a></b> ·
   <a href="docs/user_guide.md">دليل المستخدم</a> ·
   <a href="docs/technical_report.md">التقرير الفني</a> ·
-  <a href="docs/team/Mirsad_Team_Sheet.xlsx">شيت الفريق</a>
+  <a href="docs/team/Mirsad_Team_Sheet.xlsx">شيت الفريق</a> ·
+  <a href="docs/presentations/Mirsad_Presentation.pdf">🎞️ العرض التقديمي</a> ·
+  <a href="docs/team/Mirsad_Team_Sheet_Guide.mp4">🎬 فيديو الشيت</a>
 </p>
 
 ---
