@@ -106,6 +106,7 @@ CREATE TABLE IF NOT EXISTS satellite (
   ndvi_now    real,
   ndvi_base   real,
   ndvi_change real,
+  ndvi_anomaly real,
   valid_now   real,
   valid_base  real,
   flag        text CHECK (flag IN ('drop','stable')),

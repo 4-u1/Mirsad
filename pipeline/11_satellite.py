@@ -7,7 +7,8 @@
 3. يركّب شبكة موحّدة 0.002° فوق المنطقة:
    - NDVI متوسط المشاهد الصافية لكل بكسل في كل نافذة.
    - فسيفساء ألوان حقيقية: أحدث بكسل صافٍ (تُعرض طبقةً فوق الخريطة).
-4. لكل قطاع (0.1°): NDVI الحالي، NDVI الأساس، التغيّر، نسبة البكسلات الصافية، وعلامة backend/rules.ndvi_flag (ق-6).
+4. لكل قطاع (0.1°): NDVI الحالي، NDVI الأساس، التغيّر، الشذوذ (التغيّر − وسيط تغيّر المنطقة)، نسبة البكسلات الصافية،
+   وعلامة backend/rules.ndvi_flag (ق-6).
 5. يكتب في satellite_runs (مع الصورة WebP) وsatellite، ويبقي آخر KEEP_RUNS تشغيلات.
 
 يعمل أسبوعيًا من .github/workflows/satellite.yml. لا قيم افتراضية: قطاع غائم يُكتب بقيم فارغة.
@@ -115,8 +116,8 @@ def read_scene(it, grid, want_rgb):
     sr, so = scale_offset(A["red"], P); sn, on = scale_offset(A["nir"], P)
     R, N = red[row, col] * sr + so, nir[row, col] * sn + on
     raw_ok = (red[row, col] > 0) & (nir[row, col] > 0)
-    ok = inside & raw_ok & np.isin(scl[row, col], VALID_SCL) & ((R + N) > 0.02)
-    nd = np.where(ok, (N - R) / np.where(ok, N + R, 1), np.nan).astype(np.float32)
+    ok = inside & raw_ok & np.isin(scl[row, col], VALID_SCL) & (R > 0) & (N > 0)   # انعكاسية سالبة = حافة/بيانات غير صالحة
+    nd = np.clip(np.where(ok, (N - R) / np.where(ok, N + R, 1), np.nan), -1, 1).astype(np.float32)
     out_rgb = np.moveaxis(rgb[:, row, col], 0, -1) if rgb is not None else None
     return (r0, r1, c0, c1), nd, ok, out_rgb
 
@@ -168,7 +169,7 @@ def webp(rgb):
 
 def main():
     from db import connect, now
-    from rules import ndvi_flag
+    from rules import ndvi_flag, NDVI_RULE
     gj = json.loads((ROOT / "web" / "data" / "sectors.geojson").read_text(encoding="utf-8"))
     ids = [f["properties"]["id"] for f in gj["features"]]
     today = datetime.date.today()
@@ -182,32 +183,39 @@ def main():
     nd_base, n_base, _, used_base, f_base = composite(it_base, grid, False, "base")
     st_now, st_base = sector_stats(nd_now, n_now, grid, ids), sector_stats(nd_base, n_base, grid, ids)
     run_at = now()
-    rows = []
+    rows, chg = [], {}
     for sid in ids:
         (a, va), (b, vb) = st_now[sid], st_base[sid]
         a = a if va > 0 else None; b = b if vb > 0 else None
-        ch = round(a - b, 4) if a is not None and b is not None else None
-        rows.append((run_at, sid, a, b, ch, va, vb, ndvi_flag(b, ch, va, vb)))
+        chg[sid] = (a, b, round(a - b, 4) if a is not None and b is not None else None, va, vb)
+    # الشذوذ = تغيّر القطاع − وسيط تغيّر المنطقة (القطاعات الصافية): يزيل فرق الموسم المطري بين السنتين على مستوى المنطقة كلها
+    ok_ch = [c for a, b, c, va, vb in chg.values() if c is not None and min(va, vb) >= NDVI_RULE["min_valid"]]
+    regional = round(float(np.median(ok_ch)), 4) if ok_ch else 0.0
+    for sid in ids:
+        a, b, ch, va, vb = chg[sid]
+        an = round(ch - regional, 4) if ch is not None else None
+        rows.append((run_at, sid, a, b, ch, an, va, vb, ndvi_flag(b, an, va, vb)))
     img = webp(rgb)
     meta = {"window_now": [str(d) for d in now_w], "window_base": [str(d) for d in base_w],
             "scenes_now": len(used_now), "scenes_base": len(used_base), "failed": f_now + f_base,
             "first_date": min(used_now) if used_now else None, "last_date": max(used_now) if used_now else None,
             "bounds": list(BBOX), "res_deg": RES, "collection": COLLECTION, "max_cloud": MAX_CLOUD,
-            "coverage_now": round(float((n_now > 0).mean()), 3), "image_kb": round(len(img) / 1024, 1)}
+            "coverage_now": round(float((n_now > 0).mean()), 3), "image_kb": round(len(img) / 1024, 1),
+            "regional_change": regional, "rule": NDVI_RULE}
     con = connect()
     with con.transaction():
         con.execute("INSERT INTO satellite_runs(run_at, meta, source, image, image_type) VALUES (?,?,?,?,?)",
                     (run_at, json.dumps(meta), SOURCE, img, "image/webp"))
-        con.copy_rows("satellite", ["run_at", "sector_id", "ndvi_now", "ndvi_base", "ndvi_change", "valid_now", "valid_base", "flag"], rows)
+        con.copy_rows("satellite", ["run_at", "sector_id", "ndvi_now", "ndvi_base", "ndvi_change", "ndvi_anomaly", "valid_now", "valid_base", "flag"], rows)
         old = [r["run_at"] for r in con.execute("SELECT run_at FROM satellite_runs ORDER BY run_at DESC").fetchall()][KEEP_RUNS:]
         for t in old:
             con.execute("DELETE FROM satellite WHERE run_at=?", (t,)); con.execute("DELETE FROM satellite_runs WHERE run_at=?", (t,))
     con.commit()
-    flags = [r[7] for r in rows]
-    ch = np.array([r[4] for r in rows if r[4] is not None])
+    flags = [r[8] for r in rows]
+    ch = np.array([r[5] for r in rows if r[5] is not None])
     summary = meta | {"run_at": run_at, "sectors": len(rows), "with_now": sum(r[2] is not None for r in rows),
                       "with_change": len(ch), "drop": flags.count("drop"), "stable": flags.count("stable"),
-                      "insufficient": flags.count(None), "change_p5_p50_p95": [round(float(np.percentile(ch, q)), 3) for q in (5, 50, 95)] if len(ch) else None,
+                      "insufficient": flags.count(None), "anomaly_p5_p50_p95": [round(float(np.percentile(ch, q)), 3) for q in (5, 50, 95)] if len(ch) else None,
                       "ndvi_now_p50": round(float(np.nanmedian([r[2] for r in rows if r[2] is not None])), 3) if any(r[2] is not None for r in rows) else None,
                       "backend": con.dialect}
     print("MIRSAD_SATELLITE " + json.dumps(summary), flush=True)
@@ -218,7 +226,7 @@ def main():
         (Path(out) / "satellite_summary.json").write_text(json.dumps(summary, indent=2))
         import csv
         with open(Path(out) / "satellite_sectors.csv", "w", newline="") as f:
-            w = csv.writer(f); w.writerow(["run_at", "sector_id", "ndvi_now", "ndvi_base", "ndvi_change", "valid_now", "valid_base", "flag"]); w.writerows(rows)
+            w = csv.writer(f); w.writerow(["run_at", "sector_id", "ndvi_now", "ndvi_base", "ndvi_change", "ndvi_anomaly", "valid_now", "valid_base", "flag"]); w.writerows(rows)
     return summary
 
 

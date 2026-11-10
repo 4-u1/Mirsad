@@ -7,7 +7,7 @@
 import sys, json, secrets, datetime, hmac
 from pathlib import Path
 from starlette.applications import Starlette
-from starlette.responses import JSONResponse, RedirectResponse
+from starlette.responses import JSONResponse, RedirectResponse, Response
 from starlette.routing import Route, Mount
 from starlette.staticfiles import StaticFiles
 from starlette.middleware import Middleware
@@ -170,6 +170,52 @@ async def forecast(request):
     if not rows: return err(404, "not_found", "No forecast for this sector in the latest issue")
     return JSONResponse(_forecast_meta(t, rows) | _group(rows)[0])
 
+SAT_STALE_DAYS = 10
+NO_SATELLITE = ("No satellite analysis yet. It is written weekly by the satellite workflow (pipeline/11_satellite.py).")
+SAT_METHOD = ("NDVI from cloud-masked Sentinel-2 L2A scenes (SCL classes 4/5), averaged over the last 30 days and compared with "
+              "the same 30 days one year earlier; anomaly = change minus the regional median change. A sector is flagged 'drop' "
+              "when baseline NDVI >= 0.15 and the anomaly <= -0.08 with >= 30% clear pixels in both windows. It is an indicator for human review, not landslide detection (decision Q-6).")
+
+def _sat_run():
+    return db().execute("SELECT run_at, meta, source, image_type FROM satellite_runs ORDER BY run_at DESC LIMIT 1").fetchone()
+
+def _sat_meta(r):
+    m = json.loads(r["meta"])
+    age = (datetime.datetime.now(datetime.timezone.utc) - datetime.datetime.fromisoformat(r["run_at"])).total_seconds() / 86400
+    return {"run_at": r["run_at"], "age_days": round(age, 1), "stale": age > SAT_STALE_DAYS, "source": r["source"],
+            "method": SAT_METHOD, "image_url": f"{API}/satellite/image?v={r['run_at']}"} | m
+
+SAT_COLS = "sector_id, ndvi_now, ndvi_base, ndvi_change, ndvi_anomaly, valid_now, valid_base, flag"
+
+async def satellite_all(request):
+    """GET /api/v1/satellite → آخر تحليل Sentinel-2 لكل القطاعات. ?flag=drop"""
+    r = _sat_run()
+    if not r: return err(503, "satellite_not_ready", NO_SATELLITE)
+    q, args = f"SELECT {SAT_COLS} FROM satellite WHERE run_at=?", [r["run_at"]]
+    f = request.query_params.get("flag")
+    if f:
+        if f not in ("drop", "stable"): return err(400, "bad_flag", "flag must be drop or stable")
+        q += " AND flag=?"; args.append(f)
+    items = [dict(x) for x in db().execute(q + " ORDER BY sector_id", args)]
+    return JSONResponse(_sat_meta(r) | {"count": len(items), "items": items})
+
+async def satellite_sector(request):
+    """GET /api/v1/sectors/{id}/satellite → مؤشر NDVI للقطاع."""
+    sid = request.path_params["id"]
+    if not db().execute("SELECT 1 FROM sectors WHERE id=?", (sid,)).fetchone(): return err(404, "not_found", "Unknown sector")
+    r = _sat_run()
+    if not r: return err(503, "satellite_not_ready", NO_SATELLITE)
+    x = db().execute(f"SELECT {SAT_COLS} FROM satellite WHERE run_at=? AND sector_id=?", (r["run_at"], sid)).fetchone()
+    if not x: return err(404, "not_found", "No satellite data for this sector in the latest run")
+    return JSONResponse(_sat_meta(r) | dict(x))
+
+async def satellite_image(request):
+    """GET /api/v1/satellite/image → فسيفساء الألوان الحقيقية لأحدث تشغيل (WebP بشفافية خارج التغطية)."""
+    r = db().execute("SELECT run_at, image, image_type FROM satellite_runs WHERE image IS NOT NULL ORDER BY run_at DESC LIMIT 1").fetchone()
+    if not r: return err(503, "satellite_not_ready", NO_SATELLITE)
+    return Response(bytes(r["image"]), media_type=r["image_type"] or "image/webp",
+                    headers={"Cache-Control": "public, max-age=86400", "X-Mirsad-Run": r["run_at"]})
+
 async def list_alerts(request):
     q, args = "SELECT * FROM alerts WHERE 1=1", []
     for k in ("level", "status", "sector_id"):
@@ -247,13 +293,14 @@ class SecurityHeaders(BaseHTTPMiddleware):
         resp = await call_next(request)
         resp.headers["X-Content-Type-Options"] = "nosniff"
         resp.headers["Referrer-Policy"] = "same-origin"
-        if request.url.path.startswith("/api/"): resp.headers["Cache-Control"] = "no-store"
+        if request.url.path.startswith("/api/") and "cache-control" not in resp.headers: resp.headers["Cache-Control"] = "no-store"
         return resp
 
 API = "/api/v1"
 routes = [
     Route(f"{API}/health", health), Route(f"{API}/auth/login", login, methods=["POST"]), Route(f"{API}/auth/me", me),
     Route(f"{API}/risk", risk), Route(f"{API}/sectors/{{id}}", sector), Route(f"{API}/sectors/{{id}}/forecast", forecast), Route(f"{API}/forecast", forecast_all),
+    Route(f"{API}/satellite", satellite_all), Route(f"{API}/satellite/image", satellite_image), Route(f"{API}/sectors/{{id}}/satellite", satellite_sector),
     Route(f"{API}/alerts", list_alerts, methods=["GET"]), Route(f"{API}/alerts", decide_alert, methods=["POST"]),
     Route(f"{API}/model/runs/latest", model_latest), Route(f"{API}/sources", sources),
     Route(f"{API}/settings/thresholds", get_thresholds, methods=["GET"]), Route(f"{API}/settings/thresholds", put_thresholds, methods=["PUT"]),

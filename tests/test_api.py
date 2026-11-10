@@ -162,3 +162,42 @@ def test_bbox_filter_uses_spatial_query(server):
     for f in sub:
         xs = [c[0] for c in f["geometry"]["coordinates"][0]]; ys = [c[1] for c in f["geometry"]["coordinates"][0]]
         assert max(xs) >= 42.0 and min(xs) <= 42.3 and max(ys) >= 18.0 and min(ys) <= 18.3
+
+
+def test_ndvi_rule():
+    from rules import ndvi_flag
+    assert ndvi_flag(0.3, -0.1, 0.9, 0.9) == "drop"
+    assert ndvi_flag(0.3, -0.05, 0.9, 0.9) == "stable"
+    assert ndvi_flag(0.1, -0.2, 0.9, 0.9) == "stable"      # أرض جرداء أصلًا: لا يُعلَّم
+    assert ndvi_flag(0.3, -0.2, 0.1, 0.9) is None          # غيوم: بيانات غير كافية
+    assert ndvi_flag(None, None, 0, 0) is None
+
+
+def test_satellite_endpoints(server, monkeypatch):
+    sid = "S181-422"
+    assert call(server, "/api/v1/satellite")[0] == 503
+    assert call(server, f"/api/v1/sectors/{sid}/satellite")[0] == 503
+    import importlib, numpy as np
+    spec = importlib.util.spec_from_file_location("sat11", ROOT / "pipeline" / "11_satellite.py")
+    sat = importlib.util.module_from_spec(spec); spec.loader.exec_module(sat)
+    monkeypatch.setattr(sat, "search", lambda a, b: [{"id": "fake_" + a, "properties": {"datetime": a + "T08:00:00Z"}}])
+    g = sat.Grid(); k = round(sat.SECTOR / sat.RES)
+    r0 = round((sat.BBOX[3] - 18.2) / sat.RES); c0 = round((42.2 - sat.BBOX[0]) / sat.RES)
+
+    def fake_read(it, grid, want_rgb):
+        nd = np.full(grid.shape, 0.30, np.float32)
+        if want_rgb: nd[r0:r0 + k, c0:c0 + k] = 0.10        # النافذة الحالية: القطاع فقد غطاءه النباتي
+        ok = np.ones(grid.shape, bool)
+        return (0, grid.shape[0], 0, grid.shape[1]), nd, ok, np.full(grid.shape + (3,), 120, np.uint8) if want_rgb else None
+    monkeypatch.setattr(sat, "read_scene", fake_read)
+    summary = sat.main()
+    assert summary["sectors"] == 1166 and summary["drop"] == 1 and summary["stable"] == 1165
+    st, r = call(server, f"/api/v1/sectors/{sid}/satellite")
+    assert st == 200 and r["flag"] == "drop" and abs(r["ndvi_change"] + 0.2) < 1e-3 and abs(r["ndvi_anomaly"] + 0.2) < 1e-3 and r["stale"] is False
+    st, alls = call(server, "/api/v1/satellite?flag=drop")
+    assert st == 200 and [i["sector_id"] for i in alls["items"]] == [sid]
+    assert call(server, "/api/v1/satellite?flag=x")[0] == 400
+    assert call(server, "/api/v1/sectors/NOPE/satellite")[0] == 404
+    with urllib.request.urlopen(server + alls["image_url"]) as resp:
+        body = resp.read()
+        assert resp.headers["Content-Type"] == "image/webp" and body[:4] == b"RIFF" and "max-age" in resp.headers["Cache-Control"]
