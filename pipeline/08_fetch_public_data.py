@@ -6,7 +6,7 @@
   python pipeline/08_fetch_public_data.py terrain   # Copernicus DEM GLO-30 (AWS): انحناء + تضرّس 1 كم
   python pipeline/08_fetch_public_data.py soil      # SoilGrids 2.0 (ISRIC WCS، 250 م): طين، رمل، طمي، كثافة ظاهرية
   python pipeline/08_fetch_public_data.py geology   # Macrostrat: نوع الصخر وعمره عند مركز كل قطاع
-  python pipeline/08_fetch_public_data.py rain_chunk 1991 2024   # CHIRPS v2.0 يومي (NOAA ERDDAP، 0.05°)
+  python pipeline/08_fetch_public_data.py rain_chunk 2020 2025   # CHIRPS v2.0 يومي (NOAA ERDDAP، 0.05°؛ السلسلة اليومية عليه تبدأ 2020)
   python pipeline/08_fetch_public_data.py rain_merge <مجلد>       # مناخ الأمطار والقيم القصوى من كل الدفعات
 
 المدخلات: data/processed/grid_features.csv (126,467 نقطة) و training_table.csv (1,689) و web/data/sectors.geojson
