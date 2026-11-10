@@ -30,8 +30,9 @@ def fetch(url, tries=4, timeout=600):
             with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=timeout) as r:
                 return r.read()
         except Exception as e:  # إعادة المحاولة بمهلة متزايدة
+            body = e.read()[:300] if hasattr(e, "read") else b""
             if k == tries - 1: raise
-            print(f"retry {k + 1}: {e}", flush=True); time.sleep(5 * (k + 1))
+            print(f"retry {k + 1}: {e} {body!r} url={url[:160]}", flush=True); time.sleep(5 * (k + 1))
 
 
 def points():
@@ -220,7 +221,7 @@ def rain_chunk(y0, y1):
             last = calendar.monthrange(y, m)[1]
             q = (f"?precip[({y}-{m:02d}-01):1:({y}-{m:02d}-{last})][({BBOX['lat0']}):1:({BBOX['lat1']})]"
                  f"[({BBOX['lon0']}):1:({BBOX['lon1']})]")
-            b = fetch_any(ERDDAP, q)
+            b = fetch_any(ERDDAP, q); time.sleep(0.5)
             ds = xr.open_dataset(io.BytesIO(b))
             p = ds["precip"].transpose("time", "latitude", "longitude").values.astype("float32")
             assert p.shape[0] == last, f"{y}-{m}: expected {last} days, got {p.shape[0]}"
