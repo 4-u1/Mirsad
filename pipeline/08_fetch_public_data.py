@@ -6,7 +6,7 @@
   python pipeline/08_fetch_public_data.py terrain   # Copernicus DEM GLO-30 (AWS): انحناء + تضرّس 1 كم
   python pipeline/08_fetch_public_data.py soil      # SoilGrids 2.0 (ISRIC WCS، 250 م): طين، رمل، طمي، كثافة ظاهرية
   python pipeline/08_fetch_public_data.py geology   # Macrostrat: نوع الصخر وعمره عند مركز كل قطاع
-  python pipeline/08_fetch_public_data.py rain_chunk 2020 2025   # CHIRPS v2.0 يومي (NOAA ERDDAP، 0.05°؛ السلسلة اليومية عليه تبدأ 2020)
+  python pipeline/08_fetch_public_data.py rain_chunk 2016 2020   # CHIRPS v2.0 يومي (IRI Data Library، 0.05°) لدفعة سنوات
   python pipeline/08_fetch_public_data.py rain_merge <مجلد>       # مناخ الأمطار والقيم القصوى من كل الدفعات
 
 المدخلات: data/processed/grid_features.csv (126,467 نقطة) و training_table.csv (1,689) و web/data/sectors.geojson
@@ -195,21 +195,11 @@ def geology():
 
 
 # ---------------------------------------------------------------- الأمطار
-# CHIRPS v2.0 يومي 0.05° من خادم NOAA ERDDAP (اقتطاع جغرافي على الخادم؛ طلب لكل شهر)
-ERDDAP = ["https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalDailyP05.nc",   # الخادمان من NOAA SWFSC بنفس البيانات
-          "https://upwell.pfeg.noaa.gov/erddap/griddap/chirps20GlobalDailyP05.nc"]
-
-
-def fetch_any(urls, q, timeout=600):
-    last = None
-    for rnd in range(3):
-        for u in urls:
-            try:
-                return fetch(u + q, tries=2, timeout=timeout)
-            except Exception as e:
-                last = e; print("mirror failed", u.split("/")[2], e, flush=True)
-        time.sleep(30 * (rnd + 1))
-    raise last
+# CHIRPS v2.0 يومي 0.05° من IRI Data Library (Columbia University): اقتطاع جغرافي على الخادم، طلب لكل شهر،
+# وطلبات متتابعة لا متوازية داخل الدفعة احترامًا للخادم.
+IRI = ("https://iridl.ldeo.columbia.edu/SOURCES/.UCSB/.CHIRPS/.v2p0/.daily-improved/.global/.0p05/.prcp/"
+       f"X/{BBOX['lon0']}/{BBOX['lon1']}/RANGEEDGES/Y/{BBOX['lat0']}/{BBOX['lat1']}/RANGEEDGES/")
+MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
 
 def rain_chunk(y0, y1):
@@ -219,14 +209,13 @@ def rain_chunk(y0, y1):
         t0 = time.time()
         for m in range(1, 13):
             last = calendar.monthrange(y, m)[1]
-            q = (f"?precip[({y}-{m:02d}-01):1:({y}-{m:02d}-{last})][({BBOX['lat0']}):1:({BBOX['lat1']})]"
-                 f"[({BBOX['lon0']}):1:({BBOX['lon1']})]")
-            b = fetch_any(ERDDAP, q); time.sleep(0.5)
-            ds = xr.open_dataset(io.BytesIO(b))
-            p = ds["precip"].transpose("time", "latitude", "longitude").values.astype("float32")
+            b = fetch(IRI + f"T/(1%20{MONTHS[m - 1]}%20{y})/({last}%20{MONTHS[m - 1]}%20{y})/RANGEEDGES/data.nc", timeout=1200)
+            ds = xr.open_dataset(io.BytesIO(b), decode_times=False)
+            p = ds["prcp"].transpose("T", "Y", "X").values.astype("float32")
             assert p.shape[0] == last, f"{y}-{m}: expected {last} days, got {p.shape[0]}"
             p[p < 0] = np.nan
-            X, Y = ds["longitude"].values, ds["latitude"].values; days.append(p)
+            X, Y = ds["X"].values, ds["Y"].values; days.append(p)
+            time.sleep(1)
         print("rain", y, round(time.time() - t0, 1), "s", flush=True)
     d = np.concatenate(days, 0)
     np.savez_compressed(OUT / f"rain_{y0}_{y1}.npz", prcp=d.astype("float16"), X=X, Y=Y, years=np.arange(y0, y1 + 1))
@@ -256,7 +245,7 @@ def rain_merge(folder):
                           for i in range(len(Y)) for j in range(len(X))], columns=["lat", "lon", *clim])
     cells.to_csv(OUT / "rain_cells.csv", index=False)
     save("rain", look(g), pd.concat([t[["point_id"]], look(t)], axis=1),
-         {"source": "CHIRPS v2.0 daily, 0.05 deg (Climate Hazards Center, UCSB) via NOAA ERDDAP (chirps20GlobalDailyP05)",
+         {"source": "CHIRPS v2.0 daily, 0.05 deg (Climate Hazards Center, UCSB) via IRI Data Library",
           "url": "https://www.chc.ucsb.edu/data/chirps", "citation": "Funk et al. (2015), Scientific Data 2:150066",
           "license": "Public domain (CC0)", "years": [min(yrs), max(yrs)], "n_years": len(set(yrs)),
           "method": "per CHIRPS pixel: mean annual total; mean annual 1-day maximum; 95th and 99th percentile of 3-day running sums; points take the nearest pixel"})
