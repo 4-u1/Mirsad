@@ -96,7 +96,7 @@
   const row = (a, b) => el("tr", {}, el("td", {}, a), el("td", {}, b));
   const f2 = (n) => (Math.floor(n * 100) / 100).toFixed(2);
   const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-  const dt = (s) => s ? new Date(s).toLocaleString(lang === "ar" ? "ar-SA-u-nu-latn-ca-gregory" : "en-GB", { dateStyle: "medium", timeStyle: "short" }) : "—";
+  const dt = (s) => s ? new Date(s).toLocaleString(lang === "ar" ? "ar-SA-u-nu-latn-ca-gregory" : "en-GB", { dateStyle: "medium", timeStyle: "short", timeZone: "Asia/Riyadh" }) + (lang === "ar" ? " (الرياض)" : " (Riyadh)") : "—";
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
   async function approval(id) {  // من الخادم إن وُجد، وإلا من سجل وضع العرض في المتصفح

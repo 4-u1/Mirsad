@@ -337,7 +337,7 @@
     fl.value = lv0; fs.value = st0;
     // تصفية بتاريخ اقتراح الإنذار (FR-U3) — بالتاريخ المحلي، والطرفان شاملان
     const ff = document.getElementById("fFrom").value, ft = document.getElementById("fTo").value;
-    const day = (iso) => { if (!iso) return ""; const d = new Date(iso); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
+    const day = (iso) => iso ? new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Riyadh" }).format(new Date(iso)) : "";  // تاريخ الرياض
     const all = sectorsAtRisk();
     const rows = all.filter((p) => { const a = S.alerts[p.id] || {}, d = day(a.created_at);
       return (!fl.value || p.level === fl.value) && (!fs.value || a.status === fs.value) && (!ff || d >= ff) && (!ft || d <= ft); });
@@ -348,7 +348,7 @@
       return el("tr", {},
         el("td", { class: "mono" }, p.id), el("td", {}, chip(p.level)), el("td", { class: "mono" }, sfmt(p.score)),
         el("td", {}, reasons(p)), el("td", { class: "mono", style: "white-space:nowrap" }, a.created_at ? day(a.created_at) : "—"), el("td", {}, t("st_" + a.status)),
-        el("td", {}, a.by ? `${a.by} · ${new Date(a.at).toLocaleString(S.lang === "ar" ? "ar-SA-u-nu-latn" : "en-GB")}` : "—"),
+        el("td", {}, a.by ? `${a.by} · ${new Date(a.at).toLocaleString(S.lang === "ar" ? "ar-SA-u-nu-latn-ca-gregory" : "en-GB", { timeZone: "Asia/Riyadh" })}` : "—"),
         el("td", { style: "white-space:nowrap" },
           el("button", { class: "btn ghost", onclick: () => { location.hash = "#map"; setTimeout(() => openDrawer(p.id, true), 60); } }, t("view")), " ",
           a.status === "pending" ? el("button", { class: "btn", onclick: () => decide(p.id, "approved") }, t("approve")) : "", " ",
