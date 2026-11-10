@@ -1,6 +1,6 @@
-data
-docs
-pipeline
-tests
+/data
+/docs
+/pipeline
+/tests
 model/*.joblib
-.github
+/.github
