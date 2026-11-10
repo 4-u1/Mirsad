@@ -112,7 +112,9 @@ button,select,input{font:inherit;color:inherit}
 /* pages */
 .container{max-width:1160px;margin:0 auto;padding:28px 20px 60px;display:grid;gap:16px}
 .page-h h1{margin:0;font-size:28px}.page-h p{margin:6px 0 0}
-.filters{display:flex;gap:10px;flex-wrap:wrap}
+.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.date-f{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);font-weight:600}.date-f .select{min-width:0;color:var(--text);color-scheme:light dark}
+#fCount{font-size:13px;font-variant-numeric:tabular-nums}
 .select{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 12px;min-width:170px}
 .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
 .table{width:100%;border-collapse:collapse;font-size:14px;min-width:720px}

@@ -108,9 +108,13 @@
       <div class="filters">
         <select id="fLevel" class="select"></select>
         <select id="fStatus" class="select"></select>
+        <label class="date-f"><span data-i18n="from_date">من تاريخ</span><input type="date" id="fFrom" class="select"></label>
+        <label class="date-f"><span data-i18n="to_date">إلى تاريخ</span><input type="date" id="fTo" class="select"></label>
+        <button class="btn ghost" id="fClear" data-i18n="clear_filters">مسح التصفية</button>
+        <span class="muted" id="fCount" aria-live="polite"></span>
       </div>
       <div class="table-wrap"><table class="table">
-        <thead><tr><th data-i18n="th_sector">القطاع</th><th data-i18n="th_level">المستوى</th><th data-i18n="th_score">الدرجة</th><th data-i18n="th_reasons">الأسباب</th><th data-i18n="th_status">الحالة</th><th data-i18n="th_by">اعتمده</th><th></th></tr></thead>
+        <thead><tr><th data-i18n="th_sector">القطاع</th><th data-i18n="th_level">المستوى</th><th data-i18n="th_score">الدرجة</th><th data-i18n="th_reasons">الأسباب</th><th data-i18n="th_date">تاريخ الاقتراح</th><th data-i18n="th_status">الحالة</th><th data-i18n="th_by">اعتمده</th><th></th></tr></thead>
         <tbody id="alertRows"></tbody>
       </table></div>
     </div>

@@ -271,7 +271,7 @@
     const r = await api.req("/alerts");
     S.alerts = {};
     r.items.forEach((a) => { const cur = S.alerts[a.sector_id]; if (!cur || a.status === "pending" || a.id > cur.id)
-      S.alerts[a.sector_id] = { id: a.id, status: a.status, by: a.approved_by, at: a.decided_at }; });
+      S.alerts[a.sector_id] = { id: a.id, status: a.status, by: a.approved_by, at: a.decided_at, created_at: a.created_at }; });
   }
   // اسم المعتمِد في وضع العرض (بدون خادم): نافذة داخل الصفحة بدل prompt
   function askName() {
@@ -335,19 +335,25 @@
     fl.replaceChildren(el("option", { value: "" }, t("all_levels")), ...["critical", "high"].map((l) => el("option", { value: l }, t("lv_" + l))));
     fs.replaceChildren(el("option", { value: "" }, t("all_status")), ...["pending", "approved", "dismissed"].map((s) => el("option", { value: s }, t("st_" + s))));
     fl.value = lv0; fs.value = st0;
-    const rows = sectorsAtRisk().filter((p) => (!fl.value || p.level === fl.value) && (!fs.value || (S.alerts[p.id] || {}).status === fs.value));
+    // تصفية بتاريخ اقتراح الإنذار (FR-U3) — بالتاريخ المحلي، والطرفان شاملان
+    const ff = document.getElementById("fFrom").value, ft = document.getElementById("fTo").value;
+    const day = (iso) => { if (!iso) return ""; const d = new Date(iso); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
+    const all = sectorsAtRisk();
+    const rows = all.filter((p) => { const a = S.alerts[p.id] || {}, d = day(a.created_at);
+      return (!fl.value || p.level === fl.value) && (!fs.value || a.status === fs.value) && (!ff || d >= ff) && (!ft || d <= ft); });
+    document.getElementById("fCount").textContent = ff && ft && ff > ft ? t("bad_range") : t("f_count", { n: fmt(rows.length), t: fmt(all.length) });
     const tb = document.getElementById("alertRows");
     tb.replaceChildren(...(rows.length ? rows.map((p) => {
       const a = S.alerts[p.id] || { status: "pending" };
       return el("tr", {},
         el("td", { class: "mono" }, p.id), el("td", {}, chip(p.level)), el("td", { class: "mono" }, sfmt(p.score)),
-        el("td", {}, reasons(p)), el("td", {}, t("st_" + a.status)),
+        el("td", {}, reasons(p)), el("td", { class: "mono", style: "white-space:nowrap" }, a.created_at ? day(a.created_at) : "—"), el("td", {}, t("st_" + a.status)),
         el("td", {}, a.by ? `${a.by} · ${new Date(a.at).toLocaleString(S.lang === "ar" ? "ar-SA-u-nu-latn" : "en-GB")}` : "—"),
         el("td", { style: "white-space:nowrap" },
           el("button", { class: "btn ghost", onclick: () => { location.hash = "#map"; setTimeout(() => openDrawer(p.id, true), 60); } }, t("view")), " ",
           a.status === "pending" ? el("button", { class: "btn", onclick: () => decide(p.id, "approved") }, t("approve")) : "", " ",
           a.status === "pending" ? el("button", { class: "btn ghost", onclick: () => decide(p.id, "dismissed") }, t("dismiss")) : ""));
-    }) : [el("tr", {}, el("td", { colspan: "7", class: "muted" }, t("no_alerts")))]));
+    }) : [el("tr", {}, el("td", { colspan: "8", class: "muted" }, t("no_alerts")))]));
     const sub = document.querySelector("#page-alerts .page-h p");
     if (sub) sub.textContent = t("alerts_sub") + (api.on ? "" : " · " + t("offline_mode"));
     document.getElementById("alertCount").textContent = fmt(Object.values(S.alerts).filter((a) => a.status === "pending").length);
@@ -441,7 +447,8 @@
     document.getElementById("lySectors").onchange = (e) => ["sec-fill", "sec-line"].forEach((l) => S.map.setLayoutProperty(l, "visibility", e.target.checked ? "visible" : "none"));
     document.getElementById("lyEvents").onchange = (e) => S.map.setLayoutProperty("ev", "visibility", e.target.checked ? "visible" : "none");
     document.getElementById("lyCells").onchange = (e) => toggleCells(e.target.checked).catch(() => toast(t("load_error")));
-    document.getElementById("fLevel").onchange = renderAlerts; document.getElementById("fStatus").onchange = renderAlerts;
+    ["fLevel", "fStatus", "fFrom", "fTo"].forEach((id) => (document.getElementById(id).onchange = renderAlerts));
+    document.getElementById("fClear").onclick = () => { ["fLevel", "fStatus", "fFrom", "fTo"].forEach((id) => (document.getElementById(id).value = "")); renderAlerts(); };
     addEventListener("hashchange", route); addEventListener("keydown", (e) => e.key === "Escape" && closeDrawer());
     applyLang(); route(); splash(15, "sp_ui");
     try {
