@@ -1,46 +1,21 @@
 name: Rainfall climatology (CHIRPS)
-# يجلب CHIRPS اليومي 1991–2024 على دفعات متوازية، ثم يحسب مناخ الأمطار والعتبات لكل خلية (FR-D1)
+# يجلب CHIRPS v2.0 اليومي 1991–2024 من NOAA ERDDAP ثم يحسب مناخ الأمطار والعتبات لكل خلية (FR-D1)
 on:
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
-  chunk:
-    strategy:
-      fail-fast: false
-      max-parallel: 6
-      matrix:
-        years: ["1991 1994", "1995 1998", "1999 2002", "2003 2006", "2007 2010", "2011 2014", "2015 2018", "2019 2021", "2022 2024"]
+  rain:
     runs-on: ubuntu-latest
-    timeout-minutes: 240
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - run: pip install numpy pandas xarray netCDF4 scipy
-      - run: python pipeline/08_fetch_public_data.py rain_chunk ${{ matrix.years }}
+      - run: python pipeline/08_fetch_public_data.py rain_chunk 1991 2024
         env:
-          MIRSAD_OUT: chunk
-      - id: name
-        run: echo "n=$(echo '${{ matrix.years }}' | tr ' ' '_')" >> "$GITHUB_OUTPUT"
-      - uses: actions/upload-artifact@v4
-        with:
-          name: rain-${{ steps.name.outputs.n }}
-          path: chunk/
-          retention-days: 3
-  merge:
-    needs: chunk
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - run: pip install numpy pandas xarray netCDF4 scipy
-      - uses: actions/download-artifact@v4
-        with:
-          pattern: rain-*
-          path: chunks
+          MIRSAD_OUT: chunks
       - run: python pipeline/08_fetch_public_data.py rain_merge chunks
       - run: python pipeline/tools/emit_b64.py rain out
