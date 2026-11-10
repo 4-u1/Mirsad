@@ -40,6 +40,7 @@
     rain_p99_3d_mm: [() => " " + t("mm"), 0], soil_clay: [() => "%", 1], relief_1km: [() => " " + t("m"), 0] };
   const LITH_COLORS = { plutonic: "#C98B6B", volcanic: "#8E4A5A", volcano_sedimentary: "#6F8E7A", sedimentary: "#D7B56D", other: "#8A8F99" };
   const sfmt = (n) => (Math.floor(Number(n) * 100) / 100).toFixed(2); // الدرجة تُقرّب للأسفل كي لا تظهر 0.80 لقطاع «مرتفع»
+  const FMT = window.MirsadFmt;  // التواريخ والشعار حسب اللغة والوضع (web/format.js)
   const fmt = (n, d = 0) => Number(n).toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
   const el = (tag, attrs = {}, ...kids) => {
     const e = document.createElement(tag);
@@ -54,6 +55,7 @@
   const cssVar = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 
   function applyLang() {
+    FMT.setLang(S.lang); FMT.applyBrand();
     const html = document.documentElement;
     html.lang = S.lang; html.dir = S.lang === "ar" ? "rtl" : "ltr";
     document.querySelectorAll("[data-i18n]").forEach((n) => { n.textContent = t(n.dataset.i18n); });
@@ -69,6 +71,7 @@
   function applyTheme(theme) {
     document.documentElement.dataset.theme = theme;
     store.set("mirsad.theme", theme);
+    FMT.applyBrand();
     if (S.map && S.map.isStyleLoaded()) restyleMap();
   }
   function levelColors() { return Object.fromEntries(LEVELS.map((l) => [l, cssVar("--lv-" + l)])); }
@@ -284,8 +287,7 @@
     } catch (e) { S.forecast = null; }
     renderFcSide();
   }
-  const riyadh = (iso) => new Date(iso).toLocaleString(S.lang === "ar" ? "ar-SA-u-nu-latn-ca-gregory" : "en-GB",
-    { dateStyle: "medium", timeStyle: "short", timeZone: "Asia/Riyadh" });
+  const riyadh = (iso) => FMT.fmtDate(iso, { zone: false });
   function renderFcSide() {
     const n = document.getElementById("fcSide"); if (!n) return; n.hidden = false;
     if (!S.forecast) { n.textContent = t("fc_side_none"); return; }
@@ -407,7 +409,9 @@
     fl.value = lv0; fs.value = st0;
     // تصفية بتاريخ اقتراح الإنذار (FR-U3) — بالتاريخ المحلي، والطرفان شاملان
     const ff = document.getElementById("fFrom").value, ft = document.getElementById("fTo").value;
-    const day = (iso) => iso ? new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Riyadh" }).format(new Date(iso)) : "";  // تاريخ الرياض
+    const day = FMT.isoDay;  // يوم الرياض بصيغة ISO للمقارنة فقط
+    document.getElementById("fFromTxt").textContent = ff ? FMT.fmtDay(ff) : "";
+    document.getElementById("fToTxt").textContent = ft ? FMT.fmtDay(ft) : "";
     const all = sectorsAtRisk();
     const rows = all.filter((p) => { const a = S.alerts[p.id] || {}, d = day(a.created_at);
       return (!fl.value || p.level === fl.value) && (!fs.value || a.status === fs.value) && (!ff || d >= ff) && (!ft || d <= ft); });
@@ -417,8 +421,8 @@
       const a = S.alerts[p.id] || { status: "pending" };
       return el("tr", {},
         el("td", { class: "mono" }, p.id), el("td", {}, chip(p.level)), el("td", { class: "mono" }, sfmt(p.score)),
-        el("td", {}, reasons(p)), el("td", { class: "mono", style: "white-space:nowrap" }, a.created_at ? day(a.created_at) : "—"), el("td", {}, t("st_" + a.status)),
-        el("td", {}, a.by ? `${a.by} · ${new Date(a.at).toLocaleString(S.lang === "ar" ? "ar-SA-u-nu-latn-ca-gregory" : "en-GB", { timeZone: "Asia/Riyadh" })}` : "—"),
+        el("td", {}, reasons(p)), el("td", { style: "white-space:nowrap" }, a.created_at ? FMT.fmtDay(a.created_at) : "—"), el("td", {}, t("st_" + a.status)),
+        el("td", {}, a.by ? `${a.by} · ${FMT.fmtDate(a.at)}` : "—"),
         el("td", { style: "white-space:nowrap" },
           el("button", { class: "btn ghost", onclick: () => { location.hash = "#map"; setTimeout(() => openDrawer(p.id, true), 60); } }, t("view")), " ",
           a.status === "pending" ? el("button", { class: "btn", onclick: () => decide(p.id, "approved") }, t("approve")) : "", " ",
@@ -445,11 +449,11 @@
       el("dt", {}, t("q_brier_raw")), el("dd", {}, fmt(m.calibration.brier_raw, 4)),
       el("dt", {}, t("q_brier_cal")), el("dd", {}, fmt(m.calibration.brier_calibrated, 4)),
       el("dt", {}, t("q_shap")), el("dd", {}, fmt(m.explanations.additivity_max_error, 6)),
-      el("dt", {}, t("data_as_of")), el("dd", {}, m.trained_at));
+      el("dt", {}, t("data_as_of")), el("dd", {}, FMT.fmtDay(m.trained_at)));
     document.getElementById("trWarn").textContent = t("tr_warn", { auc: m.spatial_cv.roc_auc, pos: m.training.positives });
     const dl = document.getElementById("trModel");
     dl.replaceChildren(
-      el("dt", {}, t("version")), el("dd", {}, m.version), el("dt", {}, t("trained")), el("dd", {}, m.trained_at),
+      el("dt", {}, t("version")), el("dd", {}, m.version), el("dt", {}, t("trained")), el("dd", {}, FMT.fmtDay(m.trained_at)),
       el("dt", {}, t("algorithm")), el("dd", { style: "font-weight:500" }, m.algorithm),
       el("dt", {}, t("features")), el("dd", {}, m.features.map((f) => t("feat")[f]).join("، ")),
       el("dt", {}, t("training")), el("dd", {}, t("pos_neg", { p: m.training.positives, n: fmt(m.training.negatives) })),
@@ -538,6 +542,7 @@
       S.stale = api.on ? !!sectors.stale : ageDays > 30;
       const sc = document.getElementById("staleChip"); sc.hidden = !S.stale; sc.title = t("stale_note", { d: 30 });
       document.getElementById("verChip").textContent = model.version;
+      document.getElementById("verChip").title = `${t("trained")}: ${FMT.fmtDay(model.trained_at)}`;
       applyLang(); splash(85, "sp_map"); initMap();
       let done = false; const fin = () => { if (!done) { done = true; splashDone(); } };
       S.map.once("load", fin); setTimeout(fin, 6000); // لا تعلق الشاشة إن تأخرت بلاطات الخريطة

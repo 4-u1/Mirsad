@@ -235,3 +235,5 @@ table.fc{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
 table.fc th,table.fc td{padding:6px 4px;border-bottom:1px solid var(--line);text-align:center}
 table.fc tbody th{text-align:start;color:var(--muted);font-weight:600}
 .warn-t{color:var(--lv-medium-fg)}
+.about-logo{height:auto;aspect-ratio:2000/790}
+.date-txt{font-size:12px;color:var(--text);font-weight:600;white-space:nowrap}

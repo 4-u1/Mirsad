@@ -20,5 +20,9 @@ jobs:
       - run: python tests/e2e/live_check.py
         env:
           MIRSAD_URL: ${{ github.event.inputs.url }}
+      - run: python tests/e2e/i18n_brand_check.py
+        if: always()
+        env:
+          MIRSAD_URL: ${{ github.event.inputs.url }}
       - if: always()
         run: python pipeline/tools/emit_b64.py ui out

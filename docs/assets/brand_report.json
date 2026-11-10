@@ -1,0 +1,44 @@
+{
+  "palette": {
+    "ink": {
+      "dark": "#E6EEEC",
+      "light": "#13242A"
+    },
+    "gold": {
+      "dark": "#D59A4D",
+      "light": "#924224"
+    },
+    "bg": {
+      "dark": "#0F1E23",
+      "light": "#F6F1E8"
+    }
+  },
+  "contrast": {
+    "ar-dark": {
+      "ink_vs_bg": 14.47,
+      "gold_vs_bg": 6.96,
+      "ink_vs_surface": 12.79
+    },
+    "ar-light": {
+      "ink_vs_bg": 14.21,
+      "gold_vs_bg": 6.17,
+      "ink_vs_white": 15.99
+    },
+    "en-dark": {
+      "ink_vs_bg": 14.47,
+      "gold_vs_bg": 6.96,
+      "ink_vs_surface": 12.79
+    },
+    "en-light": {
+      "ink_vs_bg": 14.21,
+      "gold_vs_bg": 6.17,
+      "ink_vs_white": 15.99
+    }
+  },
+  "sizes_kb": {
+    "logo-ar-dark.svg": 563.9,
+    "logo-ar-light.svg": 593.5,
+    "logo-en-dark.svg": 343.1,
+    "logo-en-light.svg": 343.1
+  }
+}

@@ -14,7 +14,7 @@
   body{background:#E9E3D8;color:var(--ink);margin:0;padding-bottom:8px}
   .page{max-width:860px;margin:28px auto;background:var(--paper);box-shadow:0 18px 50px rgba(19,36,42,.16);border-radius:6px;overflow:hidden;position:relative}
   .hd{background:linear-gradient(135deg,var(--brand) 0%,var(--brand2) 100%);color:#fff;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:22px 32px}
-  .hd img{height:78px;display:block}
+  .hd img{height:78px;width:auto;aspect-ratio:2000/790;display:block}.hd .logo-prn{display:none}
   .hd-meta{text-align:end;display:grid;gap:3px}
   .hd-meta b{font-size:19px;letter-spacing:.2px}
   .hd-meta span{font-size:12.5px;color:#B9CCD3}
@@ -59,18 +59,24 @@
   .bar{max-width:860px;margin:0 auto;padding-bottom:40px !important;display:flex;gap:10px;justify-content:flex-end;padding:0 4px}
   @media (max-width:680px){.page{margin:0;border-radius:0}.hd{flex-direction:column;align-items:flex-start;padding:18px}.hd-meta{text-align:start}
     .body{padding:18px}.title,.grid,.appr{grid-template-columns:1fr}.stamp{justify-self:center}.ft{padding:14px 18px}.bar{padding:0 12px;flex-wrap:wrap}}
-  @media print{@page{size:A4;margin:10mm}body{background:#fff}.page{box-shadow:none;margin:0;max-width:none;border-radius:0}.bar{display:none}.box,.appr{break-inside:avoid}}
+  @media print{@page{size:A4;margin:10mm}body{background:#fff}
+    .hd{background:#fff !important;color:var(--ink) !important;border-bottom:2px solid var(--rule)}.hd .logo-scr{display:none}.hd .logo-prn{display:block}
+    .hd .ref{color:var(--teal) !important}.hd-meta span{color:var(--mute) !important}.page{box-shadow:none;margin:0;max-width:none;border-radius:0}.bar{display:none}.box,.appr{break-inside:avoid}}
 </style>
 </head>
 <body>
 <main class="page" id="page"><div class="body"><p class="muted">…</p></div></main>
 <div class="bar" id="bar"></div>
 <script src="i18n.js"></script>
+<script src="format.js"></script>
 <script>
 (function(){
   "use strict";
   let lang = "ar"; try { const v = localStorage.getItem("mirsad.lang"); lang = (v && v.replace(/"/g, "")) === "en" ? "en" : "ar"; } catch (e) {}
   document.documentElement.lang = lang; document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+  const F = window.MirsadFmt; F.setLang(lang);
+  // تغيير اللغة أو الوضع من تبويب الخريطة يعيد رسم التقرير
+  addEventListener("storage", (e) => { if (e.key === "mirsad.lang" || e.key === "mirsad.theme") location.reload(); });
   const T = I18N[lang], t = (k, v) => { let s = T[k] ?? I18N.ar[k] ?? k; if (v && typeof s === "string") for (const [x, y] of Object.entries(v)) s = s.replace("{" + x + "}", y); return s; }, lc = (n) => (lang === "ar" && I18N.ar.lc_names[n]) || n;
   const L = {
     ar: { title: "تقرير تقييم خطر القطاع", ref: "رقم المرجع", gen: "تاريخ الإصدار", model: "إصدار النموذج", sector: "القطاع", scale: "موقع الدرجة على سلّم المستويات",
@@ -96,7 +102,7 @@
   const row = (a, b) => el("tr", {}, el("td", {}, a), el("td", {}, b));
   const f2 = (n) => (Math.floor(n * 100) / 100).toFixed(2);
   const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-  const dt = (s) => s ? new Date(s).toLocaleString(lang === "ar" ? "ar-SA-u-nu-latn-ca-gregory" : "en-GB", { dateStyle: "medium", timeStyle: "short", timeZone: "Asia/Riyadh" }) + (lang === "ar" ? " (الرياض)" : " (Riyadh)") : "—";
+  const dt = (s) => F.fmtDate(s);
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
   async function approval(id) {  // من الخادم إن وُجد، وإلا من سجل وضع العرض في المتصفح
@@ -114,7 +120,7 @@
     return null;
   }
   function stamp(by, at, ref) {
-    const c = "#1E6A70", top = esc(L.stampTop), mid = esc(L.stampMid), who = esc(by || ""), when = esc(at ? new Date(at).toISOString().slice(0, 10) : "");
+    const c = "#1E6A70", top = esc(L.stampTop), mid = esc(L.stampMid), who = esc(by || ""), when = esc(at ? F.fmtDay(at) : "");
     return el("div", { class: "stamp", role: "img", "aria-label": `${L.stampMid} · ${by || ""} · ${when}`, html:
       `<svg viewBox="0 0 200 200" width="168" height="168" xmlns="http://www.w3.org/2000/svg">
         <defs><path id="arcT" d="M 30 100 A 70 70 0 0 1 170 100"/><path id="arcB" d="M 36 104 A 64 64 0 0 0 164 104"/></defs>
@@ -147,9 +153,11 @@
 
     P.style.setProperty("--lvc", css("--lv-" + lv)); P.style.setProperty("--lvbg", css("--lv-" + lv + "-bg")); P.style.setProperty("--lvfg", css("--lv-" + lv + "-fg"));
     P.replaceChildren(
-      el("header", { class: "hd" }, el("img", { src: "logo.png", alt: "Mirsad · مِرصاد" }),
+      el("header", { class: "hd" },
+        el("img", { class: "logo-scr", "data-brand": "", "data-brand-theme": "dark", src: F.brandLogo(lang, "dark").src, alt: F.brandLogo(lang, "dark").alt, width: "2000", height: "790" }),
+        el("img", { class: "logo-prn", "data-brand": "", "data-brand-theme": "light", src: F.brandLogo(lang, "light").src, alt: F.brandLogo(lang, "light").alt, width: "2000", height: "790" }),
         el("div", { class: "hd-meta" }, el("b", {}, L.title), el("span", { class: "ref" }, ref),
-          el("span", {}, `${L.gen}: ${dt(today.toISOString())}`), el("span", {}, `${L.model}: ${m.version} · ${m.trained_at}`))),
+          el("span", {}, `${L.gen}: ${dt(today.toISOString())}`), el("span", {}, `${L.model}: ${m.version} · ${F.fmtDay(m.trained_at)}`))),
       el("div", { class: "stripe" }),
       el("div", { class: "body" },
         el("div", { class: "title" },
