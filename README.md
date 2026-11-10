@@ -78,7 +78,7 @@ pytest -q                            # اختبارات القبول AC-1..AC-5 
 
 خريطة القطاعات وخلايا 1 كم والانهيارات التاريخية، درج تفاصيل لكل قطاع، صفحة إنذارات بموافقة بشرية (الإرسال محاكى، والسجل محفوظ في متصفح المستخدم)، صفحة شفافية بالمقاييس والمصادر والحدود. عربي/إنجليزي ووضع ليلي/نهاري بألوان الهوية، وكل أزواج النص والخلفية بتباين ≥ 4.5:1.
 
-الخريطة الأساسية: © OpenStreetMap contributors © CARTO. البيانات: Copernicus DEM، ESA WorldCover 2021، USGS، NASA Global Landslide Catalog، تقارير إخبارية.
+الخريطة الأساسية وصور الأقمار الصناعية: Esri (HERE, Garmin, © OpenStreetMap contributors, Maxar). البيانات: Copernicus DEM، ESA WorldCover 2021، USGS، NASA Global Landslide Catalog، تقارير إخبارية.
 
 ## الخادم · Backend API (PRD 15.2)
 

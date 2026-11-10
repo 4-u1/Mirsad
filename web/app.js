@@ -77,16 +77,22 @@
 
   // ---------- map ----------
   function initMap() {
-    const carto = (v) => ["a", "b", "c"].map((s) => `https://${s}.basemaps.cartocdn.com/${v}/{z}/{x}/{y}@2x.png`);
+    // خرائط أساس من Esri بدون مفتاح API (خرائط CARTO صارت تطلب مفتاحًا خارج localhost)
+    const esri = (svc) => [`https://server.arcgisonline.com/ArcGIS/rest/services/${svc}/MapServer/tile/{z}/{y}/{x}`];
+    const canvasAttr = "Esri, HERE, Garmin, © OpenStreetMap contributors";
     const map = new maplibregl.Map({
       container: "map", center: [42.35, 18.35], zoom: 6.2, minZoom: 4, maxZoom: 13, attributionControl: false,
       style: { version: 8, sources: {
-          dark: { type: "raster", tiles: carto("dark_all"), tileSize: 256, attribution: "© OpenStreetMap contributors © CARTO" },
-          light: { type: "raster", tiles: carto("light_all"), tileSize: 256, attribution: "© OpenStreetMap contributors © CARTO" },
-          sat: { type: "raster", tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"], tileSize: 256, maxzoom: 18,
-            attribution: "Imagery © Esri, Maxar, Earthstar Geographics" } },
+          dark: { type: "raster", tiles: esri("Canvas/World_Dark_Gray_Base"), tileSize: 256, maxzoom: 16, attribution: canvasAttr },
+          light: { type: "raster", tiles: esri("Canvas/World_Light_Gray_Base"), tileSize: 256, maxzoom: 16, attribution: canvasAttr },
+          sat: { type: "raster", tiles: esri("World_Imagery"), tileSize: 256, maxzoom: 18, attribution: "Imagery © Esri, Maxar, Earthstar Geographics" },
+          lblDark: { type: "raster", tiles: esri("Canvas/World_Dark_Gray_Reference"), tileSize: 256, maxzoom: 16 },
+          lblLight: { type: "raster", tiles: esri("Canvas/World_Light_Gray_Reference"), tileSize: 256, maxzoom: 16 },
+          lblSat: { type: "raster", tiles: esri("Reference/World_Boundaries_and_Places"), tileSize: 256, maxzoom: 16 } },
         layers: [{ id: "bm-dark", type: "raster", source: "dark" }, { id: "bm-light", type: "raster", source: "light" },
-          { id: "bm-sat", type: "raster", source: "sat", layout: { visibility: "none" } }] }
+          { id: "bm-sat", type: "raster", source: "sat", layout: { visibility: "none" } },
+          { id: "lbl-dark", type: "raster", source: "lblDark" }, { id: "lbl-light", type: "raster", source: "lblLight" },
+          { id: "lbl-sat", type: "raster", source: "lblSat", layout: { visibility: "none" } }] }
     });
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
     map.addControl(new maplibregl.AttributionControl({ compact: true }));
@@ -100,6 +106,7 @@
         geometry: { type: "Point", coordinates: [e.lon, e.lat] }, properties: { ...e, exact: e.usable_for_terrain === true } })) };
       map.addSource("events", { type: "geojson", data: ev });
       map.addLayer({ id: "ev", type: "circle", source: "events", paint: { "circle-radius": 6, "circle-stroke-width": 2 } });
+      ["lbl-dark", "lbl-light", "lbl-sat", "sec-sel", "ev"].forEach((id) => map.moveLayer(id));  // أسماء المدن فوق القطاعات
       restyleMap();
       map.on("click", "sec-fill", (e) => openDrawer(e.features[0].properties.id));
       map.on("mouseenter", "sec-fill", () => (map.getCanvas().style.cursor = "pointer"));
@@ -119,6 +126,9 @@
     m.setLayoutProperty("bm-dark", "visibility", !sat && dark ? "visible" : "none");
     m.setLayoutProperty("bm-light", "visibility", !sat && !dark ? "visible" : "none");
     if (m.getLayer("bm-sat")) m.setLayoutProperty("bm-sat", "visibility", sat ? "visible" : "none");
+    m.setLayoutProperty("lbl-dark", "visibility", !sat && dark ? "visible" : "none");
+    m.setLayoutProperty("lbl-light", "visibility", !sat && !dark ? "visible" : "none");
+    m.setLayoutProperty("lbl-sat", "visibility", sat ? "visible" : "none");
     const ramp = document.getElementById("ramp");
     if (S.colorBy && S.colorBy !== "level") {  // U-FR7: تلوين حسب عامل
       const vals = S.data.sectors.features.map((f) => f.properties[S.colorBy]), lo = Math.min(...vals), hi = Math.max(...vals);
