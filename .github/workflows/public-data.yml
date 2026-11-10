@@ -1,0 +1,30 @@
+name: Public data layers
+on:
+  workflow_dispatch:
+    inputs:
+      layers:
+        description: "Layers to fetch (comma-separated): terrain,soil,geology"
+        default: "terrain,soil,geology"
+permissions:
+  contents: read
+jobs:
+  fetch:
+    strategy:
+      fail-fast: false
+      matrix:
+        layer: [terrain, soil, geology]
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        if: contains(github.event.inputs.layers, matrix.layer)
+      - uses: actions/setup-python@v5
+        if: contains(github.event.inputs.layers, matrix.layer)
+        with:
+          python-version: "3.12"
+      - if: contains(github.event.inputs.layers, matrix.layer)
+        run: pip install numpy pandas rasterio xarray netCDF4
+      - if: contains(github.event.inputs.layers, matrix.layer)
+        run: python pipeline/08_fetch_public_data.py ${{ matrix.layer }}
+      - if: contains(github.event.inputs.layers, matrix.layer)
+        run: python pipeline/tools/emit_b64.py ${{ matrix.layer }} out
