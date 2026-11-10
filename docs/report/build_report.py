@@ -91,7 +91,7 @@ figure{{margin:8pt 0 12pt;break-inside:avoid;text-align:center}} figure img{{wid
 <tr><td>هذا التقرير الشامل</td><td class="mono">docs/Mirsad_Project_Report.pdf</td></tr>
 <tr><td>الدليل التعريفي</td><td class="mono">docs/Mirsad_Introduction.pdf</td></tr>
 <tr><td>دليل المستخدم · التقرير الفني</td><td class="mono">docs/user_guide.md · docs/technical_report.md</td></tr>
-<tr><td>شيت الفريق</td><td class="mono">docs/team/Mirsad_Team_Sheet.xlsx</td></tr>
+<tr><td>سجل القرارات والإصدارات</td><td class="mono">docs/decisions.md · CHANGELOG.md</td></tr>
 <tr><td>وثيقة المتطلبات والهوية</td><td class="mono">docs/reference/</td></tr></table>
 
 <h2>2. المشكلة والأهداف</h2>
@@ -281,13 +281,12 @@ api/               مدخل الخادم على Vercel
 web/               الموقع: الخريطة، الإنذارات، الشفافية، تقرير القطاع، الدليل التفاعلي
 tests/             14 اختبارًا (AC-1..AC-5 والصلاحيات والاستعلام المكاني)
 docs/              هذا التقرير · الدليل التعريفي · دليل المستخدم · التقرير الفني
-docs/team/         شيت الفريق المبسّط
 docs/reference/    وثيقة المتطلبات PRD · الهوية والألوان
 docs/maps/         مشاريع QGIS والخرائط · docs/screenshots/ لقطات النظام</pre>
 
 <h2>18. الفريق وطريقة المتابعة</h2>
 <p>القروب الثالث بقيادة <b>{ST.LEADER}</b>، ونائبة القائد <b>{ST.DEPUTY}</b>: 13 عضوًا في 4 مسارات (البيانات الجيولوجية والمناخية، قاعدة البيانات المكانية، نمذجة الذكاء الاصطناعي، واجهة الويب والتوثيق).</p>
-<div class="box"><b>شيت الفريق</b> (<code>docs/team/Mirsad_Team_Sheet.xlsx</code>): ورقة «الواجهة» فيها نبذة المشروع واسم القائد ونائبته ونسبة الإنجاز وحالة الاعتماد، وورقة «سجل الإنجاز» يضيف فيها كل عضو سطرًا لكل عمل (التاريخ، الاسم، المسار، ما أنجزه، رابط الدليل، النسبة)، ويعتمده القائد أو نائبته. الملخص يتحدث تلقائيًا.</div>
+
 </body></html>"""
 
 async def main():

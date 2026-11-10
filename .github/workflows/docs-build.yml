@@ -1,0 +1,23 @@
+name: Docs build
+# يلتقط لقطات الموقع الحي ويبني العرض التقديمي (خط Cairo من Google Fonts)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt playwright pymupdf && python -m playwright install --with-deps chromium
+      - run: python pipeline/tools/capture_screens.py
+        env:
+          MIRSAD_URL: https://mirsad-rho.vercel.app
+      - run: python docs/report/build_decks.py
+      - run: |
+          mkdir -p out/docs && cp docs/screenshots/v2_*.jpg docs/presentations/Mirsad_Presentation.pdf out/docs/
+          python -c "import fitz;d=fitz.open('out/docs/Mirsad_Presentation.pdf');print('pages',len(d));[d[i].get_pixmap(dpi=40).save(f'out/docs/prev_{i+1:02d}.png') for i in range(len(d))]"
+          python pipeline/tools/emit_b64.py docs out/docs

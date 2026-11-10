@@ -112,7 +112,7 @@ td{{border-bottom:1px solid var(--line);padding:5pt 7pt;vertical-align:top}} tr:
 <tr><td>الكود والبيانات</td><td class="mono">{ST.REPO}</td></tr>
 <tr><td>كل التفاصيل</td><td class="mono">docs/Mirsad_Project_Report.pdf</td></tr>
 <tr><td>طريقة الاستخدام</td><td class="mono">docs/user_guide.md</td></tr>
-<tr><td>تسجيل ما أنجزته</td><td class="mono">docs/team/Mirsad_Team_Sheet.xlsx</td></tr></table>
+<tr><td>القرارات والإصدارات</td><td class="mono">docs/decisions.md · CHANGELOG.md</td></tr></table>
 <h3>الحسابات</h3>
 <table><tr><th>الحساب</th><th>اسم المستخدم</th><th>يقدر</th></tr>
 <tr><td>زائر</td><td>بدون دخول</td><td>الخريطة والتقارير والشفافية</td></tr>

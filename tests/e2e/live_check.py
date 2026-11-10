@@ -19,7 +19,7 @@ async def main():
         pg = await b.new_page(viewport={"width": 1440, "height": 900})
         pg.on("pageerror", lambda e: errors.append(f"pageerror: {e}"))
         pg.on("console", lambda c: errors.append(f"console: {c.text}") if c.type == "error" else None)
-        await pg.add_init_script("try{localStorage.setItem('mirsad.tour.seen','1')}catch(e){}")
+        await pg.add_init_script("try{localStorage.setItem('mirsad.tourSeen','1')}catch(e){}")
         await pg.goto(BASE + "/#map", wait_until="networkidle"); await pg.wait_for_timeout(4000)
         res["health"] = await pg.evaluate("fetch('/api/v1/health').then(r=>r.json())")
         fc = await pg.evaluate("fetch('/api/v1/forecast').then(async r=>({status:r.status, body: r.ok ? await r.json() : null}))")

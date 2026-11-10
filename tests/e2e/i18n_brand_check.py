@@ -44,7 +44,7 @@ async def run():
                 for theme in ("dark", "light"):
                     key = f"{tag}-{lang}-{theme}"; errors = []
                     ctx = await b.new_context(viewport={"width": vw, "height": vh}, timezone_id="UTC", locale="fr-FR")  # لغة متصفح مختلفة عمدًا
-                    await ctx.add_init_script(f"try{{localStorage.setItem('mirsad.lang',JSON.stringify('{lang}'));localStorage.setItem('mirsad.theme',JSON.stringify('{theme}'));localStorage.setItem('mirsad.tour.seen','1')}}catch(e){{}}")
+                    await ctx.add_init_script(f"try{{localStorage.setItem('mirsad.lang',JSON.stringify('{lang}'));localStorage.setItem('mirsad.theme',JSON.stringify('{theme}'));localStorage.setItem('mirsad.tourSeen','1')}}catch(e){{}}")
                     pg = await page(ctx, errors)
                     await pg.goto(BASE + "/#about"); await pg.wait_for_timeout(4500)
                     src = await pg.get_attribute(".about-logo", "src")
@@ -80,7 +80,7 @@ async def run():
                     await ctx.close()
         # التبديل أثناء التشغيل دون إعادة تحميل
         errors = []; ctx = await b.new_context(viewport={"width": 1440, "height": 900}, timezone_id="UTC")
-        await ctx.add_init_script("try{localStorage.setItem('mirsad.lang','\"ar\"');localStorage.setItem('mirsad.theme','\"dark\"');localStorage.setItem('mirsad.tour.seen','1')}catch(e){}")
+        await ctx.add_init_script("try{localStorage.setItem('mirsad.lang','\"ar\"');localStorage.setItem('mirsad.theme','\"dark\"');localStorage.setItem('mirsad.tourSeen','1')}catch(e){}")
         pg = await page(ctx, errors); await pg.goto(BASE + "/#about"); await pg.wait_for_timeout(4500)
         await pg.evaluate("window.__noReload = 1")
         await pg.click("#langBtn"); await pg.wait_for_timeout(600)
