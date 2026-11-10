@@ -90,12 +90,12 @@ flowchart LR
 
 | الطبقة | التقنية |
 |---|---|
-| البيانات | Copernicus DEM 30 م · ESA WorldCover 2021 · NASA Global Landslide Catalog · USGS |
+| البيانات | Copernicus DEM 30 م · ESA WorldCover 2021 · NASA Global Landslide Catalog · USGS · CHIRPS v2.0 (أمطار) · SoilGrids 2.0 (تربة) · Macrostrat/BRGM (صخور) · Open-Meteo (توقعات) |
 | خط المعالجة | Python · pandas · scikit-learn · TensorFlow (مقارنة الشبكة العصبية على GitHub Actions) |
 | قاعدة البيانات | PostgreSQL + PostGIS على Supabase · SQLite محليًا |
 | الخادم | Starlette على Vercel · أدوار مشاهد/مشغّل/مسؤول · سجل تدقيق |
 | الواجهة | HTML/CSS/JS · MapLibre GL · خرائط Esri · عربي/إنجليزي · ليلي/نهاري |
-| الأتمتة | GitHub Actions: اختبارات على SQLite وPostGIS · تحميل القاعدة · تشغيل أسبوعي · مقارنة TensorFlow |
+| الأتمتة | GitHub Actions: اختبارات على SQLite وPostGIS · تحميل القاعدة · تشغيل أسبوعي · مقارنة TensorFlow · جلب البيانات العامة · تنبؤ كل 6 ساعات · فحص المتصفح على الموقع الحي |
 
 ## التشغيل
 
@@ -114,8 +114,9 @@ pytest -q                               # 12 اختبارًا: AC-1..AC-5 وال
 
 ```
 data/raw/          ملفات الفريق كما أُرسلت (بعد حذف 4 نسخ مكررة)
-data/processed/    البيانات المنظفة + درجات الخطر + تقارير التنظيف والجودة
+data/processed/    البيانات المنظفة + درجات الخطر + تقارير التنظيف والجودة + public/ (الطبقات العامة)
 pipeline/          01 التضاريس (Colab) · 02 التنظيف · 03 التدريب · 04 الجودة · 05 التفسير · 06 Google Earth · 07 TensorFlow
+                   08 جلب البيانات العامة · 09 مميزات v2 وقرار النموذج · 10 التنبؤ 72 ساعة
 model/             النموذج المدرّب، المعايرة، بطاقة النموذج
 backend/           الخادم، مخطط PostGIS، تحميل البيانات، قواعد الإنذار
 api/               مدخل الخادم على Vercel
