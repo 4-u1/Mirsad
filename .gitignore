@@ -4,3 +4,4 @@ __pycache__/
 .ipynb_checkpoints/
 backend/*.db
 .pytest_cache/
+docs/report/*.html

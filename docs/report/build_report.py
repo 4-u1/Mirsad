@@ -1,10 +1,12 @@
-"""مِرصاد · توليد تقرير المشروع التفصيلي (PDF) من بيانات المستودع.
+"""مِرصاد · توليد التقرير الشامل (PDF) من بيانات المستودع.
 
 التشغيل:  python docs/report/build_report.py   (يتطلب playwright + Chrome)
 المخرج:   docs/Mirsad_Project_Report.pdf
 """
 import json, asyncio, sys
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import status as ST  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 CARD = json.loads((ROOT / "model" / "model_card.json").read_text(encoding="utf-8"))
@@ -15,10 +17,18 @@ LOGO = (ROOT / "web" / "logo.png").as_uri()
 EMB = (ROOT / "web" / "emblem.png").as_uri()
 f = lambda n: f"{n:,}"
 
-def bars(rows, color="var(--teal)", fmt=lambda v: f"{v}"):
-    mx = max(v for _, v in rows) or 1
+def bars(rows, color="var(--teal)", fmt=lambda v: f"{v}", mx=None):
+    mx = mx or max(v for _, v in rows) or 1
     return "".join(f'<div class="br"><span>{k}</span><span class="tr"><i style="width:{v/mx*100:.1f}%;background:{c if isinstance(c:=color, str) else color[i]}"></i></span><b>{fmt(v)}</b></div>'
                    for i, (k, v) in enumerate(rows))
+
+def prd_table():
+    lab = lambda v: ('ok', 'مكتمل') if v >= 1 else (('no', 'غير منفذ') if v == 0 else ('part', 'جزئي'))
+    rows = "".join(f'<tr><td class="mono">{i}</td><td>{t}</td><td>{p}</td><td class="{lab(v)[0]}">{lab(v)[1]} · {round(v*100)}%</td><td>{e}</td></tr>' for i, t, p, v, e in ST.PRD)
+    return '<table><tr><th>المعرّف</th><th>المتطلب</th><th>الأولوية</th><th>التحقق</th><th>الدليل أو الناقص</th></tr>' + rows + '</table>'
+
+def worklog():
+    return '<table><tr><th>التاريخ</th><th>المجال</th><th>ما تم</th></tr>' + "".join(f'<tr><td style="white-space:nowrap">{d}</td><td>{a}</td><td>{w}</td></tr>' for d, a, w in ST.WORKLOG) + '</table>'
 
 def fig(name, cap):
     return f'<figure><img src="{SHOT}/{name}.jpg"><figcaption>{cap}</figcaption></figure>'
@@ -58,20 +68,31 @@ figure{{margin:8pt 0 12pt;break-inside:avoid;text-align:center}} figure img{{wid
 </style></head><body>
 
 <section class="cover"><span class="c a"></span><span class="c b"></span><span class="c d"></span><span class="c e"></span>
-<img src="{LOGO}"><h1>تقرير المشروع التفصيلي</h1>
-<div class="sub">نظام التنبؤ بمخاطر الانهيارات الأرضية · الإصدار v1 · التقرير الشامل</div>
-<div class="meta"><span>القروب الثالث · 13 عضوًا · 4 مسارات</span><span class="mono">{REPO}</span><span>نوفمبر 2026</span></div></section>
+<img src="{LOGO}"><h1>التقرير الشامل لمشروع مِرصاد</h1>
+<div class="sub">نظام التنبؤ بمخاطر الانهيارات الأرضية · كل ما تم، والحالة الفعلية مقابل الـPRD، والمتبقي</div>
+<div class="sub" style="margin-top:6mm;color:#9FB3B5;font-size:10.5pt" dir="ltr">{ST.SITE} · {REPO}</div>
+<div class="meta"><span>القروب الثالث · 13 عضوًا · 4 مسارات</span><span class="mono">{REPO}</span><span>{ST.AS_OF}</span></div></section>
 
 <h2>المحتويات</h2>
-<ol class="toc"><li>الملخص التنفيذي</li><li>المشكلة والأهداف</li><li>المستخدمون</li><li>معمارية النظام</li><li>البيانات والتنظيف</li><li>النموذج والنتائج</li>
+<ol class="toc"><li>الملخص التنفيذي والروابط</li><li>المشكلة والأهداف</li><li>المستخدمون</li><li>معمارية النظام</li><li>البيانات والتنظيف</li><li>النموذج والنتائج</li>
 <li>منطق الخطر والإنذار</li><li>Google Earth والخرائط</li><li>الواجهة: جولة مصوّرة</li><li>الخادم وواجهات البرمجة</li><li>الأمان والصلاحيات</li><li>الاختبار ومعايير القبول</li>
-<li>حالة المشروع</li><li>الحدود المعروفة</li><li>خارطة الطريق</li><li>التشغيل والنشر</li><li>هيكل المستودع</li></ol>
+<li>سجل العمل ونسبة الإنجاز الفعلية مقابل الـPRD</li><li>الحدود المعروفة</li><li>المتبقي وخارطة الطريق</li><li>التشغيل والنشر</li><li>هيكل المستودع</li><li>الفريق وطريقة المتابعة</li></ol>
 
 <h2>1. الملخص التنفيذي</h2>
 <p>مِرصاد منصة ذكاء اصطناعي تقدّر قابلية الانهيارات الأرضية في جنوب غرب المملكة (عرض 16.2°–20.5°، طول 40.6°–44.1°)، وتعرضها على خريطة قطاعات تفاعلية، وتقترح إنذارات لا تُعتمد إلا بموافقة بشرية. النظام مكتمل تقنيًا من البيانات الخام إلى الإنذار: خط معالجة قابل لإعادة التشغيل، نموذج مدرّب، خادم API بصلاحيات وسجل تدقيق، وواجهة ويب بالعربية والإنجليزية بوضعين ليلي ونهاري.</p>
 <div class="kpis"><div class="kpi"><span>خلايا التنبؤ (≈1 كم)</span><b>{f(CARD['grid_cells'])}</b></div><div class="kpi"><span>القطاعات (≈11 كم)</span><b>{f(CARD['sectors'])}</b></div>
 <div class="kpi"><span>قطاعات مرتفعة/حرجة</span><b>{secl['high']} / {secl['critical']}</b></div><div class="kpi"><span>ROC-AUC (تحقق مكاني)</span><b>{sp['roc_auc']}</b></div></div>
 <div class="warn">حدود الدقة: أداء النموذج في التحقق المكاني ROC-AUC = {sp['roc_auc']} لأن جدول التدريب يحتوي {CARD['training']['positives']} نقطة انهيار فقط. النظام مكتمل ويعمل من البيانات إلى الإنذار، لكن جودة التنبؤ مقيّدة بسجل الانهيارات، ولا يُعتمد عليها لقرار ميداني قبل توسيعه.</div>
+<div class="kpis"><div class="kpi"><span>نسبة الإنجاز الفعلية (PRD)</span><b>{ST.OVERALL}%</b></div><div class="kpi"><span>متطلبات Must</span><b>{ST.MUST}%</b></div>
+<div class="kpi"><span>معايير القبول</span><b>5 / 5</b></div><div class="kpi"><span>اختبارات آلية</span><b>12 / 12</b></div></div>
+<table><tr><th>المخرج</th><th>الرابط</th></tr>
+<tr><td>الموقع الحي (Vercel + Supabase)</td><td class="mono">{ST.SITE}</td></tr>
+<tr><td>المستودع: الكود والبيانات والتوثيق</td><td class="mono">{REPO}</td></tr>
+<tr><td>هذا التقرير الشامل</td><td class="mono">docs/Mirsad_Project_Report.pdf</td></tr>
+<tr><td>الدليل التعريفي</td><td class="mono">docs/Mirsad_Introduction.pdf</td></tr>
+<tr><td>دليل المستخدم · التقرير الفني</td><td class="mono">docs/user_guide.md · docs/technical_report.md</td></tr>
+<tr><td>شيت الفريق</td><td class="mono">docs/team/Mirsad_Team_Sheet.xlsx</td></tr>
+<tr><td>وثيقة المتطلبات والهوية</td><td class="mono">docs/reference/</td></tr></table>
 
 <h2>2. المشكلة والأهداف</h2>
 <p>الانهيارات الأرضية تسبب خسائر في الأرواح والطرق والمرافق، وتحديد المناطق الخطرة يدويًا بطيء ومكلف وصعب التحديث، والبيانات المؤثرة (التضاريس، الغطاء الأرضي، الأمطار، الزلازل) تأتي من مصادر وصيغ مختلفة.</p>
@@ -90,7 +111,7 @@ figure{{margin:8pt 0 12pt;break-inside:avoid;text-align:center}} figure img{{wid
 <tr><td>المشرف الأكاديمي</td><td>هذا التقرير، بطاقة النموذج، خط المعالجة القابل لإعادة الإنتاج</td></tr></table>
 
 <h2 class="pb">4. معمارية النظام</h2>
-<div class="flow"><div>ملفات الفريق<small>data/raw</small></div><em>←</em><div>التنظيف<small>02_clean_data.py</small></div><em>←</em><div>التدريب<small>03_train_model.py</small></div><em>←</em><div>قاعدة البيانات<small>SQLite · PostGIS</small></div><em>←</em><div>خادم API<small>Starlette</small></div><em>←</em><div>لوحة القيادة<small>web/</small></div><em>←</em><div>الإنذار<small>موافقة بشرية</small></div></div>
+<div class="flow"><div>ملفات الفريق<small>data/raw</small></div><em>←</em><div>التنظيف<small>02_clean_data.py</small></div><em>←</em><div>التدريب<small>03_train_model.py</small></div><em>←</em><div>قاعدة البيانات<small>PostGIS · Supabase</small></div><em>←</em><div>خادم API<small>Starlette · Vercel</small></div><em>←</em><div>لوحة القيادة<small>web/</small></div><em>←</em><div>الإنذار<small>موافقة بشرية</small></div></div>
 <table><tr><th>الطبقة</th><th>التقنية</th><th>المسؤولية</th></tr>
 <tr><td>استخراج التضاريس</td><td>Python · rasterio · Colab</td><td>الارتفاع والانحدار والاتجاه من Copernicus DEM 30م، والغطاء من ESA WorldCover</td></tr>
 <tr><td>التنظيف</td><td>pandas</td><td>إزالة التكرار، فصل الجداول المدموجة، توحيد السجلات، تقرير تنظيف</td></tr>
@@ -210,15 +231,16 @@ figure{{margin:8pt 0 12pt;break-inside:avoid;text-align:center}} figure img{{wid
 <tr><td>AC-5</td><td>لا إنذار مكرر خلال فترة التهدئة</td><td class="ok">ناجح</td></tr></table>
 <p>12 اختبارًا آليًا في <code>tests/test_api.py</code> تنجح كلها على SQLite وعلى PostgreSQL + PostGIS 3.4 في GitHub Actions، وتشمل الصلاحيات والمدخلات الخاطئة والاستعلام المكاني، إضافة إلى اختبار شامل للواجهة مع الخادم (الدخول، الاعتماد، تبديل اللغة والوضع، الجولة التفاعلية). كل أزواج النص والخلفية في الوضعين محققة بتباين ≥ 4.5:1.</p>
 
-<h2>13. حالة المشروع</h2>
-<p>حسب شيت متابعة الفريق بعد هذه الجولة: 38 مهمة، متوسط الإنجاز <b>83%</b>.</p>
-{bars([('البيانات', 73), ('GIS', 76), ('الذكاء الاصطناعي', 93), ('الواجهة والتوثيق', 87)], fmt=lambda v: f'{v}%')}
-<table><tr><th>الحالة</th><th>المهام</th><th>أمثلة</th></tr><tr><td>مكتملة</td><td>15</td><td>الجودة، العتبات، النموذج، التحقق المكاني، المعايرة، Shapley، الـAPI، الإنذارات، معايير القبول</td></tr>
-<tr><td>للمراجعة</td><td>17</td><td>تنتظر مراجعة أعضاء المسار أو اختبارًا بصريًا على الإنترنت</td></tr>
-<tr><td>قيد التنفيذ</td><td>5</td><td>الأمطار، الجيولوجيا والتربة، سجل الانهيارات، مميزات التدريب (PostGIS اكتمل في 10 نوفمبر بعد تحديث الشيت)</td></tr>
-<tr><td>متعثرة</td><td>1</td><td>توقع 24/48/72 ساعة: لا توجد بيانات توقع</td></tr></table>
-<p class="muted">ما يمنع الـ100%: بيانات غير موجودة في الملفات المرسلة (أمطار بإحداثيات، زلازل داخل المنطقة، جيولوجيا، تربة، انحناء، سجل انهيارات أكبر)، والمراجعة البشرية من الفريق.</p>
-
+<h2 class="pb">13. سجل العمل ونسبة الإنجاز الفعلية</h2>
+<h3>13.1 ما تم منذ بداية العمل</h3>
+{worklog()}
+<p class="muted">كل التعديلات في المستودع مسجّلة كـcommits باسم يزيد حمد الحارثي، وكل خطوة نشر لها سجل في GitHub Actions وVercel.</p>
+<h3>13.2 مطابقة متطلبات الـPRD الوظيفية</h3>
+<p>كل متطلب من الـ26 متطلبًا وظيفيًا أُعطي درجة تحقق بين 0 و100% حسب دليل في المستودع أو على الموقع الحي، والنسبة الفعلية هي متوسطها. آخر تحقق: {ST.AS_OF}.</p>
+<div class="kpis"><div class="kpi"><span>النسبة الفعلية</span><b>{ST.OVERALL}%</b></div><div class="kpi"><span>مكتمل</span><b>{ST.DONE}</b></div><div class="kpi"><span>جزئي</span><b>{ST.PARTIAL}</b></div><div class="kpi"><span>غير منفذ</span><b>{ST.NONE}</b></div></div>
+{bars([(n, v) for n, v, _ in ST.area_pct()], fmt=lambda v: f'{v}%', mx=100)}
+{prd_table()}
+<div class="box">النسبة تقيس تنفيذ المتطلبات، لا جودة التنبؤ. جودة التنبؤ يقيسها التحقق المكاني (ROC-AUC = {sp['roc_auc']})، وترتفع فقط بتوسيع سجل الانهيارات. شيت متابعة الفريق بعد تحديثات 10 نوفمبر يعطي نسبة قريبة (نحو 86%) لأنه يقيس المهام لا المتطلبات.</div>
 <h2>14. الحدود المعروفة</h2>
 <ol><li>{CARD['training']['positives']} نقطة انهيار فقط في التدريب مقابل {f(CARD['training']['negatives'])} نقطة بدون انهيار.</li>
 <li>المخرج قابلية مكانية ثابتة وليس تنبؤًا زمنيًا؛ توقع 24/48/72 ساعة غير متاح.</li>
@@ -229,7 +251,8 @@ figure{{margin:8pt 0 12pt;break-inside:avoid;text-align:center}} figure img{{wid
 <li>إرسال الإنذارات للجهات محاكى؛ الاعتماد البشري وسجل التدقيق يعملان فعليًا على قاعدة الإنتاج.</li>
 <li>مشروع QGIS <code>Mirsad_Landslide_Risk.qgz</code> يحتاج <code>mirsad_layers.gpkg</code> وهو غير موجود.</li></ol>
 
-<h2>15. خارطة الطريق</h2>
+<h2>15. المتبقي وخارطة الطريق</h2>
+<table><tr><th>المسار</th><th>المتبقي للوصول إلى 100%</th></tr>{"".join(f"<tr><td>{a}</td><td>{b}</td></tr>" for a, b in ST.REMAINING)}</table>
 <table><tr><th>الأولوية</th><th>الخطوة</th><th>الأثر</th></tr>
 <tr><td>1</td><td>توسيع سجل الانهيارات من مصادر رسمية إلى عشرات النقاط</td><td>الشرط الأساسي لأي تحسن في الأداء</td></tr>
 <tr><td>2</td><td>أمطار بإحداثيات صحيحة أو شبكية (CHIRPS/GPM)</td><td>تمكين التنبؤ الزمني والتوقع</td></tr>
@@ -249,13 +272,21 @@ pytest -q</pre>
 
 <h2>17. هيكل المستودع</h2>
 <pre>data/raw/          ملفات الفريق بعد حذف النسخ المكررة
-data/processed/    البيانات المنظفة + درجات الخطر v1 + تقرير التنظيف
-pipeline/          01 التضاريس · 02 التنظيف · 03 التدريب · 04 الجودة · 05 المقارنات والتفسير · 06 Google Earth · run_all
-model/             mirsad_rf_v1.joblib · model_card.json
-backend/           app.py · db.py · load_db.py · schema_postgis.sql
-tests/             test_api.py
-web/               index.html · styles.css · app.js · i18n.js · tour.js · data/
-docs/              PRD · التقرير الفني · دليل المستخدم · الخرائط · اللقطات · هذا التقرير</pre>
+data/processed/    البيانات المنظفة + درجات الخطر v1 + تقارير التنظيف والجودة
+pipeline/          01 التضاريس · 02 التنظيف · 03 التدريب · 04 الجودة · 05 التفسير · 06 Google Earth · run_all
+model/             النموذج + المعايرة + بطاقة النموذج
+backend/           app.py · db.py · load_db.py · rules.py · schema_postgis.sql
+api/               مدخل الخادم على Vercel
+web/               الموقع: الخريطة، الإنذارات، الشفافية، تقرير القطاع، الدليل التفاعلي
+tests/             12 اختبارًا (AC-1..AC-5 والصلاحيات والاستعلام المكاني)
+docs/              هذا التقرير · الدليل التعريفي · دليل المستخدم · التقرير الفني
+docs/team/         شيت الفريق المبسّط
+docs/reference/    وثيقة المتطلبات PRD · الهوية والألوان
+docs/maps/         مشاريع QGIS والخرائط · docs/screenshots/ لقطات النظام</pre>
+
+<h2>18. الفريق وطريقة المتابعة</h2>
+<p>القروب الثالث: 13 عضوًا في 4 مسارات (البيانات الجيولوجية والمناخية، قاعدة البيانات المكانية، نمذجة الذكاء الاصطناعي، واجهة الويب والتوثيق).</p>
+<div class="box"><b>شيت الفريق</b> (<code>docs/team/Mirsad_Team_Sheet.xlsx</code>): ورقة «الواجهة» فيها نبذة المشروع واسم القائد ونائبته ونسبة الإنجاز وحالة الاعتماد، وورقة «سجل الإنجاز» يضيف فيها كل عضو سطرًا لكل عمل (التاريخ، الاسم، المسار، ما أنجزه، رابط الدليل، النسبة)، ويعتمده القائد أو نائبته. الملخص يتحدث تلقائيًا.</div>
 </body></html>"""
 
 async def main():
@@ -268,7 +299,7 @@ async def main():
         pg = await b.new_page()
         await pg.goto(out_html.as_uri()); await pg.wait_for_timeout(800)
         foot = ('<div style="font-family:DejaVu Sans;font-size:8px;color:#4A5F66;width:100%;padding:0 16mm;display:flex;justify-content:space-between">'
-                '<span>مِرصاد · تقرير المشروع v1</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>')
+                '<span>مِرصاد · التقرير الشامل</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>')
         await pg.pdf(path=str(ROOT / "docs" / "Mirsad_Project_Report.pdf"), format="A4", print_background=True,
                      display_header_footer=True, header_template="<span></span>", footer_template=foot,
                      margin={"top": "18mm", "bottom": "20mm", "left": "16mm", "right": "16mm"})
