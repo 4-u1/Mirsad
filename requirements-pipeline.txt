@@ -1,0 +1,7 @@
+# خط المعالجة والتدريب والاختبارات
+-r requirements.txt
+pandas>=2.0
+openpyxl>=3.1
+scikit-learn==1.9.1   # النموذج المحفوظ model/mirsad_rf_v1.joblib مدرّب بهذا الإصدار
+joblib>=1.3
+pytest>=8.0

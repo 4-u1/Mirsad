@@ -13,6 +13,7 @@ def server(tmp_path_factory):
                       MIRSAD_VIEWER_PASSWORD="view-pass")
     import importlib, db as dbmod
     importlib.reload(dbmod)
+    import rules; importlib.reload(rules)
     import load_db; importlib.reload(load_db); load_db.main(db_path)
     import app as appmod; importlib.reload(appmod)
     import uvicorn
@@ -63,11 +64,11 @@ def test_ac3_approval_logged_with_name_and_time(server):
 def test_ac5_cooldown_blocks_duplicate(server):
     op = login(server, "operator", "op-pass")
     approved = call(server, "/api/v1/alerts?status=approved")[1]["items"][0]
-    import sqlite3
-    con = sqlite3.connect(os.environ["MIRSAD_DB"])
-    con.execute("INSERT INTO alerts(sector_id, level, score, reasons, status, created_at) VALUES (?,?,?,?, 'pending', datetime('now'))",
-                (approved["sector_id"], approved["level"], approved["score"], "[]")); con.commit()
-    new_id = con.execute("SELECT max(id) FROM alerts").fetchone()[0]; con.close()
+    import db as dbmod
+    con = dbmod.connect(os.environ["MIRSAD_DB"], create=False)
+    con.execute("INSERT INTO alerts(sector_id, level, score, reasons, status, created_at) VALUES (?,?,?,?, 'pending', ?)",
+                (approved["sector_id"], approved["level"], approved["score"], "[]", dbmod.now())); con.commit()
+    new_id = con.execute("SELECT max(id) AS m FROM alerts").fetchone()["m"]
     st, r = call(server, "/api/v1/alerts", "POST", {"alert_id": new_id, "action": "approve"}, op)
     assert st == 409 and r["error"] == "cooldown"
 
@@ -104,11 +105,19 @@ def test_bad_inputs(server):
     assert call(server, "/api/v1/sectors/NOPE")[0] == 404
 
 def test_ac4_stale_data_flag(server):
-    import sqlite3
+    import db as dbmod, datetime
     assert call(server, "/api/v1/risk")[1]["stale"] is False
-    con = sqlite3.connect(os.environ["MIRSAD_DB"])
+    con = dbmod.connect(os.environ["MIRSAD_DB"], create=False)
     con.execute("UPDATE data_sources SET last_updated='2020-01-01' WHERE id='terrain'"); con.commit()
     fc = call(server, "/api/v1/risk")[1]
     src = {s["id"]: s for s in call(server, "/api/v1/sources")[1]["items"]}
-    con.execute("UPDATE data_sources SET last_updated=date('now') WHERE id='terrain'"); con.commit(); con.close()
+    con.execute("UPDATE data_sources SET last_updated=? WHERE id='terrain'", (datetime.date.today().isoformat(),)); con.commit()
     assert fc["stale"] is True and src["terrain"]["stale"] is True
+
+def test_bbox_filter_uses_spatial_query(server):
+    allf = call(server, "/api/v1/risk")[1]["features"]
+    sub = call(server, "/api/v1/risk?bbox=42.0,18.0,42.3,18.3")[1]["features"]
+    assert 0 < len(sub) < len(allf)
+    for f in sub:
+        xs = [c[0] for c in f["geometry"]["coordinates"][0]]; ys = [c[1] for c in f["geometry"]["coordinates"][0]]
+        assert max(xs) >= 42.0 and min(xs) <= 42.3 and max(ys) >= 18.0 and min(ys) <= 18.3

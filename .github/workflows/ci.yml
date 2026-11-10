@@ -1,0 +1,49 @@
+name: Tests
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sqlite:
+    name: Tests (SQLite)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements-pipeline.txt
+      - run: pytest -q
+  postgis:
+    name: Tests (PostgreSQL + PostGIS)
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgis/postgis:16-3.4
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 12
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements-pipeline.txt
+      - run: pytest -q
+      - name: Check PostGIS objects
+        run: |
+          python - <<'PY'
+          import os, psycopg
+          with psycopg.connect(os.environ["DATABASE_URL"]) as c:
+              print("postgis", c.execute("select postgis_version()").fetchone()[0])
+              print("sectors", c.execute("select count(*), sum(ST_Area(geometry::geography))/1e6 from sectors").fetchone())
+              print("features", c.execute("select count(*), count(geom) from features").fetchone())
+              print("cells in S181-422", c.execute("select count(*) from features f join sectors s on ST_Contains(s.geometry, f.geom) where s.id='S181-422'").fetchone()[0])
+          PY

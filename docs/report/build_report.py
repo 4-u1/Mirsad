@@ -240,7 +240,7 @@ figure{{margin:8pt 0 12pt;break-inside:avoid;text-align:center}} figure img{{wid
 
 <h2>16. التشغيل والنشر</h2>
 <pre>git clone {REPO}.git && cd Mirsad
-pip install -r requirements.txt
+pip install -r requirements-pipeline.txt
 export MIRSAD_ADMIN_PASSWORD=... MIRSAD_OPERATOR_PASSWORD=... MIRSAD_VIEWER_PASSWORD=...
 python pipeline/run_all.py               # التنظيف ← الجودة ← التدريب ← التفسير ← Google Earth ← قاعدة البيانات
 uvicorn backend.app:app --port 8000     # http://localhost:8000

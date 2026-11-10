@@ -1,7 +1,6 @@
 name: Deploy web to GitHub Pages
+# الموقع منشور على Vercel؛ هذا النشر البديل يدوي فقط (يتطلب تفعيل GitHub Pages من الإعدادات).
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read

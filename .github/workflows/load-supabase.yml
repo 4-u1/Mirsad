@@ -1,0 +1,27 @@
+name: Load database (Supabase)
+# تشغيل يدوي: يحمّل القطاعات والدرجات والخلايا والمصادر والحسابات إلى قاعدة Supabase (PostGIS).
+# يعيد إنشاء الجداول: سجل الإنذارات والتدقيق السابق يُحذف.
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  load:
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      MIRSAD_ADMIN_PASSWORD: ${{ secrets.MIRSAD_ADMIN_PASSWORD }}
+      MIRSAD_OPERATOR_PASSWORD: ${{ secrets.MIRSAD_OPERATOR_PASSWORD }}
+      MIRSAD_VIEWER_PASSWORD: ${{ secrets.MIRSAD_VIEWER_PASSWORD }}
+    steps:
+      - name: Check secrets
+        run: |
+          for v in DATABASE_URL MIRSAD_ADMIN_PASSWORD MIRSAD_OPERATOR_PASSWORD; do
+            if [ -z "${!v}" ]; then echo "::error::Missing repository secret $v"; exit 1; fi
+          done
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements-pipeline.txt
+      - run: python backend/load_db.py

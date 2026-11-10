@@ -3,7 +3,7 @@
 ## التشغيل
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements-pipeline.txt
 export MIRSAD_ADMIN_PASSWORD='…' MIRSAD_OPERATOR_PASSWORD='…' MIRSAD_VIEWER_PASSWORD='…'
 python backend/load_db.py
 uvicorn backend.app:app --port 8000

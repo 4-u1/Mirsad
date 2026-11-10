@@ -15,7 +15,7 @@ from starlette.middleware.base import BaseHTTPMiddleware
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from db import connect, hash_pw, audit, now, ROOT  # noqa: E402
-from load_db import level_of, propose_alerts  # noqa: E402
+from rules import level_of, propose_alerts  # noqa: E402
 
 COOLDOWN_HOURS = 24
 STALE_DAYS = int(__import__("os").environ.get("MIRSAD_STALE_DAYS", "30"))  # AC-4: عمر البيانات قبل وسمها «متقادمة»
@@ -26,7 +26,7 @@ CON = None
 
 def db():
     global CON
-    if CON is None: CON = connect()
+    if CON is None: CON = connect(create=False)
     return CON
 
 def err(status, code, msg):
@@ -78,7 +78,7 @@ async def login(request):
         return err(401, "invalid_credentials", "Wrong username or password")
     token = secrets.token_urlsafe(32)
     exp = (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=SESSION_HOURS)).replace(microsecond=0).isoformat()
-    db().execute("INSERT INTO sessions VALUES (?,?,?)", (token, u["username"], exp)); db().commit()
+    db().execute("INSERT INTO sessions(token, username, expires_at) VALUES (?,?,?)", (token, u["username"], exp)); db().commit()
     audit(db(), u["username"], "auth.login")
     return JSONResponse({"token": token, "username": u["username"], "role": u["role"], "expires_at": exp})
 
@@ -89,7 +89,7 @@ async def me(request):
 async def risk(request):
     """GET /api/v1/risk → أحدث درجات الخطر لكل القطاعات (GeoJSON). ?level=high&bbox=minLon,minLat,maxLon,maxLat"""
     run = latest_run()
-    q = """SELECT s.id, s.geometry, r.score, r.max_score, r.mean_score, r.level, r.details, r.timestamp
+    q = f"""SELECT s.id, {db().geom_out}, r.score, r.max_score, r.mean_score, r.level, r.details, r.timestamp
            FROM sectors s JOIN risk_scores r ON r.sector_id=s.id WHERE r.model_run_id=?"""
     args = [run["id"]]
     lv = request.query_params.get("level")
@@ -101,7 +101,8 @@ async def risk(request):
     if bb:
         try: a, b, c, d = map(float, bb.split(","))
         except ValueError: return err(400, "bad_bbox", "bbox=minLon,minLat,maxLon,maxLat")
-        q += " AND s.max_lon>=? AND s.min_lon<=? AND s.max_lat>=? AND s.min_lat<=?"; args += [a, c, b, d]
+        clause, order = db().bbox_filter()
+        q += " AND " + clause; args += order(a, b, c, d)
     feats = []
     for r in db().execute(q, args):
         p = json.loads(r["details"]); p.update({"score": r["score"], "level": r["level"], "max": r["max_score"], "mean": r["mean_score"]})
@@ -113,7 +114,7 @@ async def risk(request):
 
 async def sector(request):
     sid = request.path_params["id"]; run = latest_run()
-    r = db().execute("""SELECT s.*, r.score, r.max_score, r.mean_score, r.level, r.top_factors, r.details, r.timestamp
+    r = db().execute(f"""SELECT s.id, s.area_km2, {db().geom_out}, r.score, r.max_score, r.mean_score, r.level, r.top_factors, r.details, r.timestamp
                         FROM sectors s JOIN risk_scores r ON r.sector_id=s.id WHERE s.id=? AND r.model_run_id=?""", (sid, run["id"])).fetchone()
     if not r: return err(404, "not_found", "Unknown sector")
     alerts = [dict(a) for a in db().execute("SELECT id, level, status, approved_by, decided_at, created_at FROM alerts WHERE sector_id=? ORDER BY id DESC", (sid,))]
@@ -215,6 +216,5 @@ routes = [
     Route(f"{API}/model/runs/latest", model_latest), Route(f"{API}/sources", sources),
     Route(f"{API}/settings/thresholds", get_thresholds, methods=["GET"]), Route(f"{API}/settings/thresholds", put_thresholds, methods=["PUT"]),
     Route(f"{API}/audit", audit_log),
-    Mount("/", StaticFiles(directory=str(ROOT / "web"), html=True), name="web"),
-]
+] + ([Mount("/", StaticFiles(directory=str(ROOT / "web"), html=True), name="web")] if (ROOT / "web").is_dir() else [])
 app = Starlette(routes=routes, middleware=[Middleware(SecurityHeaders)])

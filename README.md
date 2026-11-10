@@ -27,7 +27,7 @@ docs/              PRD، التقرير الفني، دليل المستخدم،
 ## التشغيل · Run
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements-pipeline.txt
 python pipeline/run_all.py           # تنظيف ← جودة ← تدريب ← مقارنات وتفسير ← Google Earth ← قاعدة البيانات
 uvicorn backend.app:app --port 8000  # API + الواجهة على http://localhost:8000
 pytest -q                            # اختبارات القبول AC-1..AC-5 والصلاحيات
