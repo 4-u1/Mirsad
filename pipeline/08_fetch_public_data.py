@@ -21,7 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 P = ROOT / "data" / "processed"
 OUT = Path(os.environ.get("MIRSAD_OUT", ROOT / "out")); OUT.mkdir(exist_ok=True, parents=True)
 BBOX = dict(lat0=16.2, lat1=20.6, lon0=40.6, lon1=44.2)
-UA = {"User-Agent": "mirsad-academic-pipeline (github.com/4-u1/Mirsad)"}
+UA = {"User-Agent": "mirsad-pipeline"}
 
 
 def fetch(url, tries=4, timeout=600):
