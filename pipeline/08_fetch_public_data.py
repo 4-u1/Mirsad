@@ -70,7 +70,7 @@ def terrain():
         rows, cols = rasterio.transform.rowcol(tr, sub.lon.values, sub.lat.values)
         rows, cols = np.asarray(rows), np.asarray(cols)
         lat_c = sub.lat.values
-        dx = abs(tr.a) * 111320.0 * np.cos(np.radians(lat_c)); dy = abs(tr.e) * 110574.0
+        dx = abs(tr.a) * 111320.0 * np.cos(np.radians(lat_c)); dy = np.full(len(lat_c), abs(tr.e) * 110574.0)
         for k, (r, c) in enumerate(zip(rows, cols)):
             i = sub.index[k]
             if 1 <= r < z.shape[0] - 1 and 1 <= c < z.shape[1] - 1:
