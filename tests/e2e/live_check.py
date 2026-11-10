@@ -9,7 +9,7 @@ from playwright.async_api import async_playwright
 
 BASE = os.environ.get("MIRSAD_URL", "https://mirsad-rho.vercel.app").rstrip("/")
 OUT = Path("out"); OUT.mkdir(exist_ok=True)
-OPTS = ["fc72", "rain_annual_mm", "rain_p99_3d_mm", "soil_clay", "relief_1km", "lith_class", "slope_mean", "elev", "level"]
+OPTS = ["fc72", "ndvi_now", "ndvi_anomaly", "rain_annual_mm", "rain_p99_3d_mm", "soil_clay", "relief_1km", "lith_class", "slope_mean", "elev", "level"]
 
 
 async def main():
@@ -27,18 +27,30 @@ async def main():
         if fc["body"]:
             res["forecast"] = {k: fc["body"][k] for k in ("issued_at", "age_hours", "stale", "count")}
         res["fc_side"] = await pg.inner_text("#fcSide")
+        s2 = await pg.evaluate("fetch('/api/v1/satellite').then(async r=>({status:r.status, body: r.ok ? await r.json() : null}))")
+        res["satellite_status"] = s2["status"]
+        if s2["body"]:
+            res["satellite"] = {k: s2["body"][k] for k in ("run_at", "scenes_now", "first_date", "last_date", "count", "stale")}
+            res["satellite"]["drop"] = sum(i["flag"] == "drop" for i in s2["body"]["items"])
+            img = await pg.evaluate(f"fetch({json.dumps(s2['body']['image_url'])}).then(async r=>({{status:r.status, type:r.headers.get('content-type'), kb:(await r.arrayBuffer()).byteLength/1024}}))")
+            res["satellite_image"] = img
+        res["sat_side"] = await pg.inner_text("#satSide")
+        if s2["body"]:
+            await pg.check("#lySat"); await pg.wait_for_timeout(6000)
+            await pg.screenshot(path=str(OUT / "07_sentinel2.jpg"), type="jpeg", quality=82)
+            await pg.uncheck("#lySat")
         await pg.screenshot(path=str(OUT / "01_map.jpg"), type="jpeg", quality=80)
         res["color_options"] = {}
         for i, v in enumerate(OPTS):
             await pg.select_option("#colorBy", v); await pg.wait_for_timeout(1200)
             res["color_options"][v] = await pg.evaluate("[!document.getElementById('ramp').hidden, !document.getElementById('catLegend').hidden]")
-            if v in ("fc72", "rain_p99_3d_mm", "lith_class"):
+            if v in ("fc72", "rain_p99_3d_mm", "lith_class", "ndvi_anomaly"):
                 await pg.screenshot(path=str(OUT / f"02_color_{v}.jpg"), type="jpeg", quality=80)
         top = await pg.evaluate("window.MirsadApp.topSector()")
         await pg.evaluate(f"window.MirsadApp.openDrawer({json.dumps(top)})"); await pg.wait_for_timeout(2500)
         txt = await pg.inner_text("#drawerBody")
         res["drawer"] = {"sector": top, "forecast_table": await pg.locator("#drawerBody table.fc").count(),
-                         "layers": "طبقات القطاع" in txt}
+                         "layers": "طبقات القطاع" in txt, "satellite": "Sentinel-2" in txt}
         await pg.screenshot(path=str(OUT / "03_drawer.jpg"), type="jpeg", quality=80)
         await pg.goto(BASE + "/#alerts"); await pg.wait_for_timeout(2500)
         res["alerts_count"] = await pg.inner_text("#fCount")
@@ -59,7 +71,9 @@ async def main():
     print("MIRSAD_UI " + json.dumps(res, ensure_ascii=False))
     ok = (res["health"]["status"] == "ok" and res["drawer"]["layers"] and res["transparency_sources"] >= 10
           and all(any(v) or k in ("level",) for k, v in res["color_options"].items()) and not errors
-          and (res["forecast_status"] == 200 and res["drawer"]["forecast_table"] == 1 or os.environ.get("ALLOW_NO_FORECAST")))
+          and (res["forecast_status"] == 200 and res["drawer"]["forecast_table"] == 1 or os.environ.get("ALLOW_NO_FORECAST"))
+          and (res["satellite_status"] == 200 and res["satellite_image"]["status"] == 200 and res["drawer"]["satellite"]
+               or os.environ.get("ALLOW_NO_SATELLITE")))
     sys.exit(0 if ok else 1)
 
 

@@ -119,6 +119,11 @@
       const r = await fetch("/api/v1/sectors/" + encodeURIComponent(id) + "/forecast", { signal: c.signal }); if (r.ok) return await r.json(); } catch (e) {}
     return null;
   }
+  async function satelliteOf(id) {  // Sentinel-2: مؤشر الغطاء النباتي للقطاع إن وُجد (ق-6)
+    try { const c = new AbortController(); setTimeout(() => c.abort(), 2500);
+      const r = await fetch("/api/v1/sectors/" + encodeURIComponent(id) + "/satellite", { signal: c.signal }); if (r.ok) return await r.json(); } catch (e) {}
+    return null;
+  }
   function stamp(by, at, ref) {
     const c = "#1E6A70", top = esc(L.stampTop), mid = esc(L.stampMid), who = esc(by || ""), when = esc(at ? F.fmtDay(at) : "");
     return el("div", { class: "stamp", role: "img", "aria-label": `${L.stampMid} · ${by || ""} · ${when}`, html:
@@ -144,7 +149,7 @@
     document.title = `${t("brand")} · ${L.title} ${p.id}`;
     const ge = `https://earth.google.com/web/@${p.peak[0]},${p.peak[1]},${p.peak_vals.elevation}a,9000d,35y,0h,60t,0r`;
     const total = p.counts.reduce((a, b) => a + b, 0) || 1, shap = p.shap || {}, mx = Math.max(1e-6, ...Object.values(shap).map(Math.abs));
-    const fc = await forecastOf(p.id);
+    const [fc, s2] = await Promise.all([forecastOf(p.id), satelliteOf(p.id)]);
     const n1 = (x, d, u) => (x == null ? "—" : `${Number(x).toLocaleString("en-US", { maximumFractionDigits: d })}${u}`);
     const hasLayers = p.rain_annual_mm != null || p.soil_clay != null || p.lith_class != null;
     const ap = await approval(p.id), status = ap.status || (lv === "high" || lv === "critical" ? "pending" : "none");
@@ -194,6 +199,11 @@
             fc ? el("table", { class: "kv" }, ...fc.horizons.map((h) => row(t("fc_h", { h: h.h }),
               `${n1(h.rain_mm, 1, " " + t("mm"))} · ${h.ratio == null ? "—" : Math.round(h.ratio * 100) + "%"} · ${SYM[h.level]} ${t("lv_" + h.level)}`))) : el("p", { class: "note" }, t("fc_none")),
             fc ? el("p", { class: "note" }, t("fc_issued", { t: dt(fc.issued_at).replace(/ \((الرياض|Riyadh)\)$/, "") }) + " · " + t("fc_note")) : ""))) : "",
+        s2 ? el("section", { class: "box" }, el("h2", {}, t("s2_title")), el("div", { class: "in" },
+          el("table", { class: "kv" }, row(t("s2_now"), n1(s2.ndvi_now, 2, "")), row(t("s2_base"), n1(s2.ndvi_base, 2, "")),
+            row(t("s2_anom"), s2.ndvi_anomaly == null ? "—" : (s2.ndvi_anomaly > 0 ? "+" : "") + n1(s2.ndvi_anomaly, 2, "")),
+            row(t("s2_flag"), s2.flag === "drop" ? t("s2_drop") : s2.flag === "stable" ? t("s2_stable") : t("s2_insuff"))),
+          el("p", { class: "note" }, t("s2_window", { a: F.fmtDay(s2.window_now[0]), b: F.fmtDay(s2.window_now[1]), n: s2.scenes_now }) + " · " + t("s2_note")))) : "",
         el("section", { class: "appr" },
           el("div", {}, el("h3", {}, L.appr),
             el("span", { class: "st", style: `background:${stCol[0]};color:${stCol[1]}` }, L["st_" + status]),

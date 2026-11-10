@@ -37,7 +37,11 @@
   const lcName = (n) => (S.lang === "ar" && I18N.ar.lc_names[n]) || n;
   // وحدات وألوان الطبقات (U-FR7)
   const UNITS = { elev: [() => " " + t("m"), 0], slope_mean: [() => "°", 1], rain_annual_mm: [() => " " + t("mm"), 0],
-    rain_p99_3d_mm: [() => " " + t("mm"), 0], soil_clay: [() => "%", 1], relief_1km: [() => " " + t("m"), 0] };
+    rain_p99_3d_mm: [() => " " + t("mm"), 0], soil_clay: [() => "%", 1], relief_1km: [() => " " + t("m"), 0],
+    ndvi_now: [() => "", 2], ndvi_anomaly: [() => "", 2] };
+  // تدرّجات NDVI: من الأرض الجرداء إلى النبات، والتغيّر متباعد حول الصفر (بني = انخفاض، أخضر = زيادة)
+  const NDVI_RAMP = { ndvi_now: [[0, "#C9A574"], [0.2, "#B9B66A"], [0.4, "#5E9B4E"], [0.6, "#1F6B3A"]],
+    ndvi_anomaly: [[-0.15, "#8C3B1F"], [-0.05, "#D59A4D"], [0, "#E9E4D8"], [0.05, "#8DBF7A"], [0.15, "#1F6B3A"]] };
   const LITH_COLORS = { plutonic: "#C98B6B", volcanic: "#8E4A5A", volcano_sedimentary: "#6F8E7A", sedimentary: "#D7B56D", other: "#8A8F99" };
   const sfmt = (n) => (Math.floor(Number(n) * 100) / 100).toFixed(2); // الدرجة تُقرّب للأسفل كي لا تظهر 0.80 لقطاع «مرتفع»
   const FMT = window.MirsadFmt;  // التواريخ والشعار حسب اللغة والوضع (web/format.js)
@@ -63,7 +67,7 @@
     document.title = t("brand") + " · " + t("tagline");
     store.set("mirsad.lang", S.lang);
     renderUser();
-    if (S.data.sectors) { renderLegend(); renderRank(); renderKpis(); renderAlerts(); renderTransparency(); renderFcSide(); if (S.selected) openDrawer(S.selected);
+    if (S.data.sectors) { renderLegend(); renderRank(); renderKpis(); renderAlerts(); renderTransparency(); renderFcSide(); renderSatSide(); if (S.selected) openDrawer(S.selected);
       if (S.map && S.map.getLayer("sec-fill")) restyleMap(); }
   }
 
@@ -151,6 +155,15 @@
       cat.replaceChildren(...cats.map((k) => el("li", {}, el("i", { style: `background:${pal[k]}` }),
         S.colorBy === "lith_class" ? t("lith_" + k) : `${SYMBOL[k]} ${t("lv_" + k)}`)), el("li", {}, el("i", { style: `background:${NONE}` }),
         S.colorBy === "lith_class" ? t("lith_none") : t("no_value")));
+    } else if (NDVI_RAMP[S.colorBy]) {  // Sentinel-2: تدرّج ثابت لا يتأثر بالقيم الشاذة
+      const st = NDVI_RAMP[S.colorBy];
+      m.setPaintProperty("sec-fill", "fill-color", ["case", ["==", ["typeof", ["get", S.colorBy]], "number"],
+        ["interpolate", ["linear"], ["get", S.colorBy], ...st.flat()], NONE]);
+      m.setPaintProperty("sec-fill", "fill-opacity", sat ? 0.6 : 0.62);
+      ramp.hidden = true; cat.hidden = false;
+      cat.replaceChildren(...st.map(([v, col]) => el("li", {}, el("i", { style: `background:${col}` }),
+        (S.colorBy === "ndvi_anomaly" && v > 0 ? "+" : "") + fmt(v, 2))), el("li", {}, el("i", { style: `background:${NONE}` }), t("no_value")),
+        el("li", { class: "cat-note" }, t(S.colorBy === "ndvi_now" ? "ndvi_leg" : "ndvi_ch_leg")));
     } else if (S.colorBy && S.colorBy !== "level") {  // U-FR7: تلوين حسب عامل رقمي
       const vals = S.data.sectors.features.map((f) => f.properties[S.colorBy]).filter((v) => typeof v === "number" && isFinite(v));
       const lo = vals.length ? Math.min(...vals) : 0, hi = vals.length ? Math.max(...vals) : 1, mid = (lo + hi) / 2 || 0.5;
@@ -247,6 +260,7 @@
         el("dt", {}, t("aspect")), el("dd", {}, P.peak_vals.aspect < 0 ? "—" : `${fmt(P.peak_vals.aspect, 0)}°`),
         el("dt", {}, t("lc")), el("dd", {}, lcName(P.peak_vals.landcover))),
       ...forecastBlock(P),
+      ...satBlock(P),
       ...layersBlock(P),
       el("div", { class: "h-sec" }, t("shap_title")),
       el("div", { class: "bars" }, ...Object.entries(shap).map(([k, v]) => {
@@ -286,6 +300,53 @@
       if (S.map && S.map.getSource("sectors")) S.map.getSource("sectors").setData(S.data.sectors);
     } catch (e) { S.forecast = null; }
     renderFcSide();
+  }
+  // ---------- Sentinel-2 (ق-6) ----------
+  async function loadSatellite() {
+    S.sat = null;
+    if (api.on) try {
+      const r = await fetch("/api/v1/satellite");
+      if (r.ok) { const d = await r.json(); S.sat = { ...d, by: Object.fromEntries(d.items.map((i) => [i.sector_id, i])) }; }
+    } catch (e) { S.sat = null; }
+    S.data.sectors.features.forEach((f) => { const i = S.sat && S.sat.by[f.properties.id];
+      f.properties.ndvi_now = i ? i.ndvi_now : null; f.properties.ndvi_anomaly = i ? i.ndvi_anomaly : null; f.properties.s2_flag = i ? i.flag : null; });
+    if (S.map && S.map.getSource("sectors")) S.map.getSource("sectors").setData(S.data.sectors);
+    document.getElementById("lySat").disabled = !S.sat;
+    renderSatSide(); renderTransparency();
+  }
+  function renderSatSide() {
+    const n = document.getElementById("satSide"); if (!n) return; n.hidden = false;
+    if (!S.sat) { n.textContent = t("s2_side_none"); return; }
+    const drop = S.sat.items.filter((i) => i.flag === "drop").length;
+    n.textContent = t("s2_side", { n: fmt(S.sat.scenes_now), a: FMT.fmtDay(S.sat.first_date), b: FMT.fmtDay(S.sat.last_date), d: fmt(drop) })
+      + (S.sat.stale ? " · " + t("s2_stale") : "");
+  }
+  function toggleSatImage(on) {
+    const m = S.map; if (!m || !S.sat) return;
+    if (on && !m.getSource("s2")) {
+      const [w, s, e, n] = S.sat.bounds;
+      m.addSource("s2", { type: "image", url: S.sat.image_url, coordinates: [[w, n], [e, n], [e, s], [w, s]] });
+      m.addLayer({ id: "s2-img", type: "raster", source: "s2", paint: { "raster-opacity": 1, "raster-fade-duration": 0 } }, "lbl-dark");
+      m.getSource("s2") && m.once("idle", () => toast(t("s2_loaded", { d: FMT.fmtDay(S.sat.last_date) })));
+    }
+    if (m.getLayer("s2-img")) m.setLayoutProperty("s2-img", "visibility", on ? "visible" : "none");
+  }
+  function satBlock(P) {
+    const s = S.sat && S.sat.by[P.id], h = el("div", { class: "h-sec" }, t("s2_title"));
+    if (!s) return [h, el("p", { class: "note" }, t("s2_none"))];
+    const v = (x, sign) => (x == null ? "—" : (sign && x > 0 ? "+" : "") + fmt(x, 2));
+    const pct = (x) => (x == null ? "—" : Math.round(x * 100) + "%");
+    return [h,
+      el("dl", { class: "dl" },
+        el("dt", {}, t("s2_now")), el("dd", { class: "mono" }, v(s.ndvi_now)),
+        el("dt", {}, t("s2_base")), el("dd", { class: "mono" }, v(s.ndvi_base)),
+        el("dt", {}, t("s2_change")), el("dd", { class: "mono" }, v(s.ndvi_change, true)),
+        el("dt", {}, t("s2_anom")), el("dd", { class: "mono" }, v(s.ndvi_anomaly, true)),
+        el("dt", {}, t("s2_clear")), el("dd", { class: "mono" }, `${pct(s.valid_now)} / ${pct(s.valid_base)}`),
+        el("dt", {}, t("s2_flag")), el("dd", {}, s.flag === "drop" ? el("b", { class: "warn-t" }, t("s2_drop")) : s.flag === "stable" ? t("s2_stable") : t("s2_insuff"))),
+      el("p", { class: "note" }, t("s2_window", { a: FMT.fmtDay(S.sat.window_now[0]), b: FMT.fmtDay(S.sat.window_now[1]), n: fmt(S.sat.scenes_now) })),
+      S.sat.stale ? el("p", { class: "note warn-t" }, t("s2_stale")) : "",
+      el("p", { class: "note" }, t("s2_note"))];
   }
   const riyadh = (iso) => FMT.fmtDate(iso, { zone: false });
   function renderFcSide() {
@@ -476,7 +537,9 @@
       ["s_rain", "s_rain_u", c.rainfall_rows, "not_used", { n: c.rainfall_regions_placeholder_coords.length }],
       ["s_eq", "s_eq_u", c.earthquakes, "not_used", { n: c.earthquakes }], ["s_factors", "s_factors_u", c.conditioning_factor_rows, "not_used"],
       ...Object.entries(m.public_data || {}).map(([k, d]) => ["raw:" + d.source, "pub_" + k, d.cells, d.used ? "used" : "layer",
-        { cov: Math.round(d.coverage * 1000) / 10, lic: d.license || "" }])];
+        { cov: Math.round(d.coverage * 1000) / 10, lic: d.license || "" }]),
+      ...(S.sat ? [["raw:Copernicus Sentinel-2 L2A (ESA · Earth Search)", "pub_s2", S.sat.scenes_now, "layer",
+        { a: FMT.fmtDay(S.sat.first_date), b: FMT.fmtDay(S.sat.last_date) }]] : [])];
     document.getElementById("trSources").replaceChildren(
       el("thead", {}, el("tr", {}, el("th", {}, t("src_name")), el("th", {}, t("src_use")), el("th", {}, t("src_rows")), el("th", {}, t("src_status")))),
       el("tbody", {}, ...src.map(([n, u, rows, s, v]) => el("tr", {}, el("td", {}, n.startsWith("raw:") ? n.slice(4) : t(n)), el("td", {}, t(u, v)), el("td", { class: "mono" }, fmt(rows)),
@@ -523,6 +586,7 @@
     document.getElementById("lySectors").onchange = (e) => ["sec-fill", "sec-line"].forEach((l) => S.map.setLayoutProperty(l, "visibility", e.target.checked ? "visible" : "none"));
     document.getElementById("lyEvents").onchange = (e) => S.map.setLayoutProperty("ev", "visibility", e.target.checked ? "visible" : "none");
     document.getElementById("lyCells").onchange = (e) => toggleCells(e.target.checked).catch(() => toast(t("load_error")));
+    document.getElementById("lySat").onchange = (e) => { try { toggleSatImage(e.target.checked); } catch (x) { toast(t("load_error")); } };
     ["fLevel", "fStatus", "fFrom", "fTo"].forEach((id) => (document.getElementById(id).onchange = renderAlerts));
     document.getElementById("fClear").onclick = () => { ["fLevel", "fStatus", "fFrom", "fTo"].forEach((id) => (document.getElementById(id).value = "")); renderAlerts(); };
     addEventListener("hashchange", route); addEventListener("keydown", (e) => e.key === "Escape" && closeDrawer());
@@ -536,6 +600,7 @@
       S.data = { sectors, events, model };
       if (api.on) await loadAlertsApi();
       await loadForecast();
+      await loadSatellite();
       renderUser();
       // AC-4: وسم البيانات المتقادمة
       const ageDays = (Date.now() - new Date(model.trained_at + "T00:00:00Z").getTime()) / 864e5;

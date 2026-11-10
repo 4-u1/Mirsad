@@ -237,3 +237,4 @@ table.fc tbody th{text-align:start;color:var(--muted);font-weight:600}
 .warn-t{color:var(--lv-medium-fg)}
 .about-logo{height:auto;aspect-ratio:2000/790}
 .date-txt{font-size:12px;color:var(--text);font-weight:600;white-space:nowrap}
+.cat-legend .cat-note{display:block;margin-top:2px;font-size:11px}
