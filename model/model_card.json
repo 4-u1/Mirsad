@@ -127,9 +127,16 @@
       "roc_auc": 0.594,
       "pr_auc": 0.01,
       "architecture": "MLP(16, 8), alpha=0.01, positives oversampled in training folds",
-      "note": "PRD names TensorFlow; it was unavailable in the build environment, so scikit-learn MLPClassifier was used."
+      "note": "Same architecture as the TensorFlow network (07_tensorflow_compare.py, run on GitHub Actions)."
     },
-    "decision": "Baseline Random Forest kept (PRD 12.3: adopt the simpler model when performance is not clearly better)."
+    "decision": "Baseline Random Forest kept (PRD 12.3: adopt the simpler model when performance is not clearly better).",
+    "neural_network_tensorflow": {
+      "roc_auc": 0.597,
+      "pr_auc": 0.01,
+      "framework": "TensorFlow 2.21.0 (Keras), Python 3.12.16",
+      "architecture": "Dense(16, relu) → Dense(8, relu) → Dense(1, sigmoid); L2=0.01; Adam 1e-3; 150 epochs, batch 256; positives oversampled in training folds; StandardScaler per fold",
+      "run": "https://github.com/4-u1/Mirsad/actions/runs/42884207069"
+    }
   },
   "seismic_features": {
     "features": [

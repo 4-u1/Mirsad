@@ -1,0 +1,61 @@
+{
+  "requirement": "FR-A3",
+  "method": "GroupKFold(5) on 0.5° blocks, same folds as 03/05",
+  "framework": "TensorFlow 2.21.0 (Keras), Python 3.12.16",
+  "architecture": "Dense(16, relu) → Dense(8, relu) → Dense(1, sigmoid); L2=0.01; Adam 1e-3; 150 epochs, batch 256; positives oversampled in training folds; StandardScaler per fold",
+  "seed": 42,
+  "rows": 1689,
+  "positives": 12,
+  "folds": [
+    {
+      "fold": 1,
+      "test_rows": 339,
+      "test_positives": 0
+    },
+    {
+      "fold": 2,
+      "test_rows": 338,
+      "test_positives": 5
+    },
+    {
+      "fold": 3,
+      "test_rows": 338,
+      "test_positives": 1
+    },
+    {
+      "fold": 4,
+      "test_rows": 337,
+      "test_positives": 1
+    },
+    {
+      "fold": 5,
+      "test_rows": 337,
+      "test_positives": 5
+    }
+  ],
+  "tensorflow_mlp": {
+    "roc_auc": 0.597,
+    "pr_auc": 0.01,
+    "recall_at_high": 0.0,
+    "precision_at_high": 0.0,
+    "recall_at_critical": 0.0,
+    "precision_at_critical": 0.0
+  },
+  "random_forest_baseline": {
+    "roc_auc": 0.545,
+    "pr_auc": 0.011,
+    "recall_at_high": 0.083,
+    "precision_at_high": 0.01,
+    "recall_at_critical": 0.083,
+    "precision_at_critical": 0.042
+  },
+  "sklearn_mlp": {
+    "roc_auc": 0.594,
+    "pr_auc": 0.01,
+    "architecture": "MLP(16, 8), alpha=0.01, positives oversampled in training folds",
+    "note": "PRD names TensorFlow; it was unavailable in the build environment, so scikit-learn MLPClassifier was used."
+  },
+  "slope_only_logistic_spatial_auc": 0.66,
+  "decision": "Random Forest baseline kept: the TensorFlow network is not clearly better — no gain in PR-AUC or recall at the high threshold, and both stay below the slope-only reference (PRD 12.3: adopt the simpler model when performance is equal).",
+  "workflow_run": "https://github.com/4-u1/Mirsad/actions/runs/42884207069"
+}

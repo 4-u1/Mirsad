@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://mirsad-rho.vercel.app"><img alt="Live" src="https://img.shields.io/badge/%D8%A7%D9%84%D9%85%D9%88%D9%82%D8%B9-%D8%B4%D8%BA%D8%A7%D9%84-38C7B8?style=for-the-badge&labelColor=13242A"></a>
   <a href="https://github.com/4-u1/Mirsad/actions/workflows/ci.yml"><img alt="Tests" src="https://img.shields.io/github/actions/workflow/status/4-u1/Mirsad/ci.yml?branch=main&style=for-the-badge&label=tests&labelColor=13242A&color=257C83"></a>
-  <img alt="PRD" src="https://img.shields.io/badge/PRD-83%25-D59A4D?style=for-the-badge&labelColor=13242A">
+  <img alt="PRD" src="https://img.shields.io/badge/PRD-85%25-D59A4D?style=for-the-badge&labelColor=13242A">
   <img alt="PostGIS" src="https://img.shields.io/badge/PostGIS-Supabase-257C83?style=for-the-badge&labelColor=13242A">
   <a href="LICENSE"><img alt="MIT" src="https://img.shields.io/badge/license-MIT-AC573A?style=for-the-badge&labelColor=13242A"></a>
 </p>
@@ -68,13 +68,13 @@ flowchart LR
 
 ## حالة المشروع
 
-نسبة الإنجاز الفعلية **83%** من متطلبات الـPRD الوظيفية (26 متطلبًا، كل واحد مقيس بدليل)، و**85%** من متطلبات Must. التفصيل الكامل في [التقرير الشامل](docs/Mirsad_Project_Report.pdf).
+نسبة الإنجاز الفعلية **85%** من متطلبات الـPRD الوظيفية (26 متطلبًا، كل واحد مقيس بدليل)، و**86%** من متطلبات Must. القرارات الفنية موثقة في [سجل القرارات](docs/decisions.md). التفصيل الكامل في [التقرير الشامل](docs/Mirsad_Project_Report.pdf).
 
 | المجال | الإنجاز | المتبقي |
 |---|:---:|---|
 | البيانات | 63% | سجل انهيارات أكبر، أمطار بإحداثيات، جيولوجيا وتربة، انحناء |
-| قاعدة البيانات المكانية | 95% | قرار دقة الشبكة |
-| الذكاء الاصطناعي | 92% | مميزات v2 بعد وصول البيانات، اعتماد بديل TensorFlow |
+| قاعدة البيانات المكانية | 98% | تحميل الطبقات الجديدة (أمطار، جيولوجيا، تربة) في PostGIS |
+| الذكاء الاصطناعي | 95% | مميزات v2 وإعادة التدريب بعد وصول البيانات |
 | الواجهة والتوثيق | 86% | التنبؤ 72 ساعة، طبقات الأمطار والتربة، مراجعة الفريق |
 
 ## النموذج بصراحة
@@ -91,11 +91,11 @@ flowchart LR
 | الطبقة | التقنية |
 |---|---|
 | البيانات | Copernicus DEM 30 م · ESA WorldCover 2021 · NASA Global Landslide Catalog · USGS |
-| خط المعالجة | Python · pandas · scikit-learn |
+| خط المعالجة | Python · pandas · scikit-learn · TensorFlow (مقارنة الشبكة العصبية على GitHub Actions) |
 | قاعدة البيانات | PostgreSQL + PostGIS على Supabase · SQLite محليًا |
 | الخادم | Starlette على Vercel · أدوار مشاهد/مشغّل/مسؤول · سجل تدقيق |
 | الواجهة | HTML/CSS/JS · MapLibre GL · خرائط Esri · عربي/إنجليزي · ليلي/نهاري |
-| الأتمتة | GitHub Actions: اختبارات على SQLite وPostGIS · تحميل القاعدة · تشغيل أسبوعي |
+| الأتمتة | GitHub Actions: اختبارات على SQLite وPostGIS · تحميل القاعدة · تشغيل أسبوعي · مقارنة TensorFlow |
 
 ## التشغيل
 
@@ -115,7 +115,7 @@ pytest -q                               # 12 اختبارًا: AC-1..AC-5 وال
 ```
 data/raw/          ملفات الفريق كما أُرسلت (بعد حذف 4 نسخ مكررة)
 data/processed/    البيانات المنظفة + درجات الخطر + تقارير التنظيف والجودة
-pipeline/          01 التضاريس (Colab) · 02 التنظيف · 03 التدريب · 04 الجودة · 05 التفسير · 06 Google Earth
+pipeline/          01 التضاريس (Colab) · 02 التنظيف · 03 التدريب · 04 الجودة · 05 التفسير · 06 Google Earth · 07 TensorFlow
 model/             النموذج المدرّب، المعايرة، بطاقة النموذج
 backend/           الخادم، مخطط PostGIS، تحميل البيانات، قواعد الإنذار
 api/               مدخل الخادم على Vercel

@@ -363,7 +363,7 @@
   function renderTransparency() {
     const m = S.data.model, c = m.cleaning;
     if (m.comparisons) {
-      const cm = m.comparisons, rows = [["m_rf", cm.random_forest_baseline], ["m_rf_seis", cm.random_forest_plus_seismic], ["m_mlp", cm.neural_network_mlp]];
+      const cm = m.comparisons, rows = [["m_rf", cm.random_forest_baseline], ["m_rf_seis", cm.random_forest_plus_seismic], ["m_mlp", cm.neural_network_mlp]].concat(cm.neural_network_tensorflow ? [["m_tf", cm.neural_network_tensorflow]] : []);
       document.getElementById("trCompare").replaceChildren(
         el("div", { class: "metric-grid" }, el("span", { class: "h" }, t("metric")), el("span", { class: "h" }, "ROC-AUC"), el("span", { class: "h" }, "PR-AUC"),
           ...rows.flatMap(([k, r]) => [el("span", {}, t(k)), el("b", {}, fmt(r.roc_auc, 3)), el("span", { class: "muted" }, fmt(r.pr_auc, 3))])),

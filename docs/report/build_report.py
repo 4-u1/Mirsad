@@ -163,8 +163,9 @@ figure{{margin:8pt 0 12pt;break-inside:avoid;text-align:center}} figure img{{wid
 <table><tr><th>النموذج</th><th>ROC-AUC</th><th>PR-AUC</th></tr>
 <tr><td>غابة عشوائية (المعتمد)</td><td>{CARD['comparisons']['random_forest_baseline']['roc_auc']}</td><td>{CARD['comparisons']['random_forest_baseline']['pr_auc']}</td></tr>
 <tr><td>غابة عشوائية + مميزات زلزالية</td><td>{CARD['comparisons']['random_forest_plus_seismic']['roc_auc']}</td><td>{CARD['comparisons']['random_forest_plus_seismic']['pr_auc']}</td></tr>
-<tr><td>شبكة عصبية MLP(16, 8)</td><td>{CARD['comparisons']['neural_network_mlp']['roc_auc']}</td><td>{CARD['comparisons']['neural_network_mlp']['pr_auc']}</td></tr></table>
-<p>اعتُمد النموذج الأبسط لأن الفروق صغيرة وغير موثوقة إحصائيًا مع 12 نقطة (PRD 12.3). الـPRD يذكر TensorFlow للشبكة العصبية؛ لم يكن متاحًا في بيئة البناء فاستُخدم MLPClassifier من scikit-learn بنفس الفكرة. المميزات الزلزالية لم تُعتمد لأن أقرب زلزال لنقاط التدريب على بعد {CARD['seismic_features']['training_eq_dist_km_min']:.0f} كم، فهي تعكس خط العرض لا الخطر الزلزالي.</p>
+<tr><td>شبكة عصبية MLP(16, 8) · scikit-learn</td><td>{CARD['comparisons']['neural_network_mlp']['roc_auc']}</td><td>{CARD['comparisons']['neural_network_mlp']['pr_auc']}</td></tr>
+<tr><td>شبكة عصبية (16, 8) · TensorFlow 2.21</td><td>{CARD['comparisons']['neural_network_tensorflow']['roc_auc']}</td><td>{CARD['comparisons']['neural_network_tensorflow']['pr_auc']}</td></tr></table>
+<p>اعتُمد النموذج الأبسط لأن الفروق صغيرة وغير موثوقة إحصائيًا مع 12 نقطة (PRD 12.3). دُرّبت الشبكة بـTensorFlow فعليًا على GitHub Actions (<code>tensorflow.yml</code>) بنفس الطيّات: تحسّن ROC-AUC لا يرافقه تحسن في PR-AUC، ولا تلتقط أي انهيار عند عتبة «مرتفع»، فبقي Random Forest (القرار ق-2 في <code>docs/decisions.md</code>). المميزات الزلزالية لم تُعتمد لأن أقرب زلزال لنقاط التدريب على بعد {CARD['seismic_features']['training_eq_dist_km_min']:.0f} كم، فهي تعكس خط العرض لا الخطر الزلزالي.</p>
 <h3>6.2 المعايرة (PRD 12.3)</h3>
 <p>معايرة Isotonic على تنبؤات التحقق المكاني خفّضت Brier من {CARD['calibration']['brier_raw']} إلى {CARD['calibration']['brier_calibrated']}. الاحتمال المعاير يظهر في تفاصيل كل قطاع، والمستويات تبقى على الدرجة النسبية وعتبات الوثيقة لأن الاحتمال المعاير قريب من معدل الأساس ({CARD['calibration']['base_rate']*100:.1f}%) في كل مكان.</p>
 <h3>6.3 التفسير لكل قطاع (A-FR5)</h3>

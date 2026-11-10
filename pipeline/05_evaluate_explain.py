@@ -122,8 +122,13 @@ card["comparisons"] = {
     "random_forest_baseline": m(p_base),
     "random_forest_plus_seismic": m(p_seis),
     "neural_network_mlp": {**m(p_mlp), "architecture": "MLP(16, 8), alpha=0.01, positives oversampled in training folds",
-                           "note": "PRD names TensorFlow; it was unavailable in the build environment, so scikit-learn MLPClassifier was used."},
+                           "note": "Same architecture as the TensorFlow network (07_tensorflow_compare.py, run on GitHub Actions)."},
     "decision": "Baseline Random Forest kept (PRD 12.3: adopt the simpler model when performance is not clearly better)."}
+_tf = P / "tensorflow_comparison.json"  # ناتج 07 على GitHub Actions (FR-A3)
+if _tf.exists():
+    _t = json.loads(_tf.read_text(encoding="utf-8"))
+    card["comparisons"]["neural_network_tensorflow"] = {"roc_auc": _t["tensorflow_mlp"]["roc_auc"], "pr_auc": _t["tensorflow_mlp"]["pr_auc"],
+                                                        "framework": _t["framework"], "architecture": _t["architecture"], "run": _t.get("workflow_run")}
 card["seismic_features"] = {"features": ["eq_dist_km", "eq_count_200km", "eq_maxmag_200km"],
                             "training_eq_dist_km_min": float(tr_s.eq_dist_km.min()),
                             "training_points_with_quake_within_200km": int((tr_s.eq_count_200km > 0).sum()),
