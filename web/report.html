@@ -5,32 +5,66 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>مِرصاد · تقرير القطاع</title>
 <link rel="icon" href="emblem.png">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="styles.css" rel="stylesheet">
 <style>
-  /* تقرير قابل للطباعة (PRD · U-FR9): يُطبع أو يُحفظ PDF من المتصفح */
-  body{background:var(--bg)}
-  .sheet{max-width:820px;margin:24px auto;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:32px 36px;display:grid;gap:18px}
-  .r-head{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:2px solid var(--frame2);padding-bottom:14px}
-  .r-head img{height:64px}
-  .r-meta{text-align:end;font-size:13px;color:var(--muted)}
-  .r-title{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
-  .r-title h1{margin:0;font-size:30px}
-  .r-score{font-size:46px;font-weight:700;font-variant-numeric:tabular-nums}
-  .r-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  .r-box{border:1px solid var(--line);border-radius:12px;padding:14px 16px}
-  .r-box h2{font-size:15px;margin:0 0 8px;color:var(--accent)}
-  .r-table{width:100%;border-collapse:collapse;font-size:14px}
-  .r-table td{padding:6px 4px;border-bottom:1px solid var(--line)}
-  .r-table td:last-child{text-align:end;font-weight:600;font-variant-numeric:tabular-nums}
-  .r-note{font-size:12.5px;color:var(--muted);line-height:1.7}
-  .r-bar{display:flex;gap:10px;justify-content:flex-end}
-  @media (max-width:640px){.r-grid{grid-template-columns:1fr}.sheet{padding:20px}}
-  @media print{.r-bar{display:none}.sheet{border:0;margin:0;max-width:none}body{background:#fff}}
+  /* تقرير القطاع الرسمي (PRD · U-FR9): يُطبع أو يُحفظ PDF من المتصفح */
+  :root{--ink:#13242A;--brand:#13242A;--brand2:#113637;--teal:#257C83;--teal-l:#38C7B8;--gold:#B4742D;--paper:#FFFFFF;--soft:#F6F1E8;--rule:#E2D6C2;--mute:#4A5F66}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{background:#E9E3D8;color:var(--ink);margin:0;padding-bottom:8px}
+  .page{max-width:860px;margin:28px auto;background:var(--paper);box-shadow:0 18px 50px rgba(19,36,42,.16);border-radius:6px;overflow:hidden;position:relative}
+  .hd{background:linear-gradient(135deg,var(--brand) 0%,var(--brand2) 100%);color:#fff;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:22px 32px}
+  .hd img{height:78px;display:block}
+  .hd-meta{text-align:end;display:grid;gap:3px}
+  .hd-meta b{font-size:19px;letter-spacing:.2px}
+  .hd-meta span{font-size:12.5px;color:#B9CCD3}
+  .hd-meta .ref{font-family:ui-monospace,Menlo,Consolas,monospace;direction:ltr;unicode-bidi:embed;color:var(--teal-l);font-size:13px}
+  .stripe{height:5px;background:linear-gradient(90deg,var(--teal-l),var(--teal) 45%,var(--gold))}
+  .body{padding:26px 32px 18px;display:grid;gap:20px}
+  .title{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}
+  .title small{display:block;font-size:12.5px;color:var(--mute);font-weight:600;letter-spacing:.3px}
+  .title h1{margin:2px 0 0;font-size:34px;font-family:ui-monospace,Menlo,Consolas,monospace;direction:ltr;text-align:start;unicode-bidi:plaintext}
+  .verdict{display:flex;align-items:center;gap:14px;border-radius:12px;padding:12px 18px;border:2px solid var(--lvc);background:var(--lvbg)}
+  .verdict .num{font-size:44px;font-weight:700;line-height:1;color:var(--lvfg);font-variant-numeric:tabular-nums}
+  .verdict .lv{display:grid;gap:2px}.verdict .lv b{font-size:18px;color:var(--lvfg)}.verdict .lv span{font-size:12px;color:var(--mute)}
+  .scale{display:grid;gap:6px}
+  .scale .track{position:relative;height:14px;border-radius:7px;display:flex;overflow:hidden;direction:ltr}
+  .scale .track i{display:block;height:100%}
+  .scale .pin{position:absolute;top:-6px;width:4px;height:26px;background:var(--ink);border-radius:2px;transform:translateX(-50%)}
+  .scale .ticks{position:relative;height:16px;direction:ltr;font-size:11.5px;color:var(--mute);font-variant-numeric:tabular-nums}
+  .scale .ticks span{position:absolute;top:0;transform:translateX(-50%)}.scale .ticks span:first-child{transform:none}.scale .ticks span:last-child{transform:translateX(-100%)}
+  .scale .cap{font-size:12px;color:var(--mute)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .box{border:1px solid var(--rule);border-radius:10px;overflow:hidden}
+  .box h2{margin:0;font-size:13.5px;font-weight:700;color:#fff;background:var(--brand2);padding:8px 14px;letter-spacing:.2px}
+  .box .in{padding:6px 14px 10px}
+  table.kv{width:100%;border-collapse:collapse;font-size:13.5px}
+  table.kv td{padding:7px 0;border-bottom:1px dashed var(--rule)}
+  table.kv tr:last-child td{border-bottom:0}
+  table.kv td:last-child{text-align:end;font-weight:600;font-variant-numeric:tabular-nums}
+  .shap{display:grid;grid-template-columns:96px 1fr 58px;gap:8px;align-items:center;font-size:13px;padding:5px 0}
+  .shap .b{height:8px;background:var(--soft);border-radius:4px;position:relative;overflow:hidden}
+  .shap .b i{position:absolute;top:0;bottom:0;inset-inline-start:0;border-radius:4px}
+  .shap .v{text-align:end;font-weight:600;font-variant-numeric:tabular-nums;direction:ltr}
+  .stack{display:flex;height:12px;border-radius:6px;overflow:hidden;margin:8px 0 6px;direction:ltr}
+  .note{font-size:12px;color:var(--mute);line-height:1.7;margin:6px 0 0}
+  .appr{border:1px solid var(--rule);border-radius:12px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;padding:16px 20px;background:var(--soft);position:relative;min-height:150px}
+  .appr h3{margin:0 0 6px;font-size:15px}
+  .appr .st{display:inline-block;font-weight:700;font-size:13px;border-radius:999px;padding:3px 12px;margin-bottom:8px}
+  .appr .sig{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:13px}
+  .appr .sig dt{color:var(--mute)}.appr .sig dd{margin:0;font-weight:600}
+  .stamp{width:168px;height:168px;transform:rotate(-11deg);opacity:.92;mix-blend-mode:multiply}
+  .ft{border-top:1px solid var(--rule);padding:14px 32px 20px;display:grid;gap:6px;font-size:11.5px;color:var(--mute)}
+  .ft .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .bar{max-width:860px;margin:0 auto;padding-bottom:40px !important;display:flex;gap:10px;justify-content:flex-end;padding:0 4px}
+  @media (max-width:680px){.page{margin:0;border-radius:0}.hd{flex-direction:column;align-items:flex-start;padding:18px}.hd-meta{text-align:start}
+    .body{padding:18px}.title,.grid,.appr{grid-template-columns:1fr}.stamp{justify-self:center}.ft{padding:14px 18px}.bar{padding:0 12px;flex-wrap:wrap}}
+  @media print{@page{size:A4;margin:10mm}body{background:#fff}.page{box-shadow:none;margin:0;max-width:none;border-radius:0}.bar{display:none}.box,.appr{break-inside:avoid}}
 </style>
 </head>
 <body>
-<main class="sheet" id="sheet"><p class="muted">…</p></main>
+<main class="page" id="page"><div class="body"><p class="muted">…</p></div></main>
+<div class="bar" id="bar"></div>
 <script src="i18n.js"></script>
 <script>
 (function(){
@@ -38,43 +72,119 @@
   let lang = "ar"; try { const v = localStorage.getItem("mirsad.lang"); lang = (v && v.replace(/"/g, "")) === "en" ? "en" : "ar"; } catch (e) {}
   document.documentElement.lang = lang; document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
   const T = I18N[lang], t = (k) => T[k] ?? I18N.ar[k] ?? k, lc = (n) => (lang === "ar" && I18N.ar.lc_names[n]) || n;
-  const L = { ar: { title: "تقرير القطاع", gen: "أُنشئ", loc: "الموقع (أعلى خلية خطرًا)", print: "طباعة / حفظ PDF", back: "العودة للخريطة",
-                    disclaimer: "أداة دعم قرار. لا تغني عن الدراسة الميدانية ولا عن قرار الجهات الرسمية. أداء النموذج في التحقق المكاني: ROC-AUC = ", model: "النموذج", missing: "قطاع غير موجود" },
-              en: { title: "Sector report", gen: "Generated", loc: "Location (highest-risk cell)", print: "Print / save PDF", back: "Back to map",
-                    disclaimer: "Decision support only. It does not replace field study or official decisions. Model spatial-CV ROC-AUC = ", model: "Model", missing: "Unknown sector" } }[lang];
-  const SYM = { low: "○", medium: "◆", high: "▲", critical: "■" };
-  const el = (tag, a = {}, ...k) => { const e = document.createElement(tag); for (const [x, v] of Object.entries(a)) x === "class" ? e.className = v : e.setAttribute(x, v); k.flat().forEach((c) => c != null && e.append(c.nodeType ? c : document.createTextNode(c))); return e; };
+  const L = {
+    ar: { title: "تقرير تقييم خطر القطاع", ref: "رقم المرجع", gen: "تاريخ الإصدار", model: "إصدار النموذج", sector: "القطاع", scale: "موقع الدرجة على سلّم المستويات",
+      loc: "الإحداثيات (أعلى خلية خطرًا)", appr: "حالة الإنذار والاعتماد", by: "المعتمِد", at: "وقت القرار", alertNo: "رقم الإنذار",
+      st_approved: "معتمد", st_pending: "بانتظار الاعتماد", st_dismissed: "مرفوض", st_none: "لا يتطلب إنذارًا",
+      d_approved: "اعتمد مشغّل مخوّل هذا الإنذار، والقرار مسجّل في سجل التدقيق.", d_pending: "اقترح النظام إنذارًا لهذا القطاع، ولم يُعتمد بعد من مشغّل مخوّل.",
+      d_dismissed: "راجع مشغّل مخوّل الإنذار وقرر عدم إرساله.", d_none: "مستوى القطاع أقل من «مرتفع»، فلا يُقترح له إنذار.",
+      d_offline: "يعمل التقرير بدون خادم؛ حالة الاعتماد من سجل هذا المتصفح.",
+      stampTop: "نظام مِرصاد · اعتماد إنذار", stampMid: "معتمد", print: "طباعة / حفظ PDF", back: "العودة للخريطة", ge: "عرض في Google Earth",
+      disc: "أداة دعم قرار أكاديمية. لا تغني عن الدراسة الميدانية ولا عن قرار الجهات الرسمية. أداء النموذج في التحقق المكاني ROC-AUC = ",
+      sends: "الإرسال للجهات محاكى في هذه المرحلة.", foot: "مِرصاد · نظام التنبؤ بمخاطر الانهيارات الأرضية · القروب الثالث", missing: "قطاع غير موجود" },
+    en: { title: "Sector risk assessment report", ref: "Reference", gen: "Issued", model: "Model version", sector: "Sector", scale: "Score on the level scale",
+      loc: "Coordinates (highest-risk cell)", appr: "Alert and approval status", by: "Approved by", at: "Decided at", alertNo: "Alert no.",
+      st_approved: "Approved", st_pending: "Awaiting approval", st_dismissed: "Dismissed", st_none: "No alert required",
+      d_approved: "An authorised operator approved this alert; the decision is in the audit log.", d_pending: "The system proposed an alert for this sector; no authorised operator has approved it yet.",
+      d_dismissed: "An authorised operator reviewed the alert and decided not to send it.", d_none: "The sector is below “High”, so no alert is proposed.",
+      d_offline: "Running without a server; approval status comes from this browser's log.",
+      stampTop: "MIRSAD SYSTEM · ALERT APPROVAL", stampMid: "APPROVED", print: "Print / save PDF", back: "Back to map", ge: "Open in Google Earth",
+      disc: "Academic decision-support tool. It does not replace field study or official decisions. Model spatial-CV ROC-AUC = ",
+      sends: "Dispatch to agencies is simulated at this stage.", foot: "Mirsad · Landslide risk prediction system · Group 3", missing: "Unknown sector" } }[lang];
+  const SYM = { low: "○", medium: "◆", high: "▲", critical: "■" }, LV = ["low", "medium", "high", "critical"];
+  const el = (tag, a = {}, ...k) => { const e = document.createElement(tag); for (const [x, v] of Object.entries(a)) x === "class" ? e.className = v : x === "html" ? e.innerHTML = v : e.setAttribute(x, v); k.flat().forEach((c) => c != null && e.append(c.nodeType ? c : document.createTextNode(c))); return e; };
   const row = (a, b) => el("tr", {}, el("td", {}, a), el("td", {}, b));
   const f2 = (n) => (Math.floor(n * 100) / 100).toFixed(2);
-  Promise.all([fetch("data/sectors.geojson").then((r) => r.json()), fetch("data/model.json").then((r) => r.json())]).then(([sec, m]) => {
-    const id = decodeURIComponent(location.hash.slice(1)), f = sec.features.find((x) => x.properties.id === id), S = document.getElementById("sheet");
-    if (!f) { S.replaceChildren(el("p", {}, L.missing)); return; }
-    const p = f.properties; document.title = `${t("brand")} · ${L.title} ${p.id}`;
+  const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const dt = (s) => s ? new Date(s).toLocaleString(lang === "ar" ? "ar-SA-u-nu-latn-ca-gregory" : "en-GB", { dateStyle: "medium", timeStyle: "short" }) : "—";
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+  async function approval(id) {  // من الخادم إن وُجد، وإلا من سجل وضع العرض في المتصفح
+    try { const c = new AbortController(); setTimeout(() => c.abort(), 2500);
+      const r = await fetch("/api/v1/sectors/" + encodeURIComponent(id), { signal: c.signal });
+      if (r.ok) { const j = await r.json(); const a = (j.alerts || []).find((x) => x.status === "approved") || (j.alerts || [])[0];
+        return a ? { status: a.status, by: a.approved_by, at: a.decided_at, id: a.id, live: true } : { status: null, live: true }; }
+    } catch (e) {}
+    try { const s = JSON.parse(localStorage.getItem("mirsad.alerts") || "{}")[id]; if (s) return { status: s.status, by: s.by, at: s.at, live: false }; } catch (e) {}
+    return { status: null, live: false };
+  }
+  function stamp(by, at, ref) {
+    const c = "#1E6A70", top = esc(L.stampTop), mid = esc(L.stampMid), who = esc(by || ""), when = esc(at ? new Date(at).toISOString().slice(0, 10) : "");
+    return el("div", { class: "stamp", role: "img", "aria-label": `${L.stampMid} · ${by || ""} · ${when}`, html:
+      `<svg viewBox="0 0 200 200" width="168" height="168" xmlns="http://www.w3.org/2000/svg">
+        <defs><path id="arcT" d="M 30 100 A 70 70 0 0 1 170 100"/><path id="arcB" d="M 36 104 A 64 64 0 0 0 164 104"/></defs>
+        <circle cx="100" cy="100" r="94" fill="none" stroke="${c}" stroke-width="4"/>
+        <circle cx="100" cy="100" r="86" fill="none" stroke="${c}" stroke-width="1.5"/>
+        <circle cx="100" cy="100" r="52" fill="none" stroke="${c}" stroke-width="1.5"/>
+        <text font-family="IBM Plex Sans Arabic, sans-serif" font-size="13" font-weight="700" fill="${c}" letter-spacing=".5"><textPath href="#arcT" startOffset="50%" text-anchor="middle">${top}</textPath></text>
+        <text font-family="ui-monospace, Menlo, monospace" font-size="11" font-weight="700" fill="${c}"><textPath href="#arcB" startOffset="50%" text-anchor="middle">${esc(ref)}</textPath></text>
+        <text x="100" y="98" text-anchor="middle" font-family="IBM Plex Sans Arabic, sans-serif" font-size="26" font-weight="700" fill="${c}">${mid}</text>
+        <text x="100" y="118" text-anchor="middle" font-family="IBM Plex Sans Arabic, sans-serif" font-size="12" font-weight="600" fill="${c}">${who}</text>
+        <text x="100" y="134" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="11" fill="${c}">${when}</text>
+        <text x="22" y="104" text-anchor="middle" font-size="12" fill="${c}">★</text><text x="178" y="104" text-anchor="middle" font-size="12" fill="${c}">★</text>
+      </svg>` });
+  }
+
+  Promise.all([fetch("data/sectors.geojson").then((r) => r.json()), fetch("data/model.json").then((r) => r.json())]).then(async ([sec, m]) => {
+    const id = decodeURIComponent(location.hash.slice(1)), f = sec.features.find((x) => x.properties.id === id), P = document.getElementById("page");
+    if (!f) { P.replaceChildren(el("div", { class: "body" }, el("p", {}, L.missing))); return; }
+    const p = f.properties, lv = p.level, th = m.thresholds, today = new Date();
+    const ref = `MRS-${p.id}-${today.toISOString().slice(0, 10).replace(/-/g, "")}`;
+    document.title = `${t("brand")} · ${L.title} ${p.id}`;
     const ge = `https://earth.google.com/web/@${p.peak[0]},${p.peak[1]},${p.peak_vals.elevation}a,9000d,35y,0h,60t,0r`;
-    S.replaceChildren(
-      el("div", { class: "r-head" }, el("img", { src: "logo.png", alt: "Mirsad" }),
-        el("div", { class: "r-meta" }, L.title, el("br"), `${L.gen}: ${new Date().toISOString().slice(0, 10)}`, el("br"), `${L.model}: ${m.version} · ${m.trained_at}`)),
-      el("div", { class: "r-title" }, el("h1", {}, p.id), el("span", { class: "r-score" }, f2(p.score)), el("span", { class: "chip " + p.level }, `${SYM[p.level]} ${t("lv_" + p.level)}`),
-        el("span", { class: "muted" }, t("mean_" + p.level))),
-      el("div", { class: "r-grid" },
-        el("div", { class: "r-box" }, el("h2", {}, t("sector")), el("table", { class: "r-table" },
-          row(t("max_in_sector"), f2(p.score)), row(t("top_cell"), f2(p.max)), row(t("mean_score"), f2(p.mean)),
-          row(t("prob_cal"), p.calibrated != null ? (p.calibrated * 100).toFixed(1) + "%" : "—"), row(t("cells"), p.cells),
-          row(t("events_here"), p.events))),
-        el("div", { class: "r-box" }, el("h2", {}, t("peak_cell")), el("table", { class: "r-table" },
-          row(t("elevation"), `${p.peak_vals.elevation} ${t("m")}`), row(t("slope"), `${p.peak_vals.slope}°`),
-          row(t("aspect"), p.peak_vals.aspect < 0 ? "—" : `${p.peak_vals.aspect}°`), row(t("lc"), lc(p.peak_vals.landcover)),
-          row(L.loc, `${p.peak[0]}, ${p.peak[1]}`))),
-        el("div", { class: "r-box" }, el("h2", {}, t("shap_title")), el("table", { class: "r-table" },
-          ...Object.entries(p.shap || {}).map(([k, v]) => row(t("feat")[k], (v >= 0 ? "+" : "") + v.toFixed(3)))),
-          el("p", { class: "r-note" }, t("shap_note"))),
-        el("div", { class: "r-box" }, el("h2", {}, t("cell_dist")), el("table", { class: "r-table" },
-          ...["low", "medium", "high", "critical"].map((l, i) => row(`${SYM[l]} ${t("lv_" + l)}`, p.counts[i]))),
-          el("table", { class: "r-table" }, row(t("elev_mean"), `${p.elev} ${t("m")}`), row(t("slope_mean"), `${p.slope_mean}°`), row(t("landcover"), lc(p.landcover))))),
-      el("p", { class: "r-note" }, L.disclaimer + m.spatial_cv.roc_auc + "."),
-      el("div", { class: "r-bar" }, el("a", { class: "btn ghost", href: ge, target: "_blank", rel: "noopener" }, t("ge_open")),
-        el("a", { class: "btn ghost", href: "index.html" }, L.back), (() => { const b = el("button", { class: "btn" }, L.print); b.onclick = () => window.print(); return b; })()));
-  }).catch(() => { document.getElementById("sheet").textContent = t("load_error"); });
+    const total = p.counts.reduce((a, b) => a + b, 0) || 1, shap = p.shap || {}, mx = Math.max(1e-6, ...Object.values(shap).map(Math.abs));
+    const ap = await approval(p.id), status = ap.status || (lv === "high" || lv === "critical" ? "pending" : "none");
+    const stCol = { approved: ["#E3F1EF", "#1E6A70"], pending: ["#F8E9D2", "#7A4E12"], dismissed: ["#E3EAED", "#2F4A55"], none: ["#E3EAED", "#2F4A55"] }[status];
+    const seg = [[0, th.medium, "low"], [th.medium, th.high, "medium"], [th.high, th.critical, "high"], [th.critical, 1, "critical"]];
+
+    P.style.setProperty("--lvc", css("--lv-" + lv)); P.style.setProperty("--lvbg", css("--lv-" + lv + "-bg")); P.style.setProperty("--lvfg", css("--lv-" + lv + "-fg"));
+    P.replaceChildren(
+      el("header", { class: "hd" }, el("img", { src: "logo.png", alt: "Mirsad · مِرصاد" }),
+        el("div", { class: "hd-meta" }, el("b", {}, L.title), el("span", { class: "ref" }, ref),
+          el("span", {}, `${L.gen}: ${dt(today.toISOString())}`), el("span", {}, `${L.model}: ${m.version} · ${m.trained_at}`))),
+      el("div", { class: "stripe" }),
+      el("div", { class: "body" },
+        el("div", { class: "title" },
+          el("div", {}, el("small", {}, L.sector), el("h1", {}, p.id), el("small", {}, `${L.loc}: ${p.peak[0]}, ${p.peak[1]}`)),
+          el("div", { class: "verdict" }, el("span", { class: "num" }, f2(p.score)),
+            el("span", { class: "lv" }, el("b", {}, `${SYM[lv]} ${t("lv_" + lv)}`), el("span", {}, t("mean_" + lv))))),
+        el("div", { class: "scale" }, el("span", { class: "cap" }, L.scale),
+          el("div", { class: "track" }, ...seg.map(([a, b, l]) => el("i", { style: `width:${(b - a) * 100}%;background:var(--lv-${l})` })),
+            el("span", { class: "pin", style: `left:${Math.min(99.5, Math.max(.5, p.score * 100))}%` })),
+          el("div", { class: "ticks" }, ...[0, th.medium, th.high, th.critical, 1].map((x) => el("span", { style: `left:${x * 100}%` }, x === 0 || x === 1 ? String(x) : x.toFixed(2))))),
+        el("div", { class: "grid" },
+          el("section", { class: "box" }, el("h2", {}, t("sector")), el("div", { class: "in" }, el("table", { class: "kv" },
+            row(t("max_in_sector"), f2(p.score)), row(t("top_cell"), f2(p.max)), row(t("mean_score"), f2(p.mean)),
+            row(t("prob_cal"), p.calibrated != null ? (p.calibrated * 100).toFixed(1) + "%" : "—"), row(t("cells"), p.cells), row(t("events_here"), p.events)))),
+          el("section", { class: "box" }, el("h2", {}, t("peak_cell")), el("div", { class: "in" }, el("table", { class: "kv" },
+            row(t("elevation"), `${p.peak_vals.elevation} ${t("m")}`), row(t("slope"), `${p.peak_vals.slope}°`),
+            row(t("aspect"), p.peak_vals.aspect < 0 ? "—" : `${p.peak_vals.aspect}°`), row(t("lc"), lc(p.peak_vals.landcover)),
+            row(t("elev_mean"), `${p.elev} ${t("m")}`), row(t("slope_mean"), `${p.slope_mean}°`)))),
+          el("section", { class: "box" }, el("h2", {}, t("shap_title")), el("div", { class: "in" },
+            ...Object.entries(shap).map(([k, v]) => el("div", { class: "shap" }, el("span", {}, t("feat")[k]),
+              el("span", { class: "b" }, el("i", { style: `width:${Math.abs(v) / mx * 100}%;background:${v >= 0 ? "var(--lv-high)" : "var(--accent)"}` })),
+              el("span", { class: "v" }, (v >= 0 ? "+" : "") + v.toFixed(3)))),
+            el("p", { class: "note" }, t("shap_note")))),
+          el("section", { class: "box" }, el("h2", {}, t("cell_dist")), el("div", { class: "in" },
+            el("div", { class: "stack" }, ...LV.map((l, i) => el("i", { style: `width:${p.counts[i] / total * 100}%;background:var(--lv-${l})` }))),
+            el("table", { class: "kv" }, ...LV.map((l, i) => row(`${SYM[l]} ${t("lv_" + l)}`, `${p.counts[i]} · ${Math.round(p.counts[i] / total * 100)}%`)),
+              row(t("landcover"), lc(p.landcover)))))),
+        el("section", { class: "appr" },
+          el("div", {}, el("h3", {}, L.appr),
+            el("span", { class: "st", style: `background:${stCol[0]};color:${stCol[1]}` }, L["st_" + status]),
+            el("p", { class: "note", style: "margin:0 0 8px" }, L["d_" + status] + (ap.live ? "" : (ap.status ? " " + L.d_offline : ""))),
+            status === "approved" || status === "dismissed" ? el("dl", { class: "sig" },
+              el("dt", {}, L.by), el("dd", {}, ap.by || "—"), el("dt", {}, L.at), el("dd", {}, dt(ap.at)),
+              ap.id ? el("dt", {}, L.alertNo) : "", ap.id ? el("dd", {}, "#" + ap.id) : "") : "",
+            el("p", { class: "note" }, L.sends)),
+          status === "approved" ? stamp(ap.by, ap.at, ref) : ""),
+        el("p", { class: "note" }, L.disc + m.spatial_cv.roc_auc + ".")),
+      el("footer", { class: "ft" }, el("div", { class: "row" }, el("span", {}, L.foot), el("span", { class: "ref" }, ref))));
+    document.getElementById("bar").replaceChildren(
+      el("a", { class: "btn ghost", href: ge, target: "_blank", rel: "noopener" }, L.ge),
+      el("a", { class: "btn ghost", href: "index.html" }, L.back),
+      (() => { const b = el("button", { class: "btn" }, L.print); b.onclick = () => window.print(); return b; })());
+  }).catch(() => { document.getElementById("page").textContent = t("load_error"); });
 })();
 </script>
 </body>
