@@ -61,7 +61,7 @@
 
 ## 5. المعمارية المنفّذة
 
-`data/raw` → `pipeline/02_clean_data.py` → `pipeline/03_train_model.py` → `backend/load_db.py` (SQLite، مخطط PRD 15.1) → `backend/app.py` (API، PRD 15.2) → `web/` (لوحة القيادة).
+`data/raw` → `pipeline/02_clean_data.py` → `pipeline/03_train_model.py` → `backend/load_db.py` (PostgreSQL/PostGIS على Supabase أو SQLite محليًا، مخطط PRD 15.1) → `backend/app.py` (API، PRD 15.2) → `web/` (لوحة القيادة).
 
 نقاط الـAPI: `GET /risk`، `GET /sectors/{id}`، `GET /sectors/{id}/forecast` (يرجع 501 لعدم توفر بيانات توقع)، `GET|POST /alerts`، `GET /model/runs/latest`، `GET /sources`، `GET|PUT /settings/thresholds`، `GET /audit`، `POST /auth/login`.
 
@@ -77,7 +77,7 @@
 | AC-4 | ✅ | تُوسم البيانات «متقادمة» بعد 30 يومًا من تاريخ آخر تحديث للمصدر |
 | AC-5 | ✅ | إنذار ثانٍ لنفس القطاع خلال 24 ساعة يُرفض (409) |
 
-11 اختبارًا في `tests/test_api.py` تنجح كلها، وتشمل الصلاحيات والمدخلات الخاطئة.
+12 اختبارًا في `tests/test_api.py` تنجح كلها على SQLite وعلى PostgreSQL + PostGIS 3.4 في GitHub Actions، وتشمل الصلاحيات والمدخلات الخاطئة والاستعلام المكاني.
 
 ## 7. ما يلزم لرفع جودة النموذج
 

@@ -18,7 +18,7 @@ data/raw/          ملفات الفريق كما أُرسلت (بعد حذف ا
 data/processed/    البيانات بعد التنظيف + درجات الخطر v1
 pipeline/          01 التضاريس (Colab) · 02 التنظيف · 03 التدريب · 04 الجودة · 05 المقارنات والتفسير · 06 Google Earth · run_all
 model/             النموذج المدرّب وبطاقة النموذج (المقاييس والإعدادات)
-backend/           خادم API (Starlette) · SQLite · مخطط PostGIS · تحميل البيانات
+backend/           خادم API (Starlette) · PostgreSQL/PostGIS (Supabase) أو SQLite محليًا · تحميل البيانات
 tests/             اختبارات القبول والصلاحيات
 web/               واجهة الموقع (HTML/CSS/JS ثابتة، عربي/إنجليزي، ليلي/نهاري)
 docs/              PRD، التقرير الفني، دليل المستخدم، الهوية، خرائط QGIS
@@ -33,7 +33,7 @@ uvicorn backend.app:app --port 8000  # API + الواجهة على http://localh
 pytest -q                            # اختبارات القبول AC-1..AC-5 والصلاحيات
 ```
 
-بدون خادم، مجلد `web/` يعمل وحده كموقع ثابت (وضع العرض)، وهذا ما ينشره GitHub Pages عبر `.github/workflows/pages.yml`.
+**الإنتاج:** https://mirsad-rho.vercel.app — الموقع والخادم على Vercel، والقاعدة PostgreSQL + PostGIS على Supabase (تُحمَّل عبر `.github/workflows/load-supabase.yml`). بدون خادم، مجلد `web/` يعمل وحده كموقع ثابت في وضع العرض.
 
 `pipeline/01_extract_terrain_real.ipynb` يعمل على Google Colab ويستخرج الارتفاع والانحدار والاتجاه (Copernicus DEM 30m) والغطاء الأرضي (ESA WorldCover 2021).
 
@@ -94,7 +94,7 @@ pytest -q                            # اختبارات القبول AC-1..AC-5 
 | GET | `/api/v1/audit` | مسؤول |
 | POST | `/api/v1/auth/login` | — |
 
-مبني على Starlette (الإطار الذي بُني عليه FastAPI) لأنه ما كان متاحًا في بيئة البناء تثبيت FastAPI؛ المسارات والعقد مطابقة للـPRD. التخزين SQLite للتشغيل المحلي، ومخطط PostGIS المكافئ في `backend/schema_postgis.sql` (غير مختبر على خادم PostGIS).
+مبني على Starlette (الإطار الذي بُني عليه FastAPI) لأنه ما كان متاحًا في بيئة البناء تثبيت FastAPI؛ المسارات والعقد مطابقة للـPRD. التخزين PostgreSQL + PostGIS في الإنتاج (`backend/schema_postgis.sql`، مختبر في GitHub Actions على PostGIS 3.4 ويعمل على Supabase)، وSQLite للتشغيل المحلي بدون `DATABASE_URL`.
 
 التفاصيل: [التقرير الفني](docs/technical_report.md) · [دليل المستخدم](docs/user_guide.md)
 

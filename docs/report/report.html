@@ -65,9 +65,9 @@ figure{margin:8pt 0 12pt;break-inside:avoid;text-align:center} figure img{width:
 <tr><td>استخراج التضاريس</td><td>Python · rasterio · Colab</td><td>الارتفاع والانحدار والاتجاه من Copernicus DEM 30م، والغطاء من ESA WorldCover</td></tr>
 <tr><td>التنظيف</td><td>pandas</td><td>إزالة التكرار، فصل الجداول المدموجة، توحيد السجلات، تقرير تنظيف</td></tr>
 <tr><td>النموذج</td><td>scikit-learn</td><td>تدريب، تحقق مكاني، تنبؤ للشبكة، تجميع القطاعات</td></tr>
-<tr><td>التخزين</td><td>SQLite (محلي) · مخطط PostGIS (نشر)</td><td>الجداول الست في PRD 15.1 + المستخدمون والجلسات والتدقيق</td></tr>
+<tr><td>التخزين</td><td>PostgreSQL + PostGIS على Supabase (الإنتاج) · SQLite (محلي)</td><td>الجداول الست في PRD 15.1 + المستخدمون والجلسات والتدقيق</td></tr>
 <tr><td>الخدمة</td><td>Starlette + Uvicorn</td><td>واجهات PRD 15.2، الصلاحيات، قواعد الإنذار</td></tr>
-<tr><td>الواجهة</td><td>HTML/CSS/JS · MapLibre GL</td><td>الخريطة، التفاصيل، الإنذارات، الشفافية، الدليل التفاعلي</td></tr></table>
+<tr><td>الواجهة</td><td>HTML/CSS/JS · MapLibre GL · خرائط Esri</td><td>الخريطة، التفاصيل، الإنذارات، الشفافية، الدليل التفاعلي</td></tr></table>
 <p class="muted">اختير Starlette (الإطار الذي بُني عليه FastAPI) لأن FastAPI لم يكن متاحًا للتثبيت في بيئة البناء؛ المسارات والعقود مطابقة للـPRD، والتحويل إلى FastAPI لا يغيّر العقد.</p>
 
 <h2>5. البيانات والتنظيف</h2>
@@ -138,7 +138,7 @@ figure{margin:8pt 0 12pt;break-inside:avoid;text-align:center} figure img{width:
 <p class="muted">لم يُفتح الملف في Google Earth داخل بيئة البناء لعدم توفر البرنامج والإنترنت؛ تم التحقق من صحة بنية KML وعدد عناصره (1,194).</p>
 <figure><img src="file:///home/claude/Mirsad/docs/screenshots/19_color_by_slope_ar.jpg"><figcaption>تلوين القطاعات حسب متوسط الانحدار مع مبدّل الخريطة الأساسية وزر تصدير Google Earth.</figcaption></figure>
 <h2 class="pb">9. الواجهة: جولة مصوّرة</h2>
-<p class="muted">لقطات من النظام وهو يعمل مع الخادم. ملاحظة: الخريطة الأساسية (بلاطات OpenStreetMap/CARTO) لا تظهر في اللقطات لأن بيئة البناء بلا إنترنت؛ القطاعات والانهيارات المرسومة هي بيانات النظام الفعلية.</p>
+<p class="muted">لقطات من النظام وهو يعمل مع الخادم. ملاحظة: الخريطة الأساسية (بلاطات Esri) لا تظهر في هذه اللقطات لأنها التُقطت في بيئة بناء بلا إنترنت؛ على الموقع المنشور تظهر الخلفية وأسماء المدن. القطاعات والانهيارات المرسومة هي بيانات النظام الفعلية.</p>
 <figure><img src="file:///home/claude/Mirsad/docs/screenshots/01_splash.jpg"><figcaption>شاشة التحميل بهوية المشروع: رادار يدور، وشريط يتقدم مع مراحل التحميل الفعلية.</figcaption></figure>
 <figure><img src="file:///home/claude/Mirsad/docs/screenshots/02_map_dark_ar.jpg"><figcaption>لوحة القيادة: المؤشرات، مستويات الخطر بلون ورمز ونطاق، الطبقات، وقائمة الأعلى خطرًا.</figcaption></figure>
 <figure><img src="file:///home/claude/Mirsad/docs/screenshots/18_drawer_shap_ar.jpg"><figcaption>درج تفاصيل القطاع: الدرجة والمستوى، توزيع الخلايا، تفسير Shapley، الاحتمال المعاير، وروابط Google Earth والتقرير.</figcaption></figure>
@@ -178,16 +178,16 @@ figure{margin:8pt 0 12pt;break-inside:avoid;text-align:center} figure img{width:
 <tr><td>AC-3</td><td>الاعتماد يُسجّل باسم المعتمِد والوقت</td><td class="ok">ناجح</td></tr>
 <tr><td>AC-4</td><td>علامة «بيانات متقادمة» عند تأخر مصدر</td><td class="ok">ناجح (بعد 30 يومًا من تاريخ البيانات)</td></tr>
 <tr><td>AC-5</td><td>لا إنذار مكرر خلال فترة التهدئة</td><td class="ok">ناجح</td></tr></table>
-<p>11 اختبارًا آليًا في <code>tests/test_api.py</code> تنجح كلها، وتشمل الصلاحيات والمدخلات الخاطئة، إضافة إلى اختبار شامل للواجهة مع الخادم (الدخول، الاعتماد، تبديل اللغة والوضع، الجولة التفاعلية). كل أزواج النص والخلفية في الوضعين محققة بتباين ≥ 4.5:1.</p>
+<p>12 اختبارًا آليًا في <code>tests/test_api.py</code> تنجح كلها على SQLite وعلى PostgreSQL + PostGIS 3.4 في GitHub Actions، وتشمل الصلاحيات والمدخلات الخاطئة والاستعلام المكاني، إضافة إلى اختبار شامل للواجهة مع الخادم (الدخول، الاعتماد، تبديل اللغة والوضع، الجولة التفاعلية). كل أزواج النص والخلفية في الوضعين محققة بتباين ≥ 4.5:1.</p>
 
 <h2>13. حالة المشروع</h2>
 <p>حسب شيت متابعة الفريق بعد هذه الجولة: 38 مهمة، متوسط الإنجاز <b>83%</b>.</p>
 <div class="br"><span>البيانات</span><span class="tr"><i style="width:78.5%;background:var(--teal)"></i></span><b>73%</b></div><div class="br"><span>GIS</span><span class="tr"><i style="width:81.7%;background:var(--teal)"></i></span><b>76%</b></div><div class="br"><span>الذكاء الاصطناعي</span><span class="tr"><i style="width:100.0%;background:var(--teal)"></i></span><b>93%</b></div><div class="br"><span>الواجهة والتوثيق</span><span class="tr"><i style="width:93.5%;background:var(--teal)"></i></span><b>87%</b></div>
 <table><tr><th>الحالة</th><th>المهام</th><th>أمثلة</th></tr><tr><td>مكتملة</td><td>15</td><td>الجودة، العتبات، النموذج، التحقق المكاني، المعايرة، Shapley، الـAPI، الإنذارات، معايير القبول</td></tr>
 <tr><td>للمراجعة</td><td>17</td><td>تنتظر مراجعة أعضاء المسار أو اختبارًا بصريًا على الإنترنت</td></tr>
-<tr><td>قيد التنفيذ</td><td>5</td><td>الأمطار، الجيولوجيا والتربة، سجل الانهيارات، PostGIS، مميزات التدريب</td></tr>
+<tr><td>قيد التنفيذ</td><td>5</td><td>الأمطار، الجيولوجيا والتربة، سجل الانهيارات، مميزات التدريب (PostGIS اكتمل في 10 نوفمبر بعد تحديث الشيت)</td></tr>
 <tr><td>متعثرة</td><td>1</td><td>توقع 24/48/72 ساعة: لا توجد بيانات توقع</td></tr></table>
-<p class="muted">ما يمنع الـ100%: بيانات غير موجودة في الملفات المرسلة (أمطار بإحداثيات، زلازل داخل المنطقة، جيولوجيا، تربة، انحناء، سجل انهيارات أكبر)، وخادم PostGIS، والمراجعة البشرية من الفريق.</p>
+<p class="muted">ما يمنع الـ100%: بيانات غير موجودة في الملفات المرسلة (أمطار بإحداثيات، زلازل داخل المنطقة، جيولوجيا، تربة، انحناء، سجل انهيارات أكبر)، والمراجعة البشرية من الفريق.</p>
 
 <h2>14. الحدود المعروفة</h2>
 <ol><li>12 نقطة انهيار فقط في التدريب مقابل 1,677 نقطة بدون انهيار.</li>
@@ -195,8 +195,8 @@ figure{margin:8pt 0 12pt;break-inside:avoid;text-align:center} figure img{width:
 <li>الشبكة بتباعد ≈1 كم، والدرجات تغطي 72% من الشبكة.</li>
 <li>تفسير Shapley محسوب عند الخلية الأعلى خطرًا في كل قطاع، وليس لكل خلية.</li>
 <li>المستويات مبنية على الدرجة النسبية؛ الاحتمال المعاير قريب من معدل الأساس لقلة نقاط الانهيار.</li>
-<li>الخريطة الأساسية وصور القمر الصناعي وملف Google Earth لم تُفحص بصريًا داخل بيئة البناء (بلا إنترنت).</li>
-<li>مخطط PostGIS مكتوب لكنه لم يُختبر على خادم PostGIS؛ التشغيل الحالي على SQLite.</li>
+<li>Google Earth لا يمكن تضمينه داخل موقع آخر؛ الموقع يفتحه على القطاع المختار ويوفر ملف KMZ، وصور الأقمار الصناعية داخل الخريطة من Esri.</li>
+<li>إرسال الإنذارات للجهات محاكى؛ الاعتماد البشري وسجل التدقيق يعملان فعليًا على قاعدة الإنتاج.</li>
 <li>مشروع QGIS <code>Mirsad_Landslide_Risk.qgz</code> يحتاج <code>mirsad_layers.gpkg</code> وهو غير موجود.</li></ol>
 
 <h2>15. خارطة الطريق</h2>
@@ -206,16 +206,16 @@ figure{margin:8pt 0 12pt;break-inside:avoid;text-align:center} figure img{width:
 <tr><td>3</td><td>استعلام زلازل بحدود منطقة الدراسة</td><td>عامل ديناميكي ثانٍ</td></tr>
 <tr><td>4</td><td>الانحناء والجيولوجيا والتربة</td><td>إكمال D-FR3 وD-FR4</td></tr>
 <tr><td>5</td><td>إعادة التدريب بالبيانات الجديدة عبر <code>pipeline/run_all.py</code></td><td>لا تغيير في الكود</td></tr>
-<tr><td>6</td><td>النشر على PostGIS وخادم دائم، وحساسات IoT</td><td>ما بعد MVP</td></tr></table>
+<tr><td>6</td><td>قناة إرسال إنذارات حقيقية وحساسات IoT</td><td>ما بعد MVP</td></tr></table>
 
 <h2>16. التشغيل والنشر</h2>
 <pre>git clone https://github.com/4-u1/Mirsad.git && cd Mirsad
-pip install -r requirements.txt
+pip install -r requirements-pipeline.txt
 export MIRSAD_ADMIN_PASSWORD=... MIRSAD_OPERATOR_PASSWORD=... MIRSAD_VIEWER_PASSWORD=...
 python pipeline/run_all.py               # التنظيف ← الجودة ← التدريب ← التفسير ← Google Earth ← قاعدة البيانات
 uvicorn backend.app:app --port 8000     # http://localhost:8000
 pytest -q</pre>
-<p>الموقع الثابت (بدون خادم) يُنشر على GitHub Pages تلقائيًا من مجلد <code>web/</code> عبر <code>.github/workflows/pages.yml</code>، ويعمل في «وضع العرض».</p>
+<p><b>الإنتاج:</b> الموقع والخادم على Vercel (<span class="mono">https://mirsad-rho.vercel.app</span>)، وقاعدة البيانات PostgreSQL + PostGIS على Supabase. يُحمَّل النموذج إلى القاعدة عبر سير العمل <code>load-supabase.yml</code> في GitHub Actions، وكلمات المرور في أسرار المستودع ولا تُطبع في أي سجل. خط المعالجة كاملًا يُعاد أسبوعيًا عبر <code>scheduled-run.yml</code>، وجُرّب بنجاح في 10 نوفمبر. بدون خادم يعمل مجلد <code>web/</code> وحده في «وضع العرض».</p>
 
 <h2>17. هيكل المستودع</h2>
 <pre>data/raw/          ملفات الفريق بعد حذف النسخ المكررة
