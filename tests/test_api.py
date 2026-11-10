@@ -122,7 +122,9 @@ def test_forecast_endpoints(server, monkeypatch):
 def test_reload_keeps_decisions(server, tmp_path):
     """إعادة تحميل القاعدة (نموذج أو طبقات جديدة) لا تمسح الاعتمادات ولا سجل التدقيق."""
     import shutil, load_db, db as dbmod
-    copy = tmp_path / "copy.db"; shutil.copy(os.environ["MIRSAD_DB"], copy)
+    remote = bool(os.environ.get("DATABASE_URL"))   # PostGIS في CI: إعادة التحميل على القاعدة نفسها
+    copy = None if remote else tmp_path / "copy.db"
+    if copy: shutil.copy(os.environ["MIRSAD_DB"], copy)
     old = dbmod.connect(copy, create=False)
     decided = {r["sector_id"]: r["status"] for r in old.execute("SELECT sector_id, status FROM alerts WHERE status<>'pending'")}
     n_audit = old.execute("SELECT count(*) AS n FROM audit_log").fetchone()["n"]
