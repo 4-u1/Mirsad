@@ -20,9 +20,9 @@ ROLES = [("admin", "admin", "MIRSAD_ADMIN_PASSWORD"), ("operator", "operator", "
 
 
 def main(db_path=None, fresh=True):
-    remote = bool(os.environ.get("DATABASE_URL"))
+    remote = bool((os.environ.get("DATABASE_URL") or "").strip())
     if remote:
-        missing = [env for _, _, env in ROLES[:2] if not os.environ.get(env)]
+        missing = [env for _, _, env in ROLES[:2] if not (os.environ.get(env) or "").strip()]
         if missing:
             sys.exit("Set " + ", ".join(missing) + " before loading a remote database.")
     else:
@@ -79,7 +79,7 @@ def main(db_path=None, fresh=True):
 
     creds = {}
     for user, role, env in ROLES:
-        pw = os.environ.get(env)
+        pw = (os.environ.get(env) or "").strip()
         if not pw:
             if remote:
                 continue  # حساب المشاهد اختياري على قاعدة بعيدة

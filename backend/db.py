@@ -150,7 +150,7 @@ def now() -> str:
 
 
 def connect(path=None, create=True):
-    url = os.environ.get("DATABASE_URL")
+    url = (os.environ.get("DATABASE_URL") or "").strip()
     con = PostgresDB(url) if url else SQLiteDB(path or DB_PATH)
     if create:
         con.create_schema()
