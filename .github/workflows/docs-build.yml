@@ -16,8 +16,8 @@ jobs:
       - run: python pipeline/tools/capture_screens.py
         env:
           MIRSAD_URL: https://mirsad-rho.vercel.app
-      - run: python docs/report/build_decks.py
+      - run: python docs/report/build_decks.py && python docs/report/build_report.py && python docs/report/build_intro.py
       - run: |
-          mkdir -p out/docs && cp docs/screenshots/v2_*.jpg docs/presentations/Mirsad_Presentation.pdf out/docs/
-          python -c "import fitz;d=fitz.open('out/docs/Mirsad_Presentation.pdf');print('pages',len(d));[d[i].get_pixmap(dpi=40).save(f'out/docs/prev_{i+1:02d}.png') for i in range(len(d))]"
+          mkdir -p out/docs && cp docs/screenshots/v2_*.jpg docs/presentations/Mirsad_Presentation.pdf docs/Mirsad_Project_Report.pdf docs/Mirsad_Introduction.pdf out/docs/
+          python -c "import fitz;d=fitz.open('out/docs/Mirsad_Presentation.pdf');print('pages',len(d));[d[i].get_pixmap(dpi=40).save(f'out/docs/prev_{i+1:02d}.png') for i in range(len(d))];r=fitz.open('out/docs/Mirsad_Project_Report.pdf');print('report pages',len(r))"
           python pipeline/tools/emit_b64.py docs out/docs
