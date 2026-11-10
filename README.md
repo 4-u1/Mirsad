@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://mirsad-rho.vercel.app"><img alt="Live" src="https://img.shields.io/badge/%D8%A7%D9%84%D9%85%D9%88%D9%82%D8%B9-%D8%B4%D8%BA%D8%A7%D9%84-38C7B8?style=for-the-badge&labelColor=13242A"></a>
   <a href="https://github.com/4-u1/Mirsad/actions/workflows/ci.yml"><img alt="Tests" src="https://img.shields.io/github/actions/workflow/status/4-u1/Mirsad/ci.yml?branch=main&style=for-the-badge&label=tests&labelColor=13242A&color=257C83"></a>
-  <img alt="PRD" src="https://img.shields.io/badge/PRD-85%25-D59A4D?style=for-the-badge&labelColor=13242A">
+  <img alt="PRD" src="https://img.shields.io/badge/PRD-98%25-D59A4D?style=for-the-badge&labelColor=13242A">
   <img alt="PostGIS" src="https://img.shields.io/badge/PostGIS-Supabase-257C83?style=for-the-badge&labelColor=13242A">
   <a href="LICENSE"><img alt="MIT" src="https://img.shields.io/badge/license-MIT-AC573A?style=for-the-badge&labelColor=13242A"></a>
 </p>
@@ -15,6 +15,8 @@
   <b><a href="docs/Mirsad_Project_Report.pdf">📘 التقرير الشامل</a></b> ·
   <b><a href="docs/Mirsad_Introduction.pdf">📗 الدليل التعريفي</a></b> ·
   <a href="docs/user_guide.md">دليل المستخدم</a> ·
+  <a href="docs/decisions.md">سجل القرارات</a> ·
+  <a href="CHANGELOG.md">الإصدارات</a> ·
   <a href="docs/technical_report.md">التقرير الفني</a> ·
   <a href="docs/team/Mirsad_Team_Sheet.xlsx">شيت الفريق</a> ·
   <a href="docs/presentations/Mirsad_Presentation.pdf">🎞️ العرض التقديمي</a> ·
@@ -34,7 +36,7 @@
 <td align="center"><b>126,467</b><br><sub>خلية تنبؤ بحجم 1 كم</sub></td>
 <td align="center"><b>1,166</b><br><sub>قطاعًا بحجم 11 كم</sub></td>
 <td align="center"><b>195</b><br><sub>قطاعًا مرتفعًا أو حرجًا</sub></td>
-<td align="center"><b>12 / 12</b><br><sub>اختبار ناجح</sub></td>
+<td align="center"><b>14 / 14</b><br><sub>اختبار ناجح</sub></td>
 <td align="center"><b>5 / 5</b><br><sub>معايير القبول</sub></td>
 </tr>
 </table>
@@ -68,14 +70,14 @@ flowchart LR
 
 ## حالة المشروع
 
-نسبة الإنجاز الفعلية **85%** من متطلبات الـPRD الوظيفية (26 متطلبًا، كل واحد مقيس بدليل)، و**86%** من متطلبات Must. القرارات الفنية موثقة في [سجل القرارات](docs/decisions.md). التفصيل الكامل في [التقرير الشامل](docs/Mirsad_Project_Report.pdf).
+نسبة الإنجاز الفعلية **98%** من متطلبات الـPRD الوظيفية (26 متطلبًا، كل واحد مقيس بدليل)، و**97%** من متطلبات Must. المتبقي بشري: سجل انهيارات أكبر من هيئة المساحة الجيولوجية، ومراجعة الفريق للتوثيق. القرارات الفنية موثقة في [سجل القرارات](docs/decisions.md). التفصيل الكامل في [التقرير الشامل](docs/Mirsad_Project_Report.pdf).
 
 | المجال | الإنجاز | المتبقي |
 |---|:---:|---|
-| البيانات | 63% | سجل انهيارات أكبر، أمطار بإحداثيات، جيولوجيا وتربة، انحناء |
-| قاعدة البيانات المكانية | 98% | تحميل الطبقات الجديدة (أمطار، جيولوجيا، تربة) في PostGIS |
-| الذكاء الاصطناعي | 95% | مميزات v2 وإعادة التدريب بعد وصول البيانات |
-| الواجهة والتوثيق | 86% | التنبؤ 72 ساعة، طبقات الأمطار والتربة، مراجعة الفريق |
+| البيانات | 93% | سجل انهيارات بمئات المواقع (طلب رسمي)، الخريطة الجيولوجية التفصيلية |
+| قاعدة البيانات المكانية | 100% | — |
+| الذكاء الاصطناعي | 100% | — (إعادة آلية عند وصول السجل) |
+| الواجهة والتوثيق | 99% | مراجعة الفريق واعتماد القائد |
 
 ## النموذج بصراحة
 
@@ -84,7 +86,10 @@ flowchart LR
 | ROC-AUC | **0.545** | 0.709 |
 | PR-AUC | 0.011 | 0.022 |
 
-> ⚠️ أداء النموذج في التحقق المكاني قريب من العشوائي لأن سجل التدريب فيه **12 نقطة انهيار فقط**. النظام مكتمل تقنيًا من البيانات إلى الإنذار، لكن الخريطة أداة دعم قرار أكاديمية وليست أساسًا لقرار ميداني. الأمطار والزلازل لم تدخل النموذج، والتنبؤ الزمني غير متاح (الخادم يرجع 501 بدل أرقام وهمية).
+**النموذج v2 بالبيانات العامة (أمطار، تربة، صخور، انحناء، تضرّس):** ROC-AUC المكاني **0.74** مقابل 0.545، وPR-AUC 0.017 مقابل 0.011،
+لكن الاستدعاء عند «مرتفع» نزل من 0.083 إلى 0.0، فلم يحقق قاعدة الاعتماد المكتوبة قبل التدريب وبقي v1 ([ق-4](docs/decisions.md)).
+
+> ⚠️ أداء النموذج في التحقق المكاني قريب من العشوائي لأن سجل التدريب فيه **12 نقطة انهيار فقط**. النظام مكتمل تقنيًا من البيانات إلى الإنذار، لكن الخريطة أداة دعم قرار أكاديمية وليست أساسًا لقرار ميداني. الأمطار والتربة والصخور معروضة على الخريطة ومستخدمة في التنبؤ، ولم تدخل النموذج المعتمد (ق-4). **التنبؤ 72 ساعة** قاعدة شفافة من توقعات الأمطار وعتبة كل قطاع، وليس نموذجًا مُعايَرًا بأحداث ([ق-5](docs/decisions.md)).
 
 ## التقنيات
 
@@ -105,7 +110,7 @@ pip install -r requirements-pipeline.txt
 export MIRSAD_ADMIN_PASSWORD='…' MIRSAD_OPERATOR_PASSWORD='…'
 python pipeline/run_all.py              # تنظيف ← جودة ← تدريب ← تفسير ← Google Earth ← قاعدة البيانات
 uvicorn backend.app:app --port 8000     # http://localhost:8000
-pytest -q                               # 12 اختبارًا: AC-1..AC-5 والصلاحيات
+pytest -q                               # 14 اختبارًا: AC-1..AC-5 والصلاحيات والتنبؤ وحفظ الاعتمادات
 ```
 
 **الإنتاج:** الموقع والخادم على Vercel، والقاعدة على Supabase. تُحمَّل القاعدة من سير العمل `load-supabase.yml` بأسرار المستودع، ويُعاد خط المعالجة كاملًا كل أسبوع عبر `scheduled-run.yml`.

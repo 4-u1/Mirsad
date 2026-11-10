@@ -84,7 +84,7 @@ figure{{margin:8pt 0 12pt;break-inside:avoid;text-align:center}} figure img{{wid
 <div class="kpi"><span>قطاعات مرتفعة/حرجة</span><b>{secl['high']} / {secl['critical']}</b></div><div class="kpi"><span>ROC-AUC (تحقق مكاني)</span><b>{sp['roc_auc']}</b></div></div>
 <div class="warn">حدود الدقة: أداء النموذج في التحقق المكاني ROC-AUC = {sp['roc_auc']} لأن جدول التدريب يحتوي {CARD['training']['positives']} نقطة انهيار فقط. النظام مكتمل ويعمل من البيانات إلى الإنذار، لكن جودة التنبؤ مقيّدة بسجل الانهيارات، ولا يُعتمد عليها لقرار ميداني قبل توسيعه.</div>
 <div class="kpis"><div class="kpi"><span>نسبة الإنجاز الفعلية (PRD)</span><b>{ST.OVERALL}%</b></div><div class="kpi"><span>متطلبات Must</span><b>{ST.MUST}%</b></div>
-<div class="kpi"><span>معايير القبول</span><b>5 / 5</b></div><div class="kpi"><span>اختبارات آلية</span><b>12 / 12</b></div></div>
+<div class="kpi"><span>معايير القبول</span><b>5 / 5</b></div><div class="kpi"><span>اختبارات آلية</span><b>14 / 14</b></div></div>
 <table><tr><th>المخرج</th><th>الرابط</th></tr>
 <tr><td>الموقع الحي (Vercel + Supabase)</td><td class="mono">{ST.SITE}</td></tr>
 <tr><td>المستودع: الكود والبيانات والتوثيق</td><td class="mono">{REPO}</td></tr>
@@ -230,7 +230,7 @@ figure{{margin:8pt 0 12pt;break-inside:avoid;text-align:center}} figure img{{wid
 <tr><td>AC-3</td><td>الاعتماد يُسجّل باسم المعتمِد والوقت</td><td class="ok">ناجح</td></tr>
 <tr><td>AC-4</td><td>علامة «بيانات متقادمة» عند تأخر مصدر</td><td class="ok">ناجح (بعد 30 يومًا من تاريخ البيانات)</td></tr>
 <tr><td>AC-5</td><td>لا إنذار مكرر خلال فترة التهدئة</td><td class="ok">ناجح</td></tr></table>
-<p>12 اختبارًا آليًا في <code>tests/test_api.py</code> تنجح كلها على SQLite وعلى PostgreSQL + PostGIS 3.4 في GitHub Actions، وتشمل الصلاحيات والمدخلات الخاطئة والاستعلام المكاني، إضافة إلى اختبار شامل للواجهة مع الخادم (الدخول، الاعتماد، تبديل اللغة والوضع، الجولة التفاعلية). كل أزواج النص والخلفية في الوضعين محققة بتباين ≥ 4.5:1.</p>
+<p>14 اختبارًا آليًا في <code>tests/test_api.py</code> تنجح كلها على SQLite وعلى PostgreSQL + PostGIS 3.4 في GitHub Actions، وتشمل الصلاحيات والمدخلات الخاطئة والاستعلام المكاني، إضافة إلى اختبار شامل للواجهة مع الخادم (الدخول، الاعتماد، تبديل اللغة والوضع، الجولة التفاعلية). كل أزواج النص والخلفية في الوضعين محققة بتباين ≥ 4.5:1.</p>
 
 <h2 class="pb">13. سجل العمل ونسبة الإنجاز الفعلية</h2>
 <h3>13.1 ما تم منذ بداية العمل</h3>
@@ -279,7 +279,7 @@ model/             النموذج + المعايرة + بطاقة النموذج
 backend/           app.py · db.py · load_db.py · rules.py · schema_postgis.sql
 api/               مدخل الخادم على Vercel
 web/               الموقع: الخريطة، الإنذارات، الشفافية، تقرير القطاع، الدليل التفاعلي
-tests/             12 اختبارًا (AC-1..AC-5 والصلاحيات والاستعلام المكاني)
+tests/             14 اختبارًا (AC-1..AC-5 والصلاحيات والاستعلام المكاني)
 docs/              هذا التقرير · الدليل التعريفي · دليل المستخدم · التقرير الفني
 docs/team/         شيت الفريق المبسّط
 docs/reference/    وثيقة المتطلبات PRD · الهوية والألوان

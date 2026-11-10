@@ -112,7 +112,7 @@ def repo_slide():
 <tr><td class="mono">model/</td><td>النموذج المدرّب، المعايرة، بطاقة النموذج بكل المقاييس</td></tr>
 <tr><td class="mono">backend/ · api/</td><td>الخادم والصلاحيات والإنذارات، مخطط PostGIS، تحميل القاعدة، مدخل Vercel</td></tr>
 <tr><td class="mono">web/</td><td>الموقع: الخريطة، الإنذارات، الشفافية، تقرير القطاع، الدليل التفاعلي</td></tr>
-<tr><td class="mono">tests/</td><td>12 اختبارًا آليًا تعمل على كل تعديل (معايير القبول والصلاحيات)</td></tr>
+<tr><td class="mono">tests/</td><td>14 اختبارًا آليًا تعمل على كل تعديل (معايير القبول والصلاحيات)</td></tr>
 <tr><td class="mono">docs/</td><td>التقارير، الأدلة، العروض، الشيت، وثيقة المتطلبات والهوية، خرائط QGIS، لقطات النظام</td></tr></table>''')
 
 
@@ -169,7 +169,7 @@ def deck_main():
 <div>النموذج<small>Random Forest</small></div><em>←</em><div>القاعدة<small>PostGIS · Supabase</small></div><em>←</em>
 <div>الموقع<small>Vercel</small></div><em>←</em><div>الإنذار<small>موافقة بشرية</small></div></div>
 <div class="row"><div class="card"><span class="n">آلي</span><p>خط المعالجة كاملًا يُعاد بأمر واحد، ويعمل تلقائيًا كل أسبوع على GitHub</p></div>
-<div class="card"><span class="n">مُختبر</span><p>12 اختبارًا آليًا تعمل على كل تعديل، على SQLite وعلى PostGIS</p></div>
+<div class="card"><span class="n">مُختبر</span><p>14 اختبارًا آليًا تعمل على كل تعديل، على SQLite وعلى PostGIS</p></div>
 <div class="card"><span class="n">شفاف</span><p>كل رقم في الموقع له مصدر، وصفحة الشفافية تعرض المقاييس والحدود</p></div></div>'''))
     S.append(slide("المنطقة", "جنوب غرب المملكة: 1,166 قطاعًا", f'''<div class="row" style="align-items:center;gap:60px">
 <img src="{U('docs/assets/places_map.png')}" style="height:720px;border-radius:16px">
@@ -202,20 +202,21 @@ def deck_main():
 <tr><td>قاعدة البيانات</td><td>PostgreSQL + PostGIS على Supabase</td><td class="ok">1,166 قطاعًا · 126,467 خلية</td></tr>
 <tr><td>الخادم</td><td>Starlette على Vercel · أدوار وتدقيق</td><td class="ok">حي</td></tr>
 <tr><td>الواجهة</td><td>MapLibre GL · خرائط Esri</td><td class="ok">حي</td></tr>
-<tr><td>الاختبارات</td><td>GitHub Actions على SQLite وPostGIS 3.4</td><td class="ok">12 / 12</td></tr></table>''', "dark"))
+<tr><td>الاختبارات</td><td>GitHub Actions على SQLite وPostGIS 3.4</td><td class="ok">14 / 14</td></tr></table>''', "dark"))
     S.append(progress_slide())
     S.append(honest_slide())
     S.append(repo_slide())
-    S.append(slide("متطلبات المسارات", "المتبقي على كل مسار للوصول إلى 100%", '''<div class="row">
-<div class="card"><span class="n">البيانات · 63%</span><h2>الأهم</h2><p>• سجل انهيارات بمئات المواقع<br>• أمطار بإحداثيات حقيقية<br>• الجيولوجيا والتربة<br>• الانحناء من DEM<br>• قرار الزلازل</p></div>
-<div class="card"><span class="n">GIS · 98%</span><h2>الطبقات</h2><p>• دقة الشبكة: محسومة (ق-1)<br>• ملف mirsad_layers.gpkg<br>• ألوان QGIS بسلّم الخطر<br>• تحميل الطبقات الجديدة في PostGIS</p></div>
-<div class="card"><span class="n">الذكاء الاصطناعي · 95%</span><h2>النسخة الثانية</h2><p>• TensorFlow: منفّذ ومقارن (ق-2)<br>• مميزات v2<br>• إعادة التدريب: أعلى من 0.66</p></div>
-<div class="card"><span class="n">الواجهة والتوثيق · 86%</span><h2>مراجعة وتنبؤ</h2><p>• اختبار على الأجهزة<br>• مراجعة التقارير<br>• التنبؤ 72 ساعة بعد الأمطار اليومية</p></div></div>'''))
-    S.append(slide("الخطة", "أربع مراحل من 85% إلى 100%", '''<div class="row">
-<div class="card"><span class="n">1 · أيام</span><h2>الإغلاق السريع</h2><p>مراجعات واعتمادات، حذف ادعاء 95%، تحديث الشيت. ترفع المشروع إلى نحو 90%</p></div>
-<div class="card"><span class="n">2 · أسابيع</span><h2>البيانات</h2><p>طلب سجلات الانهيارات العلمية (363 انهيارًا في بحثين عن جازان)، والأمطار والجيولوجيا</p></div>
-<div class="card"><span class="n">3 · بعد البيانات</span><h2>النموذج v2</h2><p>إعادة التدريب بنفس التحقق المكاني، والنشر بأمر واحد</p></div>
-<div class="card"><span class="n">4 · الإغلاق</span><h2>التنبؤ والقرارات</h2><p>مسار 72 ساعة، وحسم 19 قرارًا مفتوحًا، والمراجعة النهائية</p></div></div>''', "dark"))
+    AR = dict((n, v) for n, v, _ in ST.area_pct())
+    S.append(slide("متطلبات المسارات", "المتبقي على كل مسار للوصول إلى 100%", f'''<div class="row">
+<div class="card"><span class="n">البيانات · {AR['البيانات']}%</span><h2>بشري</h2><p>• سجل انهيارات بمئات المواقع (هيئة المساحة)<br>• الخريطة الجيولوجية التفصيلية<br>• أمطار 1991–2015 لعتبات أطول</p></div>
+<div class="card"><span class="n">GIS · {AR['قاعدة البيانات المكانية']}%</span><h2>مكتمل</h2><p>• الطبقات والتنبؤ في PostGIS<br>• قرار الدقة (ق-1)<br>• تصدير GPKG اختياري</p></div>
+<div class="card"><span class="n">الذكاء الاصطناعي · {AR['الذكاء الاصطناعي']}%</span><h2>مكتمل</h2><p>• مميزات v2 ومقارنة بقاعدة مسبقة (ق-4)<br>• TensorFlow مقارن (ق-2)<br>• إعادة آلية عند وصول السجل</p></div>
+<div class="card"><span class="n">الواجهة والتوثيق · {AR['الواجهة والتوثيق']}%</span><h2>مراجعة</h2><p>• التنبؤ 72 ساعة: يعمل (ق-5)<br>• طبقات الخريطة: تعمل<br>• مراجعة الفريق واعتماد القائد</p></div></div>'''))
+    S.append(slide("الخطة", f"من {ST.OVERALL}% إلى 100%: ما تبقى بشري", '''<div class="row">
+<div class="card"><span class="n">1 · منجز</span><h2>v1.1 → v2.0</h2><p>طبقات عامة (أمطار، تربة، صخور، انحناء)، مميزات v2 بقاعدة مسبقة، تنبؤ 72 ساعة كل 6 ساعات</p></div>
+<div class="card"><span class="n">2 · بشري</span><h2>سجل الانهيارات</h2><p>طلب السجل والخريطة الجيولوجية من هيئة المساحة الجيولوجية، وسجلات Youssef وآخرين 2015</p></div>
+<div class="card"><span class="n">3 · آلي</span><h2>v2.1</h2><p>عند وصول السجل: إعادة 09 و03 بنفس القاعدة والطيّات، والنشر بأمر واحد</p></div>
+<div class="card"><span class="n">4 · اعتماد</span><h2>الإغلاق</h2><p>مراجعة الفريق للتوثيق، واعتماد القائد، وإصدار نهائي</p></div></div>''', "dark"))
     S.append(slide("طريقة المتابعة", "شيت الفريق: سطر لكل عمل", '''<div class="row">
 <div class="card"><span class="n">العضو</span><h2>يسجّل</h2><p>التاريخ · اسمه · المسار · ما أنجزه · رابط الدليل · نسبة الإنجاز</p></div>
 <div class="card"><span class="n">القائد أو نائبته</span><h2>يعتمد</h2><p>يراجع الدليل ويكتب: معتمد أو باقي، مع ملاحظة</p></div>
@@ -246,7 +247,7 @@ def deck_track():
 <tr><td class="mono">UI-12</td><td>تقرير القطاع PDF</td><td>90%</td><td>مراجعة الطباعة والختم</td></tr>
 <tr><td class="mono">DOC-01</td><td>التقرير الفني</td><td>90%</td><td>مراجعة لغوية وعلمية</td></tr>
 <tr><td class="mono">DOC-02</td><td>العرض التقديمي</td><td>90%</td><td>مراجعة الفريق وتوزيع أدوار التقديم</td></tr>
-<tr><td class="mono">UI-09</td><td class="no">التنبؤ 72 ساعة</td><td class="no">0%</td><td>أمطار يومية وتوقعات طقس من مسار البيانات</td></tr></table>'''))
+<tr><td class="mono">UI-09</td><td>التنبؤ 72 ساعة</td><td>100%</td><td>يعمل كل 6 ساعات (ق-5)</td></tr></table>'''))
     S.append(slide("الموقع", "ما بناه المسار ويعمل الآن", f'''<div class="row" style="gap:30px">
 <div class="col"><img class="sh" src="{SH('02_map_dark_ar')}"></div><div class="col"><img class="sh" src="{SH('07_alert_approved_ar')}"></div></div>
 <div class="row"><div class="card"><p>الخريطة بأربعة مستويات، قمر صناعي، Google Earth</p></div><div class="card"><p>إنذارات بموافقة بشرية وسجل تدقيق</p></div>
