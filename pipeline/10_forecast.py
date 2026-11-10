@@ -43,7 +43,7 @@ def fetch(lat, lon, tries=4):
          "forecast_days": 4, "timezone": "UTC"}
     for k in range(tries):
         try:
-            with urllib.request.urlopen(API + "?" + urllib.parse.urlencode(q), timeout=120) as r:
+            with urllib.request.urlopen(API + "?" + urllib.parse.urlencode(q), timeout=40) as r:
                 d = json.loads(r.read())
                 return d if isinstance(d, list) else [d]
         except Exception as e:
@@ -78,8 +78,7 @@ def main():
     con = connect()
     with con.transaction():
         con.execute("DELETE FROM forecasts WHERE issued_at=?", (issued,))
-        con.executemany("INSERT INTO forecasts(issued_at, sector_id, horizon_h, rain_mm, threshold_mm, ratio, base_level, level, source) "
-                        "VALUES (?,?,?,?,?,?,?,?,?)", rows)
+        con.copy_rows("forecasts", ["issued_at", "sector_id", "horizon_h", "rain_mm", "threshold_mm", "ratio", "base_level", "level", "source"], rows)
         con.execute("DELETE FROM forecasts WHERE issued_at<?", ((now - datetime.timedelta(days=KEEP_DAYS)).isoformat(),))
     con.commit()
     df = pd.DataFrame(rows, columns=["issued_at", "sector_id", "h", "rain", "thr", "ratio", "base", "level", "src"])

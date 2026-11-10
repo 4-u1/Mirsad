@@ -88,6 +88,9 @@ class SQLiteDB:
     def copy_features(self, rows):
         self.c.executemany("INSERT INTO features VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", rows)
 
+    def copy_rows(self, table, cols, rows):
+        self.c.executemany(f"INSERT INTO {table} ({', '.join(cols)}) VALUES ({','.join('?' * len(cols))})", rows)
+
 
 class PostgresDB:
     dialect = "postgres"
@@ -142,6 +145,13 @@ class PostgresDB:
 
     def bbox_filter(self):
         return "s.geometry && ST_MakeEnvelope(?, ?, ?, ?, 4326)", lambda a, b, c, d: [a, b, c, d]
+
+    def copy_rows(self, table, cols, rows):
+        """COPY بدل INSERT لكل صف: أسرع بكثير عبر Supabase pooler البعيد."""
+        with self.conn().cursor() as cur:
+            with cur.copy(f"COPY {table} ({', '.join(cols)}) FROM STDIN") as cp:
+                for r in rows:
+                    cp.write_row(r)
 
     def copy_features(self, rows):
         cols = ("lat, lon, sector_id, elevation, slope, aspect, landcover, landcover_name, score, level, model_run_id, "
