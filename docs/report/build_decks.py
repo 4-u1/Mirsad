@@ -73,7 +73,8 @@ img.sh{width:100%;border-radius:18px;border:2px solid #2B4A50;display:block;box-
 .chip{display:inline-block;border-radius:999px;padding:4px 18px;font-size:20px;font-weight:700;background:#E4F3F1;color:#1E6A70}
 .links{display:flex;gap:24px}.links div{flex:1;border-radius:20px;padding:26px 30px;background:#113637;color:#fff}
 .links b{display:block;font-size:22px;color:#D59A4D;margin-bottom:8px}.links span{font-family:'IBM Plex Mono',monospace;direction:ltr;unicode-bidi:embed;font-size:28px;color:#38C7B8}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}.grid2 img{width:100%;border-radius:14px;border:2px solid #2B4A50;display:block}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}.grid2 img{width:100%;height:335px;object-fit:cover;object-position:top;border-radius:14px;border:2px solid #2B4A50;display:block}
+.row[style*="flex:1"]>.card{justify-content:center}.row[style*="flex:1"]>.card h2{font-size:44px}.row[style*="flex:1"]>.card p{font-size:28px}.row[style*="flex:1"]>.card .n{font-size:28px}
 .cap{font-size:20px;text-align:center;margin:8px 0 0}
 """
 
