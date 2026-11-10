@@ -15,7 +15,7 @@ from starlette.middleware.base import BaseHTTPMiddleware
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from db import connect, hash_pw, audit, now, ROOT  # noqa: E402
-from rules import level_of, propose_alerts  # noqa: E402
+from rules import level_of, propose_alerts, LEVELS as _LV  # noqa: E402,F401
 
 COOLDOWN_HOURS = 24
 STALE_DAYS = int(__import__("os").environ.get("MIRSAD_STALE_DAYS", "30"))  # AC-4: عمر البيانات قبل وسمها «متقادمة»
@@ -123,10 +123,52 @@ async def sector(request):
                          "model_version": run["version"], "top_factors": json.loads(r["top_factors"]),
                          "details": json.loads(r["details"]), "alerts": alerts})
 
+FORECAST_STALE_HOURS = 12
+FORECAST_METHOD = ("Expected level = susceptibility level raised one step when forecast rain up to the horizon reaches 0.5x the sector's "
+                   "99th-percentile 3-day rainfall (CHIRPS 1991-2024), two steps at 1.0x; never lowered. A transparent rule, not a model "
+                   "calibrated on landslide events.")
+
+def _forecast_rows(where="", args=()):
+    t = db().execute("SELECT MAX(issued_at) AS t FROM forecasts").fetchone()
+    t = t["t"] if t else None
+    if not t: return None, []
+    rows = db().execute("SELECT * FROM forecasts WHERE issued_at=?" + where + " ORDER BY sector_id, horizon_h", (t, *args)).fetchall()
+    return t, rows
+
+def _forecast_meta(t, rows):
+    age = (datetime.datetime.now(datetime.timezone.utc) - datetime.datetime.fromisoformat(t)).total_seconds() / 3600
+    return {"issued_at": t, "age_hours": round(age, 1), "stale": age > FORECAST_STALE_HOURS, "horizons_h": [24, 48, 72],
+            "source": rows[0]["source"] if rows else None, "method": FORECAST_METHOD}
+
+def _group(rows):
+    out = {}
+    for r in rows:
+        s = out.setdefault(r["sector_id"], {"sector_id": r["sector_id"], "base_level": r["base_level"], "threshold_mm": r["threshold_mm"], "horizons": []})
+        s["horizons"].append({"h": r["horizon_h"], "rain_mm": r["rain_mm"], "ratio": r["ratio"], "level": r["level"]})
+    return list(out.values())
+
+NO_FORECAST = ("No forecast has been issued yet. Forecasts are written every 6 hours by the forecast workflow "
+               "(pipeline/10_forecast.py).")
+
+async def forecast_all(request):
+    """GET /api/v1/forecast → آخر تنبؤ لكل القطاعات (24/48/72 ساعة). ?min_level=high"""
+    t, rows = _forecast_rows()
+    if not t: return err(503, "forecast_not_ready", NO_FORECAST)
+    items = _group(rows)
+    ml = request.query_params.get("min_level")
+    if ml:
+        if ml not in LEVELS: return err(400, "bad_level", "min_level must be one of " + ",".join(LEVELS))
+        items = [i for i in items if LEVELS.index(i["horizons"][-1]["level"]) >= LEVELS.index(ml)]
+    return JSONResponse(_forecast_meta(t, rows) | {"count": len(items), "items": items})
+
 async def forecast(request):
-    return err(501, "forecast_unavailable",
-               "72-hour forecast is not available: the submitted data has no spatially joinable rainfall forecast or seismic data "
-               "inside the study area. The model outputs static susceptibility only.")
+    """GET /api/v1/sectors/{id}/forecast → تنبؤ القطاع للآفاق 24/48/72 ساعة."""
+    sid = request.path_params["id"]
+    if not db().execute("SELECT 1 FROM sectors WHERE id=?", (sid,)).fetchone(): return err(404, "not_found", "Unknown sector")
+    t, rows = _forecast_rows(" AND sector_id=?", (sid,))
+    if not t: return err(503, "forecast_not_ready", NO_FORECAST)
+    if not rows: return err(404, "not_found", "No forecast for this sector in the latest issue")
+    return JSONResponse(_forecast_meta(t, rows) | _group(rows)[0])
 
 async def list_alerts(request):
     q, args = "SELECT * FROM alerts WHERE 1=1", []
@@ -211,7 +253,7 @@ class SecurityHeaders(BaseHTTPMiddleware):
 API = "/api/v1"
 routes = [
     Route(f"{API}/health", health), Route(f"{API}/auth/login", login, methods=["POST"]), Route(f"{API}/auth/me", me),
-    Route(f"{API}/risk", risk), Route(f"{API}/sectors/{{id}}", sector), Route(f"{API}/sectors/{{id}}/forecast", forecast),
+    Route(f"{API}/risk", risk), Route(f"{API}/sectors/{{id}}", sector), Route(f"{API}/sectors/{{id}}/forecast", forecast), Route(f"{API}/forecast", forecast_all),
     Route(f"{API}/alerts", list_alerts, methods=["GET"]), Route(f"{API}/alerts", decide_alert, methods=["POST"]),
     Route(f"{API}/model/runs/latest", model_latest), Route(f"{API}/sources", sources),
     Route(f"{API}/settings/thresholds", get_thresholds, methods=["GET"]), Route(f"{API}/settings/thresholds", put_thresholds, methods=["PUT"]),

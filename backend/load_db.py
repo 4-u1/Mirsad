@@ -2,7 +2,7 @@
 
 يقرأ: model/model_card.json · web/data/sectors.geojson · data/processed/risk_scores_v1.csv
 التشغيل:  python backend/load_db.py
-- مع DATABASE_URL (Supabase): يحمّل إلى PostgreSQL/PostGIS ويعيد إنشاء الجداول.
+- مع DATABASE_URL (Supabase): يحمّل إلى PostgreSQL/PostGIS ويعيد إنشاء الجداول، مع إبقاء قرارات الإنذار وسجل التدقيق.
 - بدونه: SQLite محلي.
 كلمات المرور من MIRSAD_ADMIN_PASSWORD و MIRSAD_OPERATOR_PASSWORD و MIRSAD_VIEWER_PASSWORD.
 مع DATABASE_URL هذه المتغيرات إلزامية (لا تُولَّد ولا تُطبع كلمات مرور في سجلات عامة).
@@ -19,13 +19,49 @@ ROLES = [("admin", "admin", "MIRSAD_ADMIN_PASSWORD"), ("operator", "operator", "
          ("viewer", "viewer", "MIRSAD_VIEWER_PASSWORD")]
 
 
-def main(db_path=None, fresh=True):
+def snapshot(con):
+    """قرارات الإنذار وسجل التدقيق قبل إعادة التحميل، لتبقى بعده (تحديث النموذج أو الطبقات لا يمسح الاعتمادات)."""
+    try:
+        dec = [dict(r) for r in con.execute("SELECT sector_id, level, score, reasons, status, approved_by, decided_at, created_at "
+                                            "FROM alerts WHERE status<>'pending' ORDER BY id")]
+        aud = [dict(r) for r in con.execute("SELECT at, username, action, detail FROM audit_log ORDER BY id")]
+        return dec, aud
+    except Exception:
+        return [], []
+
+
+def restore_decisions(con, dec, sector_ids):
+    """يعيد كل قرار سابق: يحدّث الإنذار المعلّق الجديد للقطاع نفسه، أو يضيفه سجلًا تاريخيًا إن لم يعد القطاع مرتفعًا."""
+    n = 0
+    for d in dec:
+        if d["sector_id"] not in sector_ids:
+            continue
+        pend = con.execute("SELECT id FROM alerts WHERE sector_id=? AND status='pending' ORDER BY id DESC LIMIT 1", (d["sector_id"],)).fetchone()
+        if pend:
+            con.execute("UPDATE alerts SET status=?, approved_by=?, decided_at=?, created_at=? WHERE id=?",
+                        (d["status"], d["approved_by"], d["decided_at"], d["created_at"], pend["id"]))
+        else:
+            con.execute("INSERT INTO alerts(sector_id, level, score, reasons, status, approved_by, decided_at, created_at) VALUES (?,?,?,?,?,?,?,?)",
+                        (d["sector_id"], d["level"], d["score"], d["reasons"], d["status"], d["approved_by"], d["decided_at"], d["created_at"]))
+        n += 1
+    con.commit()
+    return n
+
+
+def main(db_path=None, fresh=True, keep_history=True):
     remote = bool((os.environ.get("DATABASE_URL") or "").strip())
     if remote:
         missing = [env for _, _, env in ROLES[:2] if not (os.environ.get(env) or "").strip()]
         if missing:
             sys.exit("Set " + ", ".join(missing) + " before loading a remote database.")
-    else:
+    dec, aud = [], []
+    if keep_history:
+        try:
+            if remote or Path(db_path or DB_PATH).exists():
+                dec, aud = snapshot(connect(db_path, create=False))
+        except Exception:
+            dec, aud = [], []
+    if not remote:
         path = Path(db_path or DB_PATH)
         if fresh and path.exists():
             path.unlink()
@@ -33,6 +69,10 @@ def main(db_path=None, fresh=True):
     if fresh and remote:
         con.drop_all()
     con.create_schema()
+    if aud:
+        con.executemany("INSERT INTO audit_log(at, username, action, detail) VALUES (?,?,?,?)",
+                        [(a["at"], a["username"], a["action"], a["detail"]) for a in aud])
+        con.commit()
 
     card = json.loads((ROOT / "model" / "model_card.json").read_text(encoding="utf-8"))
     sectors = json.loads((ROOT / "web" / "data" / "sectors.geojson").read_text(encoding="utf-8"))
@@ -87,9 +127,10 @@ def main(db_path=None, fresh=True):
             creds[user] = pw
         add_user(con, user, pw, role)
     n = propose_alerts(con, run_id)
+    kept = restore_decisions(con, dec, {f["properties"]["id"] for f in sectors["features"]}) if dec else 0
     audit(con, "system", "db.loaded", {"model_run_id": run_id, "sectors": len(sectors["features"]), "cells": len(g), "alerts_proposed": n,
-                                      "backend": con.dialect})
-    print(f"loaded {len(sectors['features'])} sectors, {len(g)} cells, {n} pending alerts -> {con.dialect}")
+                                      "decisions_kept": kept, "backend": con.dialect})
+    print(f"loaded {len(sectors['features'])} sectors, {len(g)} cells, {n} alerts proposed, {kept} earlier decisions kept -> {con.dialect}")
     for u, pw in creds.items():
         print(f"generated password for '{u}': {pw}")
     return con

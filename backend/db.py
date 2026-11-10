@@ -41,6 +41,11 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS sessions (token TEXT PRIMARY KEY, username TEXT NOT NULL, expires_at TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS audit_log (
   id INTEGER PRIMARY KEY AUTOINCREMENT, at TEXT NOT NULL, username TEXT, action TEXT NOT NULL, detail TEXT);
+CREATE TABLE IF NOT EXISTS forecasts (
+  issued_at TEXT NOT NULL, sector_id TEXT NOT NULL, horizon_h INTEGER NOT NULL, rain_mm REAL, threshold_mm REAL,
+  ratio REAL, base_level TEXT NOT NULL, level TEXT NOT NULL, source TEXT NOT NULL,
+  PRIMARY KEY (issued_at, sector_id, horizon_h));
+CREATE INDEX IF NOT EXISTS ix_forecasts_sector ON forecasts(sector_id, issued_at);
 """
 
 

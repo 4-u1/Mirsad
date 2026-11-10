@@ -1,6 +1,6 @@
 name: Load database (Supabase)
 # تشغيل يدوي: يحمّل القطاعات والدرجات والخلايا والمصادر والحسابات إلى قاعدة Supabase (PostGIS).
-# يعيد إنشاء الجداول: سجل الإنذارات والتدقيق السابق يُحذف.
+# يعيد إنشاء الجداول ويحتفظ بقرارات الإنذار وسجل التدقيق السابقة (backend/load_db.py: snapshot/restore_decisions)، ولا يمس جدول التنبؤ.
 on:
   workflow_dispatch:
 permissions:

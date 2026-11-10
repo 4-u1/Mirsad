@@ -90,8 +90,47 @@ def test_thresholds_admin_relevel_and_audit(server):
     assert call(server, "/api/v1/settings/thresholds", "PUT", {"medium": 0.9, "high": 0.5, "critical": 0.7}, admin)[0] == 400
     call(server, "/api/v1/settings/thresholds", "PUT", {"medium": 0.4, "high": 0.6, "critical": 0.8}, admin)
 
-def test_forecast_is_honest_501(server):
-    assert call(server, "/api/v1/sectors/S181-422/forecast")[0] == 501
+def test_forecast_rule():
+    from rules import forecast_level
+    assert forecast_level("low", None) == "low" and forecast_level("low", 0.49) == "low"
+    assert forecast_level("low", 0.5) == "medium" and forecast_level("medium", 1.0) == "critical"
+    assert forecast_level("high", 3.0) == "critical" and forecast_level("critical", 0) == "critical"
+
+
+def test_forecast_endpoints(server, monkeypatch):
+    sid = "S181-422"
+    assert call(server, f"/api/v1/sectors/{sid}/forecast")[0] == 503      # لا تنبؤ بعد: رسالة واضحة لا أرقام
+    assert call(server, "/api/v1/forecast")[0] == 503
+    import importlib, datetime
+    spec = importlib.util.spec_from_file_location("fc10", ROOT / "pipeline" / "10_forecast.py")
+    fc = importlib.util.module_from_spec(spec); spec.loader.exec_module(fc)
+    start = datetime.datetime.now(datetime.timezone.utc).replace(minute=0, second=0, microsecond=0)
+    times = [(start + datetime.timedelta(hours=h)).strftime("%Y-%m-%dT%H:%M") for h in range(96)]
+    monkeypatch.setattr(fc, "fetch", lambda lat, lon: [{"hourly": {"time": times, "precipitation": [2.0] * 96}} for _ in lat])
+    monkeypatch.setattr(fc.time, "sleep", lambda s: None)
+    summary = fc.main()
+    assert summary["sectors"] == 1166 and summary["with_rain_forecast"] == 1166
+    st, r = call(server, f"/api/v1/sectors/{sid}/forecast")
+    assert st == 200 and [h["h"] for h in r["horizons"]] == [24, 48, 72]
+    assert [h["rain_mm"] for h in r["horizons"]] == [48.0, 96.0, 144.0] and r["stale"] is False
+    st, allf = call(server, "/api/v1/forecast?min_level=critical")
+    assert st == 200 and all(i["horizons"][-1]["level"] == "critical" for i in allf["items"])
+    assert call(server, "/api/v1/forecast?min_level=nope")[0] == 400
+    assert call(server, "/api/v1/sectors/NOPE/forecast")[0] == 404
+
+
+def test_reload_keeps_decisions(server, tmp_path):
+    """إعادة تحميل القاعدة (نموذج أو طبقات جديدة) لا تمسح الاعتمادات ولا سجل التدقيق."""
+    import shutil, load_db, db as dbmod
+    copy = tmp_path / "copy.db"; shutil.copy(os.environ["MIRSAD_DB"], copy)
+    old = dbmod.connect(copy, create=False)
+    decided = {r["sector_id"]: r["status"] for r in old.execute("SELECT sector_id, status FROM alerts WHERE status<>'pending'")}
+    n_audit = old.execute("SELECT count(*) AS n FROM audit_log").fetchone()["n"]
+    assert decided
+    con = load_db.main(copy)
+    after = {r["sector_id"]: r["status"] for r in con.execute("SELECT sector_id, status FROM alerts WHERE status<>'pending'")}
+    assert all(after.get(k) == v for k, v in decided.items())
+    assert con.execute("SELECT count(*) AS n FROM audit_log").fetchone()["n"] > n_audit
 
 def test_sources_and_model(server):
     s = call(server, "/api/v1/sources")[1]["items"]

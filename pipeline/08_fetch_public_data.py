@@ -6,7 +6,8 @@
   python pipeline/08_fetch_public_data.py terrain   # Copernicus DEM GLO-30 (AWS): انحناء + تضرّس 1 كم
   python pipeline/08_fetch_public_data.py soil      # SoilGrids 2.0 (ISRIC WCS، 250 م): طين، رمل، طمي، كثافة ظاهرية
   python pipeline/08_fetch_public_data.py geology   # Macrostrat: نوع الصخر وعمره عند مركز كل قطاع
-  python pipeline/08_fetch_public_data.py rain      # CHIRPS v2.0 يومي (IRI Data Library، 0.05°): مناخ الأمطار والقيم القصوى
+  python pipeline/08_fetch_public_data.py rain_chunk 1991 1994   # CHIRPS v2.0 يومي (IRI، 0.05°) لدفعة سنوات
+  python pipeline/08_fetch_public_data.py rain_merge <مجلد>       # مناخ الأمطار والقيم القصوى من كل الدفعات
 
 المدخلات: data/processed/grid_features.csv (126,467 نقطة) و training_table.csv (1,689) و web/data/sectors.geojson
 المخرجات: out/<layer>_grid.csv و out/<layer>_training.csv (و out/<layer>_sectors.csv) و out/<layer>_meta.json
@@ -193,40 +194,58 @@ def geology():
 
 
 # ---------------------------------------------------------------- الأمطار
-def rain():
-    """CHIRPS v2.0 يومي 0.05° من IRI Data Library على دفعات سنوية → مناخ لكل خلية CHIRPS."""
-    import xarray as xr
-    y0, y1 = int(os.environ.get("RAIN_Y0", 1991)), int(os.environ.get("RAIN_Y1", 2024))
-    base = ("https://iridl.ldeo.columbia.edu/SOURCES/.UCSB/.CHIRPS/.v2p0/.daily-improved/.global/.0p05/.prcp/"
-            f"X/{BBOX['lon0']}/{BBOX['lon1']}/RANGEEDGES/Y/{BBOX['lat0']}/{BBOX['lat1']}/RANGEEDGES/")
-    ann, max1, sums3 = [], [], []
+IRI = ("https://iridl.ldeo.columbia.edu/SOURCES/.UCSB/.CHIRPS/.v2p0/.daily-improved/.global/.0p05/.prcp/"
+       f"X/{BBOX['lon0']}/{BBOX['lon1']}/RANGEEDGES/Y/{BBOX['lat0']}/{BBOX['lat1']}/RANGEEDGES/")
+MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+
+def rain_chunk(y0, y1):
+    """CHIRPS v2.0 يومي 0.05° من IRI Data Library، طلب لكل شهر (أسرع وأثبت من طلب سنوي)، ويحفظ سلسلة السنوات كمصفوفة مضغوطة."""
+    import calendar, xarray as xr
+    y0, y1 = int(y0), int(y1); days, X, Y = [], None, None
     for y in range(y0, y1 + 1):
         t0 = time.time()
-        b = fetch(base + f"T/(1%20Jan%20{y})/(31%20Dec%20{y})/RANGEEDGES/data.nc", timeout=1800)
-        ds = xr.open_dataset(io.BytesIO(b), decode_times=False)
-        p = ds["prcp"].transpose("T", "Y", "X").values.astype("float32"); p[p < 0] = np.nan
-        X, Y = ds["X"].values, ds["Y"].values
-        ann.append(np.nansum(p, 0)); max1.append(np.nanmax(p, 0))
-        c = np.nancumsum(p, 0); s3 = c[2:] - np.concatenate([np.zeros((1,) + c.shape[1:]), c[:-3]])
-        sums3.append(s3.astype("float32"))
-        print("rain", y, p.shape, round(time.time() - t0, 1), "s", flush=True)
-    s3 = np.concatenate(sums3, 0)
+        for m in range(1, 13):
+            last = calendar.monthrange(y, m)[1]
+            b = fetch(IRI + f"T/(1%20{MONTHS[m - 1]}%20{y})/({last}%20{MONTHS[m - 1]}%20{y})/RANGEEDGES/data.nc", timeout=900)
+            ds = xr.open_dataset(io.BytesIO(b), decode_times=False)
+            p = ds["prcp"].transpose("T", "Y", "X").values.astype("float32"); p[p < 0] = np.nan
+            X, Y = ds["X"].values, ds["Y"].values; days.append(p)
+        print("rain", y, round(time.time() - t0, 1), "s", flush=True)
+    d = np.concatenate(days, 0)
+    np.savez_compressed(OUT / f"rain_{y0}_{y1}.npz", prcp=d.astype("float16"), X=X, Y=Y, years=np.arange(y0, y1 + 1))
+
+
+def rain_merge(folder):
+    """يدمج دفعات السنوات: متوسط الأمطار السنوية، متوسط أقصى يوم في السنة، المئين 95 و99 لمجموع 3 أيام متتالية."""
+    files = sorted(Path(folder).rglob("rain_*.npz"))
+    ann, max1, s3, X, Y, yrs = [], [], [], None, None, []
+    for f in files:
+        z = np.load(f); p = z["prcp"].astype("float32"); X, Y = z["X"], z["Y"]
+        per = len(p) / len(z["years"]); k = 0
+        for y in z["years"]:
+            n = 366 if (y % 4 == 0 and (y % 100 != 0 or y % 400 == 0)) else 365
+            a = p[k:k + n]; k += n
+            ann.append(np.nansum(a, 0)); max1.append(np.nanmax(a, 0)); yrs.append(int(y))
+        c = np.nancumsum(np.nan_to_num(p), 0)
+        s3.append((c[2:] - np.concatenate([np.zeros((1,) + c.shape[1:], "float32"), c[:-3]])).astype("float32"))
+    s3 = np.concatenate(s3, 0)
     clim = {"rain_annual_mm": np.mean(ann, 0), "rain_max1d_mm": np.mean(max1, 0),
-            "rain_p95_3d_mm": np.nanpercentile(s3, 95, axis=0), "rain_p99_3d_mm": np.nanpercentile(s3, 99, axis=0)}
+            "rain_p95_3d_mm": np.percentile(s3, 95, axis=0), "rain_p99_3d_mm": np.percentile(s3, 99, axis=0)}
     g, t = points()
-    yi = lambda la: np.abs(Y[None, :] - la[:, None]).argmin(1)
-    xi = lambda lo: np.abs(X[None, :] - lo[:, None]).argmin(1)
     def look(df):
-        r, c = yi(df.lat.values), xi(df.lon.values)
+        r = np.abs(Y[None, :] - df.lat.values[:, None]).argmin(1); c = np.abs(X[None, :] - df.lon.values[:, None]).argmin(1)
         return pd.DataFrame({k: np.round(v[r, c], 1) for k, v in clim.items()})
-    gridcells = pd.DataFrame([(float(Y[i]), float(X[j]), *(round(float(clim[k][i, j]), 1) for k in clim))
-                              for i in range(len(Y)) for j in range(len(X))], columns=["lat", "lon", *clim])
+    cells = pd.DataFrame([(round(float(Y[i]), 3), round(float(X[j]), 3), *(round(float(clim[k][i, j]), 1) for k in clim))
+                          for i in range(len(Y)) for j in range(len(X))], columns=["lat", "lon", *clim])
+    cells.to_csv(OUT / "rain_cells.csv", index=False)
     save("rain", look(g), pd.concat([t[["point_id"]], look(t)], axis=1),
-         {"source": "CHIRPS v2.0 daily, 0.05° (Climate Hazards Center, UCSB) via IRI Data Library",
-          "url": "https://www.chc.ucsb.edu/data/chirps", "license": "Public domain (CC0)",
-          "period": f"{y0}-{y1}", "method": "per CHIRPS pixel: mean annual total, mean annual 1-day max, 95th/99th percentile of 3-day running sums; points take the nearest pixel"},
-         sectors=gridcells)
+         {"source": "CHIRPS v2.0 daily, 0.05 deg (Climate Hazards Center, UCSB) via IRI Data Library",
+          "url": "https://www.chc.ucsb.edu/data/chirps", "citation": "Funk et al. (2015), Scientific Data 2:150066",
+          "license": "Public domain (CC0)", "years": [min(yrs), max(yrs)], "n_years": len(set(yrs)),
+          "method": "per CHIRPS pixel: mean annual total; mean annual 1-day maximum; 95th and 99th percentile of 3-day running sums; points take the nearest pixel"})
 
 
 if __name__ == "__main__":
-    {"terrain": terrain, "soil": soil, "geology": geology, "rain": rain}[sys.argv[1]]()
+    cmd = {"terrain": terrain, "soil": soil, "geology": geology, "rain_chunk": rain_chunk, "rain_merge": rain_merge}[sys.argv[1]]
+    cmd(*sys.argv[2:])

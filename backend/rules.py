@@ -9,6 +9,21 @@ def level_of(s, th):
     return "critical" if s >= th["critical"] else "high" if s >= th["high"] else "medium" if s >= th["medium"] else "low"
 
 
+# تنبؤ 72 ساعة (FR-U6) — قاعدة شفافة لا نموذج مُعايَر بأحداث:
+# النسبة = الأمطار المتوقعة حتى الأفق ÷ المئين 99 لمجموع 3 أيام في القطاع (CHIRPS 1991–2024).
+FORECAST_STEPS = ((1.0, 2), (0.5, 1))  # (حد النسبة، عدد درجات الرفع)
+
+
+def forecast_level(base, ratio):
+    """المستوى المتوقع = مستوى القابلية مرفوعًا درجة عند نسبة ≥ 0.5، ودرجتين عند ≥ 1، ولا ينخفض أبدًا."""
+    i = LEVELS.index(base)
+    if ratio is not None:
+        for lim, up in FORECAST_STEPS:
+            if ratio >= lim:
+                i = min(i + up, len(LEVELS) - 1); break
+    return LEVELS[i]
+
+
 def reasons_for(p, lc):
     r = []
     if p.get("events"):

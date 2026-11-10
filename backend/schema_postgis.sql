@@ -74,3 +74,18 @@ CREATE TABLE IF NOT EXISTS users (
 );
 CREATE TABLE IF NOT EXISTS sessions (token text PRIMARY KEY, username text NOT NULL, expires_at text NOT NULL);
 CREATE TABLE IF NOT EXISTS audit_log (id bigserial PRIMARY KEY, at text NOT NULL, username text, action text NOT NULL, detail text);
+
+-- تنبؤ 24/48/72 ساعة (FR-U6): يكتبه pipeline/10_forecast.py كل 6 ساعات، ولا يُحذف عند إعادة تحميل النموذج
+CREATE TABLE IF NOT EXISTS forecasts (
+  issued_at    text NOT NULL,
+  sector_id    text NOT NULL,
+  horizon_h    int  NOT NULL CHECK (horizon_h IN (24, 48, 72)),
+  rain_mm      real,
+  threshold_mm real,
+  ratio        real,
+  base_level   text NOT NULL,
+  level        text NOT NULL CHECK (level IN ('low','medium','high','critical')),
+  source       text NOT NULL,
+  PRIMARY KEY (issued_at, sector_id, horizon_h)
+);
+CREATE INDEX IF NOT EXISTS forecasts_sector_ix ON forecasts (sector_id, issued_at);
