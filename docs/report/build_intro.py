@@ -56,7 +56,7 @@ td{{border-bottom:1px solid var(--line);padding:5pt 7pt;vertical-align:top}} tr:
 <img src="{LOGO}"><h1>الدليل التعريفي</h1>
 <div class="sub">نظام ذكاء اصطناعي لتقدير مخاطر الانهيارات الأرضية في جنوب غرب المملكة</div>
 <div class="links">{ST.SITE}<br>{ST.REPO}</div>
-<div class="meta"><span>القروب الثالث · 13 عضوًا · 4 مسارات</span><span>مشروع أكاديمي</span><span>{ST.AS_OF}</span></div></section>
+<div class="meta"><span>القروب الثالث · القائد {ST.LEADER} · النائبة {ST.DEPUTY}</span><span>مشروع أكاديمي</span><span>{ST.AS_OF}</span></div></section>
 
 <section class="pg">
 <h2>مِرصاد في دقيقة</h2>
@@ -120,7 +120,7 @@ td{{border-bottom:1px solid var(--line);padding:5pt 7pt;vertical-align:top}} tr:
 <tr><td>مسؤول</td><td class="mono">admin</td><td>تعديل العتبات وسجل التدقيق</td></tr></table>
 <p class="muted">كلمات المرور عند قائد المشروع، ومحفوظة في أسرار المستودع فقط.</p>
 <h3>الفريق</h3>
-<p>القروب الثالث · 13 عضوًا في 4 مسارات: البيانات الجيولوجية والمناخية · قاعدة البيانات المكانية (GIS) · نمذجة الذكاء الاصطناعي · واجهة الويب والتوثيق.</p>
+<p>القروب الثالث · القائد: <b>{ST.LEADER}</b> · النائبة: <b>{ST.DEPUTY}</b> · 13 عضوًا في 4 مسارات: البيانات الجيولوجية والمناخية · قاعدة البيانات المكانية (GIS) · نمذجة الذكاء الاصطناعي · واجهة الويب والتوثيق.</p>
 <div class="end"><img src="{EMB}"><p class="muted">مِرصاد · رصد مبكر لمخاطر الانهيارات الأرضية</p></div>
 </section>
 </body></html>"""

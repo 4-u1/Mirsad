@@ -6,6 +6,8 @@
 AS_OF = "10 نوفمبر 2026"
 SITE = "https://mirsad-rho.vercel.app"
 REPO = "https://github.com/4-u1/Mirsad"
+LEADER = "مشاري العصيمي"
+DEPUTY = "وجد الهذلي"
 
 # (المعرّف، المتطلب، الأولوية، الدرجة، الدليل أو الناقص)
 PRD = [
