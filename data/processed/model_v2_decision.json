@@ -1,0 +1,95 @@
+{
+  "rule": "adopt v2 only if spatial ROC-AUC rises by >= 0.05 and neither PR-AUC nor recall at 'high' falls (rule fixed before training)",
+  "method": "RandomForest(500, min_samples_leaf=20, balanced), GroupKFold(5) on 0.5-degree blocks, seed 42; same folds for v1 and v2",
+  "features_v1": [
+    "elevation",
+    "slope",
+    "aspect",
+    "landcover"
+  ],
+  "features_v2": [
+    "elevation",
+    "slope",
+    "aspect",
+    "landcover",
+    "curv_profile",
+    "curv_plan",
+    "relief_1km",
+    "slope_mean_1km",
+    "soil_clay",
+    "soil_sand",
+    "soil_bdod",
+    "rain_annual_mm",
+    "rain_max1d_mm",
+    "rain_p99_3d_mm",
+    "lith_plutonic",
+    "lith_volcanic",
+    "lith_volcano_sedimentary",
+    "lith_sedimentary"
+  ],
+  "groups": {
+    "elevation": [
+      "elevation"
+    ],
+    "slope": [
+      "slope",
+      "slope_mean_1km"
+    ],
+    "relief": [
+      "relief_1km"
+    ],
+    "curvature": [
+      "curv_profile",
+      "curv_plan"
+    ],
+    "aspect": [
+      "aspect"
+    ],
+    "landcover": [
+      "landcover"
+    ],
+    "soil": [
+      "soil_clay",
+      "soil_sand",
+      "soil_bdod"
+    ],
+    "geology": [
+      "lith_plutonic",
+      "lith_volcanic",
+      "lith_volcano_sedimentary",
+      "lith_sedimentary"
+    ],
+    "rain": [
+      "rain_annual_mm",
+      "rain_max1d_mm",
+      "rain_p99_3d_mm"
+    ]
+  },
+  "v1": {
+    "roc_auc": 0.545,
+    "pr_auc": 0.011,
+    "recall_at_high": 0.083,
+    "precision_at_high": 0.01,
+    "recall_at_critical": 0.083,
+    "precision_at_critical": 0.042
+  },
+  "v2": {
+    "roc_auc": 0.74,
+    "pr_auc": 0.017,
+    "recall_at_high": 0.0,
+    "precision_at_high": 0.0,
+    "recall_at_critical": 0.0,
+    "precision_at_critical": 0.0
+  },
+  "ablation_roc_auc_v1_plus_group": {
+    "slope": 0.675,
+    "relief": 0.726,
+    "curvature": 0.585,
+    "soil": 0.71,
+    "geology": 0.533,
+    "rain": 0.522
+  },
+  "adopt_v2": false,
+  "rows": 1689,
+  "positives": 12
+}

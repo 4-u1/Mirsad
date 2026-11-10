@@ -1,0 +1,25 @@
+{
+  "source": "CHIRPS v2.0 daily, 0.05 deg (Climate Hazards Center, UCSB) via IRI Data Library",
+  "url": "https://www.chc.ucsb.edu/data/chirps",
+  "citation": "Funk et al. (2015), Scientific Data 2:150066",
+  "license": "Public domain (CC0)",
+  "years": [
+    2016,
+    2025
+  ],
+  "n_years": 10,
+  "method": "per CHIRPS pixel: mean annual total; mean annual 1-day maximum; 95th and 99th percentile of 3-day running sums; points take the nearest pixel",
+  "generated_at": "2026-11-10T21:06:50Z",
+  "coverage_grid": {
+    "rain_annual_mm": 1.0,
+    "rain_max1d_mm": 0.9997,
+    "rain_p95_3d_mm": 1.0,
+    "rain_p99_3d_mm": 1.0
+  },
+  "coverage_training": {
+    "rain_annual_mm": 1.0,
+    "rain_max1d_mm": 1.0,
+    "rain_p95_3d_mm": 1.0,
+    "rain_p99_3d_mm": 1.0
+  }
+}

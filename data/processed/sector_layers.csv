@@ -1,0 +1,1167 @@
+﻿sector_id,rain_annual_mm,rain_max1d_mm,rain_p95_3d_mm,rain_p99_3d_mm,soil_clay,soil_sand,relief_1km,curv_plan,lith_class,lith_text,age_ma
+S162-421,221.1,25.2,9.0,29.1,20.8,40.8,8.6,0.01,,,
+S162-422,155.2,23.2,6.7,19.9,21.1,39.3,8.7,0.02,,,
+S162-423,146.7,14.8,5.8,14.7,23.7,38.7,7.7,-0.02,,,
+S162-424,150.3,16.7,5.9,16.2,26.0,33.5,7.5,-0.0,,,
+S162-425,0.0,,0.0,0.0,,,10.4,0.02,,,
+S162-428,232.5,19.0,8.9,21.6,23.1,34.5,8.8,-0.0,sedimentary,sedimentary,1.3
+S162-429,258.5,22.2,9.8,23.5,19.4,51.6,10.6,0.0,sedimentary,sedimentary,1.3
+S162-430,254.7,24.0,9.9,24.4,18.4,53.5,10.7,0.0,sedimentary,sedimentary,1.3
+S162-431,301.6,28.6,11.3,28.6,17.0,51.4,18.3,-0.0,sedimentary,sedimentary,1.3
+S162-432,332.1,32.7,12.7,31.1,17.5,45.4,102.4,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S162-433,330.6,32.0,12.7,31.4,19.9,43.8,177.2,0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S162-434,328.7,31.2,12.6,31.5,19.3,43.8,324.9,-0.02,volcanic,volcanic,44.5
+S162-435,316.4,31.8,12.7,30.8,17.4,44.0,184.0,-0.01,volcanic,volcanic,44.5
+S162-436,308.7,31.9,12.5,31.7,17.7,46.4,304.6,0.05,volcanic,volcanic,44.5
+S162-437,316.1,31.4,13.6,33.1,15.1,44.8,229.3,0.0,sedimentary,sedimentary,197.5
+S162-438,315.8,32.6,14.6,35.3,14.9,44.0,158.1,-0.02,volcanic,volcanic,44.5
+S162-439,279.0,34.5,13.3,35.3,18.1,47.1,134.7,-0.03,sedimentary,sedimentary,197.5
+S162-440,281.5,33.9,13.4,35.1,16.1,49.3,114.7,-0.03,sedimentary,sedimentary,197.5
+S163-419,169.9,19.7,7.8,23.5,,,2.8,0.02,,,
+S163-421,224.2,26.4,9.1,32.3,25.2,36.8,5.5,0.01,,,
+S163-422,239.7,27.5,10.5,32.9,23.4,38.5,6.2,-0.06,,,
+S163-423,141.0,11.9,5.9,12.9,22.8,38.8,5.8,0.0,,,
+S163-424,150.8,14.6,6.2,15.2,,,3.1,0.04,,,
+S163-425,0.0,,0.0,0.0,,,7.5,0.03,,,
+S163-427,214.0,18.5,8.1,19.9,25.2,31.3,8.4,-0.0,,,
+S163-428,239.3,20.1,9.3,21.8,23.0,37.5,8.6,-0.0,sedimentary,sedimentary,1.3
+S163-429,268.7,23.3,10.0,23.9,20.2,51.6,9.6,-0.0,sedimentary,sedimentary,1.3
+S163-430,268.7,24.4,10.2,25.0,18.7,52.0,9.9,-0.01,sedimentary,sedimentary,1.3
+S163-431,294.5,28.5,11.1,27.0,16.2,47.2,43.3,-0.0,sedimentary,sedimentary,1.3
+S163-432,315.7,32.3,11.2,30.3,19.1,44.4,133.2,-0.09,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S163-433,304.8,33.9,11.7,29.6,20.9,43.1,218.6,0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S163-434,300.1,31.7,12.1,29.7,19.0,45.4,353.9,-0.11,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S163-435,295.4,31.0,12.1,29.1,16.2,47.2,157.1,-0.03,volcanic,volcanic,44.5
+S163-436,292.1,31.1,12.2,30.3,14.1,47.6,72.0,-0.06,volcanic,volcanic,44.5
+S163-437,292.8,30.0,13.1,30.2,13.2,45.9,126.8,0.06,volcanic,volcanic,44.5
+S163-438,293.3,29.8,14.2,31.3,14.9,42.8,222.9,-0.06,sedimentary,sedimentary,197.5
+S163-439,274.2,32.6,12.7,33.7,18.8,44.6,289.0,0.01,sedimentary,sedimentary,197.5
+S163-440,273.0,32.6,12.2,34.3,16.2,48.3,152.1,0.03,sedimentary,sedimentary,197.5
+S164-419,176.6,22.9,8.0,24.9,,,3.1,0.07,,,
+S164-422,0.0,,0.0,0.0,,,6.0,0.08,,,
+S164-423,0.0,,0.0,0.0,,,3.3,0.0,,,
+S164-424,0.0,,0.0,0.0,,,4.1,-0.01,,,
+S164-427,225.5,21.3,9.1,20.4,25.4,31.6,7.3,0.02,,,
+S164-428,263.1,26.3,10.8,24.2,23.1,41.4,11.9,-0.03,sedimentary,sedimentary,1.3
+S164-429,290.2,30.2,11.8,27.4,20.1,51.7,9.6,-0.01,sedimentary,sedimentary,1.3
+S164-430,295.2,28.3,12.4,27.5,17.2,50.9,9.4,0.0,sedimentary,sedimentary,1.3
+S164-431,334.8,29.8,13.4,30.2,15.7,46.4,67.0,-0.06,sedimentary,sedimentary,1.3
+S164-432,326.9,32.2,12.4,30.3,17.5,44.3,86.9,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S164-433,298.4,35.6,11.7,30.8,20.1,43.9,200.7,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S164-434,290.2,34.3,11.9,29.1,18.0,42.1,240.0,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S164-435,271.9,31.1,11.6,28.7,16.4,46.1,184.1,-0.03,volcanic,volcanic,44.5
+S164-436,270.4,30.5,12.1,28.6,14.8,49.4,150.4,-0.04,volcanic,volcanic,44.5
+S164-437,268.6,26.2,12.7,28.1,13.9,48.5,141.3,-0.1,volcanic,volcanic,44.5
+S164-438,262.9,27.1,12.3,27.3,16.1,47.4,229.1,-0.04,sedimentary,sedimentary,197.5
+S164-439,251.7,30.8,11.3,31.4,18.9,50.3,244.4,0.02,sedimentary,sedimentary,197.5
+S164-440,244.5,28.8,10.7,30.4,14.9,49.5,93.1,0.01,sedimentary,sedimentary,197.5
+S165-419,204.8,24.7,9.3,28.7,21.6,42.0,12.5,-0.01,,,
+S165-420,276.9,35.0,12.1,38.3,21.9,40.3,14.1,-0.03,,,
+S165-421,300.4,39.9,12.5,41.7,22.2,40.2,7.3,-0.03,,,
+S165-422,0.0,,0.0,0.0,,,7.7,-0.26,,,
+S165-423,0.0,,0.0,0.0,,,4.0,-0.04,,,
+S165-427,212.7,20.3,8.7,20.6,25.2,33.8,9.7,-0.01,sedimentary,sedimentary,1.3
+S165-428,255.3,26.0,10.2,24.6,22.3,43.8,12.1,0.0,sedimentary,sedimentary,1.3
+S165-429,283.3,29.7,11.4,26.5,20.3,48.8,11.2,0.0,sedimentary,sedimentary,1.3
+S165-430,277.3,28.2,11.1,25.4,18.9,48.9,11.6,0.01,sedimentary,sedimentary,1.3
+S165-431,317.1,30.1,12.7,27.5,17.0,46.3,75.1,0.04,sedimentary,sedimentary,1.3
+S165-432,314.6,32.6,12.4,28.7,19.7,44.1,135.9,-0.09,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S165-433,290.7,31.2,11.8,29.2,21.7,43.5,237.0,-0.17,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S165-434,270.8,29.9,11.3,29.0,18.8,44.3,317.3,-0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S165-435,257.4,27.6,11.1,27.8,16.8,46.8,218.1,-0.03,volcanic,volcanic,44.5
+S165-436,250.9,28.5,11.5,27.1,15.3,48.9,140.0,-0.13,volcanic,volcanic,44.5
+S165-437,249.6,28.4,11.5,26.9,14.2,48.9,143.0,-0.04,volcanic,volcanic,44.5
+S165-438,241.9,27.8,11.5,27.2,15.0,49.0,127.5,-0.03,sedimentary,sedimentary,197.5
+S165-439,234.0,28.9,10.1,30.4,14.9,52.9,78.9,-0.03,sedimentary,sedimentary,197.5
+S165-440,229.4,31.1,10.0,29.6,15.0,52.9,125.4,-0.05,sedimentary,sedimentary,197.5
+S166-417,0.0,,0.0,0.0,,,14.2,0.02,,,
+S166-418,154.0,24.0,7.0,21.0,25.7,39.2,17.9,-0.01,,,
+S166-419,210.8,26.3,9.8,28.6,25.1,39.3,10.2,0.01,sedimentary,sedimentary rocks,1.3
+S166-420,273.2,34.6,12.5,36.1,22.5,39.3,13.6,-0.02,,,
+S166-421,282.7,35.5,13.4,39.4,23.2,40.0,9.0,0.01,sedimentary,sedimentary,1.3
+S166-422,0.0,,0.0,0.0,,,7.6,0.01,,,
+S166-425,0.0,,0.0,0.0,,,4.0,0.06,,,
+S166-427,224.9,22.6,9.0,21.0,25.5,36.0,9.9,-0.01,sedimentary,sedimentary,1.3
+S166-428,262.7,27.1,10.3,25.4,22.3,44.9,9.9,0.0,sedimentary,sedimentary,1.3
+S166-429,289.4,29.6,11.2,27.0,19.9,48.5,12.2,0.01,sedimentary,sedimentary,1.3
+S166-430,311.1,29.7,12.7,27.1,17.1,48.5,11.3,0.01,sedimentary,sedimentary,1.3
+S166-431,350.1,31.6,15.5,30.3,17.3,47.5,97.9,-0.03,sedimentary,sedimentary,1.3
+S166-432,347.2,34.6,14.6,32.5,20.8,42.4,163.0,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S166-433,304.6,30.8,13.1,30.1,22.4,41.6,340.9,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S166-434,279.1,31.3,12.1,29.1,19.7,45.1,412.9,-0.12,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S166-435,255.6,27.5,10.7,28.5,16.3,47.2,215.4,0.16,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S166-436,236.2,30.3,10.1,27.9,15.2,48.4,205.9,-0.08,volcanic,volcanic,44.5
+S166-437,232.2,32.1,10.4,28.6,16.3,50.7,175.6,0.01,sedimentary,sedimentary,197.5
+S166-438,231.6,30.9,10.6,28.5,16.1,49.9,99.4,0.05,sedimentary,sedimentary,197.5
+S166-439,218.8,33.4,9.5,29.5,16.4,52.2,105.7,-0.03,sedimentary,sedimentary,197.5
+S166-440,222.4,37.0,9.2,31.9,16.9,49.4,105.0,-0.02,sedimentary,sedimentary,197.5
+S167-417,171.4,21.8,8.0,25.4,23.7,39.8,28.8,0.01,,,
+S167-418,203.7,23.0,9.3,29.0,23.6,41.2,23.8,-0.02,sedimentary,sedimentary,1.3
+S167-419,212.3,24.4,9.6,29.5,25.0,40.7,8.9,0.0,,,
+S167-420,272.3,34.7,12.0,38.9,24.3,40.2,10.8,0.02,sedimentary,sedimentary,1.3
+S167-421,285.4,34.9,13.0,40.6,24.9,40.3,16.1,0.01,,,
+S167-422,147.3,36.6,6.4,20.1,,,6.1,0.04,,,
+S167-426,171.8,19.0,7.1,18.3,25.2,35.7,7.4,0.03,,,
+S167-427,221.2,21.5,8.7,21.8,26.2,37.3,9.5,0.0,sedimentary,sedimentary,1.3
+S167-428,257.9,26.1,9.9,25.3,23.3,47.9,9.7,0.02,sedimentary,sedimentary,1.3
+S167-429,292.3,27.1,11.1,28.1,19.6,49.8,10.0,-0.01,sedimentary,sedimentary,1.3
+S167-430,316.9,28.5,13.0,28.2,15.2,51.0,54.8,-0.0,sedimentary,sedimentary,1.3
+S167-431,357.0,32.2,15.0,33.5,17.0,45.8,51.8,0.03,sedimentary,sedimentary,1.3
+S167-432,367.7,34.2,15.0,35.4,20.2,44.6,123.6,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S167-433,324.5,32.7,13.7,32.8,22.6,40.9,371.6,0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S167-434,291.3,34.0,12.6,32.9,23.9,42.6,337.5,-0.11,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S167-435,275.2,29.0,12.0,30.6,19.1,47.0,248.1,-0.07,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S167-436,238.9,28.7,10.1,29.1,16.5,46.2,233.7,-0.05,sedimentary,sedimentary,197.5
+S167-437,237.9,28.4,10.5,28.9,18.4,49.6,160.7,-0.01,sedimentary,sedimentary,197.5
+S167-438,229.7,32.7,10.3,29.6,18.4,49.7,130.4,-0.05,sedimentary,sedimentary,197.5
+S167-439,214.6,30.4,9.8,29.5,17.8,50.3,141.6,0.01,sedimentary,sedimentary,197.5
+S167-440,212.4,33.9,9.2,30.6,17.8,50.2,183.4,-0.06,sedimentary,sedimentary,197.5
+S168-415,136.3,18.7,5.8,23.0,25.6,38.1,24.4,-0.01,,,
+S168-416,132.6,20.4,5.7,22.0,24.0,36.4,34.5,0.03,,,
+S168-417,189.9,20.6,8.5,27.8,23.6,39.8,26.5,-0.02,,,
+S168-418,199.7,22.9,9.0,29.6,24.6,40.9,14.3,0.01,sedimentary,sedimentary rocks,1.3
+S168-419,210.9,25.8,9.6,30.4,24.9,40.6,7.2,-0.0,,,
+S168-420,259.2,32.2,11.2,38.5,23.6,40.4,15.8,-0.0,,,
+S168-424,55.8,14.2,2.5,6.2,21.4,40.5,2.8,0.07,,,
+S168-425,139.3,17.6,5.9,14.4,23.8,37.0,18.8,-0.09,,,
+S168-426,166.2,21.0,6.8,17.5,25.2,37.3,11.5,-0.02,sedimentary,sedimentary,1.3
+S168-427,219.9,27.7,8.2,23.7,25.9,41.6,9.6,-0.03,sedimentary,sedimentary,1.3
+S168-428,253.8,29.4,9.3,26.5,22.3,49.3,9.7,-0.01,sedimentary,sedimentary,1.3
+S168-429,301.6,31.2,11.6,28.8,18.7,50.8,29.1,-0.01,sedimentary,sedimentary,1.3
+S168-430,334.1,32.1,13.8,33.7,17.0,48.7,149.4,-0.02,sedimentary,sedimentary,1.3
+S168-431,349.3,36.0,14.2,33.8,18.9,42.5,99.4,-0.02,plutonic,plutonic,743.4
+S168-432,363.6,36.5,14.6,38.0,22.0,41.9,308.6,0.02,plutonic,plutonic,743.4
+S168-433,329.9,36.1,14.0,37.4,22.4,42.5,432.0,-0.07,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S168-434,302.4,34.3,13.2,35.9,22.7,47.1,298.7,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S168-435,296.3,33.6,13.4,32.7,22.5,50.2,259.2,-0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S168-436,247.6,30.6,10.7,30.9,18.5,51.2,156.9,-0.08,sedimentary,sedimentary,490.9
+S168-437,236.6,32.2,10.6,28.0,20.3,45.7,58.4,-0.01,sedimentary,sedimentary,490.9
+S168-438,235.3,32.2,10.9,29.7,19.3,48.1,122.0,-0.0,sedimentary,sedimentary,197.5
+S168-439,211.8,31.7,9.5,28.7,18.9,49.6,87.1,0.04,sedimentary,sedimentary,197.5
+S168-440,211.2,30.5,10.2,29.5,18.8,54.8,111.2,-0.12,sedimentary,sedimentary,197.5
+S169-416,148.2,20.8,6.3,23.6,24.3,39.4,15.3,-0.02,,,
+S169-417,140.5,17.8,6.0,22.4,23.7,40.9,15.6,-0.06,,,
+S169-418,191.1,23.8,8.6,27.9,23.4,40.1,9.7,0.01,,,
+S169-419,201.0,25.6,9.0,28.8,24.1,40.6,6.7,0.01,,,
+S169-424,0.0,,0.0,0.0,,,5.7,0.06,,,
+S169-425,158.0,20.3,6.6,16.5,24.8,39.1,13.2,-0.03,sedimentary,sedimentary,1.3
+S169-426,184.7,23.4,7.2,20.1,25.1,42.3,13.4,-0.0,sedimentary,sedimentary,1.3
+S169-427,213.8,23.1,7.9,22.1,22.6,47.0,10.9,0.01,sedimentary,sedimentary,1.3
+S169-428,260.4,27.4,10.0,26.4,20.0,47.2,11.9,0.03,sedimentary,sedimentary,1.3
+S169-429,312.3,31.4,12.7,29.2,18.3,48.8,93.7,-0.06,volcanic,volcanic,1.3
+S169-430,314.8,30.1,12.6,29.4,18.8,43.9,76.9,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S169-431,339.4,39.7,13.3,33.7,21.3,42.0,282.7,-0.01,plutonic,plutonic,743.4
+S169-432,350.2,41.7,14.2,38.0,21.7,46.4,403.5,-0.01,plutonic,plutonic,743.4
+S169-433,320.5,36.3,13.9,35.8,20.6,46.8,356.5,-0.04,plutonic,plutonic,743.4
+S169-434,282.2,31.8,12.6,31.0,21.0,45.0,300.7,0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S169-435,283.8,31.1,13.4,30.3,21.4,50.1,238.9,-0.1,sedimentary,sedimentary,490.9
+S169-436,238.0,28.2,11.0,26.0,19.9,52.4,138.0,-0.12,sedimentary,sedimentary,490.9
+S169-437,226.2,28.6,10.9,26.1,21.9,47.0,54.8,-0.0,sedimentary,sedimentary,490.9
+S169-438,214.3,32.2,10.2,26.5,19.6,54.0,94.2,-0.1,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S169-439,200.1,30.1,9.4,26.0,18.2,53.5,65.2,-0.12,sedimentary,sedimentary,197.5
+S169-440,190.5,27.9,9.1,25.1,17.7,54.7,88.8,0.01,sedimentary,sedimentary,490.9
+S170-416,0.0,,0.0,0.0,,,16.3,-0.18,,,
+S170-417,158.2,27.0,6.8,21.9,25.4,42.2,10.5,-0.06,,,
+S170-418,201.6,25.7,9.1,27.7,,,6.6,0.02,,,
+S170-419,214.4,29.6,9.2,29.3,,,13.2,0.12,,,
+S170-423,151.2,18.2,6.2,17.0,23.1,38.5,4.2,0.03,,,
+S170-424,160.3,18.4,6.6,18.2,24.3,38.0,3.3,-0.01,sedimentary,sedimentary rocks,1.3
+S170-425,181.4,23.8,7.2,20.0,24.9,39.2,7.9,0.01,sedimentary,sedimentary,1.3
+S170-426,215.6,26.0,8.1,22.8,23.8,47.9,10.9,-0.02,sedimentary,sedimentary,1.3
+S170-427,235.5,24.4,8.8,23.3,23.1,48.2,10.3,-0.01,sedimentary,sedimentary,1.3
+S170-428,269.4,25.7,10.5,26.8,19.5,49.5,17.8,-0.01,sedimentary,sedimentary,1.3
+S170-429,310.3,29.1,12.5,30.5,16.6,49.6,57.7,-0.04,volcanic,volcanic,1.3
+S170-430,310.9,30.2,12.4,30.5,17.0,46.1,42.3,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S170-431,313.3,33.9,12.2,31.9,21.4,42.3,336.1,-0.08,plutonic,plutonic,743.4
+S170-432,324.6,36.2,13.2,34.1,19.5,46.6,343.3,-0.04,plutonic,plutonic,743.4
+S170-433,309.1,34.5,13.3,32.3,19.3,42.8,371.2,-0.12,plutonic,plutonic,743.4
+S170-434,270.5,30.8,12.5,27.8,21.2,46.0,297.1,-0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S170-435,271.0,32.2,12.7,30.2,19.3,52.2,210.5,0.01,sedimentary,sedimentary,490.9
+S170-436,236.8,29.7,11.4,26.2,17.9,48.1,57.0,0.03,sedimentary,sedimentary,490.9
+S170-437,226.4,30.5,10.6,26.8,18.6,44.8,86.0,-0.03,sedimentary,sedimentary,490.9
+S170-438,214.0,29.4,9.7,25.6,18.6,51.8,90.3,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S170-439,192.5,30.3,9.4,25.0,17.6,53.3,70.4,-0.05,sedimentary,sedimentary,490.9
+S170-440,177.7,27.4,8.7,23.5,18.0,50.3,91.0,-0.08,sedimentary,sedimentary,490.9
+S171-423,160.4,20.2,6.7,18.5,24.1,39.8,4.7,-0.01,sedimentary,sedimentary rocks,1.3
+S171-424,170.8,19.8,7.1,18.9,23.8,39.3,10.0,0.01,sedimentary,sedimentary,1.3
+S171-425,210.2,22.5,8.1,22.7,24.3,40.4,8.9,-0.02,sedimentary,sedimentary,1.3
+S171-426,238.0,25.3,9.0,25.8,21.3,45.8,13.3,-0.06,sedimentary,sedimentary,1.3
+S171-427,254.2,26.5,10.2,26.5,22.0,47.6,23.3,0.01,sedimentary,sedimentary,1.3
+S171-428,283.7,31.3,11.4,27.5,20.6,46.9,20.4,0.01,sedimentary,sedimentary,1.3
+S171-429,307.6,30.4,12.0,29.0,18.1,46.7,48.1,0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S171-430,296.3,31.9,11.9,28.1,18.6,46.3,85.4,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S171-431,299.0,30.6,12.5,30.0,21.3,42.7,263.3,-0.03,plutonic,plutonic,743.4
+S171-432,305.9,34.2,13.0,31.5,21.0,43.2,396.8,-0.17,plutonic,plutonic,743.4
+S171-433,291.5,33.4,13.2,32.5,20.4,43.7,363.7,0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S171-434,258.6,32.5,12.7,30.6,20.6,47.3,324.7,-0.01,sedimentary,sedimentary,490.9
+S171-435,249.9,33.6,11.7,29.4,17.0,50.6,136.4,-0.07,sedimentary,sedimentary,490.9
+S171-436,226.7,34.6,10.8,29.4,17.8,50.3,130.6,-0.08,sedimentary,sedimentary,490.9
+S171-437,217.1,32.6,10.3,26.4,18.7,46.7,119.8,-0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S171-438,209.9,33.5,9.9,26.7,19.0,46.3,144.5,-0.01,sedimentary,sedimentary,490.9
+S171-439,183.8,30.0,9.0,23.0,17.4,50.2,132.9,-0.07,sedimentary,sedimentary,490.9
+S171-440,174.1,29.3,8.6,23.3,17.5,51.2,83.6,-0.02,sedimentary,sedimentary,490.9
+S172-423,177.7,22.8,7.3,20.6,24.8,39.6,7.9,0.0,sedimentary,sedimentary,1.3
+S172-424,209.2,24.5,8.4,22.7,23.5,44.6,12.5,-0.0,sedimentary,sedimentary,1.3
+S172-425,232.0,27.4,8.7,24.9,21.1,44.9,8.7,-0.01,sedimentary,sedimentary,1.3
+S172-426,263.9,29.1,10.1,27.9,20.4,49.1,12.8,0.01,sedimentary,sedimentary,1.3
+S172-427,283.8,29.4,11.2,31.1,20.7,49.9,21.2,-0.01,sedimentary,sedimentary,1.3
+S172-428,301.4,31.7,12.2,32.1,19.4,48.9,23.2,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S172-429,322.0,36.9,12.8,33.0,18.8,47.2,62.5,0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S172-430,304.4,35.4,12.1,31.3,21.0,44.7,227.2,0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S172-431,308.7,38.0,12.8,32.5,20.5,44.2,321.5,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S172-432,303.7,36.9,13.0,33.6,21.1,41.5,290.5,0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S172-433,291.7,33.1,13.3,32.9,20.8,45.6,425.2,0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S172-434,251.7,32.6,11.7,32.8,19.0,49.4,255.0,0.02,sedimentary,sedimentary,490.9
+S172-435,241.4,34.0,12.1,30.2,18.8,44.4,119.0,-0.05,sedimentary,sedimentary,490.9
+S172-436,217.2,32.1,10.6,28.0,20.0,41.6,151.8,-0.18,sedimentary,sedimentary,490.9
+S172-437,207.8,32.4,10.1,27.5,19.8,42.5,151.9,-0.02,sedimentary,sedimentary,490.9
+S172-438,203.4,33.3,10.2,26.6,18.2,48.0,206.1,-0.0,sedimentary,sedimentary,490.9
+S172-439,177.0,28.8,8.9,23.4,17.9,45.6,251.5,-0.07,sedimentary,sedimentary,490.9
+S172-440,162.0,27.5,8.3,22.0,17.5,49.7,116.5,-0.05,sedimentary,sedimentary,490.9
+S172-441,163.9,28.1,7.4,21.1,18.4,48.3,83.5,-0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S173-423,197.0,23.9,7.8,22.0,23.5,41.5,8.7,-0.01,sedimentary,sedimentary,1.3
+S173-424,232.8,26.2,9.2,25.4,19.6,51.2,8.6,-0.01,sedimentary,sedimentary,1.3
+S173-425,244.9,27.4,9.6,25.2,19.5,47.2,9.9,0.0,sedimentary,sedimentary,1.3
+S173-426,277.0,29.7,10.6,29.2,17.8,52.6,16.5,0.01,sedimentary,sedimentary,1.3
+S173-427,300.5,31.8,11.7,32.9,18.2,51.4,21.0,0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S173-428,314.7,33.7,12.2,35.3,17.8,49.9,91.0,0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S173-429,326.9,39.5,13.2,34.9,18.9,47.4,186.2,-0.12,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S173-430,307.2,39.3,12.2,33.4,21.1,44.7,333.1,0.11,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S173-431,312.3,37.9,13.3,35.8,20.4,43.0,364.6,-0.11,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S173-432,310.4,39.0,14.1,38.3,20.4,43.6,413.3,0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S173-433,289.6,37.7,13.4,38.4,20.3,48.3,402.9,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S173-434,250.3,32.0,11.4,34.9,17.3,52.5,172.4,-0.09,sedimentary,sedimentary,490.9
+S173-435,239.1,33.3,11.3,33.8,17.6,44.8,142.2,-0.1,sedimentary,sedimentary,490.9
+S173-436,211.0,29.9,10.1,27.9,18.8,42.9,134.2,-0.1,sedimentary,sedimentary,490.9
+S173-437,197.4,29.7,9.6,26.3,18.0,44.6,160.1,-0.07,sedimentary,sedimentary,490.9
+S173-438,186.5,28.5,9.2,26.3,17.3,43.8,317.7,-0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S173-439,163.3,24.4,8.5,22.7,17.7,44.3,263.1,0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S173-440,151.7,26.3,8.1,20.7,18.2,45.7,225.9,-0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S174-422,185.4,21.5,7.3,19.4,26.2,38.0,4.0,-0.01,,,
+S174-423,216.1,25.1,8.5,24.1,23.2,44.3,8.7,0.01,sedimentary,sedimentary,1.3
+S174-424,246.7,27.3,9.7,28.0,18.7,53.1,10.3,-0.0,sedimentary,sedimentary,1.3
+S174-425,249.5,27.9,9.5,26.6,17.9,51.2,18.1,-0.02,sedimentary,sedimentary,1.3
+S174-426,271.2,32.0,10.3,29.0,17.5,51.2,25.8,-0.02,sedimentary,sedimentary,1.3
+S174-427,289.5,36.8,10.8,32.1,17.4,51.2,85.8,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S174-428,303.3,38.3,11.4,33.3,18.1,45.5,170.8,-0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S174-429,323.1,34.9,12.6,34.0,20.6,43.5,438.3,0.14,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S174-430,298.4,37.4,12.3,34.1,21.2,46.0,461.4,0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S174-431,303.4,36.7,13.3,34.5,19.6,45.0,397.6,0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S174-432,304.2,38.2,14.0,39.6,20.2,44.5,434.9,-0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S174-433,288.8,33.5,13.5,36.7,19.6,48.9,368.7,-0.06,sedimentary,sedimentary,490.9
+S174-434,254.6,30.9,11.8,33.6,18.1,54.2,159.4,0.02,sedimentary,sedimentary,490.9
+S174-435,241.6,33.3,11.5,29.9,17.6,55.3,174.1,-0.03,sedimentary,sedimentary,490.9
+S174-436,202.5,29.3,9.7,24.6,17.8,47.5,102.5,-0.12,sedimentary,sedimentary,490.9
+S174-437,193.1,30.5,9.7,25.8,16.7,45.3,79.2,-0.06,sedimentary,sedimentary,490.9
+S174-438,174.4,27.5,8.3,23.1,16.9,45.9,177.7,0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S174-439,152.6,24.6,7.5,18.5,18.2,42.6,240.0,-0.1,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S174-440,138.4,23.2,7.2,18.7,18.5,44.7,235.7,-0.06,plutonic,plutonic,743.4
+S175-421,194.1,21.7,8.1,20.8,26.0,39.9,4.7,0.01,,,
+S175-422,199.9,24.2,7.9,21.8,25.7,41.1,7.1,-0.03,sedimentary,sedimentary,1.3
+S175-423,223.9,27.4,8.5,24.5,21.7,47.0,9.5,0.0,sedimentary,sedimentary,1.3
+S175-424,246.5,29.5,9.2,28.9,17.1,51.5,20.1,-0.0,sedimentary,sedimentary,1.3
+S175-425,251.0,30.6,9.4,28.5,16.1,52.5,24.9,0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S175-426,269.3,35.6,10.0,29.7,16.3,51.3,39.8,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S175-427,277.1,36.8,10.0,30.4,17.1,48.2,220.5,-0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S175-428,276.9,32.1,10.5,31.3,18.6,46.6,358.6,0.15,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S175-429,297.1,32.7,12.0,29.6,19.6,46.9,447.6,-0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S175-430,299.3,33.3,11.9,30.2,19.8,44.3,340.3,-0.08,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S175-431,297.5,36.1,12.6,35.5,19.8,43.5,388.7,0.19,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S175-432,296.7,33.7,13.3,36.4,20.0,42.5,315.1,0.1,plutonic,plutonic,743.4
+S175-433,281.3,34.5,12.9,33.5,18.2,42.8,212.9,-0.01,sedimentary,sedimentary,490.9
+S175-434,242.9,32.1,11.0,30.3,19.1,53.2,252.5,0.06,sedimentary,sedimentary,490.9
+S175-435,225.3,33.1,10.7,27.4,17.8,56.3,139.3,-0.05,sedimentary,sedimentary,490.9
+S175-436,193.8,32.4,9.3,25.1,16.7,52.1,98.0,-0.07,sedimentary,sedimentary,490.9
+S175-437,180.8,29.2,8.7,24.0,17.0,49.9,152.3,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S175-438,166.8,25.5,8.2,22.2,17.5,48.5,215.8,-0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S175-439,140.3,24.2,6.8,20.5,18.5,46.3,99.9,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S175-440,126.4,22.8,6.7,17.6,17.9,45.3,101.0,-0.01,plutonic,plutonic,743.4
+S176-420,202.5,21.6,8.2,20.7,26.3,42.0,10.4,-0.03,,,
+S176-421,208.4,23.6,8.4,21.5,25.2,44.1,7.2,-0.01,sedimentary,sedimentary,1.3
+S176-422,221.7,26.0,8.4,22.9,21.7,51.2,9.8,0.01,sedimentary,sedimentary,1.3
+S176-423,238.3,28.0,8.9,25.1,19.9,51.3,14.7,0.0,sedimentary,sedimentary,1.3
+S176-424,252.5,32.0,9.4,28.8,19.5,50.4,24.4,-0.01,volcanic,volcanic,1.3
+S176-425,264.7,33.5,10.1,30.7,16.8,50.0,105.4,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S176-426,280.5,40.1,10.7,32.0,16.8,48.3,161.4,-0.17,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S176-427,278.4,34.9,10.4,33.1,17.4,49.2,259.2,-0.08,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S176-428,265.0,35.2,9.8,27.8,19.0,47.9,397.4,0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S176-429,272.1,38.2,10.4,25.4,18.4,47.2,404.1,0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S176-430,277.4,35.5,10.8,28.6,19.9,44.2,423.2,0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S176-431,280.4,31.6,11.5,33.6,19.2,42.7,246.4,-0.07,plutonic,plutonic,743.4
+S176-432,277.8,32.3,12.4,32.7,19.9,42.3,205.2,-0.04,plutonic,plutonic,743.4
+S176-433,268.8,36.8,12.6,33.0,19.2,44.2,301.6,0.06,plutonic,plutonic,743.4
+S176-434,233.1,31.1,10.9,29.1,19.9,53.2,216.9,-0.08,plutonic,plutonic,743.4
+S176-435,226.6,31.2,11.2,28.4,17.0,55.0,149.8,-0.12,plutonic,plutonic,743.4
+S176-436,190.2,29.4,8.5,22.9,16.6,51.4,206.8,0.11,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S176-437,176.6,28.2,7.8,23.5,17.7,46.0,217.5,-0.07,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S176-438,161.8,26.2,7.6,24.5,18.0,43.2,285.4,-0.16,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S176-439,137.8,24.4,6.7,18.4,17.3,45.7,230.0,-0.16,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S176-440,121.5,22.2,6.2,17.1,17.5,46.2,74.0,0.03,sedimentary,sedimentary,305.4
+S177-414,0.0,,0.0,0.0,,,6.3,-0.09,,,
+S177-418,192.3,20.4,7.7,20.5,,,7.7,0.06,,,
+S177-419,206.6,24.3,8.3,22.2,24.2,42.3,8.6,-0.01,sedimentary,sedimentary,1.3
+S177-420,214.8,24.5,8.4,22.4,23.9,43.4,10.0,0.01,sedimentary,sedimentary,1.3
+S177-421,234.2,26.1,9.1,25.3,21.2,48.7,9.4,-0.0,sedimentary,sedimentary,1.3
+S177-422,244.4,30.0,9.3,26.4,19.5,53.1,21.7,-0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S177-423,253.7,29.0,9.5,25.0,17.8,54.1,29.5,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S177-424,270.1,31.8,10.4,27.8,17.4,49.7,102.9,-0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S177-425,270.6,34.1,10.2,30.2,18.0,48.9,233.8,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S177-426,279.0,40.0,10.4,31.3,17.4,49.4,260.1,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S177-427,275.6,38.6,10.2,29.1,17.5,49.8,298.5,-0.17,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S177-428,268.4,40.5,10.2,28.1,17.6,49.2,341.4,0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S177-429,264.8,39.3,10.9,28.9,18.7,46.6,313.9,0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S177-430,261.1,34.0,11.0,31.3,19.8,43.2,410.6,-0.09,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S177-431,257.3,33.2,11.2,31.1,18.0,42.6,307.8,0.09,plutonic,plutonic,743.4
+S177-432,250.7,35.3,12.4,31.5,18.6,45.1,305.4,-0.02,plutonic,plutonic,743.4
+S177-433,238.8,34.1,11.2,30.2,19.7,50.0,305.4,-0.07,plutonic,plutonic,743.4
+S177-434,209.5,29.5,9.8,27.0,21.6,51.1,158.8,-0.03,plutonic,plutonic,743.4
+S177-435,199.3,26.5,9.6,24.6,17.2,53.0,115.6,-0.01,plutonic,plutonic,743.4
+S177-436,180.2,26.4,8.2,23.7,16.9,49.8,203.7,-0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S177-437,169.5,27.9,7.5,23.8,17.4,46.2,266.1,0.08,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S177-438,155.4,25.3,7.2,21.4,17.6,43.9,307.5,0.07,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S177-439,133.3,22.6,6.7,18.6,17.5,44.1,234.3,-0.09,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S177-440,124.0,23.7,6.2,18.2,17.5,46.8,174.1,0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S178-417,155.6,22.1,6.6,16.3,22.3,48.2,19.0,-0.01,,,
+S178-418,207.8,22.7,8.2,23.6,19.3,51.6,51.9,-0.02,sedimentary,sedimentary,1.3
+S178-419,239.9,26.5,9.2,26.8,20.4,48.0,18.8,-0.02,volcanic,volcanic,1.3
+S178-420,246.4,27.0,9.4,25.9,20.4,48.7,9.8,0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S178-421,266.8,32.4,9.9,29.7,17.6,49.8,16.5,0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S178-422,263.1,33.5,9.7,28.8,18.8,49.7,28.2,0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S178-423,273.6,34.0,10.7,27.1,18.2,49.7,128.9,-0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S178-424,275.6,33.6,10.9,27.0,18.5,48.9,220.1,-0.12,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S178-425,264.4,33.3,10.0,25.6,18.7,50.2,290.6,-0.15,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S178-426,265.2,36.3,10.3,27.9,18.8,49.1,391.0,-0.12,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S178-427,267.6,40.2,10.4,28.7,17.9,48.9,294.4,-0.13,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S178-428,265.2,37.0,11.1,31.1,18.3,46.3,322.0,-0.21,plutonic,plutonic,743.4
+S178-429,260.4,35.5,11.4,31.6,19.1,43.4,325.5,0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S178-430,248.2,35.6,10.8,31.7,18.8,42.9,379.1,0.12,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S178-431,241.7,35.3,10.8,31.7,19.1,44.2,378.0,0.14,plutonic,plutonic,743.4
+S178-432,234.8,33.4,11.6,31.1,19.9,46.0,365.2,0.03,plutonic,plutonic,743.4
+S178-433,221.8,31.5,10.6,28.4,21.6,49.0,248.9,-0.08,plutonic,plutonic,743.4
+S178-434,198.6,28.4,9.3,25.1,23.0,48.8,108.8,-0.01,plutonic,plutonic,743.4
+S178-435,190.8,27.8,9.3,24.3,20.3,51.5,95.9,-0.02,plutonic,plutonic,743.4
+S178-436,172.5,27.7,7.7,23.3,17.7,52.9,110.7,0.0,plutonic,plutonic,743.4
+S178-437,161.1,26.1,7.1,21.9,18.4,50.0,93.0,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S178-438,151.3,25.6,6.8,21.9,17.5,49.1,268.3,-0.11,sedimentary,sedimentary,305.4
+S178-439,134.4,21.5,6.5,17.8,16.8,47.1,181.8,0.02,sedimentary,sedimentary,305.4
+S178-440,128.2,22.5,6.6,16.9,17.8,47.7,235.7,0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S179-416,168.2,21.3,6.8,19.3,21.9,48.5,23.0,-0.01,,,
+S179-417,196.6,20.6,7.7,22.1,20.1,50.0,43.5,0.0,sedimentary,sedimentary,1.3
+S179-418,226.9,22.1,8.7,25.0,18.9,50.3,44.9,-0.04,volcanic,volcanic,1.3
+S179-419,278.2,29.2,10.7,31.1,19.4,49.6,15.9,0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S179-420,292.3,32.3,11.2,32.7,18.7,50.6,24.6,-0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S179-421,312.1,36.9,12.2,34.4,18.0,49.7,100.8,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S179-422,303.7,35.7,12.6,33.9,17.9,49.2,128.2,-0.08,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S179-423,306.8,35.6,12.5,31.8,19.4,48.4,273.8,0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S179-424,292.6,39.6,11.6,29.9,19.7,48.9,266.3,-0.12,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S179-425,262.6,35.8,10.3,27.3,19.2,48.6,327.6,-0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S179-426,256.7,38.7,10.3,28.9,19.1,46.0,372.7,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S179-427,258.9,34.5,10.5,30.8,20.2,45.8,430.6,-0.14,plutonic,plutonic,743.4
+S179-428,242.4,33.4,10.9,29.7,18.9,46.0,461.2,0.02,plutonic,plutonic,743.4
+S179-429,235.2,30.4,11.2,27.9,19.2,44.6,397.1,-0.07,plutonic,plutonic,743.4
+S179-430,223.6,32.9,10.5,29.2,19.1,46.4,454.9,0.07,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S179-431,216.2,30.7,10.3,27.7,22.4,49.6,274.2,-0.08,volcanic,volcanic,1.3
+S179-432,208.4,31.1,9.7,26.6,23.1,48.4,243.7,-0.03,volcanic,volcanic,1.3
+S179-433,196.3,29.2,8.7,24.9,23.6,48.1,124.2,-0.0,plutonic,plutonic,743.4
+S179-434,177.9,28.5,8.2,22.8,21.8,49.1,88.5,0.01,plutonic,plutonic,743.4
+S179-435,176.6,28.1,8.5,24.3,19.7,51.3,82.1,-0.04,plutonic,plutonic,743.4
+S179-436,159.1,24.8,7.3,20.4,19.4,50.6,66.4,-0.03,plutonic,plutonic,743.4
+S179-437,151.4,25.0,7.1,20.1,18.6,50.3,93.6,-0.02,sedimentary,sedimentary,305.4
+S179-438,145.0,26.9,6.8,20.7,17.0,50.6,175.2,-0.01,sedimentary,sedimentary,305.4
+S179-439,135.2,24.9,6.4,19.6,16.0,47.8,154.7,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S179-440,130.9,27.0,6.3,19.1,18.1,46.4,161.8,0.0,plutonic,plutonic,743.4
+S180-415,0.0,,0.0,0.0,23.4,43.7,2.9,-0.03,,,
+S180-416,178.3,17.0,7.2,19.6,20.7,48.9,44.9,-0.01,volcanic,volcanic,1.3
+S180-417,199.2,19.2,7.8,21.4,19.5,49.8,52.8,-0.03,volcanic,volcanic,1.3
+S180-418,226.4,22.2,8.7,23.7,18.9,48.6,31.9,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S180-419,274.7,26.3,11.4,28.7,17.5,50.3,76.3,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S180-420,275.4,31.0,11.8,30.8,19.2,51.5,90.3,0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S180-421,298.1,34.1,12.5,32.0,18.9,50.0,203.3,-0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S180-422,306.4,34.5,13.0,34.5,18.7,49.5,223.1,-0.13,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S180-423,286.1,37.7,11.9,31.2,20.8,47.2,295.9,-0.24,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S180-424,265.4,36.3,11.5,28.6,20.2,46.7,389.8,0.08,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S180-425,238.7,33.9,9.5,27.6,20.6,46.6,353.8,-0.1,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S180-426,220.4,31.2,9.2,28.8,19.5,46.6,309.9,-0.1,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S180-427,220.4,30.5,9.6,29.4,22.6,48.2,164.8,-0.13,plutonic,plutonic,743.4
+S180-428,222.4,31.4,10.6,28.9,21.6,50.7,231.3,0.12,plutonic,plutonic,743.4
+S180-429,212.4,30.0,10.6,27.5,21.5,50.8,161.1,-0.07,plutonic,plutonic,743.4
+S180-430,208.9,28.9,10.1,26.2,22.6,50.1,188.8,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S180-431,201.7,29.6,9.3,25.6,26.8,47.1,87.8,0.02,volcanic,volcanic,1.3
+S180-432,192.5,31.4,8.9,24.0,23.6,48.0,179.6,-0.03,volcanic,volcanic,1.3
+S180-433,183.3,30.2,8.4,24.5,21.9,48.6,114.2,-0.09,plutonic,plutonic,743.4
+S180-434,172.0,27.4,7.7,23.0,21.6,48.5,55.9,0.01,plutonic,plutonic,743.4
+S180-435,166.6,26.7,7.5,20.6,19.2,49.9,72.8,-0.03,plutonic,plutonic,743.4
+S180-436,154.6,25.0,7.0,18.7,19.8,50.6,63.8,-0.09,plutonic,plutonic,743.4
+S180-437,146.1,26.7,6.7,18.7,17.2,51.8,95.8,0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S180-438,138.3,26.3,6.6,19.5,16.0,50.6,152.2,0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S180-439,126.8,25.7,5.9,19.0,16.8,47.1,179.1,-0.11,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S180-440,122.7,25.4,5.9,17.5,16.5,48.5,175.1,-0.07,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S181-415,168.1,19.5,6.6,18.8,20.8,47.6,35.2,-0.01,,,
+S181-416,194.2,20.5,7.3,20.0,18.6,52.0,76.4,0.0,volcanic,volcanic,1.3
+S181-417,225.5,23.3,8.5,22.8,19.1,49.5,77.8,-0.08,volcanic,volcanic,1.3
+S181-418,248.3,25.3,9.4,25.2,18.3,49.2,149.4,-0.14,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S181-419,300.9,27.1,12.2,30.2,18.3,49.0,196.8,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S181-420,306.9,36.1,12.5,33.5,18.5,49.3,140.3,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S181-421,318.4,38.7,13.0,33.3,19.3,47.9,315.8,0.18,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S181-422,322.6,38.0,13.4,34.7,21.7,45.6,407.5,-0.09,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S181-423,297.0,38.9,12.6,33.1,22.4,44.7,366.9,-0.18,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S181-424,260.2,34.0,11.0,29.2,21.4,48.5,435.1,0.07,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S181-425,223.9,33.2,9.3,29.2,21.8,47.3,355.6,0.19,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S181-426,203.3,32.4,8.7,28.0,22.1,50.0,184.8,-0.09,plutonic,plutonic,743.4
+S181-427,213.8,32.3,9.4,28.5,22.2,51.0,50.6,-0.05,plutonic,plutonic,743.4
+S181-428,219.7,35.1,10.1,29.8,22.5,51.0,89.1,-0.1,plutonic,plutonic,743.4
+S181-429,208.2,33.5,9.8,26.4,23.0,51.1,77.8,-0.04,plutonic,plutonic,743.4
+S181-430,204.4,31.3,9.6,25.3,23.8,49.2,66.7,-0.04,plutonic,plutonic,743.4
+S181-431,195.2,30.9,8.8,24.6,24.1,48.3,168.0,-0.08,volcanic,volcanic,1.3
+S181-432,187.0,30.9,8.6,23.1,22.4,48.9,128.8,0.01,plutonic,plutonic,743.4
+S181-433,177.5,29.0,8.5,22.4,20.6,51.4,87.3,-0.07,plutonic,plutonic,743.4
+S181-434,168.7,30.9,7.6,23.3,21.0,49.9,93.1,-0.01,plutonic,plutonic,743.4
+S181-435,167.6,29.8,7.3,22.8,19.2,50.4,79.4,-0.04,plutonic,plutonic,743.4
+S181-436,154.7,27.4,6.9,20.0,18.6,51.9,73.4,0.01,plutonic,plutonic,743.4
+S181-437,147.6,29.9,6.8,19.7,16.5,52.0,86.0,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S181-438,137.7,29.3,6.5,18.8,15.9,51.0,171.2,-0.09,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S181-439,122.1,23.9,6.1,16.8,17.6,47.7,145.5,-0.11,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S181-440,120.4,24.1,5.9,16.6,17.3,48.9,160.5,-0.07,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S182-414,159.8,20.2,6.7,19.0,22.3,43.8,4.8,-0.05,,,
+S182-415,178.4,21.4,7.2,18.5,19.3,49.7,41.3,0.01,volcanic,volcanic,1.3
+S182-416,221.7,22.7,8.2,21.5,19.2,52.7,66.1,-0.02,volcanic,volcanic,1.3
+S182-417,254.2,27.1,9.3,24.0,21.9,47.6,106.3,-0.01,volcanic,volcanic,1.3
+S182-418,279.1,31.5,10.6,26.9,20.2,46.8,239.4,-0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S182-419,324.8,35.8,12.7,32.5,19.4,46.3,304.8,0.08,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S182-420,311.5,33.8,11.9,32.6,20.0,46.3,309.7,0.08,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S182-421,323.2,38.1,12.8,34.7,21.5,44.9,384.9,-0.07,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S182-422,327.2,37.8,13.0,36.1,23.4,43.6,376.4,-0.08,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S182-423,306.4,38.2,12.8,34.0,22.3,46.4,453.3,-0.15,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S182-424,246.4,35.2,10.3,30.4,21.1,49.3,159.3,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S182-425,219.0,32.8,9.4,29.6,22.8,50.6,81.9,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S182-426,199.3,28.8,8.8,26.9,21.6,51.0,48.6,-0.05,plutonic,plutonic,743.4
+S182-427,229.6,35.1,10.4,29.6,22.8,50.1,43.0,-0.05,plutonic,plutonic,743.4
+S182-428,224.2,35.7,10.1,29.7,23.9,50.4,45.1,-0.06,plutonic,plutonic,743.4
+S182-429,203.7,32.8,8.8,26.6,23.4,51.7,56.5,-0.02,plutonic,plutonic,743.4
+S182-430,189.2,31.9,8.2,25.2,23.1,50.5,61.8,-0.05,plutonic,plutonic,743.4
+S182-431,181.0,32.7,7.6,25.5,22.8,49.4,107.7,0.02,plutonic,plutonic,743.4
+S182-432,179.3,31.3,7.8,24.3,21.1,50.8,97.6,-0.09,plutonic,plutonic,743.4
+S182-433,169.7,29.0,7.6,22.7,20.0,51.5,74.0,0.02,plutonic,plutonic,743.4
+S182-434,160.8,27.9,7.2,21.1,19.2,50.8,89.0,-0.06,plutonic,plutonic,743.4
+S182-435,158.6,29.5,6.7,22.0,17.5,51.5,112.0,-0.05,plutonic,plutonic,743.4
+S182-436,148.8,29.6,6.4,22.0,17.5,52.5,104.3,-0.08,plutonic,plutonic,743.4
+S182-437,141.3,25.8,6.4,21.0,17.3,51.2,79.1,-0.12,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S182-438,133.7,23.9,6.1,20.4,16.1,51.4,106.2,0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S182-439,115.3,19.8,5.9,16.8,17.3,48.8,154.9,0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S182-440,112.8,19.2,5.7,16.8,17.9,48.8,116.3,-0.12,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S183-414,166.0,18.9,7.0,16.7,21.3,48.1,16.4,-0.0,,,
+S183-415,187.9,21.9,7.4,18.3,18.8,51.6,54.5,-0.04,volcanic,volcanic,1.3
+S183-416,235.4,25.0,8.5,20.6,21.7,49.9,59.6,-0.0,volcanic,volcanic,1.3
+S183-417,268.9,27.9,9.7,22.2,21.3,48.2,133.6,-0.03,volcanic,volcanic,1.3
+S183-418,294.8,30.8,11.1,25.0,21.2,47.4,188.2,-0.12,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S183-419,325.4,34.6,12.0,29.7,20.4,46.5,198.0,-0.08,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S183-420,297.8,31.4,11.4,30.2,21.2,45.8,274.6,-0.16,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S183-421,300.3,36.6,11.9,32.3,22.4,44.8,304.0,0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S183-422,303.7,37.1,12.3,34.3,23.0,43.2,383.7,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S183-423,287.9,36.3,11.7,32.6,22.4,48.4,281.0,0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S183-424,241.2,32.5,10.6,28.3,24.0,46.9,150.5,-0.1,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S183-425,224.4,33.1,9.3,29.8,23.2,50.9,83.2,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S183-426,212.9,30.9,9.3,31.0,21.9,51.2,49.2,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S183-427,214.7,31.8,9.4,29.0,24.1,48.9,33.1,0.0,plutonic,plutonic,743.4
+S183-428,213.9,33.9,9.3,26.8,23.4,51.3,57.8,-0.05,plutonic,plutonic,743.4
+S183-429,199.2,32.9,8.6,26.4,22.5,51.9,44.1,-0.02,plutonic,plutonic,743.4
+S183-430,185.4,27.8,8.3,24.8,22.1,51.1,40.7,-0.04,plutonic,plutonic,743.4
+S183-431,177.1,28.4,7.8,23.9,21.2,50.5,79.1,-0.04,plutonic,plutonic,743.4
+S183-432,169.6,26.1,7.5,22.4,20.2,50.7,69.4,-0.03,plutonic,plutonic,743.4
+S183-433,165.2,31.4,7.1,22.7,19.4,50.3,71.2,-0.03,plutonic,plutonic,743.4
+S183-434,157.8,27.7,7.1,21.8,18.0,51.4,94.7,-0.07,plutonic,plutonic,743.4
+S183-435,148.6,29.3,6.4,22.4,16.1,50.0,109.9,-0.02,plutonic,plutonic,743.4
+S183-436,138.1,25.9,5.9,21.9,16.7,50.9,150.3,-0.09,plutonic,plutonic,743.4
+S183-437,130.7,24.1,6.0,20.0,17.2,51.5,124.1,-0.03,plutonic,plutonic,743.4
+S183-438,124.8,23.4,5.9,19.7,16.1,49.5,126.4,-0.12,plutonic,plutonic,743.4
+S183-439,113.8,21.3,5.6,17.5,17.1,47.3,158.3,-0.14,plutonic,plutonic,743.4
+S183-440,110.5,20.5,5.5,17.4,18.4,48.5,151.6,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S184-410,118.7,17.0,5.9,12.6,,,2.8,0.04,,,
+S184-412,132.4,14.8,6.1,13.9,,,4.5,-0.01,,,
+S184-414,184.8,21.4,7.4,18.1,21.6,48.2,19.9,-0.01,sedimentary,sedimentary,1.3
+S184-415,208.9,24.1,8.0,19.2,19.1,52.5,46.3,-0.01,volcanic,volcanic,1.3
+S184-416,259.5,28.0,9.4,22.3,21.9,50.1,40.9,-0.02,volcanic,volcanic,1.3
+S184-417,288.3,30.6,10.6,24.2,21.2,48.7,138.2,-0.08,volcanic,volcanic,1.3
+S184-418,314.7,29.9,11.6,26.8,22.3,46.5,156.2,-0.18,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S184-419,336.8,31.8,12.4,31.5,20.5,46.9,236.6,0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S184-420,301.1,31.1,11.3,30.7,20.9,48.1,191.3,-0.18,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S184-421,296.1,34.8,11.5,31.4,21.4,46.0,173.2,0.07,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S184-422,280.1,34.6,11.6,29.9,23.4,43.7,390.0,0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S184-423,265.0,33.3,11.4,30.0,23.1,45.3,392.3,-0.08,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S184-424,230.7,32.0,9.8,29.2,23.3,46.7,297.5,0.12,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S184-425,222.7,32.5,10.1,30.0,22.5,51.3,49.8,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S184-426,203.7,29.1,9.3,27.3,22.2,50.9,49.1,-0.03,plutonic,plutonic,743.4
+S184-427,195.6,29.3,8.8,25.0,22.7,50.8,55.4,-0.02,plutonic,plutonic,743.4
+S184-428,197.3,35.1,8.4,28.4,21.7,52.9,64.2,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S184-429,187.8,27.0,8.5,26.3,22.3,50.5,53.1,-0.03,plutonic,plutonic,743.4
+S184-430,183.8,29.1,8.4,24.1,21.7,49.5,17.9,-0.0,plutonic,plutonic,743.4
+S184-431,175.5,32.0,7.6,22.8,20.4,51.8,62.4,-0.02,plutonic,plutonic,743.4
+S184-432,235.4,38.6,9.7,30.3,19.7,50.7,60.5,-0.03,plutonic,plutonic,743.4
+S184-433,252.5,40.3,10.0,34.5,19.2,50.7,55.7,-0.05,plutonic,plutonic,743.4
+S184-434,269.7,41.6,10.5,35.6,18.7,50.8,55.2,-0.04,plutonic,plutonic,743.4
+S184-435,139.9,27.4,5.9,22.0,15.8,51.0,140.2,-0.12,plutonic,plutonic,743.4
+S184-436,131.5,23.9,5.7,20.1,15.7,49.4,133.2,-0.06,plutonic,plutonic,743.4
+S184-437,122.5,21.4,5.6,18.1,15.8,49.6,175.4,-0.03,plutonic,plutonic,743.4
+S184-438,118.0,22.2,5.6,18.5,17.2,48.8,143.4,-0.02,plutonic,plutonic,743.4
+S184-439,108.6,18.9,5.3,17.0,17.9,48.0,150.8,-0.09,plutonic,plutonic,743.4
+S184-440,108.5,20.6,5.1,17.7,18.4,48.7,181.2,-0.14,plutonic,plutonic,743.4
+S185-410,128.6,18.8,6.2,13.8,,,22.9,0.0,,,
+S185-412,159.0,19.0,6.4,16.9,25.6,42.6,3.8,-0.0,,,
+S185-413,175.2,17.7,7.0,17.0,25.2,43.4,6.4,0.0,,,
+S185-414,203.7,21.8,8.0,21.0,21.8,48.3,23.8,-0.01,sedimentary,sedimentary,1.3
+S185-415,218.8,25.5,8.3,22.2,21.3,50.2,57.6,-0.0,volcanic,volcanic,1.3
+S185-416,262.8,31.8,9.8,24.5,21.4,48.0,84.0,0.02,volcanic,volcanic,1.3
+S185-417,281.0,32.8,10.5,26.4,22.7,45.6,202.9,-0.12,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S185-418,285.4,27.8,10.6,26.7,24.3,44.7,151.3,0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S185-419,301.2,29.5,11.1,30.9,23.2,45.0,164.6,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S185-420,299.4,31.8,11.3,32.3,22.6,46.2,163.1,0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S185-421,282.4,31.3,11.3,30.8,22.1,44.6,264.7,-0.08,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S185-422,272.0,31.9,11.7,30.8,23.2,43.5,458.2,-0.14,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S185-423,266.2,33.6,11.7,32.1,23.5,47.3,352.2,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S185-424,226.0,33.8,10.1,30.2,22.8,51.8,102.4,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S185-425,227.4,31.1,10.6,28.8,21.7,51.8,60.2,-0.0,plutonic,plutonic,743.4
+S185-426,206.7,28.6,9.4,26.7,20.9,52.5,62.2,-0.04,plutonic,plutonic,743.4
+S185-427,193.5,31.7,8.7,27.2,21.8,51.1,45.1,-0.01,plutonic,plutonic,743.4
+S185-428,193.7,28.4,8.5,26.5,20.6,51.9,65.3,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S185-429,189.4,29.0,8.3,24.1,22.0,49.5,43.1,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S185-430,185.5,30.8,8.1,25.7,21.5,49.3,19.2,-0.02,plutonic,plutonic,743.4
+S185-431,183.1,32.9,7.6,27.1,19.0,52.1,53.1,0.0,plutonic,plutonic,743.4
+S185-432,206.5,37.6,7.9,28.6,19.0,50.8,54.9,-0.06,plutonic,plutonic,743.4
+S185-433,252.2,47.3,8.8,38.1,18.8,50.0,71.8,0.01,plutonic,plutonic,743.4
+S185-434,273.7,51.4,9.6,41.9,18.7,50.1,82.6,-0.03,plutonic,plutonic,743.4
+S185-435,140.6,23.5,5.8,21.6,17.4,50.1,139.3,0.01,plutonic,plutonic,743.4
+S185-436,135.8,27.9,5.5,24.4,18.6,44.7,64.7,0.0,plutonic,plutonic,743.4
+S185-437,126.8,21.8,5.5,19.2,17.4,44.3,71.7,-0.09,plutonic,plutonic,743.4
+S185-438,123.1,22.5,5.6,19.0,17.2,47.9,131.7,0.02,plutonic,plutonic,743.4
+S185-439,109.9,19.4,5.4,17.6,17.8,48.3,124.5,-0.09,plutonic,plutonic,743.4
+S185-440,108.5,20.8,5.3,17.8,18.4,49.0,182.6,-0.11,plutonic,plutonic,743.4
+S186-408,0.0,,0.0,0.0,,,2.1,0.0,,,
+S186-412,154.5,18.3,6.6,14.9,24.9,42.9,3.9,0.0,sedimentary,sedimentary,1.3
+S186-413,169.9,16.8,6.9,16.4,23.9,44.1,7.0,-0.01,sedimentary,sedimentary,1.3
+S186-414,202.6,19.9,7.9,20.7,21.8,47.3,16.1,0.03,sedimentary,sedimentary,1.3
+S186-415,222.4,26.5,8.3,23.8,22.7,47.0,33.9,-0.02,sedimentary,sedimentary,1.3
+S186-416,262.1,30.7,9.7,26.0,23.3,45.8,89.4,-0.02,sedimentary,sedimentary,1.3
+S186-417,275.0,26.8,10.4,24.7,23.3,44.9,228.4,-0.13,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S186-418,281.1,28.0,10.6,27.7,24.4,44.2,147.2,-0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S186-419,293.6,28.0,10.6,29.3,24.5,43.6,182.3,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S186-420,289.9,29.3,11.0,31.0,23.1,44.0,104.2,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S186-421,272.3,30.0,11.5,29.4,23.7,43.0,372.1,0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S186-422,260.5,28.7,11.6,28.3,23.0,47.9,367.6,0.07,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S186-423,251.2,30.3,11.4,28.6,23.6,49.2,201.9,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S186-424,208.2,26.4,9.6,26.4,22.7,51.2,102.0,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S186-425,210.9,27.5,9.7,26.1,21.5,51.8,84.3,-0.05,plutonic,plutonic,743.4
+S186-426,188.1,25.3,9.0,22.9,20.2,49.8,45.7,-0.02,plutonic,plutonic,743.4
+S186-427,176.8,22.8,8.0,20.0,20.2,51.4,48.0,-0.02,plutonic,plutonic,743.4
+S186-428,180.8,29.3,8.1,23.0,20.6,51.1,50.3,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S186-429,178.9,32.4,7.9,23.1,20.1,50.2,37.1,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S186-430,174.2,28.0,8.0,24.1,19.1,49.9,34.4,-0.06,plutonic,plutonic,743.4
+S186-431,171.3,27.9,7.5,25.2,18.0,51.0,66.7,-0.05,plutonic,plutonic,743.4
+S186-432,160.6,23.3,7.0,23.2,17.8,51.5,82.8,-0.06,plutonic,plutonic,743.4
+S186-433,152.3,23.0,6.5,22.9,18.4,49.4,86.7,-0.04,plutonic,plutonic,743.4
+S186-434,147.9,23.9,6.1,22.6,18.2,50.1,112.2,-0.01,plutonic,plutonic,743.4
+S186-435,137.4,23.1,5.8,21.1,18.2,48.6,116.5,-0.1,plutonic,plutonic,743.4
+S186-436,131.7,26.5,5.5,21.6,21.6,41.9,18.6,-0.01,plutonic,plutonic,743.4
+S186-437,124.6,25.9,5.6,18.4,21.1,43.3,20.3,0.0,plutonic,plutonic,743.4
+S186-438,117.7,23.7,5.5,17.4,19.3,47.7,80.6,-0.05,plutonic,plutonic,743.4
+S186-439,111.3,23.0,5.2,17.1,18.0,48.1,116.4,-0.06,plutonic,plutonic,743.4
+S186-440,108.1,22.7,4.9,16.6,17.1,48.1,151.2,-0.05,plutonic,plutonic,743.4
+S187-412,156.2,17.7,6.6,15.0,23.8,44.7,5.1,-0.01,sedimentary,sedimentary,1.3
+S187-413,182.6,19.5,7.4,17.0,23.9,45.5,8.7,0.01,sedimentary,sedimentary,1.3
+S187-414,218.0,21.3,8.3,19.0,22.7,46.6,13.7,-0.02,sedimentary,sedimentary,1.3
+S187-415,224.4,26.2,8.6,22.6,22.5,46.9,46.7,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S187-416,261.1,30.6,9.7,26.3,22.0,46.8,196.5,0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S187-417,267.0,29.5,9.9,26.0,22.0,46.5,204.1,-0.07,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S187-418,271.8,28.8,10.1,25.5,24.9,44.1,142.9,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S187-419,286.3,32.5,10.3,28.2,25.5,42.2,127.2,-0.08,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S187-420,280.0,30.0,10.4,27.2,24.2,42.7,172.6,-0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S187-421,264.7,28.0,11.0,26.5,23.5,43.0,414.7,-0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S187-422,255.1,33.5,11.1,26.8,22.5,49.5,318.7,0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S187-423,241.4,33.0,11.1,26.8,24.1,48.2,241.0,0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S187-424,202.4,25.6,9.3,23.4,23.6,49.0,133.1,-0.1,plutonic,plutonic,743.4
+S187-425,210.8,26.2,9.9,25.3,21.4,50.4,53.4,-0.04,plutonic,plutonic,743.4
+S187-426,191.3,24.5,8.9,23.4,21.2,48.3,41.3,-0.04,plutonic,plutonic,743.4
+S187-427,183.3,24.0,8.1,23.1,20.0,50.4,52.5,-0.09,plutonic,plutonic,743.4
+S187-428,178.6,25.1,8.0,24.1,19.7,50.4,34.3,-0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S187-429,174.3,23.6,8.1,20.7,18.9,52.9,48.8,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S187-430,165.5,27.2,7.5,22.8,17.1,52.3,47.3,-0.07,plutonic,plutonic,743.4
+S187-431,160.3,27.0,7.2,25.2,19.0,50.2,45.3,-0.09,plutonic,plutonic,743.4
+S187-432,157.6,25.5,6.6,25.2,19.0,49.4,31.7,-0.01,plutonic,plutonic,743.4
+S187-433,149.3,22.2,6.6,23.1,19.4,47.1,67.6,-0.01,plutonic,plutonic,743.4
+S187-434,143.3,24.0,6.1,22.8,18.2,50.1,121.5,-0.09,plutonic,plutonic,743.4
+S187-435,135.9,25.8,5.6,24.6,18.2,48.6,108.2,-0.05,plutonic,plutonic,743.4
+S187-436,127.9,25.4,5.4,22.4,19.0,45.7,88.3,-0.03,plutonic,plutonic,743.4
+S187-437,120.4,23.1,5.4,19.7,21.6,47.7,41.4,-0.01,plutonic,plutonic,743.4
+S187-438,114.9,23.2,5.2,18.4,17.7,50.7,103.9,-0.06,plutonic,plutonic,743.4
+S187-439,109.2,22.6,5.0,16.3,18.9,49.3,93.1,-0.03,plutonic,plutonic,743.4
+S187-440,106.7,18.8,5.1,16.0,18.7,48.8,127.6,-0.1,plutonic,plutonic,743.4
+S188-408,0.0,,0.0,0.0,,,3.2,0.0,,,
+S188-411,146.9,15.6,6.3,13.3,23.1,44.7,3.1,0.01,,,
+S188-412,166.6,18.9,6.8,14.9,23.1,46.3,7.4,0.02,sedimentary,sedimentary,1.3
+S188-413,188.2,20.7,7.5,16.2,22.4,47.3,12.2,0.01,sedimentary,sedimentary,1.3
+S188-414,226.3,24.9,8.7,19.8,22.6,46.4,18.0,-0.0,sedimentary,sedimentary,1.3
+S188-415,224.8,26.1,8.8,21.8,22.8,46.2,81.6,0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S188-416,270.1,30.3,10.1,26.9,22.7,46.1,216.3,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S188-417,284.8,31.9,10.5,27.3,25.8,43.5,225.1,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S188-418,283.7,33.2,10.2,26.4,27.1,41.9,159.4,-0.11,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S188-419,303.9,35.2,11.4,26.8,26.1,41.6,120.4,0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S188-420,294.3,33.5,11.7,28.6,24.5,42.1,245.8,0.01,plutonic,plutonic,743.4
+S188-421,273.0,32.0,11.9,27.2,23.9,45.5,411.7,-0.1,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S188-422,264.9,38.0,11.7,30.1,22.6,50.8,254.0,0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S188-423,238.8,31.0,11.4,24.9,23.7,49.0,169.2,0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S188-424,198.4,23.1,9.7,22.0,23.8,49.5,163.9,-0.08,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S188-425,210.3,25.3,9.8,24.4,21.6,50.1,99.1,-0.04,plutonic,plutonic,743.4
+S188-426,195.1,26.5,8.6,24.4,21.7,49.7,61.5,-0.06,plutonic,plutonic,743.4
+S188-427,179.7,23.2,8.0,23.6,20.5,50.5,46.1,-0.06,plutonic,plutonic,743.4
+S188-428,176.2,25.6,7.8,24.2,19.8,49.4,28.8,-0.01,plutonic,plutonic,743.4
+S188-429,173.5,22.3,7.6,23.5,17.9,51.9,57.8,-0.11,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S188-430,163.5,22.6,7.3,22.6,18.2,51.5,45.9,0.02,plutonic,plutonic,743.4
+S188-431,155.3,23.9,6.9,22.7,18.5,48.4,59.9,-0.03,plutonic,plutonic,743.4
+S188-432,149.7,22.8,6.5,23.9,20.4,44.6,59.2,-0.05,plutonic,plutonic,743.4
+S188-433,146.9,22.4,6.1,23.8,19.6,46.3,69.5,-0.02,plutonic,plutonic,743.4
+S188-434,145.8,24.3,6.2,24.9,18.5,48.2,107.9,-0.02,plutonic,plutonic,743.4
+S188-435,136.5,26.7,6.0,23.7,18.5,46.3,140.2,-0.07,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S188-436,126.2,26.0,5.6,22.3,23.0,40.6,46.1,0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S188-437,121.1,26.0,5.3,21.1,22.7,45.3,38.5,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S188-438,118.6,24.2,5.4,19.3,18.1,50.2,123.6,0.05,plutonic,plutonic,743.4
+S188-439,108.5,23.5,5.2,16.9,18.6,47.9,93.6,-0.09,plutonic,plutonic,743.4
+S188-440,104.9,22.3,5.0,16.0,19.1,48.0,120.9,0.0,sedimentary,sedimentary,305.4
+S189-411,142.9,16.5,6.3,13.5,23.0,46.4,6.0,0.01,sedimentary,sedimentary,1.3
+S189-412,168.9,19.8,6.9,15.5,21.8,49.1,9.5,-0.02,sedimentary,sedimentary,1.3
+S189-413,197.5,22.7,8.0,16.6,21.6,47.9,15.4,0.01,sedimentary,sedimentary,1.3
+S189-414,227.0,25.2,8.9,19.4,22.2,45.7,42.1,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S189-415,228.9,25.4,8.9,21.8,22.6,45.8,109.7,-0.08,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S189-416,275.0,32.6,10.0,28.2,24.1,44.5,219.5,-0.08,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S189-417,297.1,33.9,10.5,28.0,27.0,42.5,179.6,0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S189-418,291.6,32.9,10.5,28.2,27.7,39.4,125.8,-0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S189-419,310.9,33.8,11.5,27.8,26.4,40.3,220.8,-0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S189-420,307.6,35.2,12.1,29.2,24.2,42.0,366.1,-0.05,plutonic,plutonic,743.4
+S189-421,283.1,32.0,12.3,27.2,23.0,49.8,341.2,-0.04,plutonic,plutonic,743.4
+S189-422,272.3,33.7,12.0,28.5,23.4,49.6,149.7,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S189-423,237.5,28.9,11.2,25.9,23.4,49.1,116.0,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S189-424,193.2,25.4,8.9,23.5,22.5,50.3,164.2,-0.15,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S189-425,206.9,24.6,9.7,24.5,21.3,49.1,78.9,0.01,plutonic,plutonic,743.4
+S189-426,189.0,25.8,8.3,25.3,21.0,49.7,44.6,0.0,plutonic,plutonic,743.4
+S189-427,175.8,25.0,7.4,25.7,20.1,51.1,54.5,0.0,plutonic,plutonic,743.4
+S189-428,172.2,26.1,7.4,26.8,20.0,50.1,36.9,-0.01,plutonic,plutonic,743.4
+S189-429,167.4,24.0,7.4,23.4,18.3,50.6,51.7,0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S189-430,159.6,23.1,7.0,21.7,18.2,50.4,59.0,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S189-431,152.2,23.3,6.7,21.4,18.3,47.9,61.5,-0.09,plutonic,plutonic,743.4
+S189-432,146.8,22.9,6.5,22.8,19.1,45.0,76.1,-0.07,plutonic,plutonic,743.4
+S189-433,142.6,24.4,6.1,23.5,21.1,43.2,56.0,0.01,plutonic,plutonic,743.4
+S189-434,140.9,24.7,5.8,23.7,19.0,49.1,130.3,-0.15,plutonic,plutonic,743.4
+S189-435,137.1,24.5,5.8,23.2,18.8,46.0,120.7,-0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S189-436,126.1,24.5,5.8,19.5,23.4,38.0,46.4,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S189-437,121.7,22.3,5.6,18.5,21.7,42.4,53.3,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S189-438,114.2,23.3,5.5,17.5,19.1,50.3,97.7,0.02,sedimentary,sedimentary,305.4
+S189-439,104.6,21.4,5.3,15.8,18.0,48.0,122.0,-0.1,sedimentary,sedimentary,305.4
+S189-440,102.3,20.2,5.1,15.1,18.2,48.5,121.0,-0.1,sedimentary,sedimentary,305.4
+S190-411,146.1,17.4,6.3,13.5,23.8,45.4,5.7,-0.02,,,
+S190-412,176.2,20.9,7.3,15.0,21.9,48.8,10.6,0.01,sedimentary,sedimentary,1.3
+S190-413,191.3,22.0,8.0,16.1,21.2,46.8,24.8,0.03,sedimentary,sedimentary,1.3
+S190-414,212.5,23.4,8.4,17.8,22.2,46.4,53.7,-0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S190-415,209.4,22.1,8.3,20.5,23.3,44.9,99.3,-0.09,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S190-416,251.7,27.7,9.2,23.7,23.7,44.4,175.5,-0.11,plutonic,plutonic,743.4
+S190-417,276.4,31.2,9.9,27.3,27.7,40.9,232.9,-0.01,plutonic,plutonic,743.4
+S190-418,279.2,28.3,10.5,28.9,27.8,39.6,69.2,-0.1,plutonic,plutonic,743.4
+S190-419,306.0,35.9,12.4,32.0,26.6,40.6,167.9,-0.08,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S190-420,292.3,34.4,11.7,30.4,25.2,42.9,384.3,-0.16,plutonic,plutonic,743.4
+S190-421,266.2,29.2,12.0,28.4,22.6,51.3,235.1,-0.09,plutonic,plutonic,743.4
+S190-422,263.2,33.1,12.4,30.1,23.0,49.3,168.4,-0.09,plutonic,plutonic,743.4
+S190-423,238.0,33.8,11.7,28.1,23.6,49.1,124.4,0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S190-424,194.2,25.4,9.2,25.3,22.3,51.0,144.6,-0.08,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S190-425,206.5,27.7,9.7,26.7,21.4,48.8,95.0,0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S190-426,183.1,25.5,8.0,25.8,20.8,48.8,42.3,-0.02,plutonic,plutonic,743.4
+S190-427,167.7,24.2,6.9,25.1,20.2,49.5,43.5,-0.04,plutonic,plutonic,743.4
+S190-428,165.6,25.5,7.2,25.0,19.9,49.9,59.1,-0.08,plutonic,plutonic,743.4
+S190-429,159.6,26.4,6.9,22.5,18.7,50.8,78.3,-0.0,plutonic,plutonic,743.4
+S190-430,153.2,24.9,6.5,23.0,18.5,49.6,60.8,-0.03,plutonic,plutonic,743.4
+S190-431,146.6,23.3,6.4,22.1,20.1,46.7,31.4,-0.01,plutonic,plutonic,743.4
+S190-432,140.5,22.3,6.3,21.8,18.7,46.7,90.0,-0.02,plutonic,plutonic,743.4
+S190-433,136.8,22.5,6.2,21.4,19.8,43.2,95.9,-0.05,plutonic,plutonic,743.4
+S190-434,128.2,22.2,5.8,21.4,19.0,48.6,134.2,-0.11,plutonic,plutonic,743.4
+S190-435,124.6,23.2,5.4,22.1,22.5,41.9,42.5,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S190-436,121.9,22.2,5.4,20.8,24.7,37.2,39.4,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S190-437,117.3,19.8,5.5,18.0,21.2,42.6,86.7,0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S190-438,114.2,21.3,5.5,17.5,19.0,48.8,119.0,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S190-439,104.3,19.0,5.5,16.1,18.7,46.6,150.8,-0.06,sedimentary,sedimentary,305.4
+S190-440,102.3,18.3,5.4,16.9,18.8,47.6,108.1,0.02,sedimentary,sedimentary,305.4
+S191-410,134.1,14.8,6.0,12.4,23.8,42.6,7.1,-0.03,,,
+S191-411,151.7,14.9,6.5,13.1,23.5,46.7,9.3,0.0,sedimentary,sedimentary,1.3
+S191-412,182.0,18.2,7.3,15.7,21.2,50.6,12.1,0.01,sedimentary,sedimentary,1.3
+S191-413,199.9,23.5,8.0,18.2,21.0,50.2,31.2,-0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S191-414,227.6,21.8,8.8,19.0,22.2,46.7,53.2,0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S191-415,225.8,22.0,8.6,21.4,22.9,46.0,80.4,-0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S191-416,266.4,27.8,9.5,25.4,25.1,42.9,347.6,-0.08,plutonic,plutonic,743.4
+S191-417,281.9,31.9,10.0,30.9,25.8,41.4,194.5,-0.11,plutonic,plutonic,743.4
+S191-418,284.1,29.7,10.8,28.3,26.0,41.1,138.9,-0.18,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S191-419,303.8,35.0,12.9,32.1,25.9,40.5,262.7,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S191-420,287.8,36.7,12.0,30.8,25.5,43.8,413.6,-0.04,plutonic,plutonic,743.4
+S191-421,256.9,31.1,11.6,29.2,22.8,51.1,175.9,0.03,plutonic,plutonic,743.4
+S191-422,251.5,30.3,12.3,28.6,23.2,49.1,159.4,-0.08,plutonic,plutonic,743.4
+S191-423,227.8,27.7,10.8,25.8,23.5,50.0,180.0,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S191-424,186.6,22.0,8.6,22.8,22.8,50.6,119.0,-0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S191-425,196.9,25.0,9.3,25.5,21.7,49.8,111.9,-0.15,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S191-426,179.3,20.9,8.3,22.4,22.9,48.8,63.3,-0.09,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S191-427,165.1,21.4,7.3,22.7,21.4,49.1,57.9,-0.11,plutonic,plutonic,743.4
+S191-428,156.9,22.8,6.8,21.8,19.9,50.1,66.4,-0.06,plutonic,plutonic,743.4
+S191-429,151.9,23.0,6.6,21.3,18.9,49.7,68.5,-0.08,plutonic,plutonic,743.4
+S191-430,149.4,24.6,6.4,24.4,18.3,49.7,98.2,-0.05,plutonic,plutonic,743.4
+S191-431,147.0,22.1,6.4,24.0,19.4,47.3,47.2,-0.0,plutonic,plutonic,743.4
+S191-432,142.5,24.3,6.1,24.0,18.9,47.9,80.6,-0.06,plutonic,plutonic,743.4
+S191-433,132.5,22.1,5.9,22.2,19.5,46.8,149.7,-0.06,plutonic,plutonic,743.4
+S191-434,196.0,33.8,7.6,29.6,20.4,45.0,144.8,-0.05,plutonic,plutonic,743.4
+S191-435,117.5,21.3,5.2,20.2,24.3,37.9,27.1,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S191-436,112.1,19.5,5.0,19.6,24.4,37.1,34.2,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S191-437,111.6,18.1,5.3,20.1,21.1,42.7,120.8,-0.13,plutonic,plutonic,743.4
+S191-438,110.0,18.3,5.2,17.8,19.5,46.2,83.5,0.01,plutonic,plutonic,743.4
+S191-439,103.6,17.7,5.2,17.6,18.4,47.1,107.5,-0.01,sedimentary,sedimentary,305.4
+S191-440,100.3,17.9,5.2,16.8,18.3,47.6,141.4,-0.12,sedimentary,sedimentary,305.4
+S192-408,103.2,15.2,5.6,11.7,24.5,41.0,4.8,-0.06,,,
+S192-409,110.8,15.3,5.7,12.1,,,4.3,-0.08,,,
+S192-410,137.6,14.4,6.2,12.4,23.8,42.8,6.7,0.02,sedimentary,sedimentary,1.3
+S192-411,153.5,15.2,6.6,13.7,23.6,47.5,8.9,-0.01,sedimentary,sedimentary,1.3
+S192-412,176.3,16.5,7.3,15.2,21.1,52.2,14.5,0.01,sedimentary,sedimentary,1.3
+S192-413,193.8,20.2,7.7,16.5,21.1,50.1,39.0,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S192-414,225.3,19.7,8.8,18.6,21.9,46.7,79.4,-0.11,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S192-415,214.1,21.1,8.2,21.4,21.2,47.5,144.2,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S192-416,250.4,26.5,9.3,25.5,22.3,45.8,265.5,-0.08,plutonic,plutonic,743.4
+S192-417,271.0,26.5,10.1,25.9,22.2,45.4,174.4,-0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S192-418,276.3,27.9,10.8,27.4,24.7,42.0,212.4,-0.16,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S192-419,293.8,35.0,12.1,31.6,23.9,42.4,340.0,0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S192-420,283.2,32.0,12.1,32.1,23.2,49.2,381.0,-0.06,plutonic,plutonic,743.4
+S192-421,250.2,30.5,11.5,28.5,22.2,51.8,183.0,-0.02,plutonic,plutonic,743.4
+S192-422,241.1,29.5,11.6,28.8,23.0,49.6,154.0,-0.08,plutonic,plutonic,743.4
+S192-423,218.2,23.8,10.8,24.2,23.0,50.3,204.9,-0.12,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S192-424,183.0,22.5,8.9,22.3,22.6,49.8,126.5,-0.15,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S192-425,191.4,22.1,9.0,22.2,22.3,49.9,126.8,-0.08,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S192-426,171.2,19.4,7.9,20.8,24.7,48.1,60.2,-0.07,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S192-427,160.8,18.9,7.5,20.3,23.1,48.9,79.4,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S192-428,151.8,21.3,6.6,22.5,20.1,49.6,72.9,-0.01,plutonic,plutonic,743.4
+S192-429,144.0,21.8,6.4,22.3,18.9,49.5,100.8,-0.07,plutonic,plutonic,743.4
+S192-430,138.5,21.5,6.1,22.6,19.1,49.6,120.7,-0.1,plutonic,plutonic,743.4
+S192-431,136.2,20.3,6.1,22.7,19.3,49.0,91.6,-0.07,plutonic,plutonic,743.4
+S192-432,129.6,20.7,5.9,21.7,18.6,48.5,109.0,-0.12,plutonic,plutonic,743.4
+S192-433,122.6,20.8,5.5,21.8,18.9,49.7,147.5,-0.11,plutonic,plutonic,743.4
+S192-434,149.2,25.3,6.4,25.3,20.8,45.3,107.1,-0.04,plutonic,plutonic,743.4
+S192-435,112.3,19.6,5.0,20.4,24.5,36.6,29.7,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S192-436,109.3,20.2,4.9,19.2,24.2,36.5,35.7,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S192-437,105.4,20.3,4.8,19.4,21.0,42.8,105.7,-0.11,plutonic,plutonic,743.4
+S192-438,103.3,16.4,5.1,17.9,20.6,46.6,82.4,0.01,plutonic,plutonic,743.4
+S192-439,99.7,16.1,5.1,17.6,20.2,47.3,115.3,-0.17,sedimentary,sedimentary,305.4
+S192-440,97.5,16.9,5.3,15.4,18.9,46.7,110.6,-0.08,sedimentary,sedimentary,305.4
+S193-408,30.3,4.6,1.4,4.9,,,4.0,0.07,,,
+S193-409,116.5,13.3,5.7,11.1,22.8,44.9,4.3,0.03,,,
+S193-410,133.3,15.8,6.2,12.3,21.9,47.0,8.6,-0.01,sedimentary,sedimentary,1.3
+S193-411,154.6,17.5,6.6,14.0,22.5,47.5,8.9,0.01,sedimentary,sedimentary,1.3
+S193-412,168.3,15.7,7.1,14.8,20.7,48.0,15.0,0.0,sedimentary,sedimentary,1.3
+S193-413,183.2,19.4,7.5,16.3,21.3,48.4,33.7,-0.02,sedimentary,sedimentary,1.3
+S193-414,203.7,20.4,8.1,18.0,21.2,48.4,85.0,0.01,plutonic,plutonic,743.4
+S193-415,191.9,18.2,7.8,17.9,21.4,47.3,226.3,-0.21,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S193-416,227.4,24.8,9.1,22.4,21.6,45.4,229.8,-0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S193-417,249.0,24.6,9.8,21.7,21.9,45.6,219.8,-0.22,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S193-418,256.4,25.8,10.6,23.9,25.0,43.2,199.4,-0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S193-419,261.0,29.6,11.0,25.8,24.7,42.5,239.7,-0.12,plutonic,plutonic,743.4
+S193-420,255.7,34.2,10.3,32.1,23.7,49.5,328.6,-0.06,plutonic,plutonic,743.4
+S193-421,220.1,26.4,10.1,27.9,22.7,50.3,181.7,0.02,plutonic,plutonic,743.4
+S193-422,216.3,24.3,10.4,27.2,23.0,49.2,205.1,-0.09,plutonic,plutonic,743.4
+S193-423,191.9,22.5,8.7,23.5,22.0,49.6,181.9,-0.15,plutonic,plutonic,743.4
+S193-424,159.0,19.9,7.5,20.5,22.4,50.1,134.6,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S193-425,173.0,23.7,8.1,21.7,21.0,50.5,128.5,-0.11,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S193-426,161.5,20.6,7.5,19.7,21.8,50.2,51.3,-0.08,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S193-427,153.7,20.1,7.1,21.3,22.0,48.9,41.6,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S193-428,140.8,18.0,6.5,20.5,19.9,50.1,72.7,-0.01,plutonic,plutonic,743.4
+S193-429,133.4,22.1,6.2,20.4,19.1,50.6,75.6,0.01,plutonic,plutonic,743.4
+S193-430,128.5,22.7,5.8,21.5,18.9,51.6,104.0,-0.05,plutonic,plutonic,743.4
+S193-431,123.7,21.7,5.7,19.6,20.6,47.3,57.6,-0.08,plutonic,plutonic,743.4
+S193-432,120.3,19.8,5.6,18.8,19.0,47.6,111.7,-0.06,plutonic,plutonic,743.4
+S193-433,116.0,18.4,5.5,19.1,18.3,50.6,179.1,-0.05,plutonic,plutonic,743.4
+S193-434,151.1,24.8,6.4,25.1,21.1,45.2,72.3,0.03,plutonic,plutonic,743.4
+S193-435,105.1,17.2,5.2,18.0,25.4,35.1,22.3,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S193-436,101.6,16.7,4.9,17.1,23.4,36.6,50.8,0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S193-437,99.4,19.1,4.6,17.4,21.8,43.4,81.3,-0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S193-438,97.9,19.7,4.5,18.1,21.0,45.9,74.3,-0.1,plutonic,plutonic,743.4
+S193-439,95.6,18.1,4.9,16.3,20.6,45.5,100.9,-0.04,sedimentary,sedimentary,305.4
+S193-440,94.6,17.8,5.1,16.5,18.9,46.5,128.1,0.04,sedimentary,sedimentary,305.4
+S194-408,28.1,4.8,1.2,4.8,,,3.7,-0.05,,,
+S194-409,118.7,14.9,5.9,12.2,21.2,47.7,5.6,0.0,,,
+S194-410,135.4,16.8,6.5,12.8,20.0,51.7,9.4,-0.02,sedimentary,sedimentary,1.3
+S194-411,156.3,18.5,6.9,14.6,20.2,50.7,12.1,-0.02,sedimentary,sedimentary,1.3
+S194-412,170.6,18.5,7.2,15.0,20.5,50.6,21.8,-0.01,plutonic,plutonic,743.4
+S194-413,182.7,20.4,7.6,15.8,19.3,51.3,39.8,0.01,plutonic,plutonic,743.4
+S194-414,202.1,22.9,8.2,18.2,20.3,49.9,112.3,-0.11,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S194-415,188.7,21.9,7.8,18.0,20.4,48.7,247.7,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S194-416,218.4,23.1,8.6,19.6,20.6,48.1,176.2,-0.09,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S194-417,234.4,26.5,9.4,21.2,21.3,46.6,196.5,0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S194-418,240.4,26.5,10.2,22.9,24.7,43.9,242.2,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S194-419,236.6,30.6,10.2,26.8,25.6,45.7,369.7,0.02,plutonic,plutonic,743.4
+S194-420,226.0,31.7,9.5,26.7,23.8,50.7,168.3,-0.03,plutonic,plutonic,743.4
+S194-421,194.2,27.1,8.6,25.2,23.2,49.9,201.8,0.01,plutonic,plutonic,743.4
+S194-422,187.2,24.9,8.8,24.8,22.0,49.2,159.4,0.01,plutonic,plutonic,743.4
+S194-423,170.5,26.0,7.6,23.5,22.5,47.9,180.9,-0.14,plutonic,plutonic,743.4
+S194-424,143.4,20.4,6.3,19.3,21.2,49.5,159.4,0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S194-425,154.9,22.8,7.1,19.2,20.8,50.6,139.0,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S194-426,149.1,21.8,6.8,18.4,20.8,50.4,60.8,-0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S194-427,140.4,20.4,6.6,17.9,21.9,48.6,53.0,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S194-428,132.9,21.2,6.5,17.8,21.4,47.9,49.2,-0.06,plutonic,plutonic,743.4
+S194-429,127.4,22.5,6.0,19.0,20.2,49.5,43.9,-0.01,plutonic,plutonic,743.4
+S194-430,121.9,24.2,5.5,19.2,19.4,50.7,122.8,-0.03,plutonic,plutonic,743.4
+S194-431,118.8,24.9,5.5,19.2,20.4,46.4,60.3,0.03,plutonic,plutonic,743.4
+S194-432,118.3,21.9,5.4,20.7,22.5,41.2,24.0,0.0,plutonic,plutonic,743.4
+S194-433,112.3,18.7,5.6,19.2,19.1,48.0,153.4,-0.08,plutonic,plutonic,743.4
+S194-434,175.6,32.5,7.0,27.5,20.9,44.6,64.9,-0.03,plutonic,plutonic,743.4
+S194-435,105.0,18.0,5.2,18.2,24.4,35.5,35.4,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S194-436,101.6,17.8,4.8,18.1,24.1,38.4,31.1,0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S194-437,95.9,17.3,4.6,16.7,21.1,44.4,79.3,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S194-438,92.1,17.9,4.5,16.0,20.2,46.2,49.9,-0.07,plutonic,plutonic,743.4
+S194-439,86.3,17.0,4.8,14.5,21.2,44.9,82.7,-0.02,sedimentary,sedimentary,305.4
+S194-440,87.7,19.1,4.8,15.0,18.7,47.0,121.8,-0.03,sedimentary,sedimentary,305.4
+S195-407,66.5,13.2,3.7,7.3,,,3.4,-0.05,,,
+S195-408,110.8,13.9,5.8,10.8,22.6,45.3,6.0,-0.02,sedimentary,sedimentary rocks,1.3
+S195-409,121.2,13.6,6.1,11.6,20.4,48.4,8.7,-0.01,sedimentary,sedimentary,1.3
+S195-410,133.5,16.6,6.3,14.0,19.3,52.1,11.9,0.04,sedimentary,sedimentary,1.3
+S195-411,157.0,18.9,6.9,14.1,19.0,53.5,18.2,0.01,sedimentary,sedimentary,1.3
+S195-412,162.3,17.8,7.1,15.9,17.8,53.4,86.5,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S195-413,172.3,20.3,7.4,16.6,18.7,52.1,104.5,-0.07,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S195-414,195.8,22.3,8.0,17.7,19.7,50.2,226.9,0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S195-415,191.7,19.4,7.8,18.3,20.2,49.5,255.5,-0.21,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S195-416,217.1,23.8,8.6,19.3,20.1,48.9,161.6,0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S195-417,229.7,25.5,9.2,23.8,20.9,48.2,186.1,-0.09,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S195-418,230.4,28.2,9.8,24.7,23.0,47.6,336.2,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S195-419,217.4,32.3,9.5,25.0,23.3,50.6,111.6,0.02,plutonic,plutonic,743.4
+S195-420,228.4,32.8,10.1,25.9,23.7,49.7,130.7,-0.08,plutonic,plutonic,743.4
+S195-421,194.2,29.5,8.4,25.8,23.6,49.9,170.5,0.03,plutonic,plutonic,743.4
+S195-422,185.3,27.8,8.1,25.9,23.5,47.1,133.9,0.02,plutonic,plutonic,743.4
+S195-423,170.9,25.1,7.8,24.0,22.5,47.3,179.0,-0.0,plutonic,plutonic,743.4
+S195-424,141.2,19.2,6.4,19.4,21.4,49.4,206.5,-0.03,plutonic,plutonic,743.4
+S195-425,142.9,20.3,6.6,20.0,20.9,50.2,134.5,0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S195-426,132.6,19.3,6.4,17.5,21.1,50.4,84.4,-0.11,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S195-427,126.5,20.3,6.3,16.6,22.1,48.1,50.8,-0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S195-428,120.8,20.1,6.2,16.3,20.5,48.1,26.7,-0.01,plutonic,plutonic,743.4
+S195-429,115.6,20.7,5.6,16.7,19.7,50.0,34.4,-0.02,plutonic,plutonic,743.4
+S195-430,115.7,24.4,5.3,19.1,19.4,50.6,69.2,-0.03,plutonic,plutonic,743.4
+S195-431,116.5,25.9,4.9,19.3,19.3,48.2,76.9,-0.02,plutonic,plutonic,743.4
+S195-432,114.4,24.0,4.9,18.9,21.2,41.8,12.6,-0.0,plutonic,plutonic,743.4
+S195-433,112.3,21.1,5.7,17.6,21.3,43.5,63.6,-0.02,plutonic,plutonic,743.4
+S195-434,174.1,34.7,7.1,26.2,20.4,44.8,72.8,-0.07,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S195-435,107.6,21.2,5.3,17.8,24.4,36.0,29.2,-0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S195-436,103.9,18.6,5.2,17.8,23.0,38.6,39.7,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S195-437,100.8,18.7,5.2,17.6,21.0,44.2,59.8,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S195-438,97.3,19.8,4.9,18.1,20.9,46.4,49.5,-0.11,plutonic,plutonic,743.4
+S195-439,87.9,17.0,4.7,15.9,20.2,46.0,84.5,-0.12,sedimentary,sedimentary,305.4
+S195-440,88.7,19.1,4.8,16.4,19.3,46.9,110.9,-0.1,sedimentary,sedimentary,305.4
+S196-406,100.3,11.8,5.6,11.1,25.8,39.8,25.5,0.07,,,
+S196-407,113.8,15.3,6.0,12.0,23.6,39.1,4.5,-0.02,,,
+S196-408,121.2,14.9,6.0,12.2,19.9,49.2,6.8,-0.01,sedimentary,sedimentary,1.3
+S196-409,136.7,15.6,6.6,13.4,18.1,53.9,13.7,-0.01,sedimentary,sedimentary,1.3
+S196-410,152.9,20.7,6.9,14.9,17.6,54.8,23.9,0.02,sedimentary,sedimentary,1.3
+S196-411,167.2,19.4,7.4,14.3,17.9,54.7,46.0,-0.03,sedimentary,sedimentary,1.3
+S196-412,174.0,21.1,7.6,16.5,18.9,52.6,195.0,-0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S196-413,182.3,21.8,7.8,16.5,19.9,51.8,157.2,-0.12,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S196-414,203.7,25.0,8.1,18.7,19.8,50.5,243.4,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S196-415,192.5,22.4,7.7,20.2,18.8,50.9,255.7,-0.0,plutonic,plutonic,743.4
+S196-416,210.9,23.7,8.4,21.4,18.9,50.8,277.0,-0.04,plutonic,plutonic,743.4
+S196-417,219.8,24.9,9.3,22.7,20.0,49.8,221.8,0.16,plutonic,plutonic,743.4
+S196-418,212.9,25.7,8.8,22.4,21.9,48.7,342.2,-0.01,plutonic,plutonic,743.4
+S196-419,201.8,30.3,8.5,23.5,24.1,49.1,123.0,-0.05,plutonic,plutonic,743.4
+S196-420,204.6,27.3,8.6,26.2,23.5,49.4,129.8,-0.04,plutonic,plutonic,743.4
+S196-421,177.1,28.9,7.8,25.8,23.3,50.0,133.2,-0.05,plutonic,plutonic,743.4
+S196-422,168.4,25.5,8.0,23.9,23.3,48.3,134.1,-0.15,plutonic,plutonic,743.4
+S196-423,153.3,22.9,6.9,21.3,22.1,48.7,170.9,0.04,plutonic,plutonic,743.4
+S196-424,131.4,19.8,6.2,18.7,21.6,49.6,146.9,-0.07,plutonic,plutonic,743.4
+S196-425,134.9,23.2,6.5,20.2,21.7,50.1,102.8,-0.07,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S196-426,124.6,21.7,5.9,17.9,21.6,50.4,94.1,-0.09,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S196-427,118.6,22.0,5.9,17.4,21.2,49.1,67.7,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S196-428,112.8,23.3,5.6,17.5,20.7,49.5,49.9,-0.05,plutonic,plutonic,743.4
+S196-429,107.0,22.9,5.0,16.7,19.9,50.6,42.5,-0.02,plutonic,plutonic,743.4
+S196-430,103.2,22.6,4.8,15.9,20.0,50.8,48.8,-0.03,plutonic,plutonic,743.4
+S196-431,108.6,23.5,5.3,15.9,19.4,48.4,83.3,-0.05,plutonic,plutonic,743.4
+S196-432,108.6,21.5,5.3,16.2,20.6,44.1,47.5,-0.04,plutonic,plutonic,743.4
+S196-433,112.4,22.9,5.4,17.4,20.4,44.6,72.6,-0.04,plutonic,plutonic,743.4
+S196-434,174.5,35.6,6.9,26.9,20.3,44.3,94.6,-0.07,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S196-435,108.9,24.2,5.0,19.3,23.9,38.5,26.1,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S196-436,103.2,19.8,5.1,16.8,24.0,38.9,30.6,0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S196-437,98.7,18.1,5.2,16.0,22.4,44.2,31.1,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S196-438,91.9,18.4,4.7,16.2,21.1,47.1,40.4,-0.04,plutonic,plutonic,743.4
+S196-439,89.4,17.4,4.7,15.8,21.8,46.4,34.8,-0.03,plutonic,plutonic,743.4
+S196-440,89.4,20.8,4.6,17.1,18.8,48.8,99.1,-0.01,sedimentary,sedimentary,305.4
+S197-406,106.4,14.1,5.8,11.4,22.1,44.8,4.0,0.0,,,
+S197-407,123.7,15.4,6.2,13.4,21.4,48.2,8.4,-0.02,,,
+S197-408,136.2,15.7,6.6,14.0,20.6,52.1,9.9,-0.03,sedimentary,sedimentary,1.3
+S197-409,152.9,18.4,6.8,15.0,18.9,55.7,13.5,-0.02,sedimentary,sedimentary,1.3
+S197-410,154.1,20.6,6.9,15.2,16.8,54.9,39.1,0.05,sedimentary,sedimentary,1.3
+S197-411,174.2,21.8,7.5,16.0,16.3,54.7,154.1,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S197-412,183.0,20.7,7.7,16.5,19.6,51.3,294.6,0.08,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S197-413,186.2,21.7,7.9,17.6,20.4,50.9,322.1,-0.07,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S197-414,196.4,25.5,8.0,19.4,20.0,51.4,162.2,-0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S197-415,186.7,21.9,7.8,18.8,19.4,51.3,267.8,-0.03,plutonic,plutonic,743.4
+S197-416,199.1,23.1,8.2,22.0,21.1,49.2,336.8,-0.0,plutonic,plutonic,743.4
+S197-417,199.0,26.7,8.1,22.2,23.5,47.8,434.5,-0.02,plutonic,plutonic,743.4
+S197-418,198.6,29.6,7.9,23.2,22.8,47.9,315.9,-0.05,plutonic,plutonic,743.4
+S197-419,185.1,29.6,7.7,22.7,24.3,48.1,133.0,-0.0,plutonic,plutonic,743.4
+S197-420,191.7,26.2,8.8,23.3,22.9,48.6,111.2,-0.01,plutonic,plutonic,743.4
+S197-421,164.3,24.1,7.9,20.7,22.7,50.0,120.1,-0.02,plutonic,plutonic,743.4
+S197-422,148.2,21.2,6.9,20.6,22.5,49.6,122.8,-0.01,plutonic,plutonic,743.4
+S197-423,141.6,21.6,6.8,19.2,21.7,49.9,146.4,-0.02,plutonic,plutonic,743.4
+S197-424,128.4,20.3,6.0,18.2,21.6,50.7,112.1,0.03,plutonic,plutonic,743.4
+S197-425,128.4,24.2,6.0,19.8,21.5,50.7,109.9,-0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S197-426,120.3,23.2,5.6,17.5,21.2,49.7,33.6,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S197-427,114.2,22.0,5.4,17.3,20.4,50.3,119.9,-0.06,plutonic,plutonic,743.4
+S197-428,108.7,22.3,5.1,17.2,20.9,49.8,42.0,-0.06,plutonic,plutonic,743.4
+S197-429,104.1,23.0,4.9,16.6,20.6,50.1,44.6,-0.06,plutonic,plutonic,743.4
+S197-430,105.1,22.7,5.1,15.9,20.9,48.3,49.1,-0.03,plutonic,plutonic,743.4
+S197-431,106.7,22.7,5.2,16.7,20.5,47.7,42.7,-0.01,plutonic,plutonic,743.4
+S197-432,107.9,22.8,5.5,16.4,18.4,48.7,100.1,-0.03,plutonic,plutonic,743.4
+S197-433,110.4,22.3,5.4,17.1,18.6,49.3,111.5,-0.09,plutonic,plutonic,743.4
+S197-434,112.2,23.6,5.3,17.9,19.8,46.2,74.4,-0.07,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S197-435,107.5,24.5,5.0,18.3,23.5,39.7,16.4,-0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S197-436,102.0,21.2,4.9,16.3,23.0,40.7,27.0,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S197-437,93.3,19.6,4.8,14.1,22.2,45.8,28.1,-0.03,plutonic,plutonic,743.4
+S197-438,90.0,19.7,4.7,13.9,20.6,47.7,49.1,-0.01,plutonic,plutonic,743.4
+S197-439,89.2,18.6,4.9,14.5,21.2,47.6,20.5,-0.0,plutonic,plutonic,743.4
+S197-440,91.6,21.1,4.6,16.7,19.6,48.3,68.5,-0.03,sedimentary,sedimentary,305.4
+S198-406,124.4,15.9,6.2,12.9,21.2,48.3,6.7,-0.02,sedimentary,sedimentary,1.3
+S198-407,138.6,18.5,6.5,14.0,20.5,51.8,11.4,-0.01,sedimentary,sedimentary,1.3
+S198-408,156.2,19.7,6.9,15.0,18.2,56.5,17.2,-0.01,sedimentary,sedimentary,1.3
+S198-409,178.3,23.7,7.6,16.8,16.9,56.7,91.1,0.06,sedimentary,sedimentary,1.3
+S198-410,172.8,25.8,7.4,17.2,16.2,55.9,96.9,-0.08,plutonic,plutonic,743.4
+S198-411,197.6,27.3,8.4,18.7,17.0,54.1,230.1,-0.09,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S198-412,203.8,24.9,8.6,19.7,18.8,52.1,272.5,-0.09,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S198-413,202.6,23.3,8.7,21.2,20.2,50.7,371.5,-0.11,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S198-414,199.6,25.4,8.7,21.9,19.9,51.0,279.6,-0.12,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S198-415,194.6,23.9,8.8,21.0,24.1,48.9,326.0,-0.08,plutonic,plutonic,743.4
+S198-416,188.8,26.6,8.1,22.9,25.2,49.2,223.4,0.03,plutonic,plutonic,743.4
+S198-417,184.6,28.1,8.1,21.7,25.5,48.0,169.2,-0.09,plutonic,plutonic,743.4
+S198-418,185.1,28.7,8.7,22.0,23.9,48.6,286.2,-0.03,plutonic,plutonic,743.4
+S198-419,172.2,27.2,7.9,23.7,23.7,48.5,161.9,-0.02,plutonic,plutonic,743.4
+S198-420,184.1,28.9,8.3,24.8,24.1,48.7,164.2,-0.03,plutonic,plutonic,743.4
+S198-421,156.0,24.1,7.5,22.6,23.9,49.9,152.5,-0.04,plutonic,plutonic,743.4
+S198-422,140.0,21.0,6.4,19.1,23.0,51.2,101.4,-0.11,plutonic,plutonic,743.4
+S198-423,126.4,19.0,6.1,17.6,21.8,51.2,89.7,0.02,plutonic,plutonic,743.4
+S198-424,115.7,19.6,5.1,18.2,21.9,50.0,85.7,-0.14,plutonic,plutonic,743.4
+S198-425,118.9,23.2,5.2,20.8,20.6,48.5,64.3,-0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S198-426,110.5,23.3,4.9,17.8,20.3,49.2,23.7,-0.01,plutonic,plutonic,743.4
+S198-427,102.1,22.1,4.8,16.4,19.7,51.8,70.0,-0.02,plutonic,plutonic,743.4
+S198-428,102.9,22.9,4.8,16.7,22.0,50.2,44.4,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S198-429,102.2,22.0,4.8,17.2,20.7,49.9,16.0,-0.01,plutonic,plutonic,743.4
+S198-430,105.8,21.1,5.0,16.2,20.8,49.2,20.6,-0.0,plutonic,plutonic,743.4
+S198-431,105.3,22.7,5.1,16.3,19.1,49.2,38.2,-0.01,plutonic,plutonic,743.4
+S198-432,104.7,22.4,5.2,16.0,19.7,49.1,45.0,-0.01,plutonic,plutonic,743.4
+S198-433,108.4,23.1,5.4,17.0,19.4,48.2,71.6,-0.04,plutonic,plutonic,743.4
+S198-434,107.8,23.2,5.2,17.0,22.6,45.5,55.5,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S198-435,102.7,21.9,4.8,16.6,22.9,42.8,42.6,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S198-436,98.3,20.4,5.0,14.9,22.5,44.0,27.2,-0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S198-437,94.7,20.0,4.8,14.0,20.4,47.1,19.3,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S198-438,92.8,20.2,4.8,13.8,19.7,47.7,26.1,-0.01,plutonic,plutonic,743.4
+S198-439,90.8,20.2,4.9,15.0,20.1,48.5,17.2,-0.0,plutonic,plutonic,743.4
+S198-440,92.3,22.4,4.6,17.5,19.8,48.6,58.9,-0.06,sedimentary,sedimentary,305.4
+S199-406,151.4,22.5,6.6,16.8,19.8,53.6,10.1,0.0,sedimentary,sedimentary,1.3
+S199-407,167.7,27.1,7.0,18.0,20.1,54.8,16.3,0.0,sedimentary,sedimentary,1.3
+S199-408,177.7,26.1,7.4,16.7,18.9,55.3,20.7,-0.0,sedimentary,sedimentary,1.3
+S199-409,211.1,31.6,8.6,19.6,17.6,55.6,222.5,-0.02,sedimentary,sedimentary,1.3
+S199-410,204.4,31.9,8.6,20.1,17.0,54.9,129.1,0.02,plutonic,plutonic,743.4
+S199-411,231.9,31.7,9.7,23.7,17.2,53.7,258.0,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S199-412,240.0,31.2,9.9,24.9,18.2,53.2,257.6,-0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S199-413,233.3,27.1,10.6,24.7,20.3,51.5,425.5,-0.08,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S199-414,218.6,27.1,9.8,24.4,21.9,50.3,474.1,0.11,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S199-415,199.5,26.3,9.0,22.3,24.9,49.3,208.4,0.04,plutonic,plutonic,743.4
+S199-416,182.3,25.8,8.2,21.7,25.0,48.7,139.0,-0.02,plutonic,plutonic,743.4
+S199-417,174.8,27.5,8.3,20.4,24.3,48.1,154.8,-0.07,plutonic,plutonic,743.4
+S199-418,172.2,30.6,7.8,21.7,22.6,50.2,187.2,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S199-419,155.0,25.1,7.5,21.1,22.7,49.6,117.9,-0.05,plutonic,plutonic,743.4
+S199-420,158.4,24.4,7.5,21.9,24.1,50.2,152.3,-0.08,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S199-421,132.4,21.7,6.6,18.0,24.2,51.2,115.9,-0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S199-422,122.2,20.1,5.5,18.2,22.2,52.4,99.9,-0.09,plutonic,plutonic,743.4
+S199-423,114.1,21.4,5.3,18.7,21.9,52.9,75.3,-0.1,plutonic,plutonic,743.4
+S199-424,103.8,22.2,4.8,17.4,21.7,50.3,53.8,-0.06,plutonic,plutonic,743.4
+S199-425,105.7,23.3,4.5,18.4,20.0,49.6,55.0,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S199-426,98.6,21.8,4.3,16.8,19.8,50.3,26.5,-0.02,plutonic,plutonic,743.4
+S199-427,94.1,20.5,4.3,16.2,19.6,52.0,55.7,-0.03,plutonic,plutonic,743.4
+S199-428,95.7,23.4,4.2,17.0,20.5,51.9,91.9,-0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S199-429,96.1,21.1,4.6,16.5,20.7,50.1,34.5,-0.0,plutonic,plutonic,743.4
+S199-430,99.5,23.0,4.7,15.9,20.6,49.9,22.5,0.0,plutonic,plutonic,743.4
+S199-431,101.8,23.3,5.1,16.2,20.0,50.3,37.7,-0.07,plutonic,plutonic,743.4
+S199-432,158.1,31.3,6.9,21.2,20.0,50.9,37.8,-0.04,plutonic,plutonic,743.4
+S199-433,158.8,31.6,6.8,20.7,20.7,49.8,48.3,0.02,plutonic,plutonic,743.4
+S199-434,158.4,32.2,6.7,23.8,19.7,49.1,97.0,-0.1,plutonic,plutonic,743.4
+S199-435,96.7,20.5,4.8,14.5,22.6,46.6,24.5,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S199-436,95.6,20.4,4.9,14.2,21.9,47.3,14.3,-0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S199-437,92.7,19.5,4.8,15.1,22.0,47.6,13.4,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S199-438,91.0,20.1,4.5,14.6,20.8,47.2,28.8,-0.04,plutonic,plutonic,743.4
+S199-439,89.7,22.1,4.3,16.6,19.6,47.7,28.0,-0.04,plutonic,plutonic,743.4
+S199-440,92.9,22.2,4.6,18.7,19.7,48.2,11.8,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S200-406,160.2,25.6,7.1,16.7,19.7,57.8,13.5,-0.01,sedimentary,sedimentary,1.3
+S200-407,166.2,29.1,7.0,16.6,18.4,57.0,25.8,0.01,sedimentary,sedimentary,1.3
+S200-408,164.0,23.2,7.2,16.4,18.7,56.4,33.0,0.01,plutonic,plutonic,743.4
+S200-409,196.4,29.2,8.6,18.3,17.0,55.4,164.0,-0.14,plutonic,plutonic,743.4
+S200-410,179.3,26.6,7.6,18.7,17.5,54.3,200.5,-0.15,plutonic,plutonic,743.4
+S200-411,197.9,27.3,8.2,20.8,18.5,53.6,223.9,-0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S200-412,225.9,29.6,9.7,25.7,19.5,51.7,468.4,-0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S200-413,221.2,29.3,10.6,25.2,21.8,50.0,367.0,-0.09,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S200-414,201.1,25.9,9.7,22.8,22.2,50.5,200.2,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S200-415,208.2,27.1,9.4,23.6,24.0,49.5,193.0,-0.07,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S200-416,180.9,23.8,8.7,19.7,24.1,50.4,180.3,-0.01,plutonic,plutonic,743.4
+S200-417,170.3,24.8,8.3,20.8,22.6,50.7,124.7,-0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S200-418,168.5,24.5,8.4,21.4,22.4,51.6,88.1,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S200-419,150.5,21.3,7.6,19.5,22.6,50.4,82.5,-0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S200-420,150.7,23.0,7.5,20.1,23.0,51.1,100.4,0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S200-421,127.5,21.3,6.1,19.3,22.8,52.6,108.0,-0.11,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S200-422,114.3,20.0,5.7,17.7,21.6,51.2,59.6,-0.07,plutonic,plutonic,743.4
+S200-423,109.9,21.7,5.2,17.6,23.0,49.1,21.8,-0.02,plutonic,plutonic,743.4
+S200-424,101.1,22.8,4.6,16.5,21.2,49.3,20.7,-0.05,plutonic,plutonic,743.4
+S200-425,101.0,21.7,4.4,18.1,20.2,50.8,26.3,-0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S200-426,96.1,20.9,4.2,16.7,20.4,51.4,18.8,0.0,plutonic,plutonic,743.4
+S200-427,94.5,20.9,4.1,16.5,20.1,52.3,32.2,-0.06,plutonic,plutonic,743.4
+S200-428,94.9,22.2,4.2,17.0,20.3,52.0,84.4,-0.07,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S200-429,94.9,20.7,4.7,16.6,20.1,51.3,42.1,-0.02,plutonic,plutonic,743.4
+S200-430,97.9,22.3,4.9,17.4,20.2,51.0,16.4,0.0,plutonic,plutonic,743.4
+S200-431,99.9,21.3,5.2,15.9,19.0,50.9,14.7,0.0,plutonic,plutonic,743.4
+S200-432,100.8,21.4,5.1,14.6,18.8,52.3,24.4,0.01,plutonic,plutonic,743.4
+S200-433,101.1,20.8,5.1,15.4,18.1,53.2,50.4,-0.09,plutonic,plutonic,743.4
+S200-434,101.1,22.4,5.3,15.3,19.6,49.6,56.2,-0.1,plutonic,plutonic,743.4
+S200-435,97.3,21.1,4.9,14.9,22.2,48.6,12.0,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S200-436,96.6,20.4,5.1,14.7,22.7,46.9,8.5,0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S200-437,93.9,20.1,5.1,14.1,22.4,45.7,8.9,-0.0,plutonic,plutonic,743.4
+S200-438,88.6,21.0,4.7,15.1,23.7,46.5,15.3,-0.01,plutonic,plutonic,743.4
+S200-439,88.7,20.2,4.6,16.3,20.1,49.7,36.9,-0.0,plutonic,plutonic,743.4
+S200-440,90.2,20.8,4.5,17.4,19.9,51.1,16.5,0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S201-406,182.8,29.0,7.7,18.5,18.9,58.2,34.4,-0.01,sedimentary,sedimentary,1.3
+S201-407,181.1,28.1,7.7,17.6,17.8,57.4,61.3,-0.03,sedimentary,sedimentary,1.3
+S201-408,185.4,24.6,7.9,17.6,16.8,57.1,183.3,0.03,plutonic,plutonic,743.4
+S201-409,209.1,30.0,8.9,19.6,17.6,54.9,156.3,0.02,plutonic,plutonic,743.4
+S201-410,188.6,27.2,8.1,18.9,18.4,54.5,115.2,-0.03,plutonic,plutonic,743.4
+S201-411,206.9,29.3,9.1,21.2,19.4,52.6,305.3,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S201-412,219.8,29.5,9.7,24.7,22.2,50.2,412.3,-0.09,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S201-413,213.7,28.2,10.0,24.5,23.8,49.8,202.8,0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S201-414,182.4,20.8,8.7,20.8,23.4,50.4,186.8,-0.17,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S201-415,188.7,23.1,9.0,20.5,23.4,52.3,147.6,0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S201-416,159.8,24.9,7.6,19.7,24.2,51.8,115.0,-0.03,plutonic,plutonic,743.4
+S201-417,156.0,23.7,7.6,19.4,23.3,51.8,91.6,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S201-418,144.0,19.0,7.4,17.9,22.5,51.9,92.3,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S201-419,126.4,17.0,6.4,16.9,22.5,51.1,69.7,-0.1,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S201-420,131.7,19.4,6.5,19.0,21.9,51.7,85.9,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S201-421,111.6,17.9,5.6,17.9,21.5,51.2,45.3,-0.03,plutonic,plutonic,743.4
+S201-422,109.2,18.3,5.6,17.3,22.4,50.0,32.0,-0.01,plutonic,plutonic,743.4
+S201-423,104.4,21.6,5.2,16.2,23.3,48.8,20.5,-0.03,plutonic,plutonic,743.4
+S201-424,97.7,22.2,4.7,16.3,22.5,49.8,38.3,-0.05,plutonic,plutonic,743.4
+S201-425,98.5,20.9,4.4,16.6,20.4,52.2,49.6,-0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S201-426,95.6,19.8,4.1,17.0,19.6,52.5,14.8,-0.0,plutonic,plutonic,743.4
+S201-427,93.7,19.4,4.2,16.1,19.4,52.4,38.3,-0.03,plutonic,plutonic,743.4
+S201-428,92.7,18.9,4.3,15.6,19.9,52.5,45.9,-0.06,plutonic,plutonic,743.4
+S201-429,91.7,19.8,4.2,15.8,20.3,52.2,17.8,-0.01,plutonic,plutonic,743.4
+S201-430,92.4,20.9,4.6,15.6,20.3,52.1,17.1,-0.0,plutonic,plutonic,743.4
+S201-431,93.1,19.1,5.0,14.3,19.8,52.4,14.0,-0.01,plutonic,plutonic,743.4
+S201-432,94.2,19.2,5.0,13.2,18.3,53.8,22.4,-0.01,plutonic,plutonic,743.4
+S201-433,97.6,20.2,5.2,13.5,17.1,53.9,50.8,-0.05,plutonic,plutonic,743.4
+S201-434,99.5,21.2,5.3,14.6,17.2,53.2,53.5,-0.0,plutonic,plutonic,743.4
+S201-435,95.0,19.5,5.0,14.0,19.3,49.9,29.5,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S201-436,94.1,20.0,5.0,14.1,23.6,47.2,10.2,-0.01,plutonic,plutonic,743.4
+S201-437,93.8,19.9,4.8,14.2,24.0,47.1,6.7,-0.0,plutonic,plutonic,743.4
+S201-438,89.3,18.6,4.7,14.1,23.6,46.2,10.9,-0.01,plutonic,plutonic,743.4
+S201-439,88.2,20.9,4.5,15.7,20.8,49.0,34.4,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S201-440,86.5,20.5,4.4,17.2,19.8,50.1,23.2,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S202-406,189.3,32.2,8.0,17.3,19.8,57.6,59.8,-0.03,sedimentary,sedimentary,1.3
+S202-407,190.4,28.2,8.3,17.3,18.6,53.5,323.7,-0.15,sedimentary,sedimentary,1.3
+S202-408,200.3,27.3,8.7,19.0,18.0,54.9,139.4,-0.14,plutonic,plutonic,743.4
+S202-409,218.9,28.8,9.4,21.3,19.3,51.7,225.0,-0.01,plutonic,plutonic,743.4
+S202-410,200.4,28.2,8.6,21.1,20.1,52.6,130.7,-0.03,plutonic,plutonic,743.4
+S202-411,220.8,30.8,10.3,23.2,20.3,53.1,351.4,-0.1,plutonic,plutonic,743.4
+S202-412,223.6,36.4,10.5,26.1,24.9,50.0,313.7,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S202-413,208.9,28.5,10.0,26.0,24.3,50.3,176.1,0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S202-414,180.5,23.8,8.7,21.1,24.0,51.4,172.4,0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S202-415,182.3,25.1,8.7,21.4,24.5,52.2,115.6,-0.09,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S202-416,155.4,24.9,7.2,19.7,24.3,52.6,61.5,-0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S202-417,143.4,24.2,6.8,18.2,23.2,53.2,67.8,0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S202-418,138.6,22.0,6.6,19.0,22.8,52.7,66.1,-0.06,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S202-419,123.3,20.7,5.8,18.7,21.2,52.8,79.2,-0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S202-420,125.1,20.7,6.0,18.3,20.4,53.0,50.8,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S202-421,110.9,19.8,5.4,17.4,20.5,51.6,38.6,-0.0,plutonic,plutonic,743.4
+S202-422,113.7,21.6,5.8,18.9,22.3,50.5,35.2,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S202-423,105.8,21.4,5.1,16.7,22.9,50.7,42.2,-0.08,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S202-424,96.1,22.0,4.7,15.5,21.6,52.2,73.4,-0.11,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S202-425,97.3,21.4,4.5,15.4,20.0,53.5,53.0,-0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S202-426,95.0,20.1,4.4,16.1,18.0,52.2,31.3,-0.04,plutonic,plutonic,743.4
+S202-427,95.1,20.7,4.4,16.1,18.4,53.0,41.7,0.01,plutonic,plutonic,743.4
+S202-428,95.6,20.2,4.5,16.5,18.9,53.6,54.4,-0.02,plutonic,plutonic,743.4
+S202-429,93.3,19.9,4.5,15.8,18.4,53.3,19.5,-0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S202-430,95.1,21.2,4.8,15.4,18.1,53.1,15.7,-0.02,plutonic,plutonic,743.4
+S202-431,96.3,19.7,5.0,14.7,19.0,53.7,19.1,-0.01,plutonic,plutonic,743.4
+S202-432,95.1,19.3,5.1,13.6,17.0,53.9,34.5,-0.01,plutonic,plutonic,743.4
+S202-433,96.2,19.4,5.1,13.8,18.5,53.4,28.1,-0.04,plutonic,plutonic,743.4
+S202-434,98.7,20.6,5.1,14.5,19.2,51.3,37.7,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S202-435,94.9,19.5,4.9,14.0,20.0,49.9,16.9,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S202-436,94.2,20.1,4.9,13.7,23.3,47.0,8.6,-0.01,plutonic,plutonic,743.4
+S202-437,92.7,19.9,4.8,13.7,23.8,46.5,6.6,-0.0,plutonic,plutonic,743.4
+S202-438,91.1,18.4,4.9,14.4,23.7,46.4,11.1,0.01,plutonic,plutonic,743.4
+S202-439,90.0,18.7,4.8,14.0,21.3,48.4,25.9,-0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S202-440,90.0,20.1,4.5,15.8,19.9,49.9,33.6,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S203-406,190.1,25.4,8.4,17.7,19.2,53.0,221.8,-0.09,plutonic,plutonic,743.4
+S203-407,201.0,27.6,8.8,18.2,19.2,52.5,334.8,-0.0,plutonic,plutonic,743.4
+S203-408,206.2,26.3,8.9,18.5,19.6,52.3,157.1,-0.07,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S203-409,220.6,27.9,9.9,21.9,20.1,51.7,133.4,-0.08,plutonic,plutonic,743.4
+S203-410,212.1,25.6,9.3,21.7,20.6,51.4,296.7,0.18,plutonic,plutonic,743.4
+S203-411,210.9,30.8,8.9,23.7,22.3,51.9,420.3,0.24,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S203-412,205.8,27.8,9.8,23.4,24.6,50.7,231.7,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S203-413,191.0,28.6,8.9,23.5,24.3,51.0,180.1,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S203-414,166.9,24.8,8.0,21.2,24.5,52.7,167.8,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S203-415,175.5,27.2,8.1,23.2,24.5,53.3,88.1,0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S203-416,149.8,25.9,7.1,21.5,23.7,53.4,49.8,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S203-417,142.4,23.9,6.9,19.4,23.1,54.3,71.1,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S203-418,140.1,22.6,6.8,19.0,23.7,53.1,47.6,-0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S203-419,120.3,19.6,5.4,16.5,21.4,54.2,58.0,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S203-420,127.3,23.8,5.7,20.2,22.5,51.8,36.3,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S203-421,118.1,23.6,5.5,19.7,21.5,52.8,40.7,-0.05,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S203-422,116.3,22.4,6.0,18.9,20.6,53.6,51.9,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S203-423,112.5,21.5,5.7,18.5,23.3,51.0,57.8,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S203-424,103.2,21.2,4.9,17.0,22.0,51.7,117.5,-0.08,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S203-425,100.2,22.2,4.9,16.5,19.8,53.0,45.1,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S203-426,97.8,22.4,4.6,16.9,19.6,52.9,21.4,-0.04,plutonic,plutonic,743.4
+S203-427,99.2,22.2,4.6,16.3,19.0,53.6,56.5,0.01,plutonic,plutonic,743.4
+S203-428,100.0,21.9,4.4,16.3,19.3,53.5,51.6,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S203-429,99.0,20.9,4.6,15.9,18.7,54.3,28.0,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S203-430,99.8,22.5,4.8,16.4,17.3,53.6,17.4,-0.02,plutonic,plutonic,743.4
+S203-431,100.2,22.6,5.0,15.2,18.5,53.8,14.3,-0.0,plutonic,plutonic,743.4
+S203-432,99.3,22.9,4.8,16.4,17.8,53.1,13.7,0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S203-433,97.8,20.3,4.9,13.6,18.0,52.5,46.7,-0.07,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S203-434,97.5,21.0,4.9,14.6,18.1,51.0,32.0,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S203-435,93.3,19.7,4.7,13.3,21.3,48.3,14.4,-0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S203-436,94.5,20.4,4.8,13.8,23.2,46.8,10.1,0.0,plutonic,plutonic,743.4
+S203-437,94.5,18.6,5.0,13.5,23.5,46.1,4.4,-0.0,plutonic,plutonic,743.4
+S203-438,93.3,17.7,5.0,13.3,23.1,47.1,7.0,-0.0,plutonic,plutonic,743.4
+S203-439,92.2,20.9,4.5,17.2,21.7,48.2,23.7,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S203-440,91.6,20.8,4.3,16.5,19.2,50.6,25.7,0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S204-406,207.7,26.0,9.4,19.4,19.1,50.9,316.4,-0.1,plutonic,plutonic,743.4
+S204-407,216.8,28.5,9.8,20.5,18.9,52.6,293.4,0.01,plutonic,plutonic,743.4
+S204-408,215.8,26.1,9.6,21.5,19.4,52.7,258.7,0.06,plutonic,plutonic,743.4
+S204-409,221.9,27.1,9.5,22.2,20.1,53.5,282.7,-0.02,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S204-410,203.6,23.9,9.2,21.4,22.7,51.8,366.0,-0.04,plutonic,plutonic,743.4
+S204-411,201.9,26.9,9.6,22.7,24.2,51.8,275.0,-0.14,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S204-412,189.4,26.7,9.1,22.8,24.9,51.5,279.6,-0.13,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S204-413,171.4,24.3,8.2,20.5,24.9,52.3,189.3,-0.04,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S204-414,150.4,23.4,7.4,19.9,24.4,53.2,136.4,-0.07,plutonic,plutonic,743.4
+S204-415,150.7,24.6,7.1,21.1,23.4,53.2,59.7,0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S204-416,130.2,21.5,6.4,18.2,23.1,53.4,44.5,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S204-417,128.5,20.7,6.4,18.4,22.9,55.4,76.7,-0.09,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S204-418,134.0,22.4,6.3,19.5,22.5,55.1,35.5,-0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S204-419,123.0,21.0,5.7,19.1,22.6,54.1,61.3,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S204-420,125.6,22.4,5.9,20.0,21.9,53.8,64.0,-0.0,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S204-421,120.0,21.7,5.8,18.6,21.2,53.9,63.2,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S204-422,119.7,23.6,5.8,19.0,20.6,54.6,61.0,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S204-423,118.3,22.6,5.7,19.7,20.8,53.6,105.4,-0.12,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S204-424,110.3,22.2,5.4,18.2,20.3,53.3,59.7,-0.09,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S204-425,109.9,24.5,5.0,18.4,19.6,53.4,25.4,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S204-426,102.8,23.3,4.7,18.3,19.3,53.6,14.7,-0.01,plutonic,plutonic,743.4
+S204-427,100.2,21.7,4.6,17.7,18.7,54.4,63.2,-0.01,plutonic,plutonic,743.4
+S204-428,100.3,21.8,4.6,17.0,18.9,52.8,35.1,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S204-429,98.4,21.9,4.6,16.5,19.7,52.9,24.4,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S204-430,101.8,21.7,4.8,16.9,19.3,53.0,15.2,-0.02,plutonic,plutonic,743.4
+S204-431,101.8,22.5,4.7,17.2,18.9,52.6,12.0,-0.0,plutonic,plutonic,743.4
+S204-432,100.7,21.5,4.8,17.0,19.5,51.7,14.7,0.0,plutonic,plutonic,743.4
+S204-433,99.7,21.0,4.8,16.3,18.1,52.1,53.8,-0.1,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S204-434,103.3,21.8,4.8,15.8,18.7,50.2,20.5,-0.03,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S204-435,99.4,21.4,4.6,14.8,21.5,48.9,10.7,-0.01,plutonic,plutonic,743.4
+S204-436,99.0,20.4,4.8,14.9,23.2,47.2,8.8,-0.02,plutonic,plutonic,743.4
+S204-437,97.6,19.2,4.9,14.4,23.3,47.5,8.9,0.01,plutonic,plutonic,743.4
+S204-438,94.7,19.0,4.7,14.7,22.7,48.1,10.6,-0.01,plutonic,plutonic,743.4
+S204-439,91.1,20.2,4.3,17.2,22.6,47.8,10.9,-0.01,plutonic,plutonic,743.4
+S204-440,88.3,21.0,4.1,16.9,23.1,47.0,10.7,-0.01,volcano_sedimentary,sedimentary and volcaniclastic,629.4
+S205-413,179.0,27.4,8.7,21.0,25.0,52.3,209.0,-0.45,volcano_sedimentary,sedimentary and volcaniclastic,629.4
