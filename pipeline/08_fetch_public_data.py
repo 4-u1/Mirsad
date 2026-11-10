@@ -195,7 +195,20 @@ def geology():
 
 # ---------------------------------------------------------------- الأمطار
 # CHIRPS v2.0 يومي 0.05° من خادم NOAA ERDDAP (اقتطاع جغرافي على الخادم؛ طلب لكل شهر)
-ERDDAP = "https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalDailyP05.nc"
+ERDDAP = ["https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalDailyP05.nc",   # الخادمان من NOAA SWFSC بنفس البيانات
+          "https://upwell.pfeg.noaa.gov/erddap/griddap/chirps20GlobalDailyP05.nc"]
+
+
+def fetch_any(urls, q, timeout=600):
+    last = None
+    for rnd in range(3):
+        for u in urls:
+            try:
+                return fetch(u + q, tries=2, timeout=timeout)
+            except Exception as e:
+                last = e; print("mirror failed", u.split("/")[2], e, flush=True)
+        time.sleep(30 * (rnd + 1))
+    raise last
 
 
 def rain_chunk(y0, y1):
@@ -207,7 +220,7 @@ def rain_chunk(y0, y1):
             last = calendar.monthrange(y, m)[1]
             q = (f"?precip[({y}-{m:02d}-01):1:({y}-{m:02d}-{last})][({BBOX['lat0']}):1:({BBOX['lat1']})]"
                  f"[({BBOX['lon0']}):1:({BBOX['lon1']})]")
-            b = fetch(ERDDAP + q, timeout=600)
+            b = fetch_any(ERDDAP, q)
             ds = xr.open_dataset(io.BytesIO(b))
             p = ds["precip"].transpose("time", "latitude", "longitude").values.astype("float32")
             assert p.shape[0] == last, f"{y}-{m}: expected {last} days, got {p.shape[0]}"
