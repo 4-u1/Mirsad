@@ -1,0 +1,34 @@
+name: Satellite (Sentinel-2)
+# أسبوعيًا: صور Sentinel-2 الحديثة ← NDVI لكل قطاع مقارنة بنفس الفترة قبل سنة + فسيفساء ألوان حقيقية ← جدولا satellite_runs وsatellite
+on:
+  schedule:
+    - cron: "43 2 * * 1"
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "supabase = write to DATABASE_URL, sqlite = dry run (outputs in log)"
+        default: supabase
+        type: choice
+        options: [supabase, sqlite]
+permissions:
+  contents: read
+concurrency:
+  group: satellite
+  cancel-in-progress: false
+jobs:
+  satellite:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt numpy rasterio pyproj pillow
+      - name: Run
+        env:
+          DATABASE_URL: ${{ (github.event_name == 'schedule' || inputs.target == 'supabase') && secrets.DATABASE_URL || '' }}
+          MIRSAD_OUT: out/satellite
+        run: python pipeline/11_satellite.py
+      - if: always()
+        run: python pipeline/tools/emit_b64.py satellite out/satellite || true

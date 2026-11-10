@@ -24,6 +24,20 @@ def forecast_level(base, ratio):
     return LEVELS[i]
 
 
+# مؤشر الأقمار الصناعية (ق-6) — للمراجعة البشرية لا لكشف الانهيار آليًا:
+# تغيّر NDVI = متوسط آخر 30 يومًا (Sentinel-2) − نفس النافذة قبل سنة. يُعلَّم القطاع إذا كان مغطى نباتيًا
+# (NDVI الأساس ≥ 0.15) وانخفض بمقدار ≥ 0.08، وبشرط أن 30% على الأقل من القطاع صافٍ من الغيوم في الفترتين.
+NDVI_RULE = {"min_base": 0.15, "drop": -0.08, "min_valid": 0.3}
+
+
+def ndvi_flag(base, change, valid_now, valid_base):
+    """يرجع 'drop' أو 'stable' أو None (بيانات غير كافية)."""
+    r = NDVI_RULE
+    if base is None or change is None or valid_now is None or valid_base is None: return None
+    if valid_now < r["min_valid"] or valid_base < r["min_valid"]: return None
+    return "drop" if base >= r["min_base"] and change <= r["drop"] else "stable"
+
+
 def reasons_for(p, lc):
     r = []
     if p.get("events"):

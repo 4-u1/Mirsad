@@ -47,6 +47,11 @@ CREATE TABLE IF NOT EXISTS forecasts (
   ratio REAL, base_level TEXT NOT NULL, level TEXT NOT NULL, source TEXT NOT NULL,
   PRIMARY KEY (issued_at, sector_id, horizon_h));
 CREATE INDEX IF NOT EXISTS ix_forecasts_sector ON forecasts(sector_id, issued_at);
+CREATE TABLE IF NOT EXISTS satellite_runs (
+  run_at TEXT PRIMARY KEY, meta TEXT NOT NULL, source TEXT NOT NULL, image BLOB, image_type TEXT);
+CREATE TABLE IF NOT EXISTS satellite (
+  run_at TEXT NOT NULL, sector_id TEXT NOT NULL, ndvi_now REAL, ndvi_base REAL, ndvi_change REAL,
+  valid_now REAL, valid_base REAL, flag TEXT, PRIMARY KEY (run_at, sector_id));
 """
 
 

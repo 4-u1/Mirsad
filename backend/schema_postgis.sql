@@ -91,3 +91,23 @@ CREATE TABLE IF NOT EXISTS forecasts (
   PRIMARY KEY (issued_at, sector_id, horizon_h)
 );
 CREATE INDEX IF NOT EXISTS forecasts_sector_ix ON forecasts (sector_id, issued_at);
+
+-- صور الأقمار الصناعية (Sentinel-2): يكتبها pipeline/11_satellite.py أسبوعيًا، ولا تُحذف عند إعادة تحميل النموذج
+CREATE TABLE IF NOT EXISTS satellite_runs (
+  run_at     text PRIMARY KEY,
+  meta       text NOT NULL,
+  source     text NOT NULL,
+  image      bytea,
+  image_type text
+);
+CREATE TABLE IF NOT EXISTS satellite (
+  run_at      text NOT NULL,
+  sector_id   text NOT NULL,
+  ndvi_now    real,
+  ndvi_base   real,
+  ndvi_change real,
+  valid_now   real,
+  valid_base  real,
+  flag        text CHECK (flag IN ('drop','stable')),
+  PRIMARY KEY (run_at, sector_id)
+);
