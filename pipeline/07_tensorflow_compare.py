@@ -65,7 +65,7 @@ for i, (a, b) in enumerate(GroupKFold(n_splits=5).split(X, y, groups)):
 card = json.loads((MD / "model_card.json").read_text(encoding="utf-8"))
 cmp = card.get("comparisons", {})
 tf_m = metrics(p)
-rf = cmp.get("random_forest_baseline", {})
+rf = {k: v for k, v in card.get("spatial_cv", {}).items() if k != "method"} or cmp.get("random_forest_baseline", {})
 # "أفضل بوضوح" = تحسن ROC-AUC بأكثر من 0.05 دون تراجع في PR-AUC أو الاستدعاء عند «مرتفع».
 # مع 12 حالة إيجابية فقط، فرق ROC-AUC وحده لا يكفي: حالة واحدة تغيّره بعدة نقاط.
 better = (tf_m["roc_auc"] > rf.get("roc_auc", 0) + 0.05 and tf_m["pr_auc"] >= rf.get("pr_auc", 0)
