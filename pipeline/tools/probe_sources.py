@@ -1,14 +1,12 @@
 """فحص سريع لإتاحة مصادر البيانات المجانية من GitHub Actions (لا يكتب شيئًا في المستودع)."""
-import time, urllib.request
+import time, urllib.request, urllib.error
 E = "https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalDailyP05"
-for name, q in [("jan1991_csv", ".csv?time[(1991-01-01):1:(1991-01-31)]"), ("jan2020_csv", ".csv?time[(2020-01-01):1:(2020-01-31)]"),
-                ("y2019_csv", ".csv?time[(2019-01-01):1:(2019-12-31)]"), ("first_last", ".csv?time[0:1:2]"), ("last", ".csv?time[last]"),
-                ("feb1991T", ".csv?time[(1991-02-01T00:00:00Z):1:(1991-02-28T00:00:00Z)]")]:
-    t = time.time()
-    try:
-        with urllib.request.urlopen(urllib.request.Request(E + q, headers={"User-Agent": "mirsad-probe"}), timeout=300) as r:
-            b = r.read().decode()
-        lines = b.strip().splitlines()
-        print(f"PROBE {name}: n={len(lines)-2} first={lines[2:3]} last={lines[-1:]} secs={time.time()-t:.1f}")
-    except Exception as e:
-        print(f"PROBE {name}: ERR {e}")
+q = ".nc?precip[(2020-01-01):1:(2020-01-31)][(16.2):1:(20.6)][(40.6):1:(44.2)]"
+for ua in ["mirsad-probe", "mirsad-pipeline", "Mozilla/5.0 (X11; Linux x86_64)", "python-requests/2.32"]:
+    for url in [E + q, E + ".csv?time[last]"]:
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": ua}), timeout=120) as r:
+                print(f"PROBE ua={ua!r} {url[-30:]}: {r.status} {len(r.read())}")
+        except urllib.error.HTTPError as e:
+            print(f"PROBE ua={ua!r} {url[-30:]}: {e.code} {e.read()[:300]!r}")
+        time.sleep(2)
