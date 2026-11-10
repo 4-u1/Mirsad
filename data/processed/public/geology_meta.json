@@ -1,0 +1,53 @@
+{
+  "source": "Macrostrat geologic map units API",
+  "url": "https://macrostrat.org/",
+  "license": "CC BY 4.0",
+  "map_sources": {
+    "190": {
+      "name": "Africa",
+      "ref_title": "New edition of the 1:10,000,000 geological map of Africa",
+      "authors": "Thiéblemont, D. (ed.)",
+      "scale": "small",
+      "ref_year": "2016",
+      "url": "http://www.brgm.eu/project/new-edition-of-110000000-geological-map-of-africa"
+    },
+    "154": {
+      "name": "Generalized Geology of the World",
+      "ref_title": "Generalized geology of the world: bedrock domains and major faults in GIS format: a small-scale world geology map with an extended geological attribute database",
+      "authors": "Chorlton, L.B.",
+      "scale": "tiny",
+      "ref_year": "2007",
+      "url": "https://geoscan.nrcan.gc.ca/starweb/geoscan/servlet.starweb?path=geoscan/fulle.web&search1=R=223767"
+    }
+  },
+  "sectors_by_source": {
+    "190": 1080,
+    "154": 5
+  },
+  "classes": [
+    "volcano_sedimentary",
+    "volcanic",
+    "plutonic",
+    "metamorphic",
+    "unconsolidated",
+    "sedimentary",
+    "other"
+  ],
+  "method": "unit at each sector centroid; points inherit their sector",
+  "generated_at": "2026-11-10T19:58:18Z",
+  "coverage_grid": {
+    "lith_class": 0.9909,
+    "age_ma": 0.9909
+  },
+  "coverage_training": {
+    "lith_class": 0.9959,
+    "age_ma": 0.9959
+  },
+  "note": "classes re-derived from map lith text with pipeline/08 lith_class()",
+  "class_counts_sectors": {
+    "volcano_sedimentary": 432,
+    "plutonic": 398,
+    "sedimentary": 216,
+    "volcanic": 39
+  }
+}

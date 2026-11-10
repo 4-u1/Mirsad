@@ -23,12 +23,14 @@ import tensorflow as tf
 ROOT = Path(__file__).resolve().parents[1]
 P, MD = ROOT / "data" / "processed", ROOT / "model"
 SEED, BLOCK, EPOCHS = 42, 0.5, 150
-FEATURES = ["elevation", "slope", "aspect", "landcover"]
+import sys; sys.path.insert(0, str(ROOT / "pipeline"))
+from model_spec import spec  # noqa: E402
+SPEC = spec(); FEATURES = SPEC["features"]  # مميزات النموذج المعتمد (v1 أو v2)
 THRESHOLDS = {"high": 0.60, "critical": 0.80}
 tf.keras.utils.set_random_seed(SEED)
 tf.config.experimental.enable_op_determinism()
 
-tr = pd.read_csv(P / "training_table.csv", encoding="utf-8-sig")
+tr = pd.read_csv(SPEC["training"], encoding="utf-8-sig")
 X, y = tr[FEATURES].values.astype("float32"), tr["landslide"].values.astype("float32")
 groups = (np.floor(tr.lat / BLOCK).astype(int).astype(str) + "_" + np.floor(tr.lon / BLOCK).astype(int).astype(str)).values
 
@@ -56,10 +58,11 @@ for i, (a, b) in enumerate(GroupKFold(n_splits=5).split(X, y, groups)):
     if len(pos):  # تكرار الإيجابيات في التدريب فقط (مثل 05)
         k = max(1, int((ya == 0).sum()) // len(pos))
         Xa, ya = np.vstack([Xa] + [Xa[pos]] * (k - 1)), np.concatenate([ya] + [ya[pos]] * (k - 1))
+    med = np.nanmedian(Xa, 0); Xa = np.where(np.isnan(Xa), med, Xa); Xb = np.where(np.isnan(X[b]), med, X[b])  # تعويض بالوسيط من طيّة التدريب
     sc = StandardScaler().fit(Xa)
     m = build()
     m.fit(sc.transform(Xa), ya, epochs=EPOCHS, batch_size=256, shuffle=True, verbose=0)
-    p[b] = m.predict(sc.transform(X[b]), verbose=0).ravel()
+    p[b] = m.predict(sc.transform(Xb), verbose=0).ravel()
     folds.append({"fold": i + 1, "test_rows": int(len(b)), "test_positives": int(y[b].sum())})
 
 card = json.loads((MD / "model_card.json").read_text(encoding="utf-8"))
@@ -74,6 +77,7 @@ res = {
     "requirement": "FR-A3",
     "method": f"GroupKFold(5) on {BLOCK}° blocks, same folds as 03/05",
     "framework": f"TensorFlow {tf.__version__} (Keras), Python {platform.python_version()}",
+    "model_version": SPEC["version"], "features": FEATURES,
     "architecture": "Dense(16, relu) → Dense(8, relu) → Dense(1, sigmoid); L2=0.01; Adam 1e-3; "
                     f"{EPOCHS} epochs, batch 256; positives oversampled in training folds; StandardScaler per fold",
     "seed": SEED, "rows": int(len(y)), "positives": int(y.sum()), "folds": folds,

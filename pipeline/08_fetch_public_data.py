@@ -136,13 +136,13 @@ def soil():
 
 
 # ---------------------------------------------------------------- الجيولوجيا
-LITH_CLASS = [  # ترتيب الفحص مهم: الأخص أولًا
-    ("unconsolidated", ("alluvium", "sand", "gravel", "unconsolidated", "sediment", "silt", "clay", "eolian", "colluvium", "sabkha")),
+LITH_CLASS = [  # ترتيب الفحص مهم: الأخص أولًا. المصطلحات بحسب الخرائط المصدر (BRGM 1:10M وChorlton 2007)
+    ("volcano_sedimentary", ("volcaniclastic", "volcano-sedimentary", "volcanosedimentary")),
     ("volcanic", ("basalt", "volcanic", "lava", "andesite", "rhyolite", "tuff", "pyroclastic")),
     ("plutonic", ("granite", "granodiorite", "diorite", "gabbro", "plutonic", "tonalite", "intrusive", "syenite")),
-    ("metamorphic", ("schist", "gneiss", "metamorphic", "amphibolite", "quartzite", "marble", "slate", "phyllite", "meta")),
-    ("carbonate", ("limestone", "dolomite", "carbonate", "chalk", "marl")),
-    ("clastic_sedimentary", ("sandstone", "shale", "mudstone", "conglomerate", "siltstone", "sedimentary", "clastic")),
+    ("metamorphic", ("schist", "gneiss", "metamorphic", "amphibolite", "quartzite", "marble", "slate", "phyllite")),
+    ("unconsolidated", ("alluvium", "unconsolidated", "eolian", "colluvium", "sabkha", "quaternary")),
+    ("sedimentary", ("sedimentary", "sandstone", "shale", "mudstone", "conglomerate", "siltstone", "limestone", "dolomite", "carbonate", "marl")),
 ]
 
 
@@ -163,7 +163,7 @@ def geology():
         try:
             d = json.loads(fetch(f"https://macrostrat.org/api/v2/geologic_units/map?lat={la:.4f}&lng={lo:.4f}", timeout=60))["success"]["data"]
             if d:
-                u = d[0]; txt = " ".join(str(u.get(k) or "") for k in ("lith", "name", "strat_name", "descrip")).strip()
+                u = d[0]; txt = str(u.get("lith") or u.get("name") or "")
                 rec.update(lith_text=(u.get("lith") or u.get("name") or "")[:120], lith_class=lith_class(txt),
                            age_ma=round(((u.get("t_int_age") or 0) + (u.get("b_int_age") or 0)) / 2, 1) if u.get("t_int_age") is not None else None,
                            map_source_id=u.get("source_id"))

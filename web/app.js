@@ -35,6 +35,10 @@
     return s;
   };
   const lcName = (n) => (S.lang === "ar" && I18N.ar.lc_names[n]) || n;
+  // وحدات وألوان الطبقات (U-FR7)
+  const UNITS = { elev: [() => " " + t("m"), 0], slope_mean: [() => "°", 1], rain_annual_mm: [() => " " + t("mm"), 0],
+    rain_p99_3d_mm: [() => " " + t("mm"), 0], soil_clay: [() => "%", 1], relief_1km: [() => " " + t("m"), 0] };
+  const LITH_COLORS = { plutonic: "#C98B6B", volcanic: "#8E4A5A", volcano_sedimentary: "#6F8E7A", sedimentary: "#D7B56D", other: "#8A8F99" };
   const sfmt = (n) => (Math.floor(Number(n) * 100) / 100).toFixed(2); // الدرجة تُقرّب للأسفل كي لا تظهر 0.80 لقطاع «مرتفع»
   const fmt = (n, d = 0) => Number(n).toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
   const el = (tag, attrs = {}, ...kids) => {
@@ -57,7 +61,8 @@
     document.title = t("brand") + " · " + t("tagline");
     store.set("mirsad.lang", S.lang);
     renderUser();
-    if (S.data.sectors) { renderLegend(); renderRank(); renderKpis(); renderAlerts(); renderTransparency(); if (S.selected) openDrawer(S.selected); }
+    if (S.data.sectors) { renderLegend(); renderRank(); renderKpis(); renderAlerts(); renderTransparency(); renderFcSide(); if (S.selected) openDrawer(S.selected);
+      if (S.map && S.map.getLayer("sec-fill")) restyleMap(); }
   }
 
   // ---------- theme ----------
@@ -129,15 +134,30 @@
     m.setLayoutProperty("lbl-dark", "visibility", !sat && dark ? "visible" : "none");
     m.setLayoutProperty("lbl-light", "visibility", !sat && !dark ? "visible" : "none");
     m.setLayoutProperty("lbl-sat", "visibility", sat ? "visible" : "none");
-    const ramp = document.getElementById("ramp");
-    if (S.colorBy && S.colorBy !== "level") {  // U-FR7: تلوين حسب عامل
-      const vals = S.data.sectors.features.map((f) => f.properties[S.colorBy]), lo = Math.min(...vals), hi = Math.max(...vals);
-      m.setPaintProperty("sec-fill", "fill-color", ["interpolate", ["linear"], ["get", S.colorBy], lo, "#3C5662", (lo + hi) / 2, "#D59A4D", hi, "#AC573A"]);
+    const ramp = document.getElementById("ramp"), cat = document.getElementById("catLegend");
+    const NONE = dark ? "#2B3A40" : "#D7D2C8";
+    cat.hidden = true;
+    if (S.colorBy === "lith_class" || S.colorBy === "fc72") {  // U-FR7 / U-FR6: طبقات فئوية
+      ramp.hidden = true;
+      const key = S.colorBy === "lith_class" ? "lith_class" : "fc72_level";
+      const pal = S.colorBy === "lith_class" ? LITH_COLORS : c;
+      const cats = S.colorBy === "lith_class" ? Object.keys(LITH_COLORS) : LEVELS;
+      m.setPaintProperty("sec-fill", "fill-color", ["match", ["coalesce", ["get", key], "_"], ...cats.flatMap((k) => [k, pal[k]]), NONE]);
+      m.setPaintProperty("sec-fill", "fill-opacity", sat ? 0.6 : 0.6);
+      cat.hidden = false;
+      cat.replaceChildren(...cats.map((k) => el("li", {}, el("i", { style: `background:${pal[k]}` }),
+        S.colorBy === "lith_class" ? t("lith_" + k) : `${SYMBOL[k]} ${t("lv_" + k)}`)), el("li", {}, el("i", { style: `background:${NONE}` }),
+        S.colorBy === "lith_class" ? t("lith_none") : t("no_value")));
+    } else if (S.colorBy && S.colorBy !== "level") {  // U-FR7: تلوين حسب عامل رقمي
+      const vals = S.data.sectors.features.map((f) => f.properties[S.colorBy]).filter((v) => typeof v === "number" && isFinite(v));
+      const lo = vals.length ? Math.min(...vals) : 0, hi = vals.length ? Math.max(...vals) : 1, mid = (lo + hi) / 2 || 0.5;
+      m.setPaintProperty("sec-fill", "fill-color", ["case", ["==", ["typeof", ["get", S.colorBy]], "number"],
+        ["interpolate", ["linear"], ["get", S.colorBy], lo, "#3C5662", mid, "#D59A4D", Math.max(hi, mid + 1e-6), "#AC573A"], NONE]);
       m.setPaintProperty("sec-fill", "fill-opacity", sat ? 0.6 : 0.55);
       ramp.hidden = false;
-      const u = S.colorBy === "elev" ? " " + t("m") : "°";
-      document.getElementById("rampMin").textContent = fmt(lo, S.colorBy === "elev" ? 0 : 1) + u;
-      document.getElementById("rampMax").textContent = fmt(hi, S.colorBy === "elev" ? 0 : 1) + u;
+      const [u, d] = UNITS[S.colorBy] || ["", 1];
+      document.getElementById("rampMin").textContent = fmt(lo, d) + u();
+      document.getElementById("rampMax").textContent = fmt(hi, d) + u();
     } else {
       ramp.hidden = true;
       const match = ["match", ["get", "level"], "critical", c.critical, "high", c.high, "medium", c.medium, c.low];
@@ -223,6 +243,8 @@
         el("dt", {}, t("slope")), el("dd", {}, `${fmt(P.peak_vals.slope, 1)}°`),
         el("dt", {}, t("aspect")), el("dd", {}, P.peak_vals.aspect < 0 ? "—" : `${fmt(P.peak_vals.aspect, 0)}°`),
         el("dt", {}, t("lc")), el("dd", {}, lcName(P.peak_vals.landcover))),
+      ...forecastBlock(P),
+      ...layersBlock(P),
       el("div", { class: "h-sec" }, t("shap_title")),
       el("div", { class: "bars" }, ...Object.entries(shap).map(([k, v]) => {
         const w = (Math.abs(v) / maxShap) * 50, pos = v >= 0, rtl = document.documentElement.dir === "rtl", grow = pos !== rtl;
@@ -247,6 +269,54 @@
   function closeDrawer() {
     S.selected = null; const d = document.getElementById("drawer"); d.classList.remove("open"); d.setAttribute("aria-hidden", "true");
     if (S.map && S.map.getLayer("sec-sel")) S.map.setFilter("sec-sel", ["==", ["get", "id"], ""]);
+  }
+
+  // ---------- forecast 24/48/72 h (U-FR6) ----------
+  async function loadForecast() {
+    S.forecast = null;
+    if (!api.on) return renderFcSide();
+    try {
+      const r = await fetch("/api/v1/forecast"); if (!r.ok) return renderFcSide();
+      const d = await r.json(); S.forecast = { ...d, by: Object.fromEntries(d.items.map((i) => [i.sector_id, i])) };
+      S.data.sectors.features.forEach((f) => { const i = S.forecast.by[f.properties.id];
+        f.properties.fc72_level = i ? i.horizons[i.horizons.length - 1].level : null; });
+      if (S.map && S.map.getSource("sectors")) S.map.getSource("sectors").setData(S.data.sectors);
+    } catch (e) { S.forecast = null; }
+    renderFcSide();
+  }
+  const riyadh = (iso) => new Date(iso).toLocaleString(S.lang === "ar" ? "ar-SA-u-nu-latn-ca-gregory" : "en-GB",
+    { dateStyle: "medium", timeStyle: "short", timeZone: "Asia/Riyadh" });
+  function renderFcSide() {
+    const n = document.getElementById("fcSide"); if (!n) return; n.hidden = false;
+    if (!S.forecast) { n.textContent = t("fc_side_none"); return; }
+    const hi = S.forecast.items.filter((i) => ["high", "critical"].includes(i.horizons[i.horizons.length - 1].level)).length;
+    n.textContent = t("fc_side", { n: fmt(hi), t: riyadh(S.forecast.issued_at) }) + (S.forecast.stale ? " · " + t("fc_stale") : "");
+  }
+  function forecastBlock(P) {
+    const f = S.forecast && S.forecast.by[P.id];
+    if (!f) return [el("div", { class: "h-sec" }, t("fc_title")), el("p", { class: "note" }, t("fc_none"))];
+    return [el("div", { class: "h-sec" }, t("fc_title")),
+      el("table", { class: "fc" }, el("thead", {}, el("tr", {}, el("th", {}, ""), ...f.horizons.map((h) => el("th", {}, t("fc_h", { h: h.h }))))),
+        el("tbody", {},
+          el("tr", {}, el("th", {}, t("fc_rain")), ...f.horizons.map((h) => el("td", { class: "mono" }, h.rain_mm == null ? "—" : `${fmt(h.rain_mm, 1)} ${t("mm")}`))),
+          el("tr", {}, el("th", {}, t("fc_ratio")), ...f.horizons.map((h) => el("td", { class: "mono" }, h.ratio == null ? "—" : `${Math.round(h.ratio * 100)}%`))),
+          el("tr", {}, el("th", {}, t("fc_level")), ...f.horizons.map((h) => el("td", {}, chip(h.level)))))),
+      el("p", { class: "note" }, (f.threshold_mm ? t("fc_thr", { v: fmt(f.threshold_mm, 0) }) : t("fc_nothr")) + " · " + t("fc_issued", { t: riyadh(S.forecast.issued_at) })),
+      S.forecast.stale ? el("p", { class: "note warn-t" }, t("fc_stale")) : "",
+      el("p", { class: "note" }, t("fc_note"))];
+  }
+  function layersBlock(P) {
+    if (P.rain_annual_mm == null && P.soil_clay == null && P.lith_class == null && P.relief_1km == null) return [];
+    const v = (x, d, u) => (x == null ? "—" : `${fmt(x, d)}${u}`);
+    return [el("div", { class: "h-sec" }, t("layers_title")),
+      el("dl", { class: "dl" },
+        el("dt", {}, t("l_rain")), el("dd", {}, v(P.rain_annual_mm, 0, " " + t("mm"))),
+        el("dt", {}, t("l_rain99")), el("dd", {}, v(P.rain_p99_3d_mm, 0, " " + t("mm"))),
+        el("dt", {}, t("l_max1")), el("dd", {}, v(P.rain_max1d_mm, 0, " " + t("mm"))),
+        el("dt", {}, t("l_clay")), el("dd", {}, v(P.soil_clay, 1, "%")),
+        el("dt", {}, t("l_sand")), el("dd", {}, v(P.soil_sand, 1, "%")),
+        el("dt", {}, t("l_relief")), el("dd", {}, v(P.relief_1km, 0, " " + t("m"))),
+        el("dt", {}, t("l_lith")), el("dd", {}, P.lith_class ? t("lith_" + P.lith_class) : "—"))];
   }
 
   // ---------- alerts (PRD 13.2) ----------
@@ -400,10 +470,12 @@
       ["s_inventory", "s_inventory_u", c.landslide_events, "used"], ["s_terrain", "s_terrain_u", c.training_rows, "used"],
       ["s_grid", "s_grid_u", c.grid_points_with_features, "used"],
       ["s_rain", "s_rain_u", c.rainfall_rows, "not_used", { n: c.rainfall_regions_placeholder_coords.length }],
-      ["s_eq", "s_eq_u", c.earthquakes, "not_used", { n: c.earthquakes }], ["s_factors", "s_factors_u", c.conditioning_factor_rows, "not_used"]];
+      ["s_eq", "s_eq_u", c.earthquakes, "not_used", { n: c.earthquakes }], ["s_factors", "s_factors_u", c.conditioning_factor_rows, "not_used"],
+      ...Object.entries(m.public_data || {}).map(([k, d]) => ["raw:" + d.source, "pub_" + k, d.cells, d.used ? "used" : "layer",
+        { cov: Math.round(d.coverage * 1000) / 10, lic: d.license || "" }])];
     document.getElementById("trSources").replaceChildren(
       el("thead", {}, el("tr", {}, el("th", {}, t("src_name")), el("th", {}, t("src_use")), el("th", {}, t("src_rows")), el("th", {}, t("src_status")))),
-      el("tbody", {}, ...src.map(([n, u, rows, s, v]) => el("tr", {}, el("td", {}, t(n)), el("td", {}, t(u, v)), el("td", { class: "mono" }, fmt(rows)),
+      el("tbody", {}, ...src.map(([n, u, rows, s, v]) => el("tr", {}, el("td", {}, n.startsWith("raw:") ? n.slice(4) : t(n)), el("td", {}, t(u, v)), el("td", { class: "mono" }, fmt(rows)),
         el("td", {}, el("span", { class: "chip " + (s === "used" ? "low" : "medium") }, t(s)))))));
     document.getElementById("trLimits").replaceChildren(...["lim1", "lim2", "lim3", "lim4", "lim5", "lim6"].map((k) => el("li", {},
       t(k, { pos: m.training.positives, neg: fmt(m.training.negatives), cells: fmt(c.grid_points_with_features), grid: fmt(c.grid_points_total) }))));
@@ -459,6 +531,7 @@
       if (api.on && sectors.thresholds) model.thresholds = sectors.thresholds;
       S.data = { sectors, events, model };
       if (api.on) await loadAlertsApi();
+      await loadForecast();
       renderUser();
       // AC-4: وسم البيانات المتقادمة
       const ageDays = (Date.now() - new Date(model.trained_at + "T00:00:00Z").getTime()) / 864e5;

@@ -1,0 +1,24 @@
+name: Live site check
+# فحص المتصفح على الموقع الحي: الخريطة والطبقات والتنبؤ والإنذارات والشفافية والتقرير، بالعربية والإنجليزية
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: Site URL
+        default: https://mirsad-rho.vercel.app
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install playwright && python -m playwright install --with-deps chromium
+      - run: python tests/e2e/live_check.py
+        env:
+          MIRSAD_URL: ${{ github.event.inputs.url }}
+      - if: always()
+        run: python pipeline/tools/emit_b64.py ui out

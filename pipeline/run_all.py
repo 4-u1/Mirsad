@@ -6,7 +6,7 @@ python pipeline/run_all.py            ← تنظيف ← جودة ← تدريب
 import subprocess, sys, datetime, json
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
-STEPS = ["pipeline/02_clean_data.py", "pipeline/04_quality_report.py", "pipeline/03_train_model.py",
+STEPS = ["pipeline/02_clean_data.py", "pipeline/04_quality_report.py", "pipeline/09_features_v2.py", "pipeline/03_train_model.py",
          "pipeline/05_evaluate_explain.py", "pipeline/06_export_google_earth.py", "backend/load_db.py"]
 log = {"started": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"), "steps": []}
 for s in STEPS:

@@ -71,7 +71,7 @@
   "use strict";
   let lang = "ar"; try { const v = localStorage.getItem("mirsad.lang"); lang = (v && v.replace(/"/g, "")) === "en" ? "en" : "ar"; } catch (e) {}
   document.documentElement.lang = lang; document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-  const T = I18N[lang], t = (k) => T[k] ?? I18N.ar[k] ?? k, lc = (n) => (lang === "ar" && I18N.ar.lc_names[n]) || n;
+  const T = I18N[lang], t = (k, v) => { let s = T[k] ?? I18N.ar[k] ?? k; if (v && typeof s === "string") for (const [x, y] of Object.entries(v)) s = s.replace("{" + x + "}", y); return s; }, lc = (n) => (lang === "ar" && I18N.ar.lc_names[n]) || n;
   const L = {
     ar: { title: "تقرير تقييم خطر القطاع", ref: "رقم المرجع", gen: "تاريخ الإصدار", model: "إصدار النموذج", sector: "القطاع", scale: "موقع الدرجة على سلّم المستويات",
       loc: "الإحداثيات (أعلى خلية خطرًا)", appr: "حالة الإنذار والاعتماد", by: "المعتمِد", at: "وقت القرار", alertNo: "رقم الإنذار",
@@ -108,6 +108,11 @@
     try { const s = JSON.parse(localStorage.getItem("mirsad.alerts") || "{}")[id]; if (s) return { status: s.status, by: s.by, at: s.at, live: false }; } catch (e) {}
     return { status: null, live: false };
   }
+  async function forecastOf(id) {  // FR-U6: آخر تنبؤ للقطاع من الخادم إن وُجد
+    try { const c = new AbortController(); setTimeout(() => c.abort(), 2500);
+      const r = await fetch("/api/v1/sectors/" + encodeURIComponent(id) + "/forecast", { signal: c.signal }); if (r.ok) return await r.json(); } catch (e) {}
+    return null;
+  }
   function stamp(by, at, ref) {
     const c = "#1E6A70", top = esc(L.stampTop), mid = esc(L.stampMid), who = esc(by || ""), when = esc(at ? new Date(at).toISOString().slice(0, 10) : "");
     return el("div", { class: "stamp", role: "img", "aria-label": `${L.stampMid} · ${by || ""} · ${when}`, html:
@@ -133,6 +138,9 @@
     document.title = `${t("brand")} · ${L.title} ${p.id}`;
     const ge = `https://earth.google.com/web/@${p.peak[0]},${p.peak[1]},${p.peak_vals.elevation}a,9000d,35y,0h,60t,0r`;
     const total = p.counts.reduce((a, b) => a + b, 0) || 1, shap = p.shap || {}, mx = Math.max(1e-6, ...Object.values(shap).map(Math.abs));
+    const fc = await forecastOf(p.id);
+    const n1 = (x, d, u) => (x == null ? "—" : `${Number(x).toLocaleString("en-US", { maximumFractionDigits: d })}${u}`);
+    const hasLayers = p.rain_annual_mm != null || p.soil_clay != null || p.lith_class != null;
     const ap = await approval(p.id), status = ap.status || (lv === "high" || lv === "critical" ? "pending" : "none");
     const stCol = { approved: ["#E3F1EF", "#1E6A70"], pending: ["#F8E9D2", "#7A4E12"], dismissed: ["#E3EAED", "#2F4A55"], none: ["#E3EAED", "#2F4A55"] }[status];
     const seg = [[0, th.medium, "low"], [th.medium, th.high, "medium"], [th.high, th.critical, "high"], [th.critical, 1, "critical"]];
@@ -169,6 +177,15 @@
             el("div", { class: "stack" }, ...LV.map((l, i) => el("i", { style: `width:${p.counts[i] / total * 100}%;background:var(--lv-${l})` }))),
             el("table", { class: "kv" }, ...LV.map((l, i) => row(`${SYM[l]} ${t("lv_" + l)}`, `${p.counts[i]} · ${Math.round(p.counts[i] / total * 100)}%`)),
               row(t("landcover"), lc(p.landcover)))))),
+        hasLayers || fc ? el("div", { class: "grid" },
+          hasLayers ? el("section", { class: "box" }, el("h2", {}, t("layers_title")), el("div", { class: "in" }, el("table", { class: "kv" },
+            row(t("l_rain"), n1(p.rain_annual_mm, 0, " " + t("mm"))), row(t("l_rain99"), n1(p.rain_p99_3d_mm, 0, " " + t("mm"))),
+            row(t("l_clay"), n1(p.soil_clay, 1, "%")), row(t("l_relief"), n1(p.relief_1km, 0, " " + t("m"))),
+            row(t("l_lith"), p.lith_class ? t("lith_" + p.lith_class) : "—")))) : "",
+          el("section", { class: "box" }, el("h2", {}, t("fc_title")), el("div", { class: "in" },
+            fc ? el("table", { class: "kv" }, ...fc.horizons.map((h) => row(t("fc_h", { h: h.h }),
+              `${n1(h.rain_mm, 1, " " + t("mm"))} · ${h.ratio == null ? "—" : Math.round(h.ratio * 100) + "%"} · ${SYM[h.level]} ${t("lv_" + h.level)}`))) : el("p", { class: "note" }, t("fc_none")),
+            fc ? el("p", { class: "note" }, t("fc_issued", { t: dt(fc.issued_at).replace(/ \((الرياض|Riyadh)\)$/, "") }) + " · " + t("fc_note")) : ""))) : "",
         el("section", { class: "appr" },
           el("div", {}, el("h3", {}, L.appr),
             el("span", { class: "st", style: `background:${stCol[0]};color:${stCol[1]}` }, L["st_" + status]),

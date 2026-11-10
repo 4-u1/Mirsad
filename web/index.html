@@ -74,7 +74,9 @@
           </div>
           <div class="ctl">
             <label for="colorBy" data-i18n="color_by">تلوين القطاعات حسب</label>
-            <select id="colorBy" class="select"><option value="level" data-i18n="cb_level">مستوى الخطر</option><option value="slope_mean" data-i18n="cb_slope">متوسط الانحدار</option><option value="elev" data-i18n="cb_elev">متوسط الارتفاع</option></select>
+            <select id="colorBy" class="select"><option value="level" data-i18n="cb_level">مستوى الخطر</option><option value="slope_mean" data-i18n="cb_slope">متوسط الانحدار</option><option value="elev" data-i18n="cb_elev">متوسط الارتفاع</option><option value="fc72" data-i18n="cb_fc">الخطر المتوقع 72 ساعة</option><option value="rain_annual_mm" data-i18n="cb_rain">متوسط الأمطار السنوية</option><option value="rain_p99_3d_mm" data-i18n="cb_rain99">عتبة أمطار 3 أيام</option><option value="soil_clay" data-i18n="cb_clay">نسبة الطين في التربة</option><option value="relief_1km" data-i18n="cb_relief">التضرّس</option><option value="lith_class" data-i18n="cb_lith">نوع الصخور</option></select>
+            <ul class="cat-legend" id="catLegend" hidden></ul>
+            <p class="muted fc-side" id="fcSide" hidden></p>
             <div class="ramp" id="ramp" hidden><span id="rampMin"></span><i></i><span id="rampMax"></span></div>
           </div>
           <div class="ctl">

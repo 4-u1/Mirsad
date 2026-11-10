@@ -1,0 +1,29 @@
+{
+  "source": "SoilGrids 2.0 (ISRIC)",
+  "url": "https://www.isric.org/explore/soilgrids",
+  "license": "CC BY 4.0",
+  "layers": {
+    "clay": "clay_0-5cm_mean",
+    "sand": "sand_0-5cm_mean",
+    "silt": "silt_0-5cm_mean",
+    "bdod": "bdod_0-5cm_mean"
+  },
+  "units": {
+    "clay/sand/silt": "% (0-5 cm)",
+    "bdod": "g/cm3 (0-5 cm)"
+  },
+  "resolution": "250 m, EPSG:4326 via WCS 2.0.1",
+  "generated_at": "2026-11-10T19:55:41Z",
+  "coverage_grid": {
+    "soil_clay": 0.9955,
+    "soil_sand": 0.9955,
+    "soil_silt": 0.9955,
+    "soil_bdod": 0.9955
+  },
+  "coverage_training": {
+    "soil_clay": 0.9988,
+    "soil_sand": 0.9988,
+    "soil_silt": 0.9988,
+    "soil_bdod": 0.9988
+  }
+}

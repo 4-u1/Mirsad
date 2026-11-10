@@ -14,7 +14,8 @@ sectors = json.loads((WEB / "sectors.geojson").read_text(encoding="utf-8"))
 events = json.loads((WEB / "landslides.json").read_text(encoding="utf-8"))
 card = json.loads((ROOT / "model" / "model_card.json").read_text(encoding="utf-8"))
 LV = {"critical": ("حرج", "D9412B", "cc"), "high": ("مرتفع", "AC573A", "b3"), "medium": ("متوسط", "D59A4D", "8c"), "low": ("منخفض", "6F8E9A", "40")}
-FEAT = {"elevation": "الارتفاع", "slope": "الانحدار", "aspect": "اتجاه المنحدر", "landcover": "الغطاء الأرضي"}
+FEAT = {"elevation": "الارتفاع", "slope": "الانحدار", "aspect": "اتجاه المنحدر", "landcover": "الغطاء الأرضي",
+        "relief": "التضرّس", "curvature": "الانحناء", "soil": "التربة", "geology": "الصخور", "rain": "الأمطار"}
 
 def kml_color(hex_rgb, alpha):  # KML: aabbggrr
     return alpha + hex_rgb[4:6] + hex_rgb[2:4] + hex_rgb[0:2]

@@ -1,6 +1,6 @@
 """مِرصاد · تحميل مخرجات خط المعالجة إلى قاعدة البيانات (SQLite أو PostGIS).
 
-يقرأ: model/model_card.json · web/data/sectors.geojson · data/processed/risk_scores_v1.csv
+يقرأ: model/model_card.json · web/data/sectors.geojson · data/processed/risk_scores_<الإصدار>.csv (من بطاقة النموذج)
 التشغيل:  python backend/load_db.py
 - مع DATABASE_URL (Supabase): يحمّل إلى PostgreSQL/PostGIS ويعيد إنشاء الجداول، مع إبقاء قرارات الإنذار وسجل التدقيق.
 - بدونه: SQLite محلي.
@@ -48,6 +48,20 @@ def restore_decisions(con, dec, sector_ids):
     return n
 
 
+def public_sources(card):
+    """الطبقات العامة المجانية (08): المصدر والترخيص وتاريخ الجلب، ومستخدمة في النموذج إن اعتُمد v2."""
+    used = 1 if card.get("version") == "v2" else 0
+    out, pub = [], ROOT / "data" / "processed" / "public"
+    for lid, name in (("chirps", "rain"), ("soilgrids", "soil"), ("macrostrat", "geology"), ("copernicus_dem", "terrain")):
+        f = pub / f"{name}_meta.json"
+        if f.exists():
+            m = json.loads(f.read_text(encoding="utf-8"))
+            cov = m.get("coverage_grid") or {}
+            out.append((lid, m["source"], m.get("license"), (m.get("generated_at") or "")[:10], int(round(min(cov.values() or [0]) * 126467)), used,
+                        f"{m.get('url', '')} · min grid coverage {min(cov.values() or [0]):.1%}"))
+    return [(i, n, lic, rec, u, note, upd) for i, n, lic, upd, rec, u, note in out]
+
+
 def main(db_path=None, fresh=True, keep_history=True):
     remote = bool((os.environ.get("DATABASE_URL") or "").strip())
     if remote:
@@ -77,7 +91,7 @@ def main(db_path=None, fresh=True, keep_history=True):
     card = json.loads((ROOT / "model" / "model_card.json").read_text(encoding="utf-8"))
     sectors = json.loads((ROOT / "web" / "data" / "sectors.geojson").read_text(encoding="utf-8"))
     th = card["thresholds"]
-    g = pd.read_csv(ROOT / "data" / "processed" / "risk_scores_v1.csv", encoding="utf-8-sig")
+    g = pd.read_csv(ROOT / "data" / "processed" / card.get("risk_scores_file", "risk_scores_v1.csv"), encoding="utf-8-sig")
     g["sector_id"] = ["S%03d-%03d" % (math.floor(a / 0.1), math.floor(b / 0.1)) for a, b in zip(g.lat, g.lon)]
     c = card["cleaning"]
 
@@ -110,11 +124,13 @@ def main(db_path=None, fresh=True, keep_history=True):
             ("grid", "Point grid (~1 km)", "team", c["grid_points_with_features"], 1, "prediction cells"),
             ("rainfall", "Monthly rainfall by region 2009-2019", "team-supplied", c["rainfall_rows"], 0,
              f"{len(c['rainfall_regions_placeholder_coords'])} of {c['rainfall_regions']} regions have placeholder coordinates"),
+            *public_sources(card),
             ("earthquakes", "USGS earthquake catalog", "USGS public domain", c["earthquakes"], 0,
              f"{c['earthquakes_in_study_area']} events inside the study area"),
             ("factors", "Conditioning-factor table (282 rows)", "unknown", c["conditioning_factor_rows"], 0, "F_NF column undocumented")]
         con.executemany("INSERT INTO data_sources(id, name, license, last_updated, status, records, used_in_model, note) VALUES (?,?,?,?,?,?,?,?)",
-                        [(i, n, lic, card["trained_at"], "ok" if u else "not_used", rec, u, note) for i, n, lic, rec, u, note in srcs])
+                        [(x[0], x[1], x[2], (x[6] if len(x) > 6 else None) or card["trained_at"], "ok" if x[4] else "not_used", x[3], x[4], x[5])
+                         for x in srcs])
     con.commit()
 
     creds = {}

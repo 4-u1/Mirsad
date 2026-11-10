@@ -1,0 +1,21 @@
+{
+  "source": "Copernicus DEM GLO-30 (AWS Open Data)",
+  "url": "https://registry.opendata.aws/copernicus-dem/",
+  "license": "Copernicus DEM licence (free use with attribution)",
+  "method": "Zevenbergen & Thorne (1987) 3x3 at the point (1/100 m); relief and mean slope in a 33x33-pixel (~1 km) window",
+  "generated_at": "2026-11-10T19:58:37Z",
+  "coverage_grid": {
+    "curv_profile": 0.9987,
+    "curv_plan": 0.9987,
+    "curv_total": 0.9987,
+    "relief_1km": 1.0,
+    "slope_mean_1km": 1.0
+  },
+  "coverage_training": {
+    "curv_profile": 1.0,
+    "curv_plan": 1.0,
+    "curv_total": 1.0,
+    "relief_1km": 1.0,
+    "slope_mean_1km": 1.0
+  }
+}
